@@ -1,8 +1,5 @@
-<h1 align="center">
-	<br>
-	<br>
-	<img width="320" src="Assets/logo_transparent.png" alt="WebGen">
-	<br>
+<h1 align="left">
+	<img width="200" src="Assets/logo.png" alt="WebGen">
 </h1>
 
 # WebGen
