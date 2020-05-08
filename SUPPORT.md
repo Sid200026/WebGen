@@ -1,6 +1,6 @@
 # Support
 
-> This project has a [ Code of Conduct][coc].
+> This project has a [ Code of Conduct](./CODE_OF_CONDUCT.md).
 > By interacting with this repository, organisation, or community you agree to
 > abide by its terms.
 
