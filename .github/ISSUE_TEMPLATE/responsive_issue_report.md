@@ -4,7 +4,7 @@ about: Report any responsiveness issue
 title: ""
 labels:
   - "type: frontend"
-  - "type: responsiveness
+  - "type: responsiveness"
 assignees: "Sid200026"
 ---
 
