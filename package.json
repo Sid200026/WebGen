@@ -21,12 +21,10 @@
   "lint-staged": {
     "*.{js.jsx}": [
       "prettier --config ./.prettierrc --write",
-      "eslint --ignore-path .eslintignore --fix",
-      "git add"
+      "eslint --ignore-path .eslintignore --fix"
     ],
     "*.md": [
-      "prettier --config ./.prettierrc --write",
-      "git add"
+      "prettier --config ./.prettierrc --write"
     ]
   },
   "husky": {
