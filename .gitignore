@@ -1,3 +1,26 @@
 # OS Specific
 
 .DS_Store
+
+# NodeJS Runtime Specific
+
+package-lock.json
+node_modules/
+
+# Jest coverage reports
+
+coverage/
+
+# Environment files
+
+.env
+.env.production
+
+# Build Files
+
+build/
+bundle/
+
+# Eslint Cache
+
+.eslintcache
