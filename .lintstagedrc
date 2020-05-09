@@ -1,0 +1,7 @@
+{
+  "*.{js.jsx}": [
+    "prettier --config ./.prettierrc --write",
+    "eslint --ignore-path .eslintignore --fix"
+  ],
+  "*.md": ["prettier --config ./.prettierrc --write"]
+}
