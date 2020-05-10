@@ -1,0 +1,28 @@
+{
+  "short_name": "WebGen",
+  "name": "WebGen: Personal Website Generator",
+  "description": "An open source personal website generator",
+  "lang": "en-US",
+  "orientation": "any",
+  "categories": [
+    "social",
+    "personalization",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

@@ -23,8 +23,8 @@ module.exports = (env) => {
   // 2. user -> To generate the build for users
   const outputPath =
     env.type === 'user'
-      ? path.resolve(__dirname, 'backend/bundle/build')
-      : path.resolve(__dirname, 'frontend/build');
+      ? path.resolve(__dirname, 'backend/user/build/')
+      : path.resolve(__dirname, 'backend/public/build/');
 
   const entryFile =
     env.type === 'user' ? './frontend/src/user.jsx' : './frontend/src/index.jsx';

@@ -19,7 +19,6 @@ coverage/
 # Build Files
 
 build/
-bundle/
 
 # Eslint Cache
 
