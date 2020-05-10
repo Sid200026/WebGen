@@ -1,4 +1,4 @@
 backend/
 node_modules/
-frontend/build/
-backend/bundle/
+backend/public/build/
+backend/user/build/
