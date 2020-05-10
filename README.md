@@ -1,5 +1,5 @@
 <h1 align="left">
-	<img width="200" src="Assets/logo.png" alt="WebGen">
+	<img width="300" src="Assets/logo.png" alt="WebGen">
 </h1>
 
 # WebGen
