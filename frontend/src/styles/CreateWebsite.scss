@@ -1,8 +1,9 @@
 @import '../constants/color';
 
 #editPreviewbtn {
-  background: $fourthColor;
-  color: black;
+  border: 2px solid rgb(68, 187, 164);
+  background: rgba(68, 187, 164, 0.2);
+  color: $fifthColor;
   position: fixed;
   right: 2rem;
   top: 7rem;
