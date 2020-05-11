@@ -16,6 +16,8 @@ import {
   FONT,
   META,
   TITLE,
+  FAVICON,
+  ENABLE_PAGE,
 } from '../constants/introduction_page';
 
 export const greetingTest = (text) => ({
@@ -101,4 +103,14 @@ export const meta = (metaDescription) => ({
 export const title = (titleTag) => ({
   type: TITLE,
   payload: { titleTag },
+});
+
+export const favicon = (url) => ({
+  type: FAVICON,
+  payload: { url },
+});
+
+export const enablePage = (response) => ({
+  type: ENABLE_PAGE,
+  payload: { response },
 });

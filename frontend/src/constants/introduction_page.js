@@ -17,6 +17,8 @@ export const BUTTON_HOVER_COLOR = 'BUTTON_HOVER_COLOR';
 export const FONT = 'FONT';
 export const META = 'META';
 export const TITLE = 'TITLE';
+export const FAVICON = 'FAVICON';
+export const ENABLE_PAGE = 'ENABLE_PAGE';
 
 /* ********* STATE KEYS ********* */
 
@@ -36,3 +38,5 @@ export const buttonHoverColor = 'buttonHoverColor';
 export const font = 'font';
 export const metadesc = 'metadesc';
 export const title = 'title';
+export const favicon = 'favicon';
+export const enable = 'enable';
