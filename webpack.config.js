@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 // Use .env in development mode, .env.production in production mode
 const dotenvfile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
@@ -23,11 +22,12 @@ module.exports = (env) => {
   // 2. user -> To generate the build for users
   const outputPath =
     env.type === 'user'
-      ? path.resolve(__dirname, 'backend/user/build/')
-      : path.resolve(__dirname, 'backend/public/build/');
-
+      ? path.resolve(__dirname, 'backend', 'user', 'build')
+      : path.resolve(__dirname, 'backend', 'public', 'build');
   const entryFile =
-    env.type === 'user' ? './frontend/src/user.jsx' : './frontend/src/index.jsx';
+    env.type === 'user'
+      ? path.join(__dirname, 'frontend', 'src', 'user.jsx')
+      : path.join(__dirname, 'frontend', 'src', 'index.jsx');
 
   return {
     entry: entryFile,
@@ -42,22 +42,16 @@ module.exports = (env) => {
       rules: [
         {
           test: /\.js(x?)$/,
-          exclude: /(node_modules|bower_components)/,
+          exclude: /node_modules/,
           use: [{ loader: 'babel-loader' }, { loader: 'eslint-loader' }],
         },
         {
-          test: /\.css$/,
-          exclude: /(node_modules|bower_components)/,
+          test: /\.s[ac]ss$/i,
           use: [
             // style-loader
             { loader: 'style-loader' },
             // css-loader
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-              },
-            },
+            { loader: 'css-loader' },
             // sass-loader
             { loader: 'sass-loader' },
           ],
@@ -65,8 +59,5 @@ module.exports = (env) => {
       ],
     },
     plugins: [new webpack.DefinePlugin(envKeys)],
-    optimization: {
-      minimizer: [new UglifyJsPlugin()],
-    },
   };
 };
