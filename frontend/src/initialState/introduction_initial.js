@@ -15,9 +15,11 @@ import {
   font,
   metadesc,
   title,
+  enable,
 } from '../constants/introduction_page';
 
 const introduction = {
+  [enable]: false,
   [greetingText]: '',
   [greetingColor]: 'white',
   [nameText]: '',

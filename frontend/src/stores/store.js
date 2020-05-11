@@ -1,6 +1,7 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import throttle from 'lodash.throttle';
 import { encrypt, decrypt } from '../utils/encrypt_decrypt';
 import { introductionReducer } from '../reducers/introduction_reducer';
 
@@ -38,14 +39,16 @@ if (process.env.NODE_ENV === 'production') {
   middleware = applyMiddleware(thunk, logger);
 }
 
-const rootReducer = combineReducers(introductionReducer);
+const rootReducer = combineReducers({ introductionReducer });
 
 const store = createStore(rootReducer, persistedState, middleware);
 
 // Save the store every 10 seconds
 
-setInterval(() => {
-  store.subscribe(saveState(store.getState()));
-}, 10000);
+store.subscribe(
+  throttle(() => {
+    saveState(store.getState());
+  }, 5000),
+);
 
 export { store };
