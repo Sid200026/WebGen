@@ -2,17 +2,22 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { style } from '../../styles/introduction';
 import { introductionWriteup } from '../../constants/writeups/index';
+import { enablePage } from '../../actions/introduction_action';
 import '../../styles/Introduction.scss';
 
 const useStyles = makeStyles(style);
 
 const Introduction = () => {
   const classes = useStyles();
+  const introductionReducer = useSelector((state) => state.introductionReducer);
+  const { enable } = introductionReducer;
+  const dispatch = useDispatch();
   return (
     <>
       <Container maxWidth="xl">
@@ -45,7 +50,15 @@ const Introduction = () => {
             <FormControlLabel
               value="start"
               control={
-                <Switch name="enable" className={classes.switchBase} size="medium" />
+                <Switch
+                  name="enable"
+                  className={classes.switchBase}
+                  size="medium"
+                  checked={enable}
+                  onChange={(event) => {
+                    dispatch(enablePage(event.target.checked));
+                  }}
+                />
               }
               label="Enable Page"
               labelPlacement="top"

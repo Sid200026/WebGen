@@ -19,7 +19,7 @@ const style = (theme) => ({
   },
   labelButton: {
     marginLeft: theme.spacing(3),
-    fontSize: 18,
+    fontSize: '1.1rem',
     fontWeight: 400,
   },
   navBar: {
