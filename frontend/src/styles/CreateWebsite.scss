@@ -4,21 +4,34 @@
   border: 2px solid rgb(68, 187, 164);
   background: rgba(68, 187, 164, 0.2);
   color: $fifthColor;
-  position: fixed;
-  right: 2rem;
-  top: 7rem;
-  width: 10rem;
+  z-index: 3;
+  margin-top: 1rem;
+}
+
+#editPreviewbtnForm {
+  border: 2px solid rgb(68, 187, 164);
+  background: rgba(68, 187, 164, 0.2);
+  color: $fifthColor;
   z-index: 3;
 }
 
 .displayContainer {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
-@media only screen and (max-width: 750px) {
-  #editPreviewbtn {
-    right: 0.7rem;
-    top: 11rem;
+#finishBtn {
+  position: fixed;
+  bottom: 65px;
+  right: 15px;
+  background: rgb(100, 236, 100);
+  color: $primary-color;
+  z-index: 4;
+}
+
+@media only screen and(max-width : 750) {
+  #editPreviewbtnForm {
+    margin-top: 1rem;
   }
 }
