@@ -30,7 +30,7 @@ import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import { style } from '../../styles/header';
 
 const useStyles = makeStyles(style);
-const warningWidth = 750;
+const warningWidth = 1180;
 
 const Header = (props) => {
   const classes = useStyles();

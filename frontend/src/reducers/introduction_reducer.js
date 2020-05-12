@@ -16,6 +16,7 @@ import {
   FONT,
   META,
   TITLE,
+  ENABLE_PAGE,
   greetingText,
   greetingColor,
   nameText,
@@ -32,6 +33,7 @@ import {
   font,
   metadesc,
   title,
+  enable,
 } from '../constants/introduction_page';
 
 import { introduction } from '../initialState/introduction_initial';
@@ -85,6 +87,8 @@ export const introductionReducer = (state = introduction, { type, payload }) => 
       return { ...state, [metadesc]: payload.metaDescription };
     case TITLE:
       return { ...state, [title]: payload.titleTag };
+    case ENABLE_PAGE:
+      return { ...state, [enable]: payload.response };
     default:
       return state;
   }
