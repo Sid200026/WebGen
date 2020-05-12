@@ -10,6 +10,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import DoneIcon from '@material-ui/icons/Done';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -30,7 +31,7 @@ import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import { style } from '../../styles/header';
 
 const useStyles = makeStyles(style);
-const warningWidth = 1180;
+const warningWidth = 1160;
 
 const Header = (props) => {
   const classes = useStyles();
@@ -49,7 +50,7 @@ const Header = (props) => {
   useEffect(() => {
     window.addEventListener('resize', () => {
       updateWidth(window.innerWidth);
-      if (width > 500 && open) {
+      if (width > 1160 && open) {
         handleDrawerClose();
       }
     });
@@ -66,6 +67,7 @@ const Header = (props) => {
     { name: 'Projects', icon: ColorLensIcon, link: '/project' },
     { name: 'Achievements', icon: ImportContactsIcon, link: '/achievement' },
     { name: 'Contact', icon: ContactPhoneIcon, link: '/contact' },
+    { name: 'Finish', icon: DoneIcon, link: '/submit' },
   ];
 
   const { children } = props;
@@ -157,6 +159,16 @@ const Header = (props) => {
                   }}
                 >
                   Contact
+                </Button>
+                <Button
+                  color="inherit"
+                  className={classes.specialBtn}
+                  startIcon={<DoneIcon />}
+                  onClick={() => {
+                    navigateTo('/submit');
+                  }}
+                >
+                  Finish
                 </Button>
               </div>
             )}

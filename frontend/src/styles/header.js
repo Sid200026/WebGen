@@ -18,12 +18,12 @@ const style = (theme) => ({
     flexGrow: 1,
   },
   labelButton: {
-    marginLeft: theme.spacing(3),
-    fontSize: '1.1rem',
+    marginLeft: '0.5rem',
+    fontSize: '1rem',
     fontWeight: 400,
   },
   navBar: {
-    background: 'rgba(24, 25, 26, 1)',
+    background: 'rgba(15, 14, 13, 1)',
   },
   navButtons: {
     textAlign: 'right',
@@ -89,6 +89,12 @@ const style = (theme) => ({
   },
   logoResponsive: {
     display: 'none',
+  },
+  specialBtn: {
+    marginLeft: '0.6rem',
+    fontSize: '1.1rem',
+    fontWeight: 400,
+    color: 'rgb(149, 245, 66)',
   },
 });
 
