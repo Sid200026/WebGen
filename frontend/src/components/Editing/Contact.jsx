@@ -5,9 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { style } from '../../styles/contact';
+import { style } from '../../styles/editLanding';
 import { contactWriteup } from '../../constants/writeups/index';
-import '../../styles/Introduction.scss';
 
 const useStyles = makeStyles(style);
 
@@ -52,6 +51,7 @@ const Contact = () => {
               className={clsx(classes.labelEnable, {
                 [classes.responsiveLabelEnable]: window.innerWidth < 750,
               })}
+              classes={{ label: classes.formControl }}
             />
           </div>
           <Typography gutterBottom align="center">

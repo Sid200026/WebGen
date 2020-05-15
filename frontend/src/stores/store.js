@@ -43,12 +43,12 @@ const rootReducer = combineReducers({ introductionReducer });
 
 const store = createStore(rootReducer, persistedState, middleware);
 
-// Save the store every 10 seconds
+// Save the store every 3.5 seconds
 
 store.subscribe(
   throttle(() => {
     saveState(store.getState());
-  }, 5000),
+  }, 3500),
 );
 
 export { store };
