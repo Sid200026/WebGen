@@ -10,11 +10,13 @@ import Switch from '@material-ui/core/Switch';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Grid from '@material-ui/core/Grid';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { style } from '../../styles/introduction';
+import { style } from '../../styles/editLanding';
 import { introductionWriteup } from '../../constants/writeups/index';
 import { enablePage } from '../../actions/introduction_action';
+import { Greeting } from './Introduction/Greeting.jsx';
+import { Name } from './Introduction/Name.jsx';
+import { Specialisation } from './Introduction/Specialisation.jsx';
 import { StepperComp as Stepper } from './Stepper.jsx';
-import '../../styles/Introduction.scss';
 
 const useStyles = makeStyles(style);
 
@@ -26,6 +28,8 @@ const getLabels = () => [
   'Theme',
   'SEO Tags',
 ];
+
+const getContent = () => [Greeting, Name, Specialisation];
 
 const Introduction = (props) => {
   const classes = useStyles();
@@ -93,6 +97,7 @@ const Introduction = (props) => {
                 className={clsx(classes.labelEnable, {
                   [classes.responsiveLabelEnable]: window.innerWidth < 750,
                 })}
+                classes={{ label: classes.formControl }}
               />
             </div>
             <Typography gutterBottom align="center">
@@ -170,7 +175,7 @@ const Introduction = (props) => {
         PS: If you don&apos;t want to render a component, simply leave the asterisk
         marked field as blank.
       </Typography>
-      <Stepper steps={getLabels()} />
+      <Stepper steps={getLabels()} contentList={getContent()} />
     </>
   );
 };

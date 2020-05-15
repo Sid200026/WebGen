@@ -21,6 +21,10 @@ const styles = (theme) => ({
     color: fifthColor,
     fontSize: '1.3 rem',
   },
+  formContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
 });
 
 export { styles };

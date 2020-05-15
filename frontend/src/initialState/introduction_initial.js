@@ -21,7 +21,7 @@ import {
 const introduction = {
   [enable]: false,
   [greetingText]: '',
-  [greetingColor]: 'white',
+  [greetingColor]: '#ffffff',
   [nameText]: '',
   [nameColor]: 'blue',
   [nameBold]: true,

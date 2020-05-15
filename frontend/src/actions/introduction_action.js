@@ -20,7 +20,7 @@ import {
   ENABLE_PAGE,
 } from '../constants/introduction_page';
 
-export const greetingTest = (text) => ({
+export const greetingText = (text) => ({
   type: GREETING_TEXT,
   payload: { text },
 });

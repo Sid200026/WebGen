@@ -1,4 +1,9 @@
-import { secondaryColor, thirdColor, fourthColor } from '../constants/color';
+import {
+  secondaryColor,
+  thirdColor,
+  fourthColor,
+  fifthColor,
+} from '../constants/color';
 
 export const style = () => ({
   heading: {
@@ -16,6 +21,11 @@ export const style = () => ({
   },
   labelEnable: {
     marginTop: '3rem',
+    marginleft: '4rem',
+    color: fourthColor,
+    fontSize: '2rem',
+  },
+  labelForm: {
     marginleft: '4rem',
     color: fourthColor,
     fontSize: '2rem',
@@ -45,7 +55,7 @@ export const style = () => ({
     padding: '0%',
   },
   exampleContainer: {
-    marginTop: '5rem',
+    marginTop: '2rem',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -59,4 +69,16 @@ export const style = () => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  formHeading: {
+    color: fifthColor,
+    marginTop: '2rem',
+  },
+  warning: {
+    color: secondaryColor,
+    marginTop: '2rem',
+  },
+  endWarning: {
+    color: secondaryColor,
+  },
+  formControl: { fontSize: '1.5rem' },
 });

@@ -77,4 +77,7 @@ export const style = () => ({
     color: secondaryColor,
     marginTop: '2rem',
   },
+  endWarning: {
+    color: secondaryColor,
+  },
 });
