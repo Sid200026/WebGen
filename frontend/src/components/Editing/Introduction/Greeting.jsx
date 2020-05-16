@@ -33,7 +33,7 @@ const Greeting = () => {
               [classes.responsiveCardClass]: window.innerWidth < 750,
             })}
           >
-            <Typography align="center" variant="h6" style={{ marginBottom: '1.3rem' }}>
+            <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
               Customize Greeting Details
             </Typography>
             <TextField

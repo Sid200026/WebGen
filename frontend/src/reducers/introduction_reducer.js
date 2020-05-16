@@ -17,6 +17,8 @@ import {
   META,
   TITLE,
   ENABLE_PAGE,
+  BUTTON_HOVER_EFFECT,
+  FAVICON,
   greetingText,
   greetingColor,
   nameText,
@@ -34,6 +36,8 @@ import {
   metadesc,
   title,
   enable,
+  hoverEffect,
+  favicon,
 } from '../constants/introduction_page';
 
 import { introduction } from '../initialState/introduction_initial';
@@ -89,6 +93,10 @@ export const introductionReducer = (state = introduction, { type, payload }) => 
       return { ...state, [title]: payload.titleTag };
     case ENABLE_PAGE:
       return { ...state, [enable]: payload.response };
+    case BUTTON_HOVER_EFFECT:
+      return { ...state, [hoverEffect]: payload.response };
+    case FAVICON:
+      return { ...state, [favicon]: payload.url };
     default:
       return state;
   }

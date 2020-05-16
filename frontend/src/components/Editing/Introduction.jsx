@@ -16,6 +16,8 @@ import { enablePage } from '../../actions/introduction_action';
 import { Greeting } from './Introduction/Greeting.jsx';
 import { Name } from './Introduction/Name.jsx';
 import { Specialisation } from './Introduction/Specialisation.jsx';
+import { ViewProfile } from './Introduction/ViewProfile.jsx';
+import { SEO } from './Introduction/SEO.jsx';
 import { StepperComp as Stepper } from './Stepper.jsx';
 
 const useStyles = makeStyles(style);
@@ -29,7 +31,7 @@ const getLabels = () => [
   'SEO Tags',
 ];
 
-const getContent = () => [Greeting, Name, Specialisation];
+const getContent = () => [Greeting, Name, Specialisation, ViewProfile, null, SEO];
 
 const Introduction = (props) => {
   const classes = useStyles();

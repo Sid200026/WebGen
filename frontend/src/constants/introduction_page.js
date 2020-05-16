@@ -19,6 +19,7 @@ export const META = 'META';
 export const TITLE = 'TITLE';
 export const FAVICON = 'FAVICON';
 export const ENABLE_PAGE = 'ENABLE_PAGE';
+export const BUTTON_HOVER_EFFECT = 'BUTTON_HOVER_EFFECT';
 
 /* ********* STATE KEYS ********* */
 
@@ -40,3 +41,4 @@ export const metadesc = 'metadesc';
 export const title = 'title';
 export const favicon = 'favicon';
 export const enable = 'enable';
+export const hoverEffect = 'hoverEffect';
