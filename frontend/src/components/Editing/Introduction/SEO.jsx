@@ -83,6 +83,9 @@ const SEO = () => {
               accept="image/*"
               minSize={1024}
               maxSize={3072000}
+              maxFiles={1}
+              multiple={false}
+              canCancel={false}
             >
               {({
                 getRootProps,
