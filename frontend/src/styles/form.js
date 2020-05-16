@@ -34,6 +34,7 @@ export const style = () => ({
   },
   input: {
     color: fourthColor,
+    marginTop: '2rem',
   },
   color: {
     width: '2rem',

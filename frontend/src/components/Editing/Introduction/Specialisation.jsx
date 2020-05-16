@@ -94,7 +94,7 @@ const Specialisation = () => {
             </Typography>
             <Link
               href="https://mattboldt.com/demos/typed-js/"
-              style={{ marginBottom: '1.3rem' }}
+              style={{ marginBottom: '1rem' }}
               rel="noreferrer"
               target="_blank"
             >

@@ -18,6 +18,7 @@ import {
   TITLE,
   FAVICON,
   ENABLE_PAGE,
+  BUTTON_HOVER_EFFECT,
 } from '../constants/introduction_page';
 
 export const greetingText = (text) => ({
@@ -112,5 +113,10 @@ export const favicon = (url) => ({
 
 export const enablePage = (response) => ({
   type: ENABLE_PAGE,
+  payload: { response },
+});
+
+export const buttonHoverEffect = (response) => ({
+  type: BUTTON_HOVER_EFFECT,
   payload: { response },
 });

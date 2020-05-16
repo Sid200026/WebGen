@@ -16,6 +16,8 @@ import {
   metadesc,
   title,
   enable,
+  hoverEffect,
+  favicon,
 } from '../constants/introduction_page';
 
 const introduction = {
@@ -23,19 +25,21 @@ const introduction = {
   [greetingText]: '',
   [greetingColor]: '#ffffff',
   [nameText]: '',
-  [nameColor]: 'blue',
+  [nameColor]: '#0000ff',
   [nameBold]: true,
   [specialisationText]: [],
-  [specialisationColor]: 'white',
+  [specialisationColor]: '#ffffff',
   [particleTheme]: '',
   [buttonText]: 'Visit My Profile',
-  [buttonBorder]: 'black',
-  [buttonColor]: 'white',
-  [buttonHoverBG]: 'blue',
-  [buttonHoverColor]: 'black',
+  [buttonBorder]: '#000000',
+  [buttonColor]: '#ffffff',
+  [buttonHoverBG]: '#0000ff',
+  [buttonHoverColor]: '#ffffff',
   [font]: 'Times New Roman, Times, serif, Arial, Helvetica',
-  [metadesc]: 'An open source personal website generator',
-  [title]: 'WebGen',
+  [metadesc]: '',
+  [title]: '',
+  [hoverEffect]: false,
+  [favicon]: '',
 };
 
 export { introduction };
