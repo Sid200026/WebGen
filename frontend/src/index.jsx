@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { App } from './components/App.jsx';
 import { store } from './stores/store';
+import { ErrorBoundary } from './components/ErrorBoundary.jsx';
 import './styles/index.scss';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <ErrorBoundary>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </ErrorBoundary>,
   document.getElementById('WebGen'),
 );
