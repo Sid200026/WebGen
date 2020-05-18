@@ -23,3 +23,12 @@ build/
 # Eslint Cache
 
 .eslintcache
+
+# Upload directory
+
+backend/upload/
+
+# Log files and directory
+
+*.log
+backend/log

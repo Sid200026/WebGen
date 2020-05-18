@@ -1,17 +1,47 @@
 const express = require('express');
 const path = require('path');
+const helmet = require('helmet');
+const multer = require('multer');
+const compression = require('compression');
 const { router: frontendRouter } = require('./routes/frontend/router');
+const { router: uploadRouter } = require('./routes/upload/router');
+const { router: logRouter } = require('./routes/logging/router');
+const { logger } = require('./logger/logger');
 const app = express();
+
+app.use(helmet());
+app.use(compression());
 
 /************************** Serving Static Files ************************* */
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
+/* 
+  In developmen, upload folder should be treated as static directory
+  so that frontend can access the images
+*/
+
+if (process.env.NODE_ENV !== 'production') {
+  app.use('/upload', express.static(path.join(__dirname, 'upload')));
+}
+
 /************************** Routing ************************* */
+
+app.use('/api/upload', uploadRouter);
+app.use('/api/log', logRouter);
 
 /********* Serving HTML file *********/
 
 app.use('*', frontendRouter);
+
+app.use(function (err, _req, res, _next) {
+  logger.error(err.stack);
+  if (err instanceof multer.MulterError) {
+    res.status(400).send({ error: err.message });
+  } else {
+    res.status(500).send({ error: 'Oops: Something broke!' });
+  }
+});
 
 module.exports = {
   app,
