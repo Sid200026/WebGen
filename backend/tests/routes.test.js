@@ -59,19 +59,6 @@ describe('React Logger is functioning as expected', () => {
   });
 });
 
-const imagePath = path.join(__dirname, '../', 'public', 'logo.png');
-
-describe('Upload endpoint should only accept single image', () => {
-  test('Sends status 400', async () =>
-    request(app)
-      .post('/api/upload/single')
-      .attach('image', imagePath)
-      .attach('image', imagePath)
-      .then((response) => {
-        expect(response.statusCode).toBe(400);
-      }));
-});
-
 const randomFilePath = path.join(__dirname, '../', 'index.js');
 
 describe('Upload endpoint should accept files with valid image extension', () => {
