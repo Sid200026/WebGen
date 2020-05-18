@@ -26,8 +26,9 @@ build/
 
 # Upload directory
 
-upload/
+backend/upload/
 
-# Log directory
+# Log files and directory
 
 *.log
+backend/log
