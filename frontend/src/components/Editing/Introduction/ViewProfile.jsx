@@ -122,7 +122,7 @@ const ViewProfile = () => {
             />
             <Link
               // eslint-disable-next-line max-len
-              href="https://www.w3schools.com/csSref/tryit.asp?filename=trycss_sel_hover"
+              href="https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_hover"
               style={{ marginBottom: '1.3rem' }}
               rel="noreferrer"
               target="_blank"
