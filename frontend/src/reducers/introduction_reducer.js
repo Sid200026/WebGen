@@ -19,6 +19,7 @@ import {
   ENABLE_PAGE,
   BUTTON_HOVER_EFFECT,
   FAVICON,
+  DELETE_FAVICON,
   greetingText,
   greetingColor,
   nameText,
@@ -96,7 +97,9 @@ export const introductionReducer = (state = introduction, { type, payload }) => 
     case BUTTON_HOVER_EFFECT:
       return { ...state, [hoverEffect]: payload.response };
     case FAVICON:
-      return { ...state, [favicon]: payload.url };
+      return { ...state, [favicon]: { url: payload.url, name: payload.name } };
+    case DELETE_FAVICON:
+      return { ...state, [favicon]: payload };
     default:
       return state;
   }

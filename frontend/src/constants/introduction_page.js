@@ -20,6 +20,7 @@ export const TITLE = 'TITLE';
 export const FAVICON = 'FAVICON';
 export const ENABLE_PAGE = 'ENABLE_PAGE';
 export const BUTTON_HOVER_EFFECT = 'BUTTON_HOVER_EFFECT';
+export const DELETE_FAVICON = 'DELETE_FAVICON';
 
 /* ********* STATE KEYS ********* */
 

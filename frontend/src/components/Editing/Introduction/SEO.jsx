@@ -1,18 +1,31 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Dropzone from 'react-dropzone';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import Swal from 'sweetalert2';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import { style } from '../../../styles/form';
 import {
   title as titleFunc,
   meta as metaFunc,
+  favicon as faviconFunc,
+  deleteFavicon,
 } from '../../../actions/introduction_action';
 import '../../../styles/Dropzone.scss';
+import { checkImage } from '../../../utils/imageExists';
 
 const useStyles = makeStyles(style);
 
@@ -20,12 +33,41 @@ const SEO = () => {
   const classes = useStyles();
 
   const introductionReducer = useSelector((state) => state.introductionReducer);
-  const { metadesc, title } = introductionReducer;
+  const { metadesc, title, favicon } = introductionReducer;
   const dispatch = useDispatch();
 
-  const handleDrop = (acceptedFiles) =>
-    // eslint-disable-next-line no-console
-    console.log(acceptedFiles.map((file) => file.name));
+  const deleteImage = () => {
+    dispatch(deleteFavicon());
+  };
+  useEffect(() => {
+    if (favicon) {
+      checkImage(favicon.url, deleteImage);
+    }
+  }, []);
+
+  const handleDrop = (acceptedFiles) => {
+    if (acceptedFiles.length > 0) {
+      const formData = new FormData();
+      formData.append('image', acceptedFiles[0]);
+      axios
+        .post('/api/upload/single', formData)
+        .then((res) => {
+          const { data } = res;
+          const { url, fileName } = data;
+          dispatch(faviconFunc(url, fileName));
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: 'error',
+            title: `${err.message}`,
+            text: 'Oops. Looks like some error occured. Please try again in some time',
+            footer:
+              // eslint-disable-next-line max-len
+              '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
+          });
+        });
+    }
+  };
 
   return (
     <>
@@ -77,15 +119,16 @@ const SEO = () => {
               required
             />
             <p style={{ margin: '16px 0px' }}>Upload a Favicon</p>
-            {/* 1 Kb and 3 Mb */}
+            {/* 1 B and 10 Mb */}
             <Dropzone
               onDrop={handleDrop}
               accept="image/*"
-              minSize={1024}
-              maxSize={3072000}
+              minSize={1}
+              maxSize={10485760}
               maxFiles={1}
               multiple={false}
               canCancel={false}
+              style={{ marginBottom: '4rem' }}
             >
               {({
                 getRootProps,
@@ -115,6 +158,25 @@ const SEO = () => {
                 );
               }}
             </Dropzone>
+            {Object.keys(favicon).length !== 0 && favicon.constructor === Object && (
+              <List className={classes.list} dense>
+                <ListItem divider>
+                  <ListItemAvatar>
+                    <Avatar alt={favicon.name} src={favicon.url} />
+                  </ListItemAvatar>
+                  <ListItemText primary={favicon.name} />
+                  <ListItemSecondaryAction>
+                    <IconButton
+                      edge="end"
+                      aria-label="delete"
+                      onClick={() => deleteImage()}
+                    >
+                      <DeleteIcon color="secondary" />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              </List>
+            )}
             {/* TODO: Add example of greeting here */}
           </Card>
         </div>

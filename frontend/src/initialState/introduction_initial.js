@@ -39,7 +39,7 @@ const introduction = {
   [metadesc]: '',
   [title]: '',
   [hoverEffect]: false,
-  [favicon]: '',
+  [favicon]: {},
 };
 
 export { introduction };

@@ -19,6 +19,7 @@ import {
   FAVICON,
   ENABLE_PAGE,
   BUTTON_HOVER_EFFECT,
+  DELETE_FAVICON,
 } from '../constants/introduction_page';
 
 export const greetingText = (text) => ({
@@ -106,9 +107,9 @@ export const title = (titleTag) => ({
   payload: { titleTag },
 });
 
-export const favicon = (url) => ({
+export const favicon = (url, name) => ({
   type: FAVICON,
-  payload: { url },
+  payload: { url, name },
 });
 
 export const enablePage = (response) => ({
@@ -119,4 +120,9 @@ export const enablePage = (response) => ({
 export const buttonHoverEffect = (response) => ({
   type: BUTTON_HOVER_EFFECT,
   payload: { response },
+});
+
+export const deleteFavicon = () => ({
+  type: DELETE_FAVICON,
+  payload: {},
 });
