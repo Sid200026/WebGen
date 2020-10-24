@@ -10,7 +10,7 @@
     "start": "node backend/index.js",
     "dev": "nodemon backend/index.js",
     "prod": "NODE_ENV=production node ./backend/index.js",
-    "bundle": "webpack --mode development --inline --progress --watch --env.type=app",
+    "bundle": "webpack --mode development --hot --inline --progress --watch --env.type=app",
     "build": "NODE_ENV=production webpack --mode production --env.type=app",
     "build:user": "NODE_ENV=production webpack --mode production --env.type=user",
     "prettify": "prettier --config ./.prettierrc --write **/*.{js,jsx,md}",
