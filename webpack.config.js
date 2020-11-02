@@ -46,7 +46,7 @@ module.exports = (env) => {
           use: [{ loader: 'babel-loader' }, { loader: 'eslint-loader' }],
         },
         {
-          test: /\.s[ac]ss$/i,
+          test: [/\.s[ac]ss$/i, /\.css$/i],
           use: [
             // style-loader
             { loader: 'style-loader' },
