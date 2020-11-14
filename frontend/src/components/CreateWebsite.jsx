@@ -5,7 +5,7 @@ import { Preview } from './Preview/Preview.jsx';
 import '../styles/CreateWebsite.scss';
 
 const CreateWebsite = () => {
-  const [displayMode, updateDisplayMode] = useState(displayModeType.PREVIEW);
+  const [displayMode, updateDisplayMode] = useState(displayModeType.EDIT);
   if (displayMode === displayModeType.EDIT) {
     return (
       <div className="displayContainer">

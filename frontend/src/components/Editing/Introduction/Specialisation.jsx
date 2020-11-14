@@ -93,7 +93,7 @@ const Specialisation = () => {
               Multiple Specialisations will be displayed using Typing Effect
             </Typography>
             <Link
-              href="https://mattboldt.com/demos/typed-js/"
+              href="https://typing-effect-sid200026.netlify.app/"
               style={{ marginBottom: '1rem' }}
               rel="noreferrer"
               target="_blank"

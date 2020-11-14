@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Container from '@material-ui/core/Container';
 import { Router } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
@@ -22,6 +23,11 @@ const Edit = (props) => {
   const { updateDisplayMode } = props;
   return (
     <>
+      <Helmet>
+        <title>Webgen</title>
+        <meta name="description" content="An open source personal website generator" />
+        <link rel="icon" type="image/png" href="public/favicon-16x16.png" />
+      </Helmet>
       <Container maxWidth="xl" disableGutters className={classes.container}>
         <div className={classes.componentContainer}>
           <Header>

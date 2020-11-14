@@ -36,6 +36,10 @@ export const style = () => ({
     color: fourthColor,
     marginTop: '2rem',
   },
+  select: {
+    marginTop: '2rem',
+    width: '15rem',
+  },
   color: {
     width: '2rem',
     height: '2rem',
@@ -45,6 +49,10 @@ export const style = () => ({
     height: 'auto',
     borderRadius: '30px',
     border: '2px solid white',
+  },
+  particle: {
+    border: '2px solid yellow',
+    borderRadius: '0px',
   },
   responsiveImage: {
     width: '100%',

@@ -37,3 +37,4 @@
 - [ React-Lazyload](https://reach.tech/router/tutorial/01-intro) -> To lazy load images
 - [ React-Particle-JS](https://rpj.bembi.org/#simple) -> ParticleJS implementation for React
 - [ Crypto-JS](https://github.com/brix/crypto-js) -> https://github.com/brix/crypto-js
+- [ Typing-Effect](https://sid200026.github.io/typing-effect/) -> Provides elegant typing effects

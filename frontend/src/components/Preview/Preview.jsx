@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import EditIcon from '@material-ui/icons/Edit';
 import { IntroductionLayout } from './Introduction/IntroductionLayout.jsx';
 import '../../styles/preview.scss';
 
@@ -19,7 +19,7 @@ const Preview = (props) => {
           onClick={updateDisplayMode}
           className="preview__goBackbtn"
           id="editPreviewbtn"
-          startIcon={<VisibilityIcon />}
+          startIcon={<EditIcon />}
           size="large"
         >
           Edit
