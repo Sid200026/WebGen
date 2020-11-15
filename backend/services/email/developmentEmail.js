@@ -1,7 +1,8 @@
 'use strict';
 const nodemailer = require('nodemailer');
 // Use .env in development mode, .env.production in production mode
-const { emailConfig } = require('../constants/EmailService');
+const { emailConfig } = require('../../constants/EmailService');
+const { logger } = require('../../logger/logger');
 
 const getTransporter = () => nodemailer.createTransport(emailConfig);
 
@@ -14,7 +15,7 @@ const sendTextMail = async (to, subject, text = '', html = '') => {
     text: text,
     html: html,
   });
-  console.log(sentMessage.messageId);
+  logger.log(`${to} || ${sentMessage.messageId}`);
 };
 
 const sendAttachmentMail = async (
@@ -33,7 +34,7 @@ const sendAttachmentMail = async (
     html: html,
     attachments: attachments,
   });
-  console.log(sentMessage.messageId);
+  logger.log(`${to} || ${sentMessage.messageId}`);
 };
 
 module.exports = { sendTextMail, sendAttachmentMail };
