@@ -8,6 +8,7 @@ const { router: uploadRouter } = require('./routes/upload/router');
 const { router: logRouter } = require('./routes/logging/router');
 const { logger } = require('./logger/logger');
 const app = express();
+const { EmailSendAttachment } = require('./email/email');
 
 app.use(helmet());
 app.use(compression());
@@ -42,6 +43,10 @@ app.use(function (err, _req, res, _next) {
     res.status(500).send({ error: 'Oops: Something broke!' });
   }
 });
+
+EmailSendAttachment('siddharthsingharoy@gmail.com', 'Hi Sid', '', '<h1>Hi Sid</h1>', [
+  { path: path.join(__dirname, 'README.md') },
+]).catch((err) => console.error(err));
 
 module.exports = {
   app,
