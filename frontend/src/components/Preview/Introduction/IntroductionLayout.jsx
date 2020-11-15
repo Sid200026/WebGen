@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import clsx from 'clsx';
 import { Helmet } from 'react-helmet';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -33,6 +34,8 @@ const IntroductionLayout = () => {
     favicon,
     metadesc,
     particleTheme,
+    particleThemeBackgroundColor,
+    particleThemeEntityColor,
   } = introductionReducer;
   const borderStyle = `1px solid ${buttonBorder}`;
   let buttonStyle = {};
@@ -61,9 +64,20 @@ const IntroductionLayout = () => {
 
       <Container disableGutters maxWidth="xl" className={classes.container}>
         <div className={(classes.particleContainer, 'pseudoClass')}>
-          {particleTheme && getTheme(particleTheme)}
+          {particleTheme &&
+            particleThemeBackgroundColor &&
+            particleThemeEntityColor &&
+            getTheme(
+              particleTheme,
+              particleThemeBackgroundColor,
+              particleThemeEntityColor,
+            )}
         </div>
-        <h1 className={classes.mainHeading}>
+        <h1
+          className={clsx(classes.mainHeading, {
+            [classes.responsiveMainHeading]: window.innerWidth < 750,
+          })}
+        >
           {greetingText && (
             <span style={{ color: greetingColor, fontWeight: '100' }}>
               {greetingText}
@@ -80,7 +94,9 @@ const IntroductionLayout = () => {
         </h1>
         <span
           style={{ color: specialisationColor }}
-          className={classes.specialisationText}
+          className={clsx(classes.specialisationText, {
+            [classes.responsiveSpecialisationText]: window.innerWidth < 750,
+          })}
         >
           {specialisationText.length !== 0 && (
             <Typing
@@ -90,7 +106,9 @@ const IntroductionLayout = () => {
               typeSpeed={92}
               deleteSpeed={50}
               cursorColor={specialisationColor}
-              class
+              styleClass={clsx(classes.specialisationText, {
+                [classes.responsiveSpecialisationText]: window.innerWidth < 750,
+              })}
             />
           )}
         </span>

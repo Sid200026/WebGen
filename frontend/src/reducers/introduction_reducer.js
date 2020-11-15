@@ -8,6 +8,8 @@ import {
   SPECIALISATION_TEXT_REMOVE,
   SPECIALISATION_COLOR,
   PARTICLE_JS_THEME,
+  PARTICLE_THEME_BACKGROUND_COLOR,
+  PARTICLE_THEME_ENTITY_COLOR,
   BUTTON_TEXT,
   BUTTON_BORDER,
   BUTTON_COLOR,
@@ -28,6 +30,8 @@ import {
   specialisationText,
   specialisationColor,
   particleTheme,
+  particleThemeBackgroundColor,
+  particleThemeEntityColor,
   buttonText,
   buttonBorder,
   buttonColor,
@@ -76,6 +80,10 @@ export const introductionReducer = (state = introduction, { type, payload }) => 
       return { ...state, [specialisationColor]: payload.color };
     case PARTICLE_JS_THEME:
       return { ...state, [particleTheme]: payload.theme };
+    case PARTICLE_THEME_BACKGROUND_COLOR:
+      return { ...state, [particleThemeBackgroundColor]: payload.background };
+    case PARTICLE_THEME_ENTITY_COLOR:
+      return { ...state, [particleThemeEntityColor]: payload.entity };
     case BUTTON_TEXT:
       return { ...state, [buttonText]: payload.text };
     case BUTTON_BORDER:

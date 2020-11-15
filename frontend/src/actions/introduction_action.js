@@ -8,6 +8,8 @@ import {
   SPECIALISATION_TEXT_REMOVE,
   SPECIALISATION_COLOR,
   PARTICLE_JS_THEME,
+  PARTICLE_THEME_BACKGROUND_COLOR,
+  PARTICLE_THEME_ENTITY_COLOR,
   BUTTON_TEXT,
   BUTTON_BORDER,
   BUTTON_COLOR,
@@ -65,6 +67,16 @@ export const specialisationColor = (color) => ({
 export const particleJSTheme = (theme) => ({
   type: PARTICLE_JS_THEME,
   payload: { theme },
+});
+
+export const particleJSBackground = (background) => ({
+  type: PARTICLE_THEME_BACKGROUND_COLOR,
+  payload: { background },
+});
+
+export const particleJSEntity = (entity) => ({
+  type: PARTICLE_THEME_ENTITY_COLOR,
+  payload: { entity },
 });
 
 export const buttonText = (text) => ({

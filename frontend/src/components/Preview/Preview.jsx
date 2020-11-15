@@ -25,7 +25,6 @@ const Preview = (props) => {
           Edit
         </Button>
         {introductionEnable && <IntroductionLayout />}
-        <h1>Hi</h1>
       </div>
     </>
   );

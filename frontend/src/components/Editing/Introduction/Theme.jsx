@@ -4,12 +4,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import InputLabel from '@material-ui/core/InputLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import { generateMenuItems, getTheme } from '../../ParticleThemes/index';
 import { style } from '../../../styles/form';
 // eslint-disable-next-line max-len
-import { particleJSTheme as particleJSThemeFunc } from '../../../actions/introduction_action';
+import {
+  particleJSTheme as particleJSThemeFunc,
+  particleJSBackground as particleJSBackgroundFunc,
+  particleJSEntity as particleJSEntityFunc,
+} from '../../../actions/introduction_action';
 
 const useStyles = makeStyles(style);
 
@@ -17,7 +22,12 @@ const Theme = () => {
   const classes = useStyles();
 
   const introductionReducer = useSelector((state) => state.introductionReducer);
-  const { particleTheme } = introductionReducer;
+  const {
+    particleTheme,
+    particleThemeBackgroundColor,
+    particleThemeEntityColor,
+  } = introductionReducer;
+  console.log(introductionReducer);
   const dispatch = useDispatch();
   return (
     <>
@@ -42,7 +52,6 @@ const Theme = () => {
               variant="outlined"
               label="Introduction Page Theme"
               value={particleTheme}
-              helperText="Choose a theme"
               className={classes.select}
               onChange={(event) => {
                 dispatch(particleJSThemeFunc(event.target.value));
@@ -50,6 +59,52 @@ const Theme = () => {
             >
               {generateMenuItems()}
             </Select>
+            {particleTheme && (
+              <>
+                <FormControlLabel
+                  value="top"
+                  control={
+                    <input
+                      type="color"
+                      list="true"
+                      value={particleThemeBackgroundColor}
+                      style={{
+                        width: '8rem',
+                        height: '2rem',
+                        marginTop: '5px',
+                      }}
+                      onChange={(event) => {
+                        dispatch(particleJSBackgroundFunc(event.target.value));
+                      }}
+                    />
+                  }
+                  label="Color of the background"
+                  labelPlacement="top"
+                  classes={{ label: classes.formControl }}
+                />
+                <FormControlLabel
+                  value="top"
+                  control={
+                    <input
+                      type="color"
+                      list="true"
+                      value={particleThemeEntityColor}
+                      style={{
+                        width: '8rem',
+                        height: '2rem',
+                        marginTop: '5px',
+                      }}
+                      onChange={(event) => {
+                        dispatch(particleJSEntityFunc(event.target.value));
+                      }}
+                    />
+                  }
+                  label="Color of the entities"
+                  labelPlacement="top"
+                  classes={{ label: classes.formControl }}
+                />
+              </>
+            )}
           </Card>
         </div>
         <div className={classes.cardContainer}>
@@ -62,7 +117,14 @@ const Theme = () => {
               classes.particle,
             )}
           >
-            {getTheme(particleTheme)}
+            {particleTheme &&
+              particleThemeBackgroundColor &&
+              particleThemeEntityColor &&
+              getTheme(
+                particleTheme,
+                particleThemeBackgroundColor,
+                particleThemeEntityColor,
+              )}
           </div>
         </div>
       </div>

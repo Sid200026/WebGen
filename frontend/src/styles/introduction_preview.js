@@ -12,7 +12,7 @@ export const style = () => ({
     bottom: '3rem',
   },
   specialisationText: {
-    marginTop: '1.5rem',
+    marginTop: '0.5rem',
     zIndex: 1,
   },
   mainHeading: {
@@ -24,5 +24,12 @@ export const style = () => ({
     minHeight: '100%',
     position: 'absolute',
     zIndex: 0,
+  },
+  responsiveMainHeading: {
+    fontSize: '1.5rem',
+  },
+  responsiveSpecialisationText: {
+    fontSize: '1.2rem',
+    marginTop: '0.5rem',
   },
 });

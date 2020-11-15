@@ -56,8 +56,7 @@ const ViewProfile = () => {
               onChange={(event) => {
                 dispatch(buttonTextFunc(event.target.value));
               }}
-              fullWidth
-              helperText="For Eg. Visit My Profile"
+              fullWidth="For Eg. Visit My Profile"
               className={classes.input}
               required
             />
