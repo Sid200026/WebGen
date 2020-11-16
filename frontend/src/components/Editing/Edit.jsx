@@ -10,7 +10,7 @@ import { WorkExperience } from './WorkExperience.jsx';
 import { Project } from './Project.jsx';
 import { Achievement } from './Achievement.jsx';
 import { Contact } from './Contact.jsx';
-import { ScrollToTop } from './ScrollToTop.jsx';
+import { ScrollToTop } from '../ScrollToTop.jsx';
 import { Submit } from '../Submit.jsx';
 import { Footer } from './Footer.jsx';
 import { Header } from './Header.jsx';
@@ -42,7 +42,10 @@ const Edit = (props) => {
                 />
                 <Contact path="/contact" updateDisplayMode={updateDisplayMode} />
                 <Submit path="/submit" />
-                <Introduction default updateDisplayMode={updateDisplayMode} />
+                <Introduction
+                  path="/introduction"
+                  updateDisplayMode={updateDisplayMode}
+                />
               </ScrollToTop>
             </Router>
           </Header>

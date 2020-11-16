@@ -1,8 +1,16 @@
 @import '../constants/color';
 
-#editPreviewbtn {
+#editPreviewbtn, #completeWebsiteBtn {
   border: 2px solid rgb(68, 187, 164);
   background: rgba(68, 187, 164, 0.2);
+  color: $fifthColor;
+  z-index: 3;
+  margin-top: 1rem;
+}
+
+#secondaryBtn {
+  border: 2px solid $primary-color;
+  background: $primary-color;
   color: $fifthColor;
   z-index: 3;
   margin-top: 1rem;

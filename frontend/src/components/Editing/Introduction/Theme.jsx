@@ -27,7 +27,6 @@ const Theme = () => {
     particleThemeBackgroundColor,
     particleThemeEntityColor,
   } = introductionReducer;
-  console.log(introductionReducer);
   const dispatch = useDispatch();
   return (
     <>
