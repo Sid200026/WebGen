@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { generateAPIKey } from './generateAPIKey';
 
 const logErrorToExpress = (err) => {
-  return axios.post('/api/log/', { message: err });
+  const apiKey = generateAPIKey();
+  return axios.post('/api/log/', { message: err, apiKey });
 };
 
 export { logErrorToExpress };
