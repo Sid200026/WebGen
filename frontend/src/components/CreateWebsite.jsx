@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
-import { displayMode as displayModeType } from '../constants/constants';
+import React from 'react';
+import { Router, navigate } from '@reach/router';
 import { Edit } from './Editing/Edit.jsx';
+import { ScrollToTop } from './ScrollToTop.jsx';
 import { Preview } from './Preview/Preview.jsx';
 import '../styles/CreateWebsite.scss';
 
 const CreateWebsite = () => {
-  const [displayMode, updateDisplayMode] = useState(displayModeType.EDIT);
-  if (displayMode === displayModeType.EDIT) {
-    return (
-      <div className="displayContainer">
-        <Edit updateDisplayMode={() => updateDisplayMode(displayModeType.PREVIEW)} />
-      </div>
-    );
-  }
   return (
-    <div className="displayContainer">
-      <Preview updateDisplayMode={() => updateDisplayMode(displayModeType.EDIT)} />
-    </div>
+    <Router id="primaryRouter">
+      <ScrollToTop path="/">
+        <Preview path="/preview" />
+        <Edit
+          default
+          updateDisplayMode={() =>
+            navigate('/preview', {
+              state: { previousAvailable: true, isSubmit: false },
+            })
+          }
+        />
+      </ScrollToTop>
+    </Router>
   );
 };
 

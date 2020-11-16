@@ -61,7 +61,7 @@ const Header = (props) => {
   };
 
   const navItems = [
-    { name: 'Introduction', icon: FlagIcon, link: '/' },
+    { name: 'Introduction', icon: FlagIcon, link: '/introduction' },
     { name: 'About Me', icon: EmojiPeopleIcon, link: '/about' },
     { name: 'Work Experience', icon: WorkIcon, link: '/work' },
     { name: 'Projects', icon: ColorLensIcon, link: '/project' },
@@ -110,7 +110,7 @@ const Header = (props) => {
                   color="inherit"
                   className={classes.labelButton}
                   onClick={() => {
-                    navigateTo('/');
+                    navigateTo('/introduction');
                   }}
                 >
                   Introduction
