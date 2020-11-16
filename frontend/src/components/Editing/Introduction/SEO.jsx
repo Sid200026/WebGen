@@ -26,6 +26,7 @@ import {
 } from '../../../actions/introduction_action';
 import '../../../styles/Dropzone.scss';
 import { checkImage } from '../../../utils/imageExists';
+import { generateAPIKey } from '../../../utils/generateAPIKey';
 
 const useStyles = makeStyles(style);
 
@@ -49,8 +50,9 @@ const SEO = () => {
     if (acceptedFiles.length > 0) {
       const formData = new FormData();
       formData.append('image', acceptedFiles[0]);
+      formData.append('apiKey', generateAPIKey());
       axios
-        .post('/api/upload/single', formData)
+        .post('/upload/single', formData)
         .then((res) => {
           const { data } = res;
           const { url, fileName } = data;

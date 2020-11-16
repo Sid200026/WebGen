@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
+const { protectAPI } = require('../../services/protection/protection');
 
 const { ImageMimeTypes } = require('../../constants/ImageMimeTypes');
 
@@ -33,13 +34,18 @@ const upload = multer({
 /************************** Routes to handle file upload ************************* */
 
 router.route('/single').post(upload.single('image'), (req, res) => {
-  if (!req.file) {
-    res.status(400).send({
-      error: "No file has been selected or file doesn't have proper extension",
-    });
+  const { apiKey } = req.body;
+  if (!apiKey || !protectAPI(apiKey)) {
+    res.status(403).send({ error: 'Task failed successfully' }).end();
   } else {
-    const imagePath = '/upload/' + req.file.filename;
-    res.status(201).send({ url: imagePath, fileName: req.file.originalname });
+    if (!req.file) {
+      res.status(400).send({
+        error: "No file has been selected or file doesn't have proper extension",
+      });
+    } else {
+      const imagePath = '/upload/' + req.file.filename;
+      res.status(201).send({ url: imagePath, fileName: req.file.originalname });
+    }
   }
 });
 

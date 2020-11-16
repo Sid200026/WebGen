@@ -15,13 +15,14 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /************************** Serving Static Files ************************* */
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 /* 
-  In developmen, upload folder should be treated as static directory
+  In development, upload folder should be treated as static directory
   so that frontend can access the images
 */
 
@@ -34,19 +35,19 @@ if (process.env.NODE_ENV !== 'production') {
 app.use('/api', (req, res, next) => {
   const { apiKey } = req.body;
   if (!apiKey) {
-    res.json({ error: 'Task failed successfully' }).status(403).end();
+    res.status(403).json({ error: 'Task failed successfully' }).end();
   } else {
     if (protectAPI(apiKey)) {
       next();
     } else {
-      res.json({ error: 'Task failed successfully' }).status(403).end();
+      res.status(403).json({ error: 'Task failed successfully' }).end();
     }
   }
 });
 
 app.use('/upload', uploadRouter);
-app.use('/log', logRouter);
-app.use('/submit', submitRouter);
+app.use('/api/log', logRouter);
+app.use('/api/submit', submitRouter);
 
 /********* Serving HTML file *********/
 
