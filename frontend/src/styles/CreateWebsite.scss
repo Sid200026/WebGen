@@ -1,6 +1,7 @@
 @import '../constants/color';
 
-#editPreviewbtn, #completeWebsiteBtn {
+#editPreviewbtn,
+#completeWebsiteBtn {
   border: 2px solid rgb(68, 187, 164);
   background: rgba(68, 187, 164, 0.2);
   color: $fifthColor;
@@ -21,6 +22,10 @@
   background: rgba(68, 187, 164, 0.2);
   color: $fifthColor;
   z-index: 3;
+}
+
+#webgenlogo:hover {
+  cursor: pointer;
 }
 
 .displayContainer {

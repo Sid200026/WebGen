@@ -50,4 +50,4 @@ const getTheme = (name, background, entity) => {
   return <ParticleTheme backgroundColor={background} entityColor={entity} />;
 };
 
-export { generateMenuItems, particleThemeArray, getTheme };
+export { generateMenuItems, particleThemeArray, getTheme, BUBBLES, DOTS, STATIC };

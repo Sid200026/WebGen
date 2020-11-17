@@ -50,7 +50,7 @@ const Static = (props) => {
           size: {
             random: {
               enable: true,
-              minimumValue: 0.5,
+              minimumValue: 2,
             },
             value: 1,
           },

@@ -15,7 +15,7 @@ const sendTextMail = async (to, subject, text = '', html = '') => {
     text: text,
     html: html,
   });
-  logger.log(`${to} || ${sentMessage.messageId}`);
+  logger.info(`${to} || ${sentMessage.messageId}`);
 };
 
 const sendAttachmentMail = async (
@@ -34,7 +34,7 @@ const sendAttachmentMail = async (
     html: html,
     attachments: attachments,
   });
-  logger.log(`${to} || ${sentMessage.messageId}`);
+  logger.info(`${to} || ${sentMessage.messageId}`);
 };
 
 module.exports = { sendTextMail, sendAttachmentMail };

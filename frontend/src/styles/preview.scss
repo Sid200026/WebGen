@@ -32,3 +32,18 @@
 .pseudoClass #tsparticles canvas {
   position: absolute;
 }
+
+.pseudoClass2 {
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+}
+
+.pseudoClass2 #tsparticles {
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+}
+.pseudoClass2 #tsparticles canvas {
+  position: fixed;
+}

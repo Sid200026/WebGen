@@ -6,4 +6,9 @@ const logErrorToExpress = (err) => {
   return axios.post('/api/log/', { message: err, apiKey });
 };
 
-export { logErrorToExpress };
+const postRequest = (path, data) => {
+  const apiKey = generateAPIKey();
+  return axios.post(path, { ...data, apiKey });
+};
+
+export { logErrorToExpress, postRequest };

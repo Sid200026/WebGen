@@ -11,7 +11,7 @@ const { router: submitRouter } = require('./routes/submit/router');
 const { logger } = require('./logger/logger');
 const { protectAPI } = require('./services/protection/protection');
 const app = express();
-
+require('./models/queries');
 app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());

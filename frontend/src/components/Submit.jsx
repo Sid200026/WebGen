@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
+import Swal from 'sweetalert2';
 import { makeStyles } from '@material-ui/core/styles';
 import { navigate } from '@reach/router';
 import Container from '@material-ui/core/Container';
@@ -11,6 +12,7 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import Rating from '@material-ui/lab/Rating';
 import TextField from '@material-ui/core/TextField';
 import { style } from '../styles/submit';
+import { postRequest } from '../utils/serviceCalls';
 
 const useStyles = makeStyles(style);
 
@@ -18,6 +20,81 @@ const Submit = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const classes = useStyles();
+
+  const verifyEmail = async (data, errorMessage = '') => {
+    const { message } = data;
+    const { data: lastData } = data;
+    const { email } = lastData;
+    const { value: key } = await Swal.fire({
+      title: 'Verification key',
+      input: 'text',
+      html: `<em>${errorMessage.length > 0 ? errorMessage : message}</em>`,
+      inputPlaceholder: 'Enter verification key',
+      // eslint-disable-next-line consistent-return
+      inputValidator: (value) => {
+        if (value.length !== 6) {
+          return 'Invalid Verification Key';
+        }
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Confirm',
+    });
+    if (key) {
+      try {
+        await postRequest('/api/submit/verifykey', { email, key });
+        navigate('/complete', { state: { isComplete: true, email } });
+      } catch (err) {
+        const { response } = err;
+        const { data: fetchedData } = response;
+        const { error } = fetchedData;
+        verifyEmail(data, error);
+      }
+    }
+  };
+
+  const fireFailure = (err) => {
+    Swal.fire({
+      icon: 'error',
+      title: `${err}`,
+      text: 'Oops. Looks like some error occured. Please try again in some time',
+      footer:
+        // eslint-disable-next-line max-len
+        '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
+    });
+  };
+
+  const askForEmail = async (result) => {
+    if (result.isConfirmed) {
+      const { value: email } = await Swal.fire({
+        title: 'Your email address',
+        input: 'email',
+        html: '<em>Your email address will never be published or shared.</em>',
+        inputPlaceholder: 'Enter your email address',
+        showCancelButton: true,
+        confirmButtonText: 'Confirm',
+      });
+      if (email) {
+        try {
+          const response = await postRequest('/api/submit/getkey', { email });
+          const { status, data } = response;
+          if (status === 200) {
+            verifyEmail(data);
+            return;
+          }
+        } catch (err) {
+          fireFailure(err.response.data.error);
+        }
+      }
+    }
+  };
+
+  const confirmOnClick = () => {
+    Swal.fire({
+      title: 'Do you want to save the changes?',
+      showCancelButton: true,
+      confirmButtonText: `Confirm`,
+    }).then(askForEmail);
+  };
 
   return (
     <Container maxWidth="xl" className={classes.container}>
@@ -69,8 +146,9 @@ const Submit = () => {
               className={clsx(classes.btn, {
                 [classes.responsiveBtn]: window.innerWidth < 750,
               })}
+              onClick={confirmOnClick}
             >
-              Continue
+              Confirm
             </Button>
             <Button
               variant="contained"

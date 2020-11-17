@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { PropTypes } from 'prop-types';
@@ -96,14 +97,27 @@ const Header = (props) => {
             )}
             <Typography variant="h6" noWrap>
               <img
+                id="webgenlogo"
                 src="public/logo_transparent.png"
                 className={clsx(classes.logo, 'pagelayout-container', {
                   [classes.logoResponsive]: width < warningWidth,
                 })}
                 alt="WebGen"
+                onKeyPress={(event) => {
+                  if (event.key === 'Enter') {
+                    navigateTo('/', {});
+                  }
+                }}
+                onClick={() => navigateTo('/', {})}
               />
             </Typography>
-            <Typography variant="h5">WebGen</Typography>
+            <Typography
+              id="webgenlogo"
+              variant="h5"
+              onClick={() => navigateTo('/', {})}
+            >
+              WebGen
+            </Typography>
             {width > warningWidth && (
               <div className={classes.navButtons}>
                 <Button
