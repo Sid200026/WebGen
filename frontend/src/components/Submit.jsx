@@ -31,23 +31,44 @@ const Submit = () => {
       >
         We&apos;re in the endgame now
       </Typography>
-      <Container maxWidth="xl" className={classes.innerContainer}>
-        <div className={classes.memeContainer}>
+      <Container
+        maxWidth="xl"
+        className={clsx(classes.innerContainer, {
+          [classes.responsiveInnerContainer]: window.innerWidth < 750,
+        })}
+      >
+        <div
+          className={clsx(classes.memeContainer, {
+            [classes.responsiveMemeContainer]: window.innerWidth < 750,
+          })}
+        >
           <img
             src="public/images/endgame.jpg"
             alt="Endgame"
-            className={classes.memeImage}
+            className={clsx(classes.memeImage, {
+              [classes.responsiveMemeImage]: window.innerWidth < 750,
+            })}
           />
         </div>
-        <div className={classes.rightInnerContainer}>
-          <div className={classes.btnContainer}>
+        <div
+          className={clsx(classes.rightInnerContainer, {
+            [classes.responsiveRightInnerContainer]: window.innerWidth < 750,
+          })}
+        >
+          <div
+            className={clsx(classes.btnContainer, {
+              [classes.responsiveBtnContainer]: window.innerWidth < 750,
+            })}
+          >
             <Button
               variant="contained"
               color="primary"
               id="completeWebsiteBtn"
               startIcon={<CheckCircleOutlineIcon />}
               size="large"
-              className={classes.btn}
+              className={clsx(classes.btn, {
+                [classes.responsiveBtn]: window.innerWidth < 750,
+              })}
             >
               Continue
             </Button>
@@ -57,7 +78,9 @@ const Submit = () => {
               id="secondaryBtn"
               startIcon={<VisibilityIcon />}
               size="large"
-              className={classes.btn}
+              className={clsx(classes.btn, {
+                [classes.responsiveBtn]: window.innerWidth < 750,
+              })}
               onClick={() =>
                 navigate('/preview', {
                   state: { previousAvailable: true, isSubmit: true },
@@ -71,7 +94,9 @@ const Submit = () => {
             gutterBottom
             variant="h5"
             align="center"
-            className={classes.rateHeading}
+            className={clsx(classes.rateHeading, {
+              [classes.responsiveRateHeading]: window.innerWidth < 750,
+            })}
           >
             Rate your experience
           </Typography>
@@ -84,7 +109,11 @@ const Submit = () => {
               setRating(newValue);
             }}
           />
-          <Card className={classes.card}>
+          <Card
+            className={clsx(classes.card, {
+              [classes.responsiveCard]: window.innerWidth < 750,
+            })}
+          >
             <TextField
               label="Comment (optional)"
               multiline
