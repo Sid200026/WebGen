@@ -44,8 +44,14 @@ import {
   hoverEffect,
   favicon,
 } from '../constants/introduction_page';
+import { introduction as introductionApp } from '../initialState/introduction_initial';
+// eslint-disable-next-line max-len
+import { introduction as introductionUser } from '../initialState/user.introduction_initial';
 
-import { introduction } from '../initialState/introduction_initial';
+let introduction;
+
+if (process.env.TYPE === 'app') introduction = introductionApp;
+else introduction = introductionUser;
 
 const removeElementFromArray = (array, index) => {
   return array.slice(0, index).concat(array.slice(index + 1, array.length));

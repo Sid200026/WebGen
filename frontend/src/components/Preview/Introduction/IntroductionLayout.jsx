@@ -58,7 +58,15 @@ const IntroductionLayout = () => {
         {title && <title>{title}</title>}
         {metadesc && <meta name="description" content={metadesc} />}
         {Object.keys(favicon) !== 0 && (
-          <link rel="icon" type="image/png" href={favicon.url} />
+          <link
+            rel="icon"
+            type="image/png"
+            href={
+              process.env.TYPE === 'app'
+                ? favicon.url
+                : `${process.env.PUBLIC_URL}/${favicon.name}`
+            }
+          />
         )}
       </Helmet>
 

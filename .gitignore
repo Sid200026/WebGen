@@ -32,3 +32,9 @@ backend/upload/
 
 *.log
 backend/log
+
+# User files
+
+*.zip
+user.*.js
+backend/user/public/

@@ -5,4 +5,10 @@ const REDIS_URL = process.env.REDIS_URL;
 
 const redisConfig = REDIS_URL;
 
-module.exports = { redisConfig };
+const EMAIL_QUEUE_TYPES = {
+  VERIFICATION_KEY: 'VERIFICATION_KEY',
+  FAILURE_EMAIL: 'FAILURE_EMAIL',
+  SUCCESS_EMAIL: 'SUCCESS_EMAIL',
+};
+
+module.exports = { redisConfig, EMAIL_QUEUE_TYPES };

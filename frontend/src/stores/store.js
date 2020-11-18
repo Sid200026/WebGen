@@ -8,6 +8,9 @@ import { introductionReducer } from '../reducers/introduction_reducer';
 const localStorageKey = 'WebGenStore';
 
 const loadState = () => {
+  if (process.env.TYPE !== 'app') {
+    return undefined;
+  }
   try {
     const serializedState = localStorage.getItem(localStorageKey);
     if (serializedState === null) {

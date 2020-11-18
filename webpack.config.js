@@ -14,7 +14,7 @@ const envKeys = Object.keys(environ).reduce((prev, next) => {
   return prev;
 }, {});
 
-envKeys.NODE_ENV = JSON.stringify(process.env.NODE_ENV);
+envKeys['process.env.NODE_ENV'] = JSON.stringify(process.env.NODE_ENV);
 
 module.exports = (env) => {
   // We can have two prod types
@@ -26,14 +26,21 @@ module.exports = (env) => {
       : path.resolve(__dirname, 'backend', 'public', 'build');
   const entryFile =
     env.type === 'user'
-      ? path.join(__dirname, 'frontend', 'src', 'user.jsx')
+      ? path.join(__dirname, 'frontend', 'src', 'userIndex.jsx')
       : path.join(__dirname, 'frontend', 'src', 'index.jsx');
+
+  const publicPath = env.type === 'user' ? path.join('public', 'images') : '/';
+
+  envKeys['process.env.TYPE'] = JSON.stringify(env.type);
+  envKeys['process.env.PUBLIC_URL'] = JSON.stringify(publicPath);
 
   return {
     entry: entryFile,
     output: {
-      filename: 'bundle.js',
+      // bundle.txt is used to ensure that gmail allows sending it
+      filename: env.type === 'user' ? 'bundle.txt' : 'bundle.js',
       path: outputPath,
+      publicPath,
     },
     node: {
       fs: 'empty',
@@ -41,9 +48,20 @@ module.exports = (env) => {
     module: {
       rules: [
         {
+          test: /redux$/,
+          resolve: {
+            mainFields: ['module', 'main', 'unpkg'],
+          },
+        },
+        {
           test: /\.js(x?)$/,
-          exclude: /node_modules/,
-          use: [{ loader: 'babel-loader' }, { loader: 'eslint-loader' }],
+          exclude: [/node_modules/],
+          use: [{ loader: 'babel-loader' }],
+        },
+        {
+          test: /\.js(x?)$/,
+          exclude: [/node_modules/, /\user.(\w+).js(x?)/i],
+          use: [{ loader: 'eslint-loader' }],
         },
         {
           test: [/\.s[ac]ss$/i, /\.css$/i],

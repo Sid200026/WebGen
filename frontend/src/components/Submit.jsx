@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { navigate } from '@reach/router';
 import Container from '@material-ui/core/Container';
@@ -20,6 +21,7 @@ const Submit = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const classes = useStyles();
+  const introductionReducer = useSelector((state) => state.introductionReducer);
 
   const verifyEmail = async (data, errorMessage = '') => {
     const { message } = data;
@@ -42,6 +44,16 @@ const Submit = () => {
     if (key) {
       try {
         await postRequest('/api/submit/verifykey', { email, key });
+        const additionalData = {
+          rating,
+          comment,
+        };
+        const apiData = {
+          introduction: introductionReducer,
+          additional: additionalData,
+          email,
+        };
+        await postRequest('/api/submit/submit', apiData);
         navigate('/complete', { state: { isComplete: true, email } });
       } catch (err) {
         const { response } = err;

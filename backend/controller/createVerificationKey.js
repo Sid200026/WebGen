@@ -1,6 +1,8 @@
 const validator = require('validator').default;
 const { sendMailQueue } = require('../services/background/background');
+const { EMAIL_QUEUE_TYPES } = require('../constants/REDIS_Service');
 const { createVerificationKey } = require('../models/queries');
+const { logger } = require('../logger/logger');
 
 const createVerificationKeyController = async (req, res) => {
   const { email } = req.body;
@@ -11,7 +13,12 @@ const createVerificationKeyController = async (req, res) => {
     const data = {
       email,
       key: response.verification_key,
+      type: EMAIL_QUEUE_TYPES.VERIFICATION_KEY,
     };
+    // Print to console in development
+    if (process.env.NODE_ENV !== 'production') {
+      logger.info(response.verification_key);
+    }
     const options = {
       attempts: 2,
     };

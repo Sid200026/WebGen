@@ -11,11 +11,18 @@ const { router: submitRouter } = require('./routes/submit/router');
 const { logger } = require('./logger/logger');
 const { protectAPI } = require('./services/protection/protection');
 const app = express();
-require('./models/queries');
+require('./models/index');
+
+const { sanitiseInput } = require('./utils/sanitise');
+
 app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('*', (req, _res, next) => {
+  req.body = sanitiseInput(req.body);
+  next();
+});
 
 /************************** Serving Static Files ************************* */
 

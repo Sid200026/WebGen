@@ -19,3 +19,5 @@ async function downloadFile(url, path) {
     writer.on('error', reject);
   });
 }
+
+module.exports = { downloadFile };
