@@ -1,5 +1,5 @@
 const validator = require('validator').default;
-const { sendMailQueue } = require('../services/background/background');
+const { sendMailQueue } = require('../services/background/emailBackground');
 const { EMAIL_QUEUE_TYPES } = require('../constants/REDIS_Service');
 const { createVerificationKey } = require('../models/queries');
 const { logger } = require('../logger/logger');

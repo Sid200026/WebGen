@@ -4,10 +4,10 @@ const path = require('path');
 // Folders to delete : user/build and user/public
 // Files to delete : public.zip and user.*.js file ( only in production )
 
-BUILD_DIRECTORY = path.join(__dirname, '../../user/build');
-PUBLIC_DIRECTORY = path.join(__dirname, '../../user/public');
-ZIP_FILE = path.join(__dirname, '../../website.zip');
-USER_INTRODUCTION_FILE = path.join(
+const BUILD_DIRECTORY = path.join(__dirname, '../../user/build');
+const PUBLIC_DIRECTORY = path.join(__dirname, '../../user/public');
+const ZIP_FILE = path.join(__dirname, '../../website.zip');
+const USER_INTRODUCTION_FILE = path.join(
   __dirname,
   '../../../frontend/src/initialState/user.introduction.js',
 );
