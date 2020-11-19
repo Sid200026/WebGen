@@ -9,18 +9,25 @@ const { encryption, decryption } = require('./encrypt_decrypt');
  * The backend will validate the apiKey parameter and decide whether to accept or reject the request
  */
 
-const MaxValidDifference = 2000; // 2 seconds
+const MaxValidDifference = 6000; // 6 seconds
 
 // Returns false if invalid request
-const protectAPI = (encryptedText) => {
-  const decryptedText = decryption(encryptedText).toString(CryptoJS.enc.Utf8);
-  const currentTime = new Date().getTime();
-  const requestTimeStamp = parseInt(decryptedText);
-  if (isNaN(requestTimeStamp || currentTime < requestTimeStamp)) {
+const protectAPI = (encryptedText, lessSecure = false) => {
+  try {
+    const decryptedText = decryption(encryptedText).toString(CryptoJS.enc.Utf8);
+    const currentTime = new Date().getTime();
+    const requestTimeStamp = parseInt(decryptedText);
+    if (isNaN(requestTimeStamp || currentTime < requestTimeStamp)) {
+      return false;
+    }
+    if (lessSecure) {
+      return requestTimeStamp < currentTime;
+    }
+    const timeDifference = currentTime - requestTimeStamp;
+    return timeDifference <= MaxValidDifference;
+  } catch (_err) {
     return false;
   }
-  const timeDifference = currentTime - requestTimeStamp;
-  return timeDifference <= MaxValidDifference;
 };
 
 module.exports = { protectAPI };

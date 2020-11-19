@@ -26,7 +26,18 @@ const Edit = (props) => {
       <Helmet>
         <title>Webgen</title>
         <meta name="description" content="An open source personal website generator" />
-        <link rel="icon" type="image/png" href="public/favicon-16x16.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="public/favicon-16x16.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="public/favicon-32x32.png"
+        />
       </Helmet>
       <Container maxWidth="xl" disableGutters className={classes.container}>
         <div className={classes.componentContainer}>

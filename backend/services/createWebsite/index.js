@@ -30,22 +30,23 @@ const developSite = async ({ introduction }, email) => {
           logger.error(err);
           return;
         }
-        await assetDownloader({ introduction });
-        zipDirectory(() => {
-          const options = {
-            attempts: 2,
-          };
-          const data = {
-            email,
-            attachment: [
-              {
-                filename: 'website.zip',
-                path: path.join(__dirname, '../../website.zip'),
-              },
-            ],
-            type: EMAIL_QUEUE_TYPES.SUCCESS_EMAIL,
-          };
-          sendMailQueue.add(data, options);
+        assetDownloader({ introduction }, () => {
+          zipDirectory(() => {
+            const options = {
+              attempts: 2,
+            };
+            const data = {
+              email,
+              attachment: [
+                {
+                  filename: 'website.zip',
+                  path: path.join(__dirname, '../../website.zip'),
+                },
+              ],
+              type: EMAIL_QUEUE_TYPES.SUCCESS_EMAIL,
+            };
+            sendMailQueue.add(data, options);
+          });
         });
       });
     }

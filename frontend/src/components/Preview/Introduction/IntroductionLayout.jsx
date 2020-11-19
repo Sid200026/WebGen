@@ -61,6 +61,19 @@ const IntroductionLayout = () => {
           <link
             rel="icon"
             type="image/png"
+            sizes="32x32"
+            href={
+              process.env.TYPE === 'app'
+                ? favicon.url
+                : `${process.env.PUBLIC_URL}/${favicon.name}`
+            }
+          />
+        )}
+        {Object.keys(favicon) !== 0 && (
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
             href={
               process.env.TYPE === 'app'
                 ? favicon.url
