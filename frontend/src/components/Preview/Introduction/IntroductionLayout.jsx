@@ -57,7 +57,7 @@ const IntroductionLayout = () => {
       <Helmet>
         {title && <title>{title}</title>}
         {metadesc && <meta name="description" content={metadesc} />}
-        {Object.keys(favicon) !== 0 && (
+        {Object.keys(favicon).length !== 0 && (
           <link
             rel="icon"
             type="image/png"
@@ -69,7 +69,7 @@ const IntroductionLayout = () => {
             }
           />
         )}
-        {Object.keys(favicon) !== 0 && (
+        {Object.keys(favicon).length !== 0 && (
           <link
             rel="icon"
             type="image/png"

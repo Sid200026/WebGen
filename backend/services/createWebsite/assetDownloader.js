@@ -10,6 +10,9 @@ const assetDownloader = ({ introduction }, cb = null) => {
   const INTRODUCTION_DOWNLOADABLE_CONTENT = DOWNLOADABLE_CONTENT.introduction;
   INTRODUCTION_DOWNLOADABLE_CONTENT.forEach((ele) => {
     let { url, name } = introduction[`${ele}`];
+    if (!url || !name || url.length === 0 || name.length === 0) {
+      return;
+    }
     if (process.env.NODE_ENV !== 'production') {
       const host = 'localhost';
       const port = process.env.PORT || 8000;

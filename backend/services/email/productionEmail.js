@@ -30,7 +30,7 @@ const sendTextMail = async (to, subject, text = '', html = '') => {
     to,
   };
   const sentMessage = await transporter.sendMail(mailOptions);
-  logger.info(`${to} || ${sentMessage.messageId}`);
+  logger.info(`Text Mail || ${to} || ${sentMessage.messageId}`);
 };
 
 const sendAttachmentMail = async (
@@ -52,7 +52,7 @@ const sendAttachmentMail = async (
     attachments,
   };
   const sentMessage = await transporter.sendMail(mailOptions);
-  logger.info(`${to} || ${sentMessage.messageId}`);
+  logger.info(`Attachment Mail || ${to} || ${sentMessage.messageId}`);
 };
 
 module.exports = { sendTextMail, sendAttachmentMail };
