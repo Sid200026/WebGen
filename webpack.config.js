@@ -29,10 +29,13 @@ module.exports = (env) => {
       ? path.join(__dirname, 'frontend', 'src', 'userIndex.jsx')
       : path.join(__dirname, 'frontend', 'src', 'index.jsx');
 
-  const publicPath = env.type === 'user' ? path.join('public', 'images') : '/';
+  const publicPath = env.type === 'user' ? 'public/' : '/';
 
   envKeys['process.env.TYPE'] = JSON.stringify(env.type);
   envKeys['process.env.PUBLIC_URL'] = JSON.stringify(publicPath);
+
+  const ignoreWatchOptions =
+    env.type === 'app' ? [/node_modules/, /\user.(\w+).js(x?)/i] : [/node_modules/];
 
   return {
     entry: entryFile,
@@ -44,6 +47,9 @@ module.exports = (env) => {
     },
     node: {
       fs: 'empty',
+    },
+    watchOptions: {
+      ignored: ignoreWatchOptions,
     },
     module: {
       rules: [

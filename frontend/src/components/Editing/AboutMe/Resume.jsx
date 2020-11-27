@@ -10,28 +10,32 @@ import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import { style } from '../../../styles/form';
 import {
-  buttonText as buttonTextFunc,
-  buttonBorder as buttonBorderFunc,
-  buttonColor as buttonColorFunc,
-  buttonHoverBG as buttonHoverBGFunc,
-  buttonHoverColor as buttonHoverColorFunc,
-  buttonHoverEffect,
-} from '../../../actions/introduction_action';
+  resumeURL as resumeURLFunc,
+  resumeButtonText as resumeButtonTextFunc,
+  resumeButtonBorder as resumeButtonBorderFunc,
+  resumeButtonBackground as resumeButtonBackgroundFunc,
+  resumeButtonColor as resumeButtonColorFunc,
+  resumeButtonHoverColor as resumeButtonHoverColorFunc,
+  resumeButtonHoverBackgroundColor as resumeButtonHoverBackgroundColorFunc,
+  resumeHoverEnable as resumeHoverEnableFunc,
+} from '../../../actions/about_me_action';
 
 const useStyles = makeStyles(style);
 
-const ViewProfile = () => {
+const Resume = () => {
   const classes = useStyles();
 
-  const introductionReducer = useSelector((state) => state.introductionReducer);
+  const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
   const {
-    buttonText,
-    buttonBorder,
-    buttonColor,
-    hoverEffect,
-    buttonHoverBG,
-    buttonHoverColor,
-  } = introductionReducer;
+    resumeURL,
+    resumeButtonText,
+    resumeButtonBorder,
+    resumeButtonColor,
+    resumeButtonHoverBG,
+    resumeButtonHoverColor,
+    resumeButtonBG,
+    resumeHoverEnable,
+  } = aboutMeReducer;
   const dispatch = useDispatch();
   return (
     <>
@@ -47,17 +51,40 @@ const ViewProfile = () => {
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize View Profile Button
+              Customize View Resume Button
+            </Typography>
+            <Typography
+              align="center"
+              variant="subtitle2"
+              color="primary"
+              style={{ marginBottom: '1rem' }}
+            >
+              Since we frequenly update our resume, we require you to provide us a link
+              to access your resume instead of uploading it so you can update it easily
+              in the future
             </Typography>
             <TextField
               variant="outlined"
-              label="Button Text"
-              value={buttonText}
+              label="Resume URL"
+              value={resumeURL}
               onChange={(event) => {
-                dispatch(buttonTextFunc(event.target.value));
+                dispatch(resumeURLFunc(event.target.value));
               }}
               fullWidth
-              helperText="For Eg. Visit My Profile"
+              // eslint-disable-next-line max-len
+              helperText="Upload your resume in Google Drive, Apple Cloud etc and add the link here"
+              className={classes.input}
+              required
+            />
+            <TextField
+              variant="outlined"
+              label="Resume Button Text"
+              value={resumeButtonText}
+              onChange={(event) => {
+                dispatch(resumeButtonTextFunc(event.target.value));
+              }}
+              fullWidth
+              helperText="Resume Button Texts"
               className={classes.input}
               required
             />
@@ -67,14 +94,14 @@ const ViewProfile = () => {
                 <input
                   type="color"
                   list="true"
-                  value={buttonBorder}
+                  value={resumeButtonBorder}
                   style={{
                     width: '8rem',
                     height: '2rem',
                     marginTop: '5px',
                   }}
                   onChange={(event) => {
-                    dispatch(buttonBorderFunc(event.target.value));
+                    dispatch(resumeButtonBorderFunc(event.target.value));
                   }}
                 />
               }
@@ -88,14 +115,14 @@ const ViewProfile = () => {
                 <input
                   type="color"
                   list="true"
-                  value={buttonColor}
+                  value={resumeButtonColor}
                   style={{
                     width: '8rem',
                     height: '2rem',
                     marginTop: '5px',
                   }}
                   onChange={(event) => {
-                    dispatch(buttonColorFunc(event.target.value));
+                    dispatch(resumeButtonColorFunc(event.target.value));
                   }}
                 />
               }
@@ -106,13 +133,34 @@ const ViewProfile = () => {
             <FormControlLabel
               value="top"
               control={
+                <input
+                  type="color"
+                  list="true"
+                  value={resumeButtonBG}
+                  style={{
+                    width: '8rem',
+                    height: '2rem',
+                    marginTop: '5px',
+                  }}
+                  onChange={(event) => {
+                    dispatch(resumeButtonBackgroundFunc(event.target.value));
+                  }}
+                />
+              }
+              label="Background of the button"
+              labelPlacement="top"
+              classes={{ label: classes.formControl }}
+            />
+            <FormControlLabel
+              value="top"
+              control={
                 <Switch
                   name="bold"
                   className={classes.switchBase}
                   size="medium"
-                  checked={hoverEffect}
+                  checked={resumeHoverEnable}
                   onChange={(event) => {
-                    dispatch(buttonHoverEffect(event.target.checked));
+                    dispatch(resumeHoverEnableFunc(event.target.checked));
                   }}
                 />
               }
@@ -129,7 +177,7 @@ const ViewProfile = () => {
             >
               View an Example
             </Link>{' '}
-            {hoverEffect && (
+            {resumeHoverEnable && (
               <>
                 <FormControlLabel
                   value="top"
@@ -137,18 +185,18 @@ const ViewProfile = () => {
                     <input
                       type="color"
                       list="true"
-                      value={buttonHoverBG}
+                      value={resumeButtonHoverColor}
                       style={{
                         width: '8rem',
                         height: '2rem',
                         marginTop: '5px',
                       }}
                       onChange={(event) => {
-                        dispatch(buttonHoverBGFunc(event.target.value));
+                        dispatch(resumeButtonHoverColorFunc(event.target.value));
                       }}
                     />
                   }
-                  label="Background of the button when hovered"
+                  label="Color of the button text on hover"
                   labelPlacement="top"
                   classes={{ label: classes.formControl }}
                 />
@@ -158,18 +206,20 @@ const ViewProfile = () => {
                     <input
                       type="color"
                       list="true"
-                      value={buttonHoverColor}
+                      value={resumeButtonHoverBG}
                       style={{
                         width: '8rem',
                         height: '2rem',
                         marginTop: '5px',
                       }}
                       onChange={(event) => {
-                        dispatch(buttonHoverColorFunc(event.target.value));
+                        dispatch(
+                          resumeButtonHoverBackgroundColorFunc(event.target.value),
+                        );
                       }}
                     />
                   }
-                  label="Color of the button text when hovered"
+                  label="Background of the button on hover"
                   labelPlacement="top"
                   classes={{ label: classes.formControl }}
                 />
@@ -192,4 +242,4 @@ const ViewProfile = () => {
   );
 };
 
-export { ViewProfile };
+export { Resume };

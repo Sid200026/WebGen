@@ -4,6 +4,7 @@ import logger from 'redux-logger';
 import throttle from 'lodash.throttle';
 import { encrypt, decrypt } from '../utils/encrypt_decrypt';
 import { introductionReducer } from '../reducers/introduction_reducer';
+import { aboutMeReducer } from '../reducers/about_me_reducer';
 
 const localStorageKey = 'WebGenStore';
 
@@ -42,7 +43,7 @@ if (process.env.NODE_ENV === 'production') {
   middleware = applyMiddleware(thunk, logger);
 }
 
-const rootReducer = combineReducers({ introductionReducer });
+const rootReducer = combineReducers({ introductionReducer, aboutMeReducer });
 
 const store = createStore(rootReducer, persistedState, middleware);
 

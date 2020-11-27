@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -12,6 +12,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Swal from 'sweetalert2';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Alert from '@material-ui/lab/Alert';
 import List from '@material-ui/core/List';
 import SaveIcon from '@material-ui/icons/Save';
 import clsx from 'clsx';
@@ -28,6 +29,7 @@ const useStyles = makeStyles(style);
 
 const Specialisation = () => {
   const classes = useStyles();
+  const [errorMessage, setError] = useState('');
 
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const { specialisationText, specialisationColor } = introductionReducer;
@@ -36,6 +38,9 @@ const Specialisation = () => {
   const saveSpecialisation = () => {
     const element = document.getElementById('special');
     if (element.value.length === 0) {
+      if (element.value.length === 0) {
+        setError('Specialisation text cannot be empty');
+      }
       return;
     }
     if (specialisationText.length === 6) {
@@ -52,6 +57,7 @@ const Specialisation = () => {
       dispatch(specialisationTextAdd(element.value));
     }
     element.value = '';
+    setError('');
   };
 
   const getSpecialisations = () =>
@@ -75,6 +81,7 @@ const Specialisation = () => {
 
   return (
     <>
+      {errorMessage.length !== 0 && <Alert severity="error">{errorMessage}</Alert>}
       <div
         className={clsx(classes.exampleContainer, {
           [classes.responsiveExampleContainer]: window.innerWidth < 750,

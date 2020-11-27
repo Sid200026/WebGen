@@ -154,7 +154,7 @@ const Header = (props) => {
                     navigateTo('/project');
                   }}
                 >
-                  Project
+                  Projects
                 </Button>
                 <Button
                   color="inherit"
@@ -163,7 +163,7 @@ const Header = (props) => {
                     navigateTo('/achievement');
                   }}
                 >
-                  Achievement
+                  Achievements
                 </Button>
                 <Button
                   color="inherit"

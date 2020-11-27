@@ -22,6 +22,7 @@ const Submit = () => {
   const [comment, setComment] = useState('');
   const classes = useStyles();
   const introductionReducer = useSelector((state) => state.introductionReducer);
+  const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
 
   const verifyEmail = async (data, errorMessage = '') => {
     const { message } = data;
@@ -50,6 +51,7 @@ const Submit = () => {
         };
         const apiData = {
           introduction: introductionReducer,
+          aboutMe: aboutMeReducer,
           additional: additionalData,
           email,
         };
@@ -102,10 +104,30 @@ const Submit = () => {
 
   const confirmOnClick = () => {
     Swal.fire({
-      title: 'Do you want to save the changes?',
+      title: 'Save your configuration file',
+      html:
+        // eslint-disable-next-line max-len
+        "In a rare case wherein you don't receive your website within the next 30 minutes, please send a mail to <b>siddharthsingharoy@gmail.com</b> with the configuration file",
       showCancelButton: true,
-      confirmButtonText: `Confirm`,
-    }).then(askForEmail);
+      confirmButtonText: `Save File`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const apiData = {
+          introduction: introductionReducer,
+          aboutMe: aboutMeReducer,
+        };
+        const json = JSON.stringify(apiData);
+        const blob = new Blob([json], { type: 'application/json' });
+        const href = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = 'config.json';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        askForEmail(result);
+      }
+    });
   };
 
   return (

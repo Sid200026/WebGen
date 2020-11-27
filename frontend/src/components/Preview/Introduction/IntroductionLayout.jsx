@@ -52,6 +52,12 @@ const IntroductionLayout = () => {
     };
   }
 
+  const gotoNextSection = () => {
+    document
+      .getElementsByClassName('preview__container')[0]
+      .scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <>
       <Helmet>
@@ -65,7 +71,7 @@ const IntroductionLayout = () => {
             href={
               process.env.TYPE === 'app'
                 ? favicon.url
-                : `${process.env.PUBLIC_URL}/${favicon.name}`
+                : `${process.env.PUBLIC_URL}/images/${favicon.name}`
             }
           />
         )}
@@ -77,7 +83,7 @@ const IntroductionLayout = () => {
             href={
               process.env.TYPE === 'app'
                 ? favicon.url
-                : `${process.env.PUBLIC_URL}/${favicon.name}`
+                : `${process.env.PUBLIC_URL}/images/${favicon.name}`
             }
           />
         )}
@@ -145,6 +151,7 @@ const IntroductionLayout = () => {
             className={classes.viewProfileBtn}
             endIcon={<ArrowDownwardIcon />}
             variant="outlined"
+            onClick={gotoNextSection}
           >
             {buttonText}
           </Button>

@@ -98,7 +98,7 @@ const Complete = (props) => {
         >
           <a href="https://github.com/Sid200026" target="_blank" rel="noreferrer">
             <img
-              src="public/images/GitHub-Mark-Light-120px-plus.png"
+              src="public/images/assets/GitHub-Mark-Light-120px-plus.png"
               alt="github"
               className={clsx(classes.socialLogo, {
                 [classes.responsiveSocialLogo]: window.innerWidth < 750,
@@ -111,7 +111,7 @@ const Complete = (props) => {
             rel="noreferrer"
           >
             <img
-              src="public/images/LI-In-Bug.png"
+              src="public/images/assets/LI-In-Bug.png"
               alt="linkedin"
               className={clsx(classes.socialLogo, {
                 [classes.responsiveSocialLogo]: window.innerWidth < 750,
@@ -124,7 +124,7 @@ const Complete = (props) => {
             rel="noreferrer"
           >
             <img
-              src="public/images/Instagram_AppIcon_Aug2017.png"
+              src="public/images/assets/Instagram_AppIcon_Aug2017.png"
               alt="instagram"
               className={clsx(classes.socialLogo, {
                 [classes.responsiveSocialLogo]: window.innerWidth < 750,

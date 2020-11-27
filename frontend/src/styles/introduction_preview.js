@@ -29,9 +29,11 @@ export const style = () => ({
   },
   responsiveMainHeading: {
     fontSize: '1.5rem',
+    textAlign: 'center',
   },
   responsiveSpecialisationText: {
     fontSize: '1.2rem',
     marginTop: '0.5rem',
+    textAlign: 'center',
   },
 });
