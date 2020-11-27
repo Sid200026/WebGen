@@ -1,0 +1,3 @@
+const aboutMe = {};
+
+export { aboutMe };
