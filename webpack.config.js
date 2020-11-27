@@ -41,7 +41,7 @@ module.exports = (env) => {
     entry: entryFile,
     output: {
       // bundle.txt is used to ensure that gmail allows sending it
-      filename: env.type === 'user' ? 'bundle.txt' : 'bundle.js',
+      filename: 'bundle.js',
       path: outputPath,
       publicPath,
     },
