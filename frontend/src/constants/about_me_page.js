@@ -1,5 +1,5 @@
 /* ********* ACTION TYPES ********* */
-export const ENABLE_PAGE = 'ENABLE_PAGE';
+export const ENABLE_PAGE = 'ENABLE_PAGE_ABOUT_ME';
 export const PROFILE_PIC = 'PROFILE_PIC';
 export const PROFILE_PIC_REMOVE = 'PROFILE_PIC_REMOVE';
 export const DESCRIPTION_TEXT = 'DESCRIPTION_TEXT';
