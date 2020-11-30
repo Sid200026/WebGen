@@ -1,13 +1,14 @@
 language: node_js
 node_js:
   - 'stable'
+service:
+  - redis-server
 notifications:
   email:
     on_success: never
     on_failure: never
 cache: npm
-before_script:
-  - bash user_files.sh
+  - ./user_files.sh
 script:
-    - npm run lint:watch
-    - npm test
+  - npm run lint:watch
+  - npm test
