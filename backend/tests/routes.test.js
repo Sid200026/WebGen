@@ -1,14 +1,14 @@
 const path = require('path');
 const request = require('supertest');
-const redis = require('redis-mock');
 const { app } = require('../app');
-const { encryption, decryption } = require('../services/protection/encrypt_decrypt');
-
-jest.mock('redis', () => redis);
+const { encryption } = require('../services/protection/encrypt_decrypt');
 
 const { frontendLogger, logger } = require('../logger/logger');
 frontendLogger.error = jest.fn().mockImplementationOnce(() => {});
 logger.error = jest.fn().mockImplementation(() => {});
+
+jest.mock('bull');
+jest.mock('pg');
 
 describe('Test the route path', () => {
   test('Should send a status code of 200', () => {

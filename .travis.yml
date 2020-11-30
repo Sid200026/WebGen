@@ -8,6 +8,7 @@ notifications:
     on_success: never
     on_failure: never
 cache: npm
+before_script:
   - ./user_files.sh
 script:
   - npm run lint:watch
