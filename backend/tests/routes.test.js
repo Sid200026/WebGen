@@ -1,7 +1,10 @@
 const path = require('path');
 const request = require('supertest');
+const redis = require('redis-mock');
 const { app } = require('../app');
 const { encryption, decryption } = require('../services/protection/encrypt_decrypt');
+
+jest.mock('redis', () => redis);
 
 const { frontendLogger, logger } = require('../logger/logger');
 frontendLogger.error = jest.fn().mockImplementationOnce(() => {});
