@@ -46,7 +46,7 @@ import {
 } from '../constants/introduction_page';
 import { introduction as introductionApp } from '../initialState/introduction_initial';
 // eslint-disable-next-line max-len
-import { introduction as introductionUser } from '../initialState/user.introduction_initial';
+import introductionUser from '../initialState/user.introduction_initial';
 
 let introduction;
 

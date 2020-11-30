@@ -1,3 +1,2 @@
-const aboutMe = {};
-
-export { aboutMe };
+const state = {};
+export default state;

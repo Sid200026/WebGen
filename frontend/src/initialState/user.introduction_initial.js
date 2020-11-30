@@ -1,3 +1,2 @@
-const introduction = {};
-
-export { introduction };
+const state = {};
+export default state;

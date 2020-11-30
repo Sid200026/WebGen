@@ -47,7 +47,7 @@ import {
 } from '../constants/about_me_page';
 import { aboutMe as aboutMeApp } from '../initialState/about_me_initial';
 // eslint-disable-next-line max-len
-import { aboutMe as aboutMeUser } from '../initialState/user.about_me_initial';
+import aboutMeUser from '../initialState/user.about_me_initial';
 
 let aboutMe;
 
