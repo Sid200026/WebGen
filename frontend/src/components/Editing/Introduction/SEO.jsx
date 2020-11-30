@@ -7,6 +7,7 @@ import Dropzone from 'react-dropzone';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
+import Alert from '@material-ui/lab/Alert';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -59,14 +60,26 @@ const SEO = () => {
           dispatch(faviconFunc(url, fileName));
         })
         .catch((err) => {
-          Swal.fire({
-            icon: 'error',
-            title: `${err.message}`,
-            text: 'Oops. Looks like some error occured. Please try again in some time',
-            footer:
-              // eslint-disable-next-line max-len
-              '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
-          });
+          if (err.response.status === 413) {
+            Swal.fire({
+              icon: 'error',
+              title: `Image too large`,
+              text: 'Image size exceeds the specified 10 MB limit.',
+              footer:
+                // eslint-disable-next-line max-len
+                '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
+            });
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: `${err.message}`,
+              text:
+                'Oops. Looks like some error occured. Please try again in some time',
+              footer:
+                // eslint-disable-next-line max-len
+                '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
+            });
+          }
         });
     }
   };
@@ -138,6 +151,7 @@ const SEO = () => {
                 isDragActive,
                 isDragAccept,
                 isDragReject,
+                fileRejections,
               }) => {
                 // additional CSS depends on dragging status
                 // eslint-disable-next-line no-nested-ternary
@@ -153,6 +167,9 @@ const SEO = () => {
                       className: `dropzone ${additionalClass}`,
                     })}
                   >
+                    {fileRejections.length > 0 && (
+                      <Alert severity="error">File is too large</Alert>
+                    )}
                     <input {...getInputProps()} />
                     <span>{isDragActive ? '📂' : '📁'}</span>
                     <p>Drag &apos;n&apos; drop images, or click to select file</p>
