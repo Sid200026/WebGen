@@ -11,12 +11,17 @@ CURRENT_DIR="${PWD##*/}"
 
 if [ $CURRENT_DIR = "scripts" ]; then
     cd ..
+    cd $BASE_DIRECTORY
+else
+    cd $BASE_DIRECTORY
 fi
+
+pwd
 
 declare -a USER_FILES=("$USER_INTRODUCTION" "$USER_ABOUT_ME")
 
 for filename in "${USER_FILES[@]}"; do
-    FILE_PATH=$BASE_DIRECTORY$filename
+    FILE_PATH=$filename
     if [ ! -f $FILE_PATH ]; then
         echo "File $filename does not exist"
         echo "$FILE_CONTENT" >>$FILE_PATH
