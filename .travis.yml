@@ -9,7 +9,7 @@ notifications:
     on_failure: never
 cache: npm
 before_script:
-  - bash user_files.sh
+  - bash scripts/user_files.sh
 script:
   - npm run lint:watch
   - npm test
