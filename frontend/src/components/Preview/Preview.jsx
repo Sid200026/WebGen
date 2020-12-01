@@ -36,20 +36,22 @@ const Preview = (props) => {
   const { enable: aboutMeEnable } = aboutMeReducer;
   return (
     <>
-      <div className="static__container">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={goBackToPrevious}
-          className="preview__goBackbtn"
-          id="editPreviewbtn"
-          startIcon={<EditIcon />}
-          size="large"
-        >
-          {buttonText}
-        </Button>
-        {introductionEnable && <IntroductionLayout />}
-      </div>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={goBackToPrevious}
+        className="preview__goBackbtn"
+        id="editPreviewbtn"
+        startIcon={<EditIcon />}
+        size="large"
+      >
+        {buttonText}
+      </Button>
+      {introductionEnable && (
+        <div className="static__container">
+          <IntroductionLayout />
+        </div>
+      )}
       <div className="preview__container">{aboutMeEnable && <AboutMeLayout />}</div>
     </>
   );
