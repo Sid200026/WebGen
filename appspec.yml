@@ -1,0 +1,25 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/WebGen
+hooks:
+  ApplicationStop:
+    - location: scripts/stop_server.sh
+      timeout: 600
+      runas: root
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 600
+      runas: root
+  AfterInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 600
+      runas: root
+    - location: scripts/user_files.sh
+      timeout: 100
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_server.sh
+      timeout: 600
+      runas: root

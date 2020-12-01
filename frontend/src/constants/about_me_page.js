@@ -1,0 +1,50 @@
+/* ********* ACTION TYPES ********* */
+export const ENABLE_PAGE = 'ENABLE_PAGE_ABOUT_ME';
+export const PROFILE_PIC = 'PROFILE_PIC';
+export const PROFILE_PIC_REMOVE = 'PROFILE_PIC_REMOVE';
+export const DESCRIPTION_TEXT = 'DESCRIPTION_TEXT';
+export const DESCRIPTION_COLOR = 'DESCRIPTION_COLOR';
+export const SKILLS_ADD = 'SKILLS_ADD';
+export const SKILLS_REMOVE = 'SKILLS_REMOVE';
+export const SKILLS_BACKGROUND = 'SKILLS_BACKGROUND';
+export const SKILLS_MODIFY = 'SKILLS_MODIFY';
+export const PAGE_HEADLINE = 'PAGE_HEADLINE';
+export const PAGE_HEADLINE_COLOR = 'PAGE_HEADLINE_COLOR';
+export const BACKGROUND = 'BACKGROUND';
+export const MENU_COLOR = 'MENU_COLOR';
+export const MENU_BACKGROUND = 'MENU_BACKGROUND';
+export const RESUME_URL = 'RESUME_URL';
+export const RESUME_BUTTON_TEXT = 'RESUME_BUTTON_TEXT';
+export const RESUME_BUTTON_BORDER = 'RESUME_BUTTON_BORDER';
+export const RESUME_BUTTON_COLOR = 'RESUME_BUTTON_COLOR';
+export const RESUME_BUTTON_HOVER_BG = 'RESUME_BUTTON_HOVER_BG';
+export const RESUME_BUTTON_HOVER_COLOR = 'RESUME_BUTTON_HOVER_COLOR';
+export const RESUME_BUTTON_BG = 'RESUME_BUTTON_BG';
+export const RESUME_HOVER_EFFECT = 'RESUME_HOVER_EFFECT';
+export const SOCIAL_MEDIA_ADD = 'SOCIAL_MEDIA_ADD';
+export const SOCIAL_MEDIA_REMOVE = 'SOCIAL_MEDIA_REMOVE';
+export const SOCIAL_MEDIA_UPDATE = 'SOCIAL_MEDIA_UPDATE';
+
+/* ********* STATE KEYS ********* */
+
+export const enable = 'enable';
+export const pageHeadline = 'pageHeadline';
+export const pageHeadlineColor = 'pageHeadlineColor';
+export const profile = 'profile';
+export const description = 'description';
+export const descriptionColor = 'descriptionColor';
+export const skills = 'skills';
+export const skillColor = 'skillColor';
+export const skillsBackground = 'skillsBackground';
+export const background = 'background';
+export const menuColor = 'menuColor';
+export const menuBackground = 'menuBackground';
+export const resumeURL = 'resumeURL';
+export const resumeButtonText = 'resumeButtonText';
+export const resumeButtonBorder = 'resumeButtonBorder';
+export const resumeButtonColor = 'resumeButtonColor';
+export const resumeButtonHoverBG = 'resumeButtonHoverBG';
+export const resumeButtonHoverColor = 'resumeButtonHoverColor';
+export const resumeButtonBG = 'resumeButtonBG';
+export const resumeHoverEnable = 'resumeHoverEnable';
+export const mediaHandles = 'mediaHandles';

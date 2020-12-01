@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 'stable'
+service:
+  - redis-server
+notifications:
+  email:
+    on_success: never
+    on_failure: never
+cache: npm
+before_script:
+  - bash scripts/user_files.sh
+script:
+  - npm run lint:watch
+  - npm test

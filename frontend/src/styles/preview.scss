@@ -1,0 +1,59 @@
+.preview__goBackbtn {
+  position: fixed !important;
+  right: 1rem;
+  top: 1rem;
+}
+.preview__container {
+  width: 100%;
+  background: white;
+}
+.static__container {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  background: white;
+}
+
+// .no__min_height {
+//   height: 100%;
+//   position: fixed;
+//   top: 0;
+// }
+
+#primaryRouter {
+  height: 100%;
+}
+
+#primaryRouter div[tabIndex='-1'] {
+  height: 100%;
+}
+
+.pseudoClass {
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+}
+
+.pseudoClass #tsparticles {
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+}
+.pseudoClass #tsparticles canvas {
+  position: absolute;
+}
+
+.pseudoClass2 {
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+}
+
+.pseudoClass2 #tsparticles {
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+}
+.pseudoClass2 #tsparticles canvas {
+  position: fixed;
+}

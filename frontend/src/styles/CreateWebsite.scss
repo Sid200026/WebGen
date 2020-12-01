@@ -1,0 +1,50 @@
+@import '../constants/color';
+
+#editPreviewbtn,
+#completeWebsiteBtn {
+  border: 2px solid rgb(68, 187, 164);
+  background: rgba(68, 187, 164, 0.2);
+  color: $fifthColor;
+  z-index: 99;
+  margin-top: 4rem;
+}
+
+#secondaryBtn {
+  border: 2px solid $primary-color;
+  background: $primary-color;
+  color: $fifthColor;
+  z-index: 3;
+  margin-top: 4rem;
+}
+
+#editPreviewbtnForm {
+  border: 2px solid rgb(68, 187, 164);
+  background: rgba(68, 187, 164, 0.2);
+  color: $fifthColor;
+  z-index: 3;
+}
+
+#webgenlogo:hover {
+  cursor: pointer;
+}
+
+.displayContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#finishBtn {
+  position: fixed;
+  bottom: 65px;
+  right: 15px;
+  background: rgb(100, 236, 100);
+  color: $primary-color;
+  z-index: 4;
+}
+
+@media only screen and(max-width : 750) {
+  #editPreviewbtnForm {
+    margin-top: 1rem;
+  }
+}

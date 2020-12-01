@@ -1,0 +1,40 @@
+# OS Specific
+
+.DS_Store
+
+# NodeJS Runtime Specific
+
+package-lock.json
+node_modules/
+
+# Jest coverage reports
+
+coverage/
+
+# Environment files
+
+.env
+.env.production
+
+# Build Files
+
+build/
+
+# Eslint Cache
+
+.eslintcache
+
+# Upload directory
+
+backend/upload/
+
+# Log files and directory
+
+*.log
+backend/log
+
+# User files
+
+*.zip
+user.*.js
+backend/user/public/
