@@ -7,18 +7,24 @@ USER_ABOUT_ME='user.about_me_initial.js'
 FILE_CONTENT="""const state = {};
 export default state;"""
 
+CURRENT_DIR="${PWD##*/}"
+
+if [ $CURRENT_DIR = "scripts" ]; then
+    cd ..
+    cd $BASE_DIRECTORY
+else
+    cd $BASE_DIRECTORY
+fi
+
+pwd
+
 declare -a USER_FILES=("$USER_INTRODUCTION" "$USER_ABOUT_ME")
 
-function createFile() {
-    FILE_PATH=$1
-    echo "$FILE_CONTENT" >> $FILE_PATH
-}
-
 for filename in "${USER_FILES[@]}"; do
-    FILE_PATH=$BASE_DIRECTORY$filename
+    FILE_PATH=$filename
     if [ ! -f $FILE_PATH ]; then
         echo "File $filename does not exist"
-        createFile $FILE_PATH
+        echo "$FILE_CONTENT" >>$FILE_PATH
     else
         echo "File $filename exists"
     fi

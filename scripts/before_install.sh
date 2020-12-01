@@ -1,5 +1,5 @@
 #!/bin/bash
 
-apt install nodejs
-apt install npm
-npm install pm2
+sudo apt install nodejs -y
+sudo apt install npm -y
+sudo npm install pm2 -g

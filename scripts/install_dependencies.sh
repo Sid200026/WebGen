@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /home/ubuntu/WebGen
-npm install
+sudo npm install
