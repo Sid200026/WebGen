@@ -26,7 +26,7 @@ const upload = multer({
     cb(null, ImageMimeTypes.includes(file.mimetype));
   },
   limits: {
-    fileSize: 1 * 1000 * 1000,
+    fileSize: 10 * 1024 * 1024,
     files: 1,
   },
 });
@@ -35,7 +35,7 @@ const upload = multer({
 
 router.route('/single').post(upload.single('image'), (req, res) => {
   const { apiKey } = req.body;
-  if (!apiKey || !protectAPI(apiKey)) {
+  if (!apiKey || !protectAPI(apiKey, true)) {
     res.status(403).send({ error: 'Task failed successfully' }).end();
   } else {
     if (!req.file) {

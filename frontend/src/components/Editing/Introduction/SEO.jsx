@@ -50,6 +50,17 @@ const SEO = () => {
   const handleDrop = (acceptedFiles) => {
     if (acceptedFiles.length > 0) {
       const formData = new FormData();
+      if (acceptedFiles[0].size > 10 * 1024 * 1024) {
+        Swal.fire({
+          icon: 'error',
+          title: `Image too large`,
+          text: 'Image size exceeds the specified 10 MB limit.',
+          footer:
+            // eslint-disable-next-line max-len
+            '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
+        });
+        return;
+      }
       formData.append('image', acceptedFiles[0]);
       formData.append('apiKey', generateAPIKey());
       axios
@@ -139,7 +150,7 @@ const SEO = () => {
               onDrop={handleDrop}
               accept="image/*"
               minSize={1}
-              maxSize={10485760}
+              maxSize={1024 * 1024 * 10}
               maxFiles={1}
               multiple={false}
               canCancel={false}

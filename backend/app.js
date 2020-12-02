@@ -63,7 +63,7 @@ app.use('*', frontendRouter);
 app.use(function (err, _req, res, _next) {
   logger.error(err.stack);
   if (err instanceof multer.MulterError) {
-    res.status(400).send({ error: err.message });
+    res.status(413).send({ error: err.message });
   } else {
     res.status(500).send({ error: 'Oops: Something broke!' });
   }
