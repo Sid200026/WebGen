@@ -69,7 +69,7 @@ const introduction = {
   [favicon]: ${JSON.stringify(favicon)},
 };
 
-export { introduction };
+export default introduction;
 `;
 
 const aboutMeInitial = ({
@@ -140,7 +140,7 @@ const aboutMe = {
   [mediaHandles]: ${JSON.stringify(mediaHandles)},
 };
 
-export { aboutMe };
+export default aboutMe;
 
 `;
 module.exports = { introductionInitial, aboutMeInitial };
