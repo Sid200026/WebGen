@@ -5,6 +5,7 @@ import throttle from 'lodash.throttle';
 import { encrypt, decrypt } from '../utils/encrypt_decrypt';
 import { introductionReducer } from '../reducers/introduction_reducer';
 import { aboutMeReducer } from '../reducers/about_me_reducer';
+import { workExperienceReducer } from '../reducers/work_experience_reducer';
 
 const localStorageKey = 'WebGenStore';
 
@@ -43,7 +44,11 @@ if (process.env.NODE_ENV === 'production') {
   middleware = applyMiddleware(thunk, logger);
 }
 
-const rootReducer = combineReducers({ introductionReducer, aboutMeReducer });
+const rootReducer = combineReducers({
+  introductionReducer,
+  aboutMeReducer,
+  workExperienceReducer,
+});
 
 const store = createStore(rootReducer, persistedState, middleware);
 

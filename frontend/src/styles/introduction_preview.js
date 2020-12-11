@@ -6,7 +6,6 @@ export const style = () => ({
     justifyContent: 'center',
     minHeight: '100%',
     width: '100%',
-    background: 'red',
     position: 'absolute',
   },
   viewProfileBtn: {
