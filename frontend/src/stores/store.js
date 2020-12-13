@@ -60,4 +60,4 @@ store.subscribe(
   }, 3500),
 );
 
-export { store };
+export { store, localStorageKey };

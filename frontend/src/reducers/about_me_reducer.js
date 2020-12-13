@@ -24,6 +24,7 @@ import {
   SOCIAL_MEDIA_ADD,
   SOCIAL_MEDIA_REMOVE,
   SOCIAL_MEDIA_UPDATE,
+  RESET,
   mediaHandles,
   enable,
   profile,
@@ -151,6 +152,8 @@ export const aboutMeReducer = (state = aboutMe, { type, payload }) => {
           theme: payload.theme,
         }),
       };
+    case RESET:
+      return aboutMe;
     default:
       return state;
   }

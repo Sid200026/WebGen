@@ -23,6 +23,7 @@ const Submit = () => {
   const classes = useStyles();
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
+  const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
 
   const verifyEmail = async (data, errorMessage = '') => {
     const { message } = data;
@@ -52,6 +53,7 @@ const Submit = () => {
         const apiData = {
           introduction: introductionReducer,
           aboutMe: aboutMeReducer,
+          workExperience: workExperienceReducer,
           additional: additionalData,
           email,
         };

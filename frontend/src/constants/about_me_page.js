@@ -24,6 +24,7 @@ export const RESUME_HOVER_EFFECT = 'RESUME_HOVER_EFFECT';
 export const SOCIAL_MEDIA_ADD = 'SOCIAL_MEDIA_ADD';
 export const SOCIAL_MEDIA_REMOVE = 'SOCIAL_MEDIA_REMOVE';
 export const SOCIAL_MEDIA_UPDATE = 'SOCIAL_MEDIA_UPDATE';
+export const RESET = 'ABOUT_ME_RESET';
 
 /* ********* STATE KEYS ********* */
 

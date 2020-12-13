@@ -6,6 +6,7 @@ import {
   WORK_EXPERIENCE_ADD,
   WORK_EXPERIENCE_DELETE,
   WORK_EXPERIENCE_MODIFY,
+  RESET,
 } from '../constants/work_experience_page';
 
 export const enablePage = (response) => ({
@@ -41,4 +42,9 @@ export const workExperienceDelete = (index) => ({
 export const workExperienceModify = (response, index) => ({
   type: WORK_EXPERIENCE_MODIFY,
   payload: { response, index },
+});
+
+export const reset = () => ({
+  type: RESET,
+  payload: {},
 });
