@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { PropTypes } from 'prop-types';
 import { navigate } from '@reach/router';
-
+import { useSelector } from 'react-redux';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
+import Swal from 'sweetalert2';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -19,8 +20,14 @@ import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import PublishIcon from '@material-ui/icons/Publish';
+import ClearIcon from '@material-ui/icons/Clear';
+import HelpIcon from '@material-ui/icons/Help';
+import SaveIcon from '@material-ui/icons/Save';
 import FlagIcon from '@material-ui/icons/Flag';
 import MenuIcon from '@material-ui/icons/Menu';
 import WorkIcon from '@material-ui/icons/Work';
@@ -39,6 +46,7 @@ const Header = (props) => {
   const [width, updateWidth] = useState(window.innerWidth);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -46,6 +54,14 @@ const Header = (props) => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   useEffect(() => {
@@ -68,8 +84,50 @@ const Header = (props) => {
     { name: 'Projects', icon: ColorLensIcon, link: '/project' },
     { name: 'Achievements', icon: ImportContactsIcon, link: '/achievement' },
     { name: 'Contact', icon: ContactPhoneIcon, link: '/contact' },
-    { name: 'Finish', icon: DoneIcon, link: '/submit' },
+    {
+      name: 'Finish',
+      icon: ArrowDownwardIcon,
+      link: '/submit',
+      subMenu: [
+        { name: 'Finish' },
+        { name: 'Save' },
+        { name: 'Load' },
+        { name: 'Reset' },
+        { name: 'Help' },
+      ],
+    },
   ];
+
+  const introductionReducer = useSelector((state) => state.introductionReducer);
+  const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
+
+  const saveConfigFile = () => {
+    handleClose();
+    Swal.fire({
+      title: 'Save your configuration file',
+      html:
+        // eslint-disable-next-line max-len
+        'You can upload the downloaded file to resume from where you stopped. <Note : Images will be deleted from the server within 24 hours.',
+      showCancelButton: true,
+      confirmButtonText: `Save File`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const apiData = {
+          introduction: introductionReducer,
+          aboutMe: aboutMeReducer,
+        };
+        const json = JSON.stringify(apiData);
+        const blob = new Blob([json], { type: 'application/json' });
+        const href = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = 'config.json';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    });
+  };
 
   const { children } = props;
 
@@ -176,14 +234,70 @@ const Header = (props) => {
                 </Button>
                 <Button
                   color="inherit"
-                  className={classes.specialBtn}
-                  startIcon={<DoneIcon />}
-                  onClick={() => {
-                    navigateTo('/submit');
+                  className={classes.labelButton}
+                  endIcon={<ArrowDownwardIcon />}
+                  onClick={handleClick}
+                >
+                  More
+                </Button>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                  elevation={0}
+                  getContentAnchorEl={null}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
                   }}
                 >
-                  Finish
-                </Button>
+                  <MenuItem
+                    onClick={() => {
+                      navigateTo('/submit');
+                      handleClose();
+                    }}
+                    className={classes.menuConfig}
+                  >
+                    <ListItemIcon>
+                      <DoneIcon fontSize="small" />
+                    </ListItemIcon>
+                    <Typography variant="inherit">Finish</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={saveConfigFile} className={classes.menuConfig}>
+                    <ListItemIcon>
+                      <SaveIcon fontSize="small" />
+                    </ListItemIcon>
+                    <Typography variant="inherit">Save</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className={classes.menuConfig}>
+                    <ListItemIcon>
+                      <PublishIcon fontSize="small" />
+                    </ListItemIcon>
+                    <Typography variant="inherit">Load</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className={classes.menuConfig}>
+                    <Typography variant="inherit">
+                      <ListItemIcon>
+                        <ClearIcon fontSize="small" />
+                      </ListItemIcon>
+                      Reset
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className={classes.menuConfig}>
+                    <Typography variant="inherit">
+                      <ListItemIcon>
+                        <HelpIcon fontSize="small" />
+                      </ListItemIcon>
+                      Help
+                    </Typography>
+                  </MenuItem>
+                </Menu>
               </div>
             )}
           </Toolbar>

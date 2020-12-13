@@ -686,6 +686,14 @@ const Company = () => {
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
               Customize Work Experience
             </Typography>
+            <Typography
+              align="center"
+              variant="subtitle2"
+              color="primary"
+              style={{ marginBottom: '1rem' }}
+            >
+              Work experience will be ordered on the preview page based on the end-date
+            </Typography>
             <Button
               variant="contained"
               style={{ marginTop: '25px' }}
