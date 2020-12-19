@@ -2,7 +2,7 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import throttle from 'lodash.throttle';
-import { encrypt, decrypt } from '../utils/encrypt_decrypt';
+import { encrypt, decrypt } from '../utils/encryptDecrypt';
 import { introductionReducer } from '../reducers/introduction_reducer';
 import { aboutMeReducer } from '../reducers/about_me_reducer';
 import { workExperienceReducer } from '../reducers/work_experience_reducer';

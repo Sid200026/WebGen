@@ -16,6 +16,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DoneIcon from '@material-ui/icons/Done';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Collapse from '@material-ui/core/Collapse';
 import ListItemText from '@material-ui/core/ListItemText';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -25,6 +27,8 @@ import Dropzone from 'react-dropzone';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Dialog from '@material-ui/core/Dialog';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -41,10 +45,20 @@ import ColorLensIcon from '@material-ui/icons/ColorLens';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
-import { reset as resetIntroduction } from '../../actions/introduction_action';
-import { reset as resetAboutMe } from '../../actions/about_me_action';
-import { reset as resetWorkExperience } from '../../actions/work_experience_action';
+import {
+  reset as resetIntroduction,
+  load as loadIntroduction,
+} from '../../actions/introduction_action';
+import {
+  reset as resetAboutMe,
+  load as loadAboutMe,
+} from '../../actions/about_me_action';
+import {
+  reset as resetWorkExperience,
+  load as loadWorkExperience,
+} from '../../actions/work_experience_action';
 import { localStorageKey } from '../../stores/store';
+import { validateUploadedData } from '../../utils/validateKeys';
 
 import { style } from '../../styles/header';
 
@@ -60,30 +74,18 @@ const Header = (props) => {
   const dispatch = useDispatch();
   const [openDialog, setOpenDialog] = useState(false);
 
-  const handleDrop = (acceptedFiles) => {
-    if (acceptedFiles.length > 0) {
-      if (acceptedFiles[0].size > 10 * 1024 * 1024) {
-        Swal.fire({
-          icon: 'error',
-          title: `Image too large`,
-          text: 'Image size exceeds the specified 10 MB limit.',
-          footer:
-            // eslint-disable-next-line max-len
-            '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
-        });
-        return;
-      }
-      const fileReader = new FileReader();
-      fileReader.readAsText(acceptedFiles[0], 'UTF-8');
-      fileReader.onload = (event) => {
-        // eslint-disable-next-line no-unused-vars
-        const jsonData = JSON.parse(event.target.result);
-      };
-    }
+  const [sidebarOpen, setSideBarOpen] = useState(false);
+
+  const handleSidebar = () => {
+    setSideBarOpen(!sidebarOpen);
   };
 
-  const handleDialogOpen = () => {
-    setOpenDialog(true);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   const handleDialogClose = () => {
@@ -98,12 +100,10 @@ const Header = (props) => {
     setOpen(false);
   };
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleDialogOpen = () => {
+    handleClose();
+    handleDrawerClose();
+    setOpenDialog(true);
   };
 
   useEffect(() => {
@@ -119,33 +119,66 @@ const Header = (props) => {
     navigate(link, { state });
   };
 
-  const navItems = [
-    { name: 'Introduction', icon: FlagIcon, link: '/introduction' },
-    { name: 'About Me', icon: EmojiPeopleIcon, link: '/about' },
-    { name: 'Work Experience', icon: WorkIcon, link: '/work' },
-    { name: 'Projects', icon: ColorLensIcon, link: '/project' },
-    { name: 'Achievements', icon: ImportContactsIcon, link: '/achievement' },
-    { name: 'Contact', icon: ContactPhoneIcon, link: '/contact' },
-    {
-      name: 'Finish',
-      icon: ArrowDownwardIcon,
-      link: '/submit',
-      subMenu: [
-        { name: 'Finish' },
-        { name: 'Save' },
-        { name: 'Load' },
-        { name: 'Reset' },
-        { name: 'Help' },
-      ],
-    },
-  ];
-
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
 
+  const updateState = (data) => {
+    const { introduction, aboutMe, workExperience } = data;
+    dispatch(loadIntroduction(introduction));
+    dispatch(loadAboutMe(aboutMe));
+    dispatch(loadWorkExperience(workExperience));
+    Swal.fire({
+      icon: 'success',
+      title: 'Configuration loaded successfully',
+      html:
+        'There may be some cases wherein the configuration file was tampered with and may cause errors. In the case of such an event, please reset the configuration.',
+    });
+  };
+
+  const showLoadFail = () => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Configuration cannot be loaded',
+      html:
+        'It appears that the configuration file was tampered with and cannot be parsed by the system.',
+    });
+  };
+
+  const handleDrop = (acceptedFiles) => {
+    handleClose();
+    if (acceptedFiles.length > 0) {
+      if (acceptedFiles[0].size > 10 * 1024 * 1024) {
+        Swal.fire({
+          icon: 'error',
+          title: `Image too large`,
+          text: 'Image size exceeds the specified 10 MB limit.',
+          footer:
+            // eslint-disable-next-line max-len
+            '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
+        });
+        return;
+      }
+      const fileReader = new FileReader();
+      fileReader.readAsText(acceptedFiles[0], 'UTF-8');
+      fileReader.onload = (event) => {
+        try {
+          const jsonData = JSON.parse(event.target.result);
+          const isValid = validateUploadedData(jsonData);
+          handleDialogClose();
+          if (isValid) updateState(jsonData);
+          else showLoadFail();
+        } catch (_err) {
+          handleDialogClose();
+          showLoadFail();
+        }
+      };
+    }
+  };
+
   const saveConfigFile = () => {
     handleClose();
+    handleDrawerClose();
     Swal.fire({
       title: 'Save your configuration file',
       html:
@@ -175,6 +208,7 @@ const Header = (props) => {
 
   const resetConfigFile = () => {
     handleClose();
+    handleDrawerClose();
     Swal.fire({
       icon: 'warning',
       title: 'Do you want to reset ?',
@@ -192,6 +226,35 @@ const Header = (props) => {
       }
     });
   };
+
+  const navItems = [
+    { name: 'Introduction', icon: FlagIcon, link: '/introduction' },
+    { name: 'About Me', icon: EmojiPeopleIcon, link: '/about' },
+    { name: 'Work Experience', icon: WorkIcon, link: '/work' },
+    { name: 'Projects', icon: ColorLensIcon, link: '/project' },
+    { name: 'Achievements', icon: ImportContactsIcon, link: '/achievement' },
+    { name: 'Contact', icon: ContactPhoneIcon, link: '/contact' },
+    {
+      name: 'More',
+      icon: MoreVertIcon,
+      link: '/submit',
+      hasSubMenu: true,
+      subMenu: [
+        {
+          name: 'Finish',
+          icon: DoneIcon,
+          fn: () => {
+            handleDrawerClose();
+            navigateTo('/submit');
+          },
+        },
+        { name: 'Save', icon: SaveIcon, fn: saveConfigFile },
+        { name: 'Load', icon: PublishIcon, fn: handleDialogOpen },
+        { name: 'Reset', icon: ClearIcon, fn: resetConfigFile },
+        { name: 'Help', icon: HelpIcon },
+      ],
+    },
+  ];
 
   const { children } = props;
 
@@ -444,20 +507,54 @@ const Header = (props) => {
           </div>
           <Divider />
           <List>
-            {navItems.map((info) => (
-              <ListItem
-                button
-                key={info.name}
-                onClick={() => {
-                  navigateTo(info.link);
-                }}
-              >
-                <ListItemIcon>
-                  <info.icon />
-                </ListItemIcon>
-                <ListItemText primary={info.name} />
-              </ListItem>
-            ))}
+            {navItems.map((info) => {
+              if (info.hasSubMenu) {
+                const subMenu = info.subMenu.map((menu) => (
+                  <ListItem
+                    onClick={menu.fn}
+                    button
+                    key={menu.name}
+                    style={{ paddingLeft: '4rem' }}
+                  >
+                    <ListItemIcon>
+                      <menu.icon />
+                    </ListItemIcon>
+                    <ListItemText primary={menu.name} />
+                  </ListItem>
+                ));
+
+                return (
+                  <div key={info.name}>
+                    <ListItem button onClick={handleSidebar}>
+                      <ListItemIcon>
+                        <info.icon />
+                      </ListItemIcon>
+                      <ListItemText primary={info.name} />
+                      {sidebarOpen ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+                    <Collapse in={sidebarOpen} timeout="auto" unmountOnExit>
+                      <List component="div" disablePadding>
+                        {subMenu}
+                      </List>
+                    </Collapse>
+                  </div>
+                );
+              }
+              return (
+                <ListItem
+                  button
+                  key={info.name}
+                  onClick={() => {
+                    navigateTo(info.link);
+                  }}
+                >
+                  <ListItemIcon>
+                    <info.icon />
+                  </ListItemIcon>
+                  <ListItemText primary={info.name} />
+                </ListItem>
+              );
+            })}
           </List>
           <Divider />
         </Drawer>

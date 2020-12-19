@@ -23,6 +23,7 @@ import {
   FAVICON,
   DELETE_FAVICON,
   RESET,
+  INTRODUCTION_LOAD,
   greetingText,
   greetingColor,
   nameText,
@@ -117,6 +118,8 @@ export const introductionReducer = (state = introduction, { type, payload }) => 
       return { ...state, [favicon]: payload };
     case RESET:
       return introduction;
+    case INTRODUCTION_LOAD:
+      return payload.data;
     default:
       return state;
   }

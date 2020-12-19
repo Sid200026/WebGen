@@ -7,6 +7,7 @@ import {
   WORK_EXPERIENCE_DELETE,
   WORK_EXPERIENCE_MODIFY,
   RESET,
+  WORK_EXPERIENCE_LOAD,
   enable,
   pageHeadline,
   pageHeadlineColor,
@@ -86,6 +87,8 @@ export const workExperienceReducer = (state = workExperience, { type, payload })
       };
     case RESET:
       return workExperience;
+    case WORK_EXPERIENCE_LOAD:
+      return payload.data;
     default:
       return state;
   }
