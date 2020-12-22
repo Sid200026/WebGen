@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 import { navigate } from '@reach/router';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
+import { Header } from './AboutMe/Header.jsx';
 import { IntroductionLayout } from './Introduction/IntroductionLayout.jsx';
 import { AboutMeLayout } from './AboutMe/AboutMeLayout.jsx';
+import { WorkExperienceLayout } from './WorkExperience/WorkExperienceLayout.jsx';
 import '../../styles/preview.scss';
 
 const Preview = (props) => {
@@ -23,6 +25,9 @@ const Preview = (props) => {
   );
 
   const aboutMeReducer = useSelector((stateReact) => stateReact.aboutMeReducer);
+  const workExperienceReducer = useSelector(
+    (stateReact) => stateReact.workExperienceReducer,
+  );
 
   const goBackToPrevious = () => {
     if (previousSiteAvailable) {
@@ -33,7 +38,8 @@ const Preview = (props) => {
   };
 
   const { enable: introductionEnable } = introductionReducer;
-  const { enable: aboutMeEnable } = aboutMeReducer;
+  const { enable: aboutMeEnable, menuBackground, menuColor } = aboutMeReducer;
+  const { enable: workExperienceEnable } = workExperienceReducer;
   return (
     <>
       <Button
@@ -52,7 +58,11 @@ const Preview = (props) => {
           <IntroductionLayout />
         </div>
       )}
-      <div className="preview__container">{aboutMeEnable && <AboutMeLayout />}</div>
+      <div className="preview__container">
+        <Header menuBackground={menuBackground} menuColor={menuColor} />
+        {aboutMeEnable && <AboutMeLayout />}
+        {workExperienceEnable && <WorkExperienceLayout />}
+      </div>
     </>
   );
 };

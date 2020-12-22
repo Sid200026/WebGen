@@ -29,7 +29,8 @@ export const style = () => ({
     marginTop: '1.5rem',
   },
   responsiveDescriptionText: {
-    width: '95%',
+    width: '90%',
+    fontSize: '0.9rem',
   },
   resumeView: {
     marginTop: '2rem',
@@ -50,6 +51,7 @@ export const style = () => ({
     textDecoration: 'underline',
     marginBottom: '3rem',
     fontFamily: "'Ubuntu', sans-serif",
+    marginTop: '2.4rem',
   },
   responsivePageHeadline: {
     marginBottom: '1.8rem',
@@ -60,7 +62,7 @@ export const style = () => ({
     alignItems: 'center',
     width: '100%',
     flexWrap: 'wrap',
-    marginBottom: '1rem',
+    marginBottom: '2rem',
   },
   socialButton: {
     margin: '1.4rem',
@@ -70,10 +72,10 @@ export const style = () => ({
   },
   logoImage: {
     width: '30px',
-    height: 'auto',
+    height: '27px',
   },
   responsiveLogoImage: {
-    width: '45px',
+    width: '35px',
     height: 'auto',
     margin: '1.2rem',
   },

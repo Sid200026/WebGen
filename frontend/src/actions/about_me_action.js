@@ -24,6 +24,8 @@ import {
   SOCIAL_MEDIA_ADD,
   SOCIAL_MEDIA_REMOVE,
   SOCIAL_MEDIA_UPDATE,
+  RESET,
+  ABOUT_ME_LOAD,
 } from '../constants/about_me_page';
 
 export const enablePage = (response) => ({
@@ -149,4 +151,14 @@ export const socialMediaRemove = (index) => ({
 export const socialMediaModify = (url, media, theme, index) => ({
   type: SOCIAL_MEDIA_UPDATE,
   payload: { url, media, theme, index },
+});
+
+export const reset = () => ({
+  type: RESET,
+  payload: {},
+});
+
+export const load = (data) => ({
+  type: ABOUT_ME_LOAD,
+  payload: { data },
 });

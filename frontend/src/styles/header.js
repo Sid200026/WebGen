@@ -96,6 +96,11 @@ const style = (theme) => ({
     fontWeight: 400,
     color: 'rgb(149, 245, 66)',
   },
+  menuConfig: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export { style };

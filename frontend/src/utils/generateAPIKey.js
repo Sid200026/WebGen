@@ -1,4 +1,4 @@
-import { encrypt } from './encrypt_decrypt';
+import { encrypt } from './encryptDecrypt';
 
 export const generateAPIKey = () => {
   const currentTime = new Date().getTime();

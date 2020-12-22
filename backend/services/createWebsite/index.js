@@ -11,8 +11,8 @@ const { zipDirectory } = require('./zipDirectory');
 
 const PUBLIC_DIRECTORY = path.join(__dirname, '../../user/public/images/');
 
-const developSite = async ({ introduction, aboutMe }, email) => {
-  createFiles({ introduction, aboutMe });
+const developSite = async ({ introduction, aboutMe, workExperience }, email) => {
+  createFiles({ introduction, aboutMe, workExperience });
   exec('npm run build:user', async (err, _stdout, stderr) => {
     if (err) {
       logger.error(stderr);
@@ -31,7 +31,7 @@ const developSite = async ({ introduction, aboutMe }, email) => {
           logger.error(err);
           return;
         }
-        assetDownloader({ introduction, aboutMe }, () => {
+        assetDownloader({ introduction, aboutMe, workExperience }, () => {
           zipDirectory(async () => {
             const url = await uploadZip(path.join(__dirname, '../../website.zip'));
             const options = {

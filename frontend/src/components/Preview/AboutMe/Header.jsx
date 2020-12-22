@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import List from '@material-ui/core/List';
@@ -18,10 +19,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import FlagIcon from '@material-ui/icons/Flag';
 import MenuIcon from '@material-ui/icons/Menu';
 import WorkIcon from '@material-ui/icons/Work';
-import ColorLensIcon from '@material-ui/icons/ColorLens';
+// import ColorLensIcon from '@material-ui/icons/ColorLens';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
-import ImportContactsIcon from '@material-ui/icons/ImportContacts';
+// import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
+// import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 
 import { style } from '../../../styles/previewHeader';
 
@@ -53,19 +54,60 @@ const Header = (props) => {
   });
 
   const gotoNextSection = (className) => {
+    handleDrawerClose();
     document
       .getElementsByClassName(className)[0]
       .scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const navItems = [
-    { name: 'Introduction', icon: FlagIcon, classname: 'static__container' },
-    { name: 'About Me', icon: EmojiPeopleIcon, classname: 'preview__container' },
-    { name: 'Work Experience', icon: WorkIcon, classname: '' },
-    { name: 'Projects', icon: ColorLensIcon, classname: '' },
-    { name: 'Achievements', icon: ImportContactsIcon, classname: '' },
-    { name: 'Contact', icon: ContactPhoneIcon, classname: '' },
-  ];
+  const introductionReducer = useSelector(
+    (stateReact) => stateReact.introductionReducer,
+  );
+
+  const aboutMeReducer = useSelector((stateReact) => stateReact.aboutMeReducer);
+  const workExperienceReducer = useSelector(
+    (stateReact) => stateReact.workExperienceReducer,
+  );
+
+  const { enable: introductionEnable } = introductionReducer;
+  const { enable: aboutMeEnable } = aboutMeReducer;
+  const { enable: workExperienceEnable } = workExperienceReducer;
+
+  // const navItems = [
+  //   { name: 'Introduction', icon: FlagIcon, classname: 'static__container' },
+  //   { name: 'About Me', icon: EmojiPeopleIcon, classname: 'preview__container' },
+  //   {
+  //     name: 'Work Experience',
+  //     icon: WorkIcon,
+  //     classname: 'work_experience__container',
+  //   },
+  //   { name: 'Projects', icon: ColorLensIcon, classname: '' },
+  //   { name: 'Achievements', icon: ImportContactsIcon, classname: '' },
+  //   { name: 'Contact', icon: ContactPhoneIcon, classname: '' },
+  // ];
+
+  const navItems = [];
+
+  if (introductionEnable)
+    navItems.push({
+      name: 'Introduction',
+      icon: FlagIcon,
+      classname: 'static__container',
+    });
+
+  if (aboutMeEnable)
+    navItems.push({
+      name: 'About Me',
+      icon: EmojiPeopleIcon,
+      classname: 'preview__container',
+    });
+
+  if (workExperienceEnable)
+    navItems.push({
+      name: 'Work Experience',
+      icon: WorkIcon,
+      classname: 'work_experience__container',
+    });
 
   return (
     <>

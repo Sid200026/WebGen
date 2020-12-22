@@ -22,6 +22,8 @@ import {
   ENABLE_PAGE,
   BUTTON_HOVER_EFFECT,
   DELETE_FAVICON,
+  RESET,
+  INTRODUCTION_LOAD,
 } from '../constants/introduction_page';
 
 export const greetingText = (text) => ({
@@ -137,4 +139,14 @@ export const buttonHoverEffect = (response) => ({
 export const deleteFavicon = () => ({
   type: DELETE_FAVICON,
   payload: {},
+});
+
+export const reset = () => ({
+  type: RESET,
+  payload: {},
+});
+
+export const load = (data) => ({
+  type: INTRODUCTION_LOAD,
+  payload: { data },
 });
