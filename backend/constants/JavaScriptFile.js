@@ -143,4 +143,31 @@ const aboutMe = {
 export default aboutMe;
 
 `;
-module.exports = { introductionInitial, aboutMeInitial };
+
+const workExperienceInitial = ({
+  enable,
+  pageHeadline,
+  pageHeadlineColor,
+  background,
+  workExperienceList,
+}) => `\
+import {
+  enable,
+  pageHeadline,
+  pageHeadlineColor,
+  background,
+  workExperienceList,
+} from '../constants/work_experience_page';
+
+const workExperience = {
+  [enable]: ${enable},
+  [pageHeadline]: \`${pageHeadline}\`,
+  [pageHeadlineColor]: \`${pageHeadlineColor}\`,
+  [background]: \`${background}\`,
+  [workExperienceList]: ${JSON.stringify(workExperienceList)},
+};
+
+export default workExperience;
+`;
+
+module.exports = { introductionInitial, aboutMeInitial, workExperienceInitial };

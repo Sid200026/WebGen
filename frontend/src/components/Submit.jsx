@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import Swal from 'sweetalert2';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { navigate } from '@reach/router';
 import Container from '@material-ui/core/Container';
@@ -14,6 +14,10 @@ import Rating from '@material-ui/lab/Rating';
 import TextField from '@material-ui/core/TextField';
 import { style } from '../styles/submit';
 import { postRequest } from '../utils/serviceCalls';
+import { localStorageKey } from '../stores/store';
+import { reset as resetIntroduction } from '../actions/introduction_action';
+import { reset as resetAboutMe } from '../actions/about_me_action';
+import { reset as resetWorkExperience } from '../actions/work_experience_action';
 
 const useStyles = makeStyles(style);
 
@@ -21,6 +25,7 @@ const Submit = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const classes = useStyles();
+  const dispatch = useDispatch();
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
@@ -58,6 +63,10 @@ const Submit = () => {
           email,
         };
         await postRequest('/api/submit/submit', apiData);
+        localStorage.removeItem(localStorageKey);
+        dispatch(resetIntroduction());
+        dispatch(resetAboutMe());
+        dispatch(resetWorkExperience());
         navigate('/complete', { state: { isComplete: true, email } });
       } catch (err) {
         const { response } = err;
@@ -117,6 +126,7 @@ const Submit = () => {
         const apiData = {
           introduction: introductionReducer,
           aboutMe: aboutMeReducer,
+          workExperience: workExperienceReducer,
         };
         const json = JSON.stringify(apiData);
         const blob = new Blob([json], { type: 'application/json' });

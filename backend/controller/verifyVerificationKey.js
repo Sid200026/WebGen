@@ -37,7 +37,7 @@ const verifyVerificationKeyController = async (req, res) => {
         },
       });
     } else {
-      res.status(200).send({
+      res.status(400).send({
         error: 'Verification Key not valid',
         data: { email: email, key: key },
       });

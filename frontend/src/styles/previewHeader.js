@@ -24,7 +24,6 @@ const style = (theme) => ({
   navBar: {
     position: 'sticky',
     zIndex: 98,
-    marginBottom: '2rem',
   },
   navButtons: {
     textAlign: 'left',

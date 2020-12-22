@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
-import { Header } from './Header.jsx';
 import { style } from '../../../styles/about_me_preview';
 import { getMediaInfo } from '../../../utils/socialMediaDetector';
 import { Skillbars } from '../../Skillbar.jsx';
@@ -21,8 +20,6 @@ const AboutMeLayout = () => {
     background,
     skills,
     skillsBackground,
-    menuBackground,
-    menuColor,
     resumeURL,
     resumeButtonText,
     resumeButtonBorder,
@@ -221,7 +218,6 @@ const AboutMeLayout = () => {
 
   return (
     <div style={{ background }} className={classes.aboutMeLayout}>
-      <Header menuBackground={menuBackground} menuColor={menuColor} />
       <Typography
         style={{ color: pageHeadlineColor }}
         className={clsx(classes.pageHeadline, {

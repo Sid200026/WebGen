@@ -356,6 +356,7 @@ const Company = () => {
                     startDate: event.target.value,
                   });
                 }}
+                placeholder="mm-yyyy"
               />
             }
             label="Start Date"
@@ -380,6 +381,7 @@ const Company = () => {
                     endDate: event.target.value,
                   });
                 }}
+                placeholder="mm-yyyy"
               />
             }
             label="End Date"
@@ -548,6 +550,7 @@ const Company = () => {
                     startDate: event.target.value,
                   });
                 }}
+                placeholder="mm-yyyy"
               />
             }
             label="Start Date"
@@ -572,6 +575,7 @@ const Company = () => {
                     endDate: event.target.value,
                   });
                 }}
+                placeholder="mm-yyyy"
               />
             }
             label="End Date"
