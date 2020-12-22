@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 BASE_DIRECTORY='frontend/src/initialState/'
 USER_INTRODUCTION='user.introduction_initial.js'
