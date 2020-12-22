@@ -10,10 +10,15 @@ export default state;"""
 
 CURRENT_DIR="${PWD##*/}"
 
+echo $CURRENT_DIR
+
 if [ $CURRENT_DIR = "scripts" ]; then
+    echo "Executing from scripts directory"
     cd ..
     cd $BASE_DIRECTORY
 else
+    ls
+    echo "Executing from root directory"
     cd $BASE_DIRECTORY
 fi
 
