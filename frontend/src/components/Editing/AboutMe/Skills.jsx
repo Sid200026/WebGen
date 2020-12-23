@@ -36,9 +36,14 @@ const Skills = () => {
 
   const classes = useStyles();
   const [errorMessage, setError] = useState('');
-  const [skillColor, setSkillColor] = useState('#000000');
-  const [skillModifyColor, setSkillModifyColor] = useState('#000000');
+
+  const defaultThemeReducer = useSelector((state) => state.defaultThemeReducer);
+  const { skillColor: defaultSkillColor } = defaultThemeReducer;
+
+  const [skillColor, setSkillColor] = useState(defaultSkillColor);
+  const [skillModifyColor, setSkillModifyColor] = useState(defaultSkillColor);
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
+
   const { skills, skillsBackground } = aboutMeReducer;
   const dispatch = useDispatch();
 

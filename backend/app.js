@@ -8,6 +8,7 @@ const { router: frontendRouter } = require('./routes/frontend/router');
 const { router: uploadRouter } = require('./routes/upload/router');
 const { router: logRouter } = require('./routes/logging/router');
 const { router: submitRouter } = require('./routes/submit/router');
+const { router: templateRouter } = require('./routes/template/router');
 const { logger } = require('./logger/logger');
 const { protectAPI } = require('./services/protection/protection');
 const app = express();
@@ -53,6 +54,7 @@ app.use('/api', (req, res, next) => {
 });
 
 app.use('/upload', uploadRouter);
+app.use('/template', templateRouter);
 app.use('/api/log', logRouter);
 app.use('/api/submit', submitRouter);
 
