@@ -1,1 +1,2 @@
 require('./emailVerification');
+require('./template');

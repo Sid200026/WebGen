@@ -11,4 +11,8 @@ const postRequest = (path, data) => {
   return axios.post(path, { ...data, apiKey });
 };
 
-export { logErrorToExpress, postRequest };
+const getRequest = (path) => {
+  return axios.get(path);
+};
+
+export { logErrorToExpress, postRequest, getRequest };

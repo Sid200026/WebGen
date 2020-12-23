@@ -14,6 +14,7 @@ import { ScrollToTop } from '../ScrollToTop.jsx';
 import { Submit } from '../Submit.jsx';
 import { Footer } from './Footer.jsx';
 import { Header } from './Header.jsx';
+import { Template } from './Template.jsx';
 import { style } from '../../styles/edit';
 
 const useStyles = makeStyles(style);
@@ -57,6 +58,7 @@ const Edit = (props) => {
                   path="/introduction"
                   updateDisplayMode={updateDisplayMode}
                 />
+                <Template path="/" />
               </ScrollToTop>
             </Router>
           </Header>

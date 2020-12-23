@@ -33,4 +33,41 @@ const deleteVerificationKey = async (email) => {
   await db.query(deleteQuery, [email]);
 };
 
-module.exports = { getVerificationKey, createVerificationKey, deleteVerificationKey };
+const createTemplate = async (
+  template_name,
+  template_image,
+  template_link,
+  template_config,
+) => {
+  const createQuery = `
+  INSERT INTO template (template_name, template_image, template_link, template_config)
+  VALUES($1, $2, $3, $4)
+  ON CONFLICT(template_name)
+  DO
+  UPDATE SET template_name=$1
+  RETURNING *;
+  `;
+  const response = await db.query(createQuery, [
+    template_name,
+    template_image,
+    template_link,
+    template_config,
+  ]);
+  return response.rows[0];
+};
+
+const getTemplates = async () => {
+  const selectQuery = `
+    SELECT * from template;
+    `;
+  const { rows } = await db.query(selectQuery);
+  return rows;
+};
+
+module.exports = {
+  getVerificationKey,
+  createVerificationKey,
+  deleteVerificationKey,
+  createTemplate,
+  getTemplates,
+};
