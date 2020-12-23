@@ -57,6 +57,10 @@ import {
   reset as resetWorkExperience,
   load as loadWorkExperience,
 } from '../../actions/work_experience_action';
+import {
+  reset as resetDefaultTheme,
+  load as loadDefaultTheme,
+} from '../../actions/default_theme_action';
 import { localStorageKey } from '../../stores/store';
 import { validateUploadedData } from '../../utils/validateKeys';
 
@@ -122,12 +126,14 @@ const Header = (props) => {
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
+  const defaultThemeReducer = useSelector((state) => state.defaultThemeReducer);
 
   const updateState = (data) => {
-    const { introduction, aboutMe, workExperience } = data;
+    const { introduction, aboutMe, workExperience, defaultTheme } = data;
     dispatch(loadIntroduction(introduction));
     dispatch(loadAboutMe(aboutMe));
     dispatch(loadWorkExperience(workExperience));
+    dispatch(loadDefaultTheme(defaultTheme));
     Swal.fire({
       icon: 'success',
       title: 'Configuration loaded successfully',
@@ -192,6 +198,7 @@ const Header = (props) => {
           introduction: introductionReducer,
           aboutMe: aboutMeReducer,
           workExperience: workExperienceReducer,
+          defaultTheme: defaultThemeReducer,
         };
         const json = JSON.stringify(apiData);
         const blob = new Blob([json], { type: 'application/json' });
@@ -223,6 +230,7 @@ const Header = (props) => {
         dispatch(resetIntroduction());
         dispatch(resetAboutMe());
         dispatch(resetWorkExperience());
+        dispatch(resetDefaultTheme());
       }
     });
   };

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
+import { useSelector, useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
+import Swal from 'sweetalert2';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -14,11 +16,35 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import Grid from '@material-ui/core/Grid';
 import { style } from '../../styles/template';
 import { getRequest } from '../../utils/serviceCalls';
+import { localStorageKey } from '../../stores/store';
+import {
+  reset as resetIntroduction,
+  load as loadIntroduction,
+} from '../../actions/introduction_action';
+import {
+  reset as resetAboutMe,
+  load as loadAboutMe,
+} from '../../actions/about_me_action';
+import {
+  reset as resetWorkExperience,
+  load as loadWorkExperience,
+} from '../../actions/work_experience_action';
+import {
+  reset as resetDefaultTheme,
+  load as loadDefaultTheme,
+} from '../../actions/default_theme_action';
 
 const useStyles = makeStyles(style);
 
 const Template = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const introductionReducer = useSelector((state) => state.introductionReducer);
+  const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
+  const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
+  const { enable: introductionEnable } = introductionReducer;
+  const { enable: aboutMeEnable } = aboutMeReducer;
+  const { enable: workExperienceEnable } = workExperienceReducer;
 
   const [templates, setTemplates] = useState([]);
 
@@ -37,8 +63,61 @@ const Template = () => {
     navigate(link, { state });
   };
 
-  const startFromScratch = () => {
+  const discardChanges = () => {
+    dispatch(resetIntroduction());
+    dispatch(resetAboutMe());
+    dispatch(resetWorkExperience());
+    dispatch(resetDefaultTheme());
+    localStorage.removeItem(localStorageKey);
+  };
+
+  const warnUnsavedChanges = (cb = null) => {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Unsaved Changes',
+      text:
+        // eslint-disable-next-line max-len
+        'You have some unsaved changes present. Choosing a theme will reset all the progress you have made. Are you sure you want to continue ?',
+      footer:
+        // eslint-disable-next-line max-len
+        '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
+      showCancelButton: true,
+      confirmButtonText: 'Continue',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (cb) cb();
+      }
+    });
+  };
+
+  const updateStore = (index) => {
+    const template = templates[index];
+    const { template_config: templateConfig } = template;
+    const { introduction, aboutMe, workExperience, defaultTheme } = templateConfig;
+    dispatch(loadIntroduction(introduction));
+    dispatch(loadAboutMe(aboutMe));
+    dispatch(loadWorkExperience(workExperience));
+    dispatch(loadDefaultTheme(defaultTheme));
     navigateTo('/introduction');
+  };
+
+  const renderFromTemplate = (index) => {
+    if (introductionEnable || aboutMeEnable || workExperienceEnable) {
+      warnUnsavedChanges(() => {
+        updateStore(index);
+      });
+    } else {
+      updateStore(index);
+    }
+  };
+
+  const startFromScratch = () => {
+    if (introductionEnable || aboutMeEnable || workExperienceEnable) {
+      warnUnsavedChanges(() => {
+        discardChanges();
+        navigateTo('/introduction');
+      });
+    } else navigateTo('/introduction');
   };
 
   const renderTemplates = () => {
@@ -62,7 +141,7 @@ const Template = () => {
         // eslint-disable-next-line react/no-array-index-key
         <Grid key={index} justify="center" container item xs={xsSize}>
           <Card raised className={classes.root} variant="outlined">
-            <CardActionArea>
+            <CardActionArea onClick={() => renderFromTemplate(index)}>
               <CardMedia
                 className={classes.media}
                 image={template.template_image}
@@ -128,7 +207,13 @@ const Template = () => {
           justify="space-evenly"
           alignItems="center"
         >
-          <Grid className={classes.specialTemplate} item xs={4}>
+          <Grid
+            className={clsx(classes.specialTemplate, {
+              [classes.responsiveSpecialTemplate]: window.innerWidth < 750,
+            })}
+            item
+            xs={4}
+          >
             <Card raised className={classes.rootOwn} variant="outlined">
               <CardActionArea onClick={startFromScratch}>
                 <CardContent className={classes.scratchContent}>

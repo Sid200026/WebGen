@@ -17,8 +17,11 @@ export const style = () => ({
     background: secondaryColor,
   },
   rootOwn: {
-    minWidth: '20rem',
+    width: '20rem',
     background: secondaryColor,
+  },
+  responsiveSpecialTemplate: {
+    minWidth: '20rem',
   },
   media: {
     height: 250,

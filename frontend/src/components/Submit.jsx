@@ -29,6 +29,7 @@ const Submit = () => {
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
+  const defaultThemeReducer = useSelector((state) => state.defaultThemeReducer);
 
   const verifyEmail = async (data, errorMessage = '') => {
     const { message } = data;
@@ -59,6 +60,7 @@ const Submit = () => {
           introduction: introductionReducer,
           aboutMe: aboutMeReducer,
           workExperience: workExperienceReducer,
+          defaultTheme: defaultThemeReducer,
           additional: additionalData,
           email,
         };
@@ -127,6 +129,7 @@ const Submit = () => {
           introduction: introductionReducer,
           aboutMe: aboutMeReducer,
           workExperience: workExperienceReducer,
+          defaultTheme: defaultThemeReducer,
         };
         const json = JSON.stringify(apiData);
         const blob = new Blob([json], { type: 'application/json' });

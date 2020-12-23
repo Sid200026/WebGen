@@ -37,6 +37,15 @@ const useStyles = makeStyles(style);
 const Company = () => {
   const classes = useStyles();
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
+
+  const defaultThemeReducer = useSelector((state) => state.defaultThemeReducer);
+
+  const {
+    subTextColor: defaultSubTextColor,
+    informationColor: defaultInformationColor,
+    companyNameColor: defaultCompanyNameColor,
+  } = defaultThemeReducer;
+
   const { workExperienceList } = workExperienceReducer;
   const dispatch = useDispatch();
 
@@ -47,24 +56,24 @@ const Company = () => {
   });
   const [createData, setCreateData] = useState({
     companyName: '',
-    companyNameColor: '#000000',
+    companyNameColor: defaultCompanyNameColor,
     startDate: '',
     endDate: '',
     role: '',
-    subTextColor: '#000000',
+    subTextColor: defaultSubTextColor,
     information: [],
-    informationColor: '#000000',
+    informationColor: defaultInformationColor,
   });
 
   const [editData, setEditData] = useState({
     companyName: '',
-    companyNameColor: '#000000',
+    companyNameColor: defaultCompanyNameColor,
     startDate: '',
     endDate: '',
     role: '',
-    subTextColor: '#000000',
+    subTextColor: defaultSubTextColor,
     information: [],
-    informationColor: '#000000',
+    informationColor: defaultInformationColor,
   });
 
   const [error, setError] = useState('');
@@ -126,13 +135,13 @@ const Company = () => {
     dispatch(workExperienceAddFunc(createData));
     setCreateData({
       companyName: '',
-      companyNameColor: '#000000',
+      companyNameColor: defaultCompanyNameColor,
       startDate: '',
       endDate: '',
       role: '',
-      subTextColor: '#000000',
+      subTextColor: defaultSubTextColor,
       information: [],
-      informationColor: '#000000',
+      informationColor: defaultInformationColor,
     });
     handleCreateClose();
   };
@@ -161,13 +170,13 @@ const Company = () => {
     dispatch(workExperienceModifyFunc(editData, editOpen.index));
     setEditData({
       companyName: '',
-      companyNameColor: '#000000',
+      companyNameColor: defaultCompanyNameColor,
       startDate: '',
       endDate: '',
       role: '',
-      subTextColor: '#000000',
+      subTextColor: defaultSubTextColor,
       information: [],
-      informationColor: '#000000',
+      informationColor: defaultInformationColor,
     });
     handleEditClose();
   };
