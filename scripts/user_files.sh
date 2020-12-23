@@ -8,16 +8,22 @@ USER_WORK_EXPERIENCE='user.work_experience_initial.js'
 FILE_CONTENT="""const state = {};
 export default state;"""
 
+if [ ! -z "${DEPLOYMENT_GROUP_ID}" ]; then
+    cd /home/ubuntu/WebGen
+fi
+
 CURRENT_DIR="${PWD##*/}"
 
+echo $CURRENT_DIR
+
 if [ $CURRENT_DIR = "scripts" ]; then
+    echo "Executing from scripts directory"
     cd ..
     cd $BASE_DIRECTORY
 else
+    echo "Executing from root directory"
     cd $BASE_DIRECTORY
 fi
-
-pwd
 
 declare -a USER_FILES=("$USER_INTRODUCTION" "$USER_ABOUT_ME" "$USER_WORK_EXPERIENCE")
 

@@ -53,6 +53,13 @@ import {
   workExperienceList,
 } from '../constants/work_experience_page';
 
+import {
+  skillColor as defaultSkillColor,
+  informationColor as defaultInformationColor,
+  subTextColor as defaultSubTextColor,
+  companyNameColor as defaultCompanyNameColor,
+} from '../constants/default_theme';
+
 const isArray = (a) => {
   return !!a && a.constructor === Array;
 };
@@ -118,6 +125,13 @@ const workExperienceKeySet = {
   [workExperienceList]: isArray,
 };
 
+const defaultThemeKeySet = {
+  [defaultSkillColor]: 'string',
+  [defaultCompanyNameColor]: 'string',
+  [defaultInformationColor]: 'string',
+  [defaultSubTextColor]: 'string',
+};
+
 const validate = (data, parentObject, key) => {
   if (!Object.prototype.hasOwnProperty.call(data, key)) return false;
   const value = parentObject[key];
@@ -129,7 +143,7 @@ const validate = (data, parentObject, key) => {
 };
 
 const validateUploadedData = (data) => {
-  const { introduction, aboutMe, workExperience } = data;
+  const { introduction, aboutMe, workExperience, defaultTheme } = data;
   if (!introduction || !aboutMe || !workExperience) return false;
   const introductionReturn = Object.keys(introductionKeySet).filter((key) => {
     return !validate(introduction, introductionKeySet, key);
@@ -145,6 +159,12 @@ const validateUploadedData = (data) => {
     return !validate(workExperience, workExperienceKeySet, key);
   });
   if (workExperienceReturn.length !== 0) return false;
+
+  const defaultThemeReturn = Object.keys(defaultThemeKeySet).filter((key) => {
+    return !validate(defaultTheme, defaultThemeKeySet, key);
+  });
+  if (defaultThemeReturn.length !== 0) return false;
+
   return true;
 };
 
