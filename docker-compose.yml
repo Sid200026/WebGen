@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  webgen:
+    build:
+      context: .
+      args:
+        PORT: ${PORT}
+      dockerfile: Dockerfile
+    image: webgen:latest
+    ports:
+      - ${PORT}:${PORT}
+    restart: unless-stopped
+    env_file: .env
+    container_name: webgen_web
+    networks:
+      - webgen_net
+    depends_on:
+      - redis
+      - database
+  redis:
+    image: 'redis:alpine'
+    restart: unless-stopped
+    container_name: webgen_redis
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    networks:
+      - webgen_net
+  database:
+    image: 'postgres:alpine'
+    ports:
+      - ${DATABASE_PORT}:${DATABASE_PORT}
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_DB: ${DATABASE_NAME}
+    restart: unless-stopped
+    container_name: webgen_database
+    networks:
+      - webgen_net
+networks:
+  webgen_net:

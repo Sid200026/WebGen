@@ -1,7 +1,10 @@
 const dotenvfile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
 require('dotenv').config({ path: dotenvfile });
 
-const REDIS_URL = process.env.REDIS_URL;
+const REDIS_HOST = process.env.REDIS_HOST;
+const REDIS_PORT = process.env.REDIS_PORT;
+
+REDIS_URL = `redis://${REDIS_HOST}:${REDIS_PORT}`;
 
 const redisConfig = REDIS_URL;
 
