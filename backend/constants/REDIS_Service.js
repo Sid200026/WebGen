@@ -4,7 +4,7 @@ require('dotenv').config({ path: dotenvfile });
 const REDIS_HOST = process.env.REDIS_HOST;
 const REDIS_PORT = process.env.REDIS_PORT;
 
-REDIS_URL = `redis://${REDIS_HOST}:${REDIS_PORT}`;
+const REDIS_URL = `redis://${REDIS_HOST}:${REDIS_PORT}`;
 
 const redisConfig = REDIS_URL;
 
