@@ -1,5 +1,8 @@
 const { app } = require('./app');
 const { logger } = require('./logger/logger');
+require('./models/index');
+const { createTheme } = require('./scripts/createTheme');
+createTheme();
 
 // Use .env in development mode, .env.production in production mode
 const dotenvfile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';

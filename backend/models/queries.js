@@ -44,7 +44,7 @@ const createTemplate = async (
   VALUES($1, $2, $3, $4)
   ON CONFLICT(template_name)
   DO
-  UPDATE SET template_name=$1
+  UPDATE SET template_image=$2, template_link=$3, template_config=$4
   RETURNING *;
   `;
   const response = await db.query(createQuery, [

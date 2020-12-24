@@ -6,7 +6,6 @@ const { encryption } = require('../services/protection/encrypt_decrypt');
 const { frontendLogger, logger } = require('../logger/logger');
 frontendLogger.error = jest.fn().mockImplementationOnce(() => {});
 logger.error = jest.fn().mockImplementation(() => {});
-
 jest.mock('bull');
 jest.mock('pg');
 

@@ -12,7 +12,6 @@ const { router: templateRouter } = require('./routes/template/router');
 const { logger } = require('./logger/logger');
 const { protectAPI } = require('./services/protection/protection');
 const app = express();
-require('./models/index');
 
 const { sanitiseInput } = require('./utils/sanitise');
 
