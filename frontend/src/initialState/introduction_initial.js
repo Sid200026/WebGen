@@ -34,7 +34,7 @@ const introduction = {
   [particleTheme]: '',
   [particleThemeBackgroundColor]: '#000000',
   [particleThemeEntityColor]: '#ffffff',
-  [buttonText]: 'Visit My Profile',
+  [buttonText]: '',
   [buttonBorder]: '#000000',
   [buttonColor]: '#ffffff',
   [buttonHoverBG]: '#0000ff',

@@ -2,5 +2,5 @@
 
 cd /home/ubuntu/WebGen
 npm run build
-pm2 restart npm -- run prod --
+pm2 restart npm
 sudo systemctl start nginx

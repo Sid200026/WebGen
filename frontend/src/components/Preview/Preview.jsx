@@ -59,7 +59,9 @@ const Preview = (props) => {
         </div>
       )}
       <div className="preview__container">
-        <Header menuBackground={menuBackground} menuColor={menuColor} />
+        {(aboutMeEnable || workExperienceEnable) && (
+          <Header menuBackground={menuBackground} menuColor={menuColor} />
+        )}
         {aboutMeEnable && <AboutMeLayout />}
         {workExperienceEnable && <WorkExperienceLayout />}
       </div>
