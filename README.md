@@ -292,12 +292,12 @@ Project Link: [https://github.com/Sid200026/WebGen](https://github.com/Sid200026
 [contributors-url]: https://github.com/Sid200026/WebGen/graphs/contributors
 [issues-shield]: https://img.shields.io/github/issues/Sid200026/WebGen.svg?style=for-the-badge
 [issues-url]: https://github.com/Sid200026/WebGen/issues
-[license-shield]: https://img.shields.io/github/license/Sid200026/WebGen.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Sid200026/WebGen?style=for-the-badge
 [license-url]: https://github.com/Sid200026/WebGen/blob/master/LICENSE
 [linkedin-url]: https://www.linkedin.com/in/sid200026/
 [product-screenshot]: docs/WebGen.png
 [production-link]: http://ec2-3-15-186-149.us-east-2.compute.amazonaws.com
 [contributing-link]: https://github.com/Sid200026/WebGen/blob/master/CONTRIBUTING.md
-[travis-badge]: https://img.shields.io/travis/Sid200026/WebGen?style=for-the-badge
+[travis-badge]: https://travis-ci.com/Sid200026/WebGen.svg?token=cmroMcFr7wuBYLbRFzWy&branch=master
 [dependencies-badge]: https://img.shields.io/david/Sid200026/WebGen?style=for-the-badge
 [language-url]: https://img.shields.io/github/languages/top/Sid200026/WebGen?style=for-the-badge
