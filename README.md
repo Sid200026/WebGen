@@ -1,6 +1,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+[![Language][language-url]][language-url]
 [![Build Status][travis-badge]][travis-badge]
 
 <br />
@@ -293,3 +294,4 @@ Project Link: [https://github.com/Sid200026/WebGen](https://github.com/Sid200026
 [contributing-link]: https://github.com/Sid200026/WebGen/blob/master/CONTRIBUTING.md
 [travis-badge]: https://img.shields.io/travis/Sid200026/WebGen?style=for-the-badge
 [dependencies-badge]: https://img.shields.io/david/Sid200026/WebGen?style=for-the-badge
+[language-url]: https://img.shields.io/github/languages/top/Sid200026/WebGen?style=for-the-badge
