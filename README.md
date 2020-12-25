@@ -25,7 +25,6 @@
   </p>
 </p>
 
-
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
@@ -70,12 +69,12 @@ This summer I finally decided to update my [website](https://sid200026.github.io
 
 ### Built With
 
-WebGen is built using the **PERN** ( PostgreSQL, Express, React and NodeJS ) stack. 
-* [React](https://reactjs.org/)
-* [NodeJS](https://nodejs.org/en/)
-* [AWS](https://aws.amazon.com/)
-* [PostgreSQL](https://www.postgresql.org/)
+WebGen is built using the **PERN** ( PostgreSQL, Express, React and NodeJS ) stack.
 
+- [React](https://reactjs.org/)
+- [NodeJS](https://nodejs.org/en/)
+- [AWS](https://aws.amazon.com/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## Getting Started
 
@@ -85,52 +84,56 @@ To get a local copy up and running follow these simple steps.
 
 This is the list of softwares required to run WebGen and how to install them.
 
-* **docker** ( Optional )
+- **docker** ( Optional )
 
   - [How to Install Docker](https://docs.docker.com/engine/install/)
 
-* **npm**
+- **npm**
   ```sh
   npm install npm@latest -g
   ```
-* **redis**
+- **redis**
 
-   - Linux
-   ```sh
-   sudo apt update
-   sudo apt install redis-server
-   sudo systemctl start redis-server
-   ```
-   
-   - MacOS
-   ```sh
-   brew update
-   brew install redis
-   redis-server /usr/local/etc/redis.conf
-   ```
-   
-   - Windows : [How to Install and Run Redis](https://riptutorial.com/redis/example/29962/installing-and-running-redis-server-on-windows)
-   
-* **postgres**
+  - Linux
 
-   - Linux
-   ```sh
-   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-   wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-   sudo apt-get update
-   sudo apt-get -y install postgresql
-   sudo systemctl start postgresql
-   ```
+  ```sh
+  sudo apt update
+  sudo apt install redis-server
+  sudo systemctl start redis-server
+  ```
 
-   - MacOS
-   ```sh
-   brew update
-   brew install postgresql
-   initdb /usr/local/var/postgres
-   pg_ctl -D /usr/local/var/postgres start
-   ```
-   
-   - Windows : [How to Install and Run PostgreSQL](https://www.postgresql.org/download/windows/)
+  - MacOS
+
+  ```sh
+  brew update
+  brew install redis
+  redis-server /usr/local/etc/redis.conf
+  ```
+
+  - Windows : [How to Install and Run Redis](https://riptutorial.com/redis/example/29962/installing-and-running-redis-server-on-windows)
+
+- **postgres**
+
+  - Linux
+
+  ```sh
+  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+  sudo apt-get update
+  sudo apt-get -y install postgresql
+  sudo systemctl start postgresql
+  ```
+
+  - MacOS
+
+  ```sh
+  brew update
+  brew install postgresql
+  initdb /usr/local/var/postgres
+  pg_ctl -D /usr/local/var/postgres start
+  ```
+
+  - Windows : [How to Install and Run PostgreSQL](https://www.postgresql.org/download/windows/)
 
 ### Installation
 
@@ -143,6 +146,7 @@ This is the list of softwares required to run WebGen and how to install them.
    cd WebGen
    ```
 3. Create a `.env` file
+
    ```env
    PORT=<Port on which to run the application>
    SECRET_KEY=<Secret key used to encrypt strings>
@@ -156,9 +160,9 @@ This is the list of softwares required to run WebGen and how to install them.
    REDIS_HOST=<URL on which Redis server is running Eg: 127.0.01, redis ( if using docker )>
    REDIS_PORT=<Port on which Redis server is running Eg: 6379>
    ```
-   
+
    For example, if installing the application via npm, following is a valid env file
-   
+
    ```env
    PORT=8000
    SECRET_KEY=webgen
@@ -172,9 +176,9 @@ This is the list of softwares required to run WebGen and how to install them.
    REDIS_HOST=127.0.0.1
    REDIS_PORT=6379
    ```
-   
+
    For example, if installing the application via docker, following is a valid env file
-   
+
    ```env
    PORT=8000
    SECRET_KEY=webgen
@@ -192,22 +196,23 @@ This is the list of softwares required to run WebGen and how to install them.
 #### Via NPM
 
 1. Install the dependencies
+
    ```sh
    npm install
    ```
-  
+
 2. Run the backend server
 
    ```sh
    npm run dev
    ```
-   
+
 3. Open another terminal and run the frontend server
 
    ```sh
    npm run bundle
    ```
-   
+
 4. If you want to run both of them in the same terminal, run
 
    ```sh
@@ -221,13 +226,13 @@ This is the list of softwares required to run WebGen and how to install them.
    ```sh
    docker-compose build
    ```
-   
+
 2. Attach container to each of the services
 
    ```sh
    docker-compose up -d
    ```
-   
+
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
@@ -261,18 +266,20 @@ Siddharth Singha Roy - [@Sid200026][linkedin-url] - siddharthsingharoy@gmail.com
 Project Link: [https://github.com/Sid200026/WebGen](https://github.com/Sid200026/WebGen)
 
 <!-- ACKNOWLEDGEMENTS -->
+
 ## Acknowledgements
-* [Prettier](https://prettier.io/)
-* [ESLint](https://eslint.org/)
-* [Travis CI](https://travis-ci.org/)
-* [Bull](https://www.npmjs.com/package/bull)
-* [Img Shields](https://shields.io)
-* [AWS RDS](https://aws.amazon.com/rds/)
-* [AWS EC2](https://aws.amazon.com/ec2/)
-* [AWS CodeDeploy](https://aws.amazon.com/codedeploy/)
-* [AWS S3](https://aws.amazon.com/s3/)
-* [Hatchful](https://hatchful.shopify.com/)
-* [README Template](https://github.com/othneildrew/Best-README-Template)
+
+- [Prettier](https://prettier.io/)
+- [ESLint](https://eslint.org/)
+- [Travis CI](https://travis-ci.org/)
+- [Bull](https://www.npmjs.com/package/bull)
+- [Img Shields](https://shields.io)
+- [AWS RDS](https://aws.amazon.com/rds/)
+- [AWS EC2](https://aws.amazon.com/ec2/)
+- [AWS CodeDeploy](https://aws.amazon.com/codedeploy/)
+- [AWS S3](https://aws.amazon.com/s3/)
+- [Hatchful](https://hatchful.shopify.com/)
+- [README Template](https://github.com/othneildrew/Best-README-Template)
 
 [contributors-shield]: https://img.shields.io/github/contributors/Sid200026/WebGen.svg?style=for-the-badge
 [contributors-url]: https://github.com/Sid200026/WebGen/graphs/contributors
