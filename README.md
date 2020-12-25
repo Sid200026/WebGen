@@ -248,11 +248,11 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push -u origin AmazingFeature`)
 5. Open a Pull Request
 
-For a more detailed walkthrough, see [CONTRIBUTING](contributing-link) for more information.
+For a more detailed walkthrough, see [CONTRIBUTING][contributing-link] for more information.
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](license-url) for more information.
+Distributed under the MIT License. See [LICENSE][license-url] for more information.
 
 ## Contact
 
@@ -279,9 +279,9 @@ Project Link: [https://github.com/Sid200026/WebGen](https://github.com/Sid200026
 [issues-shield]: https://img.shields.io/github/issues/Sid200026/WebGen.svg?style=for-the-badge
 [issues-url]: https://github.com/Sid200026/WebGen/issues
 [license-shield]: https://img.shields.io/github/license/Sid200026/WebGen.svg?style=for-the-badge
-[license-url]: https://github.com/Sid200026/WebGen/blob/master/README.md
+[license-url]: https://github.com/Sid200026/WebGen/blob/master/LICENSE
 [linkedin-url]: https://www.linkedin.com/in/sid200026/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: docs/WebGen.png
 [production-link]: http://ec2-3-15-186-149.us-east-2.compute.amazonaws.com
 [contributing-link]: https://github.com/Sid200026/WebGen/blob/master/CONTRIBUTING.md
 [travis-badge]: https://img.shields.io/travis/Sid200026/WebGen?style=for-the-badge
