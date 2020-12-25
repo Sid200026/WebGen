@@ -170,7 +170,7 @@ This is the list of softwares required to run WebGen and how to install them.
    EMAIL_USER=************gmail.com
    EMAIL_PASSWORD=************
    DATABASE_USER=postgres
-   DATABASE_PASSWORD=postgres
+   DATABASE_PASSWORD=********
    DATABASE_NAME=postgres
    DATABSE_HOST=localhost
    DATABASE_PORT=5432
@@ -186,7 +186,7 @@ This is the list of softwares required to run WebGen and how to install them.
    EMAIL_USER=************gmail.com
    EMAIL_PASSWORD=************
    DATABASE_USER=postgres
-   DATABASE_PASSWORD=postgres
+   DATABASE_PASSWORD=********
    DATABASE_NAME=postgres
    DATABSE_HOST=database
    DATABASE_PORT=5432
