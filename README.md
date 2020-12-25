@@ -15,7 +15,7 @@
   <p align="center">
     An open source personal website / portfolio generator
     <br />
-    <a href="https://github.com/Sid200026/WebGen/blob/master/README.md"><strong>Explore the docs »</strong></a>
+    <a href="https://sid200026.github.io/WebGen"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="http://ec2-3-15-186-149.us-east-2.compute.amazonaws.com/">View Demo</a>
