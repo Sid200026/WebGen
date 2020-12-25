@@ -193,6 +193,12 @@ This is the list of softwares required to run WebGen and how to install them.
    REDIS_HOST=redis
    REDIS_PORT=6379
    ```
+   
+4. Create the user files
+
+   ```sh
+   bash scripts/user_files.sh
+   ```
 
 #### Via NPM
 
