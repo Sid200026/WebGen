@@ -1,6 +1,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+[![Language][language-url]][language-url]
 [![Build Status][travis-badge]][travis-badge]
 
 <br />
@@ -14,7 +15,7 @@
   <p align="center">
     An open source personal website / portfolio generator
     <br />
-    <a href="https://github.com/Sid200026/WebGen/blob/master/README.md"><strong>Explore the docs »</strong></a>
+    <a href="https://sid200026.github.io/WebGen"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="http://ec2-3-15-186-149.us-east-2.compute.amazonaws.com/">View Demo</a>
@@ -169,7 +170,7 @@ This is the list of softwares required to run WebGen and how to install them.
    EMAIL_USER=************gmail.com
    EMAIL_PASSWORD=************
    DATABASE_USER=postgres
-   DATABASE_PASSWORD=postgres
+   DATABASE_PASSWORD=********
    DATABASE_NAME=postgres
    DATABSE_HOST=localhost
    DATABASE_PORT=5432
@@ -185,12 +186,18 @@ This is the list of softwares required to run WebGen and how to install them.
    EMAIL_USER=************gmail.com
    EMAIL_PASSWORD=************
    DATABASE_USER=postgres
-   DATABASE_PASSWORD=postgres
+   DATABASE_PASSWORD=********
    DATABASE_NAME=postgres
    DATABSE_HOST=database
    DATABASE_PORT=5432
    REDIS_HOST=redis
    REDIS_PORT=6379
+   ```
+   
+4. Create the user files
+
+   ```sh
+   bash scripts/user_files.sh
    ```
 
 #### Via NPM
@@ -285,11 +292,12 @@ Project Link: [https://github.com/Sid200026/WebGen](https://github.com/Sid200026
 [contributors-url]: https://github.com/Sid200026/WebGen/graphs/contributors
 [issues-shield]: https://img.shields.io/github/issues/Sid200026/WebGen.svg?style=for-the-badge
 [issues-url]: https://github.com/Sid200026/WebGen/issues
-[license-shield]: https://img.shields.io/github/license/Sid200026/WebGen.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Sid200026/WebGen?style=for-the-badge
 [license-url]: https://github.com/Sid200026/WebGen/blob/master/LICENSE
 [linkedin-url]: https://www.linkedin.com/in/sid200026/
 [product-screenshot]: docs/WebGen.png
 [production-link]: http://ec2-3-15-186-149.us-east-2.compute.amazonaws.com
 [contributing-link]: https://github.com/Sid200026/WebGen/blob/master/CONTRIBUTING.md
-[travis-badge]: https://img.shields.io/travis/Sid200026/WebGen?style=for-the-badge
+[travis-badge]: https://travis-ci.com/Sid200026/WebGen.svg?token=cmroMcFr7wuBYLbRFzWy&branch=master
 [dependencies-badge]: https://img.shields.io/david/Sid200026/WebGen?style=for-the-badge
+[language-url]: https://img.shields.io/github/languages/top/Sid200026/WebGen?style=for-the-badge
