@@ -3,6 +3,7 @@
 [![MIT License][license-shield]][license-url]
 [![Language][language-url]][language-url]
 [![Build Status][travis-badge]][travis-badge]
+[![Dependencies][dependencies-badge]][dependencies-badge]
 
 <br />
 <p align="center">
@@ -298,6 +299,6 @@ Project Link: [https://github.com/Sid200026/WebGen](https://github.com/Sid200026
 [product-screenshot]: docs/WebGen.png
 [production-link]: http://ec2-3-15-186-149.us-east-2.compute.amazonaws.com
 [contributing-link]: https://github.com/Sid200026/WebGen/blob/master/CONTRIBUTING.md
-[travis-badge]: https://travis-ci.com/Sid200026/WebGen.svg?token=cmroMcFr7wuBYLbRFzWy&branch=master
+[travis-badge]: https://img.shields.io/travis/com/Sid200026/WebGen?style=for-the-badge
 [dependencies-badge]: https://img.shields.io/david/Sid200026/WebGen?style=for-the-badge
 [language-url]: https://img.shields.io/github/languages/top/Sid200026/WebGen?style=for-the-badge
