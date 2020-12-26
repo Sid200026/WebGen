@@ -1,22 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { PropTypes } from 'prop-types';
 import '../styles/skillbar.scss';
 
 const Skillbars = (props) => {
   const { skills, skillsBackground } = props;
-
-  useEffect(() => {
-    document.querySelectorAll('.skillbar').forEach((node) => {
-      const dataPercentage = node.getAttribute('data-percent');
-      node
-        .querySelector('.skillbar-bar')
-        .animate(
-          { width: dataPercentage },
-          { duration: 3000, iterations: 1, fill: 'forwards' },
-        );
-    });
-    return undefined;
-  });
 
   const findMaxSkillName = skills.reduce(
     (prev, current) => {
@@ -53,7 +40,11 @@ const Skillbars = (props) => {
           className="skillbar-container-bar"
           style={{ background: skillsBackground }}
         >
-          <div className="skillbar-bar" style={{ background: skill.color }} />
+          <div
+            // eslint-disable-next-line max-len
+            className={`skillbar-bar skill-bar-animation-root skill-bar-percent-value-${skill.value}`}
+            style={{ background: skill.color }}
+          />
           <div className="skill-bar-percent">{`${skill.value}%`}</div>
         </div>
       </div>
