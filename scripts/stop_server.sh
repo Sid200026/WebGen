@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-pm2 stop npm
-sudo systemctl stop nginx
+pm2 delete ecosystem.config.js
+systemctl stop nginx
