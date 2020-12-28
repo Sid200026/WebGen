@@ -11,6 +11,7 @@ const { router: submitRouter } = require('./routes/submit/router');
 const { router: templateRouter } = require('./routes/template/router');
 const { logger } = require('./logger/logger');
 const { protectAPI } = require('./services/protection/protection');
+const { instantLimiter, overallLimiter } = require('./controller/rateLimitUpload');
 const app = express();
 
 const { sanitiseInput } = require('./utils/sanitise');
@@ -52,9 +53,12 @@ app.use('/api', (req, res, next) => {
   }
 });
 
+app.use('/upload', [instantLimiter, overallLimiter]);
 app.use('/upload', uploadRouter);
+
 app.use('/template', templateRouter);
 app.use('/api/log', logRouter);
+
 app.use('/api/submit', submitRouter);
 
 /********* Serving HTML file *********/

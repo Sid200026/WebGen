@@ -1,9 +1,12 @@
 const path = require('path');
 const request = require('supertest');
+jest.mock('ioredis', () => jest.requireActual('redis-mock'));
+
 const { app } = require('../app');
 const { encryption } = require('../services/protection/encrypt_decrypt');
 
 const { frontendLogger, logger } = require('../logger/logger');
+
 frontendLogger.error = jest.fn().mockImplementationOnce(() => {});
 logger.error = jest.fn().mockImplementation(() => {});
 jest.mock('bull');

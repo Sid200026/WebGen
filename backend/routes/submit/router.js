@@ -5,6 +5,7 @@ const {
 const {
   verifyVerificationKeyController,
 } = require('../../controller/verifyVerificationKey');
+const { submitLimiter } = require('../../controller/rateLimitSubmit');
 
 const { createWebsite } = require('../../controller/createWebsite');
 
@@ -15,6 +16,8 @@ router.use(express.urlencoded({ extended: false }));
 
 router.route('/getkey').post(createVerificationKeyController);
 router.route('/verifykey').post(verifyVerificationKeyController);
+
+router.use(submitLimiter);
 router.route('/submit').post(createWebsite);
 
 module.exports = { router };
