@@ -14,4 +14,4 @@ const EMAIL_QUEUE_TYPES = {
   SUCCESS_EMAIL: 'SUCCESS_EMAIL',
 };
 
-module.exports = { redisConfig, EMAIL_QUEUE_TYPES };
+module.exports = { redisConfig, EMAIL_QUEUE_TYPES, REDIS_HOST, REDIS_PORT };

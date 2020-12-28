@@ -77,6 +77,15 @@ const ProfilePicture = () => {
                 // eslint-disable-next-line max-len
                 '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
             });
+          } else if (err.response.status === 429) {
+            Swal.fire({
+              icon: 'error',
+              title: `Too many uploads`,
+              text: `${err.response.data}`,
+              footer:
+                // eslint-disable-next-line max-len
+                '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
+            });
           } else {
             Swal.fire({
               icon: 'error',

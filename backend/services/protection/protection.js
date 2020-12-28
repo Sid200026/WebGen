@@ -10,6 +10,7 @@ const { encryption, decryption } = require('./encrypt_decrypt');
  */
 
 const MaxValidDifference = 6000; // 6 seconds
+const LessSecureAppeasement = 2; // Less secure connections will be given 12 seconds
 
 // Returns false if invalid request
 const protectAPI = (encryptedText, lessSecure = false) => {
@@ -21,7 +22,8 @@ const protectAPI = (encryptedText, lessSecure = false) => {
       return false;
     }
     if (lessSecure) {
-      return requestTimeStamp < currentTime;
+      const timeDifference = currentTime - requestTimeStamp;
+      return timeDifference <= MaxValidDifference * LessSecureAppeasement;
     }
     const timeDifference = currentTime - requestTimeStamp;
     return timeDifference <= MaxValidDifference;

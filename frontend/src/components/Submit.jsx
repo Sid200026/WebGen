@@ -31,6 +31,17 @@ const Submit = () => {
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
   const defaultThemeReducer = useSelector((state) => state.defaultThemeReducer);
 
+  const fireSubmitExceedError = (err) => {
+    Swal.fire({
+      icon: 'error',
+      title: `Too many submissions`,
+      text: `${err.response.data}`,
+      footer:
+        // eslint-disable-next-line max-len
+        '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
+    });
+  };
+
   const verifyEmail = async (data, errorMessage = '') => {
     const { message } = data;
     const { data: lastData } = data;
@@ -72,6 +83,11 @@ const Submit = () => {
         navigate('/complete', { state: { isComplete: true, email } });
       } catch (err) {
         const { response } = err;
+        const { status } = response;
+        if (status === 429) {
+          fireSubmitExceedError(err);
+          return;
+        }
         const { data: fetchedData } = response;
         const { error } = fetchedData;
         verifyEmail(data, error);
