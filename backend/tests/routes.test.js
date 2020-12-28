@@ -4,6 +4,7 @@ const { app } = require('../app');
 const { encryption } = require('../services/protection/encrypt_decrypt');
 
 const { frontendLogger, logger } = require('../logger/logger');
+
 frontendLogger.error = jest.fn().mockImplementationOnce(() => {});
 logger.error = jest.fn().mockImplementation(() => {});
 jest.mock('bull');
@@ -76,27 +77,4 @@ describe('API Path requires apiKey', () => {
         expect(response.statusCode).toBe(403);
       });
   });
-});
-
-const randomFilePath = path.join(__dirname, '../', 'index.js');
-
-describe('Upload endpoint should accept files with valid image extension', () => {
-  test('Sends status 400', async () =>
-    request(app)
-      .post('/upload/single')
-      .field({ apiKey: encryption(`${new Date().getTime()}`) })
-      .attach('image', randomFilePath)
-      .then((response) => {
-        expect(response.statusCode).toBe(400);
-      }));
-});
-
-describe('Upload endpoint should require apiKey', () => {
-  test('Sends status 403', async () =>
-    request(app)
-      .post('/upload/single')
-      .attach('image', randomFilePath)
-      .then((response) => {
-        expect(response.statusCode).toBe(403);
-      }));
 });
