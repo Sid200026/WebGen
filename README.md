@@ -243,9 +243,7 @@ This is the list of softwares required to run WebGen and how to install them.
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-For more examples, please refer to the [Documentation](https://github.com/Sid200026/WebGen/wiki)
+For FAQs, examples, guidelines please refer to the [Documentation](https://github.com/Sid200026/WebGen/wiki)
 
 ## Roadmap
 
