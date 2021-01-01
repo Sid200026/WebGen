@@ -6,6 +6,7 @@ import { encrypt, decrypt } from '../utils/encryptDecrypt';
 import { introductionReducer } from '../reducers/introduction_reducer';
 import { aboutMeReducer } from '../reducers/about_me_reducer';
 import { workExperienceReducer } from '../reducers/work_experience_reducer';
+import { projectReducer } from '../reducers/project_reducer';
 import { defaultThemeReducer } from '../reducers/default_theme_reducer';
 
 const localStorageKey = 'WebGenStore';
@@ -49,6 +50,7 @@ const rootReducer = combineReducers({
   introductionReducer,
   aboutMeReducer,
   workExperienceReducer,
+  projectReducer,
   defaultThemeReducer,
 });
 
