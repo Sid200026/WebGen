@@ -65,6 +65,13 @@ import {
   pageHeadline as ProjectPageHeadline,
   pageHeadlineColor as ProjectPageHeadlineColor,
   background as ProjectBackground,
+  projectCardColor,
+  projectDescriptionColor,
+  projectTitleColor,
+  projectViewBtnBg,
+  projectViewBtnColor,
+  projectTableBg,
+  projectTableColor,
 } from '../constants/project_page';
 
 const isArray = (a) => {
@@ -144,6 +151,13 @@ const projectKeySet = {
   [ProjectPageHeadline]: 'string',
   [ProjectPageHeadlineColor]: 'string',
   [ProjectBackground]: 'string',
+  [projectCardColor]: 'string',
+  [projectDescriptionColor]: 'string',
+  [projectTitleColor]: 'string',
+  [projectViewBtnBg]: 'string',
+  [projectViewBtnColor]: 'string',
+  [projectTableColor]: 'string',
+  [projectTableBg]: 'string',
 };
 
 const validate = (data, parentObject, key) => {

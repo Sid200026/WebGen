@@ -14,13 +14,29 @@ import { style } from '../../styles/editLanding';
 import { projectWriteup } from '../../constants/writeups/index';
 import { enablePage } from '../../actions/project_action';
 import { Layout } from './Project/Layout.jsx';
+import { ProjectCard } from './Project/ProjectCard.jsx';
+import { PopularProject } from './Project/PopularProject.jsx';
+import { OtherProject } from './Project/OtherProject.jsx';
+import { ProjectTable } from './Project/ProjectTable.jsx';
 import { StepperComp as Stepper } from './Stepper.jsx';
 
 const useStyles = makeStyles(style);
 
-const getLabels = () => ['Page Layout'];
+const getLabels = () => [
+  'Page Layout',
+  'Project Card',
+  'Popular Projects',
+  'Project Table',
+  'Other Projects',
+];
 
-const getContent = () => [Layout];
+const getContent = () => [
+  Layout,
+  ProjectCard,
+  PopularProject,
+  ProjectTable,
+  OtherProject,
+];
 
 const Project = (props) => {
   const classes = useStyles();
