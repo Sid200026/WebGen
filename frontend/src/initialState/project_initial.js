@@ -10,6 +10,8 @@ import {
   projectViewBtnColor,
   projectTableColor,
   projectTableBg,
+  popularProject,
+  otherProject,
 } from '../constants/project_page';
 
 const project = {
@@ -24,6 +26,8 @@ const project = {
   [projectViewBtnBg]: '#fafafa',
   [projectTableBg]: '#ffffff',
   [projectTableColor]: '#000000',
+  [popularProject]: [],
+  [otherProject]: [],
 };
 
 export { project };

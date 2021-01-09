@@ -12,6 +12,12 @@ export const PROJECT_VIEW_BUTTON_COLOR = 'PROJECT_VIEW_BUTTON_COLOR';
 export const PROJECT_VIEW_BUTTON_BG = 'PROJECT_VIEW_BUTTON_BG';
 export const PROJECT_TABLE_BG = 'PROJECT_TABLE_BG';
 export const PROJECT_TABLE_COLOR = 'PROJECT_TABLE_COLOR';
+export const POPULAR_PROJECT_ADD = 'POPULAR_PROJECT_ADD';
+export const POPULAR_PROJECT_REMOVE = 'POPULAR_PROJECT_REMOVE';
+export const POPULAR_PROJECT_EDIT = 'POPULAR_PROJECT_EDIT';
+export const OTHER_PROJECT_ADD = 'OTHER_PROJECT_ADD';
+export const OTHER_PROJECT_REMOVE = 'OTHER_PROJECT_REMOVE';
+export const OTHER_PROJECT_EDIT = 'OTHER_PROJECT_EDIT';
 
 /* ********* STATE KEYS ********* */
 
@@ -27,3 +33,5 @@ export const projectViewBtnColor = 'projectViewBtnColor';
 export const projectViewBtnBg = 'projectViewBtnBg';
 export const projectTableBg = 'projectTableBg';
 export const projectTableColor = 'projectTableColor';
+export const popularProject = 'popularProject';
+export const otherProject = 'otherProject';

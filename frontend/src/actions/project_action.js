@@ -12,6 +12,12 @@ import {
   PROJECT_VIEW_BUTTON_COLOR,
   PROJECT_TABLE_BG,
   PROJECT_TABLE_COLOR,
+  POPULAR_PROJECT_ADD,
+  POPULAR_PROJECT_EDIT,
+  POPULAR_PROJECT_REMOVE,
+  OTHER_PROJECT_ADD,
+  OTHER_PROJECT_EDIT,
+  OTHER_PROJECT_REMOVE,
 } from '../constants/project_page';
 
 export const enablePage = (response) => ({
@@ -67,6 +73,36 @@ export const projectTableBg = (color) => ({
 export const projectTableColor = (color) => ({
   type: PROJECT_TABLE_COLOR,
   payload: { color },
+});
+
+export const popularProjectAdd = (response) => ({
+  type: POPULAR_PROJECT_ADD,
+  payload: { response },
+});
+
+export const popularProjectDelete = (index) => ({
+  type: POPULAR_PROJECT_REMOVE,
+  payload: { index },
+});
+
+export const popularProjectEdit = (response, index) => ({
+  type: POPULAR_PROJECT_EDIT,
+  payload: { response, index },
+});
+
+export const otherProjectAdd = (response) => ({
+  type: OTHER_PROJECT_ADD,
+  payload: { response },
+});
+
+export const otherProjectDelete = (index) => ({
+  type: OTHER_PROJECT_REMOVE,
+  payload: { index },
+});
+
+export const otherProjectEdit = (response, index) => ({
+  type: OTHER_PROJECT_EDIT,
+  payload: { response, index },
 });
 
 export const reset = () => ({

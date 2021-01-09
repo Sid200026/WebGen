@@ -72,6 +72,8 @@ import {
   projectViewBtnColor,
   projectTableBg,
   projectTableColor,
+  popularProject,
+  otherProject,
 } from '../constants/project_page';
 
 const isArray = (a) => {
@@ -158,6 +160,8 @@ const projectKeySet = {
   [projectViewBtnColor]: 'string',
   [projectTableColor]: 'string',
   [projectTableBg]: 'string',
+  [popularProject]: isArray,
+  [otherProject]: isArray,
 };
 
 const validate = (data, parentObject, key) => {
