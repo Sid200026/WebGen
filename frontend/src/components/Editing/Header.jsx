@@ -114,13 +114,16 @@ const Header = (props) => {
     setOpenDialog(true);
   };
 
+  const handleResize = () => {
+    updateWidth(window.innerWidth);
+    if (width > 1160 && open) {
+      handleDrawerClose();
+    }
+  };
+
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      updateWidth(window.innerWidth);
-      if (width > 1160 && open) {
-        handleDrawerClose();
-      }
-    });
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   });
 
   const navigateTo = (link, state) => {

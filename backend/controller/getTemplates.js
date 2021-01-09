@@ -1,4 +1,3 @@
-const validator = require('validator').default;
 const { getTemplates } = require('../models/queries');
 
 const getTemplateController = async (_req, res) => {

@@ -49,7 +49,7 @@ const Template = () => {
   const [templates, setTemplates] = useState([]);
 
   const getTemplates = async () => {
-    const response = await getRequest('/template/gettemplates', { a: 3 });
+    const response = await getRequest('/template/gettemplates');
     const { data } = response;
     const { data: templateData } = data;
     setTemplates(templateData);

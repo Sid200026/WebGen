@@ -44,13 +44,16 @@ const Header = (props) => {
     setOpen(false);
   };
 
+  const handleResize = () => {
+    updateWidth(window.innerWidth);
+    if (width > 1160 && open) {
+      handleDrawerClose();
+    }
+  };
+
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      updateWidth(window.innerWidth);
-      if (width > 1160 && open) {
-        handleDrawerClose();
-      }
-    });
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   });
 
   const gotoNextSection = (className) => {
