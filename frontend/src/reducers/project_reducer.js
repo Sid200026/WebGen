@@ -6,7 +6,7 @@ import {
   PROJECT_CARD_COLOR,
   PROJECT_DESCRIPTION_COLOR,
   PROJECT_TITLE_COLOR,
-  PROJECT_VIEW_BUTTON_BG,
+  PROJECT_VIEW_BUTTON_BORDER,
   PROJECT_VIEW_BUTTON_COLOR,
   PROJECT_TABLE_BG,
   PROJECT_TABLE_COLOR,
@@ -25,7 +25,7 @@ import {
   projectCardColor,
   projectDescriptionColor,
   projectTitleColor,
-  projectViewBtnBg,
+  projectViewBtnBorder,
   projectViewBtnColor,
   projectTableBg,
   projectTableColor,
@@ -71,8 +71,8 @@ export const projectReducer = (state = project, { type, payload }) => {
       return { ...state, [projectTitleColor]: payload.color };
     case PROJECT_VIEW_BUTTON_COLOR:
       return { ...state, [projectViewBtnColor]: payload.color };
-    case PROJECT_VIEW_BUTTON_BG:
-      return { ...state, [projectViewBtnBg]: payload.color };
+    case PROJECT_VIEW_BUTTON_BORDER:
+      return { ...state, [projectViewBtnBorder]: payload.color };
     case PROJECT_TABLE_BG:
       return { ...state, [projectTableBg]: payload.color };
     case PROJECT_TABLE_COLOR:

@@ -305,7 +305,6 @@ const PopularProject = () => {
           label="Project Link"
           fullWidth
           className={classes.input}
-          required
           value={editProject.projectLink}
           onChange={(event) =>
             setEditProject({ ...editProject, projectLink: event.target.value })

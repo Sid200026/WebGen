@@ -8,6 +8,7 @@ import { Header } from './AboutMe/Header.jsx';
 import { IntroductionLayout } from './Introduction/IntroductionLayout.jsx';
 import { AboutMeLayout } from './AboutMe/AboutMeLayout.jsx';
 import { WorkExperienceLayout } from './WorkExperience/WorkExperienceLayout.jsx';
+import { ProjectLayout } from './Project/ProjectLayout.jsx';
 import '../../styles/preview.scss';
 
 const Preview = (props) => {
@@ -29,6 +30,8 @@ const Preview = (props) => {
     (stateReact) => stateReact.workExperienceReducer,
   );
 
+  const projectReducer = useSelector((stateReact) => stateReact.projectReducer);
+
   const goBackToPrevious = () => {
     if (previousSiteAvailable) {
       navigate(-1);
@@ -40,6 +43,7 @@ const Preview = (props) => {
   const { enable: introductionEnable } = introductionReducer;
   const { enable: aboutMeEnable, menuBackground, menuColor } = aboutMeReducer;
   const { enable: workExperienceEnable } = workExperienceReducer;
+  const { enable: projectEnable } = projectReducer;
   return (
     <>
       <Button
@@ -64,6 +68,7 @@ const Preview = (props) => {
         )}
         {aboutMeEnable && <AboutMeLayout />}
         {workExperienceEnable && <WorkExperienceLayout />}
+        {projectEnable && <ProjectLayout />}
       </div>
     </>
   );

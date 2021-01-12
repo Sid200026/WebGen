@@ -8,7 +8,7 @@ import {
   PROJECT_CARD_COLOR,
   PROJECT_DESCRIPTION_COLOR,
   PROJECT_TITLE_COLOR,
-  PROJECT_VIEW_BUTTON_BG,
+  PROJECT_VIEW_BUTTON_BORDER,
   PROJECT_VIEW_BUTTON_COLOR,
   PROJECT_TABLE_BG,
   PROJECT_TABLE_COLOR,
@@ -60,8 +60,8 @@ export const projectViewBtnColor = (color) => ({
   payload: { color },
 });
 
-export const projectViewBtnBg = (color) => ({
-  type: PROJECT_VIEW_BUTTON_BG,
+export const projectViewBtnBorder = (color) => ({
+  type: PROJECT_VIEW_BUTTON_BORDER,
   payload: { color },
 });
 

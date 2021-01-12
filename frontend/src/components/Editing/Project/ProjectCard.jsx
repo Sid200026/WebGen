@@ -10,7 +10,7 @@ import {
   projectCardColor as projectCardColorFunc,
   projectDescriptionColor as projectDescriptionColorFunc,
   projectTitleColor as projectTitleColorFunc,
-  projectViewBtnBg as projectViewBtnBgFunc,
+  projectViewBtnBorder as projectViewBtnBorderFunc,
   projectViewBtnColor as projectViewBtnColorFunc,
 } from '../../../actions/project_action';
 
@@ -24,7 +24,7 @@ const ProjectCard = () => {
     projectCardColor,
     projectDescriptionColor,
     projectTitleColor,
-    projectViewBtnBg,
+    projectViewBtnBorder,
     projectViewBtnColor,
   } = projectReducer;
   const dispatch = useDispatch();
@@ -139,13 +139,13 @@ const ProjectCard = () => {
                     height: '2rem',
                     marginTop: '5px',
                   }}
-                  value={projectViewBtnBg}
+                  value={projectViewBtnBorder}
                   onChange={(event) => {
-                    dispatch(projectViewBtnBgFunc(event.target.value));
+                    dispatch(projectViewBtnBorderFunc(event.target.value));
                   }}
                 />
               }
-              label="Project View Button Background"
+              label="Project View Button Border"
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
