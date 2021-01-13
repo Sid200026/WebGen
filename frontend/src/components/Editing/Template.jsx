@@ -33,6 +33,10 @@ import {
   reset as resetDefaultTheme,
   load as loadDefaultTheme,
 } from '../../actions/default_theme_action';
+import {
+  reset as resetProject,
+  // load as loadProject,
+} from '../../actions/project_action';
 
 const useStyles = makeStyles(style);
 
@@ -42,9 +46,11 @@ const Template = () => {
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
+  const projectReducer = useSelector((state) => state.projectReducer);
   const { enable: introductionEnable } = introductionReducer;
   const { enable: aboutMeEnable } = aboutMeReducer;
   const { enable: workExperienceEnable } = workExperienceReducer;
+  const { enable: projectEnable } = projectReducer;
 
   const [templates, setTemplates] = useState([]);
 
@@ -68,6 +74,7 @@ const Template = () => {
     dispatch(resetAboutMe());
     dispatch(resetWorkExperience());
     dispatch(resetDefaultTheme());
+    dispatch(resetProject());
     localStorage.removeItem(localStorageKey);
   };
 
@@ -98,11 +105,11 @@ const Template = () => {
     dispatch(loadAboutMe(aboutMe));
     dispatch(loadWorkExperience(workExperience));
     dispatch(loadDefaultTheme(defaultTheme));
-    navigateTo('/introduction');
+    // TODO : Add projectTheme
   };
 
   const renderFromTemplate = (index) => {
-    if (introductionEnable || aboutMeEnable || workExperienceEnable) {
+    if (introductionEnable || aboutMeEnable || workExperienceEnable || projectEnable) {
       warnUnsavedChanges(() => {
         updateStore(index);
       });
@@ -112,7 +119,7 @@ const Template = () => {
   };
 
   const startFromScratch = () => {
-    if (introductionEnable || aboutMeEnable || workExperienceEnable) {
+    if (introductionEnable || aboutMeEnable || workExperienceEnable || projectEnable) {
       warnUnsavedChanges(() => {
         discardChanges();
         navigateTo('/introduction');
@@ -176,7 +183,8 @@ const Template = () => {
     });
   };
 
-  renderTemplates();
+  const hasUnsavedChanges =
+    introductionEnable || aboutMeEnable || workExperienceEnable || projectEnable;
 
   return (
     <>
@@ -191,6 +199,18 @@ const Template = () => {
         >
           Choose a starting point
         </Typography>
+        {hasUnsavedChanges && (
+          <>
+            <Typography align="center" style={{ margin: '2rem 0rem 1rem 0rem' }}>
+              <Button variant="contained" onClick={() => navigateTo('/introduction')}>
+                Continue
+              </Button>
+            </Typography>
+            <Typography variant="subtitle1" align="center" style={{ color: 'white' }}>
+              Or select one from
+            </Typography>
+          </>
+        )}
         <Grid
           className={classes.templateContainer}
           container

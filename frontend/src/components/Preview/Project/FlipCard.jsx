@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import '../../styles/flip_card.scss';
+import '../../../styles/flip_card.scss';
 
 // Credit : https://codepen.io/Corpus/pen/REybzG
 
@@ -54,14 +54,21 @@ const FlipCard = (props) => {
                 {description}
               </Typography>
               {link.length >= 0 && (
-                <Button
-                  className="flip-card-back-button"
-                  size="small"
-                  variant="outlined"
-                  style={{ borderColor: viewBtnBorder, color: viewBtnColor }}
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ textDecoration: 'none' }}
                 >
-                  View
-                </Button>
+                  <Button
+                    className="flip-card-back-button"
+                    size="small"
+                    variant="outlined"
+                    style={{ borderColor: viewBtnBorder, color: viewBtnColor }}
+                  >
+                    View
+                  </Button>
+                </a>
               )}
             </div>
           </div>

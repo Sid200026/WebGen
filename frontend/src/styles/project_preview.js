@@ -19,4 +19,15 @@ export const style = () => ({
     marginBottom: '1.8rem',
     fontSize: '2rem',
   },
+  popularProjectContainer: {
+    marginTop: '0.2rem',
+    width: '100%',
+  },
+  popularProjectContainerParent: {
+    marginBottom: '2rem',
+  },
+  mobileCarouselContainer: {
+    width: '100%',
+    marginLeft: '5%',
+  },
 });
