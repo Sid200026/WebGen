@@ -38,7 +38,7 @@ export const style = () => ({
     display: 'block',
   },
   templateContainer: {
-    marginTop: '3rem',
+    marginTop: '2rem',
   },
   specialTemplate: {
     display: 'flex',

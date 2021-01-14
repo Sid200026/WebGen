@@ -18,6 +18,7 @@ import { localStorageKey } from '../stores/store';
 import { reset as resetIntroduction } from '../actions/introduction_action';
 import { reset as resetAboutMe } from '../actions/about_me_action';
 import { reset as resetWorkExperience } from '../actions/work_experience_action';
+import { reset as resetProject } from '../actions/project_action';
 
 const useStyles = makeStyles(style);
 
@@ -30,6 +31,7 @@ const Submit = () => {
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
   const defaultThemeReducer = useSelector((state) => state.defaultThemeReducer);
+  const projectReducer = useSelector((state) => state.projectReducer);
 
   const fireSubmitExceedError = (err) => {
     Swal.fire({
@@ -72,6 +74,7 @@ const Submit = () => {
           aboutMe: aboutMeReducer,
           workExperience: workExperienceReducer,
           defaultTheme: defaultThemeReducer,
+          project: projectReducer,
           additional: additionalData,
           email,
         };
@@ -80,6 +83,7 @@ const Submit = () => {
         dispatch(resetIntroduction());
         dispatch(resetAboutMe());
         dispatch(resetWorkExperience());
+        dispatch(resetProject());
         navigate('/complete', { state: { isComplete: true, email } });
       } catch (err) {
         const { response } = err;
@@ -145,6 +149,7 @@ const Submit = () => {
           introduction: introductionReducer,
           aboutMe: aboutMeReducer,
           workExperience: workExperienceReducer,
+          project: projectReducer,
           defaultTheme: defaultThemeReducer,
         };
         const json = JSON.stringify(apiData);

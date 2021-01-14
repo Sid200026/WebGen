@@ -19,7 +19,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import FlagIcon from '@material-ui/icons/Flag';
 import MenuIcon from '@material-ui/icons/Menu';
 import WorkIcon from '@material-ui/icons/Work';
-// import ColorLensIcon from '@material-ui/icons/ColorLens';
+import ColorLensIcon from '@material-ui/icons/ColorLens';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 // import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 // import ImportContactsIcon from '@material-ui/icons/ImportContacts';
@@ -44,13 +44,16 @@ const Header = (props) => {
     setOpen(false);
   };
 
+  const handleResize = () => {
+    updateWidth(window.innerWidth);
+    if (width > 1160 && open) {
+      handleDrawerClose();
+    }
+  };
+
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      updateWidth(window.innerWidth);
-      if (width > 1160 && open) {
-        handleDrawerClose();
-      }
-    });
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   });
 
   const gotoNextSection = (className) => {
@@ -68,10 +71,15 @@ const Header = (props) => {
   const workExperienceReducer = useSelector(
     (stateReact) => stateReact.workExperienceReducer,
   );
+  const projectReducer = useSelector((stateReact) => stateReact.projectReducer);
 
   const { enable: introductionEnable } = introductionReducer;
-  const { enable: aboutMeEnable } = aboutMeReducer;
-  const { enable: workExperienceEnable } = workExperienceReducer;
+  const { enable: aboutMeEnable, pageHeadline: pageHeadlineAboutMe } = aboutMeReducer;
+  const {
+    enable: workExperienceEnable,
+    pageHeadline: pageHeadlineWorkExperience,
+  } = workExperienceReducer;
+  const { enable: projectEnable, pageHeadline: pageHeadlineProject } = projectReducer;
 
   // const navItems = [
   //   { name: 'Introduction', icon: FlagIcon, classname: 'static__container' },
@@ -97,17 +105,24 @@ const Header = (props) => {
 
   if (aboutMeEnable)
     navItems.push({
-      name: 'About Me',
+      name: pageHeadlineAboutMe,
       icon: EmojiPeopleIcon,
       classname: 'preview__container',
     });
 
   if (workExperienceEnable)
     navItems.push({
-      name: 'Work Experience',
+      name: pageHeadlineWorkExperience,
       icon: WorkIcon,
       classname: 'work_experience__container',
     });
+  if (projectEnable) {
+    navItems.push({
+      name: pageHeadlineProject,
+      icon: ColorLensIcon,
+      classname: 'project__container',
+    });
+  }
 
   return (
     <>

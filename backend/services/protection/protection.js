@@ -1,5 +1,5 @@
 const CryptoJS = require('crypto-js');
-const { encryption, decryption } = require('./encrypt_decrypt');
+const { decryption } = require('./encrypt_decrypt');
 
 /**
  * We need to protect the REST API endpoints from external use
