@@ -1,9 +1,16 @@
 version: 2
 updates:
-  - package-ecosystem: "javascript"
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
+    target_branch: "master"
+    default_assignees:
+      - "Sid200026"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
     target_branch: "master"
     default_assignees:
       - "Sid200026"
