@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - package-ecosystem: "javascript"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    target_branch: "master"
+    default_assignees:
+      - "Sid200026"
