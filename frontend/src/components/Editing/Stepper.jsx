@@ -85,7 +85,7 @@ const StepperComp = (props) => {
         steps={steps.length}
         position="static"
         activeStep={activeStep}
-        className={(classes.root, classes.stepContainer)}
+        className={`${classes.root} ${classes.stepContainer}`}
         nextButton={
           <Button
             size="small"

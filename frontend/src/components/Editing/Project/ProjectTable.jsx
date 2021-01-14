@@ -1,25 +1,22 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import { style } from '../../../styles/form';
 import {
-  background as backgroundFunc,
-  pageHeadline as pageHeadlineFunc,
-  pageHeadlineColor as pageHeadlineColorFunc,
-} from '../../../actions/work_experience_action';
+  projectTableColor as projectTableColorFunc,
+  projectTableBg as projectTableBgFunc,
+} from '../../../actions/project_action';
 
 const useStyles = makeStyles(style);
 
-const Layout = () => {
+const ProjectTable = () => {
   const classes = useStyles();
-
-  const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
-  const { background, pageHeadline, pageHeadlineColor } = workExperienceReducer;
+  const projectReducer = useSelector((state) => state.projectReducer);
+  const { projectTableColor, projectTableBg } = projectReducer;
   const dispatch = useDispatch();
   return (
     <>
@@ -35,38 +32,26 @@ const Layout = () => {
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Page Layout
+              Customize Project Table
             </Typography>
-            <TextField
-              variant="outlined"
-              label="Page Title"
-              value={pageHeadline}
-              onChange={(event) => {
-                dispatch(pageHeadlineFunc(event.target.value));
-              }}
-              fullWidth
-              // eslint-disable-next-line max-len
-              className={classes.input}
-              required
-            />
             <FormControlLabel
               value="top"
               control={
                 <input
                   type="color"
                   list="true"
-                  value={pageHeadlineColor}
                   style={{
                     width: '8rem',
                     height: '2rem',
                     marginTop: '5px',
                   }}
+                  value={projectTableBg}
                   onChange={(event) => {
-                    dispatch(pageHeadlineColorFunc(event.target.value));
+                    dispatch(projectTableBgFunc(event.target.value));
                   }}
                 />
               }
-              label="Page Title Color"
+              label="Project Table Background"
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -76,18 +61,18 @@ const Layout = () => {
                 <input
                   type="color"
                   list="true"
-                  value={background}
                   style={{
                     width: '8rem',
                     height: '2rem',
                     marginTop: '5px',
                   }}
+                  value={projectTableColor}
                   onChange={(event) => {
-                    dispatch(backgroundFunc(event.target.value));
+                    dispatch(projectTableColorFunc(event.target.value));
                   }}
                 />
               }
-              label="Background of Work Experience Page"
+              label="Project Table Text Color"
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -108,4 +93,4 @@ const Layout = () => {
   );
 };
 
-export { Layout };
+export { ProjectTable };

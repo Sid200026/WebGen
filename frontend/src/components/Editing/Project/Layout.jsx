@@ -11,15 +11,15 @@ import {
   background as backgroundFunc,
   pageHeadline as pageHeadlineFunc,
   pageHeadlineColor as pageHeadlineColorFunc,
-} from '../../../actions/work_experience_action';
+} from '../../../actions/project_action';
 
 const useStyles = makeStyles(style);
 
 const Layout = () => {
   const classes = useStyles();
 
-  const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
-  const { background, pageHeadline, pageHeadlineColor } = workExperienceReducer;
+  const projectReducer = useSelector((state) => state.projectReducer);
+  const { background, pageHeadline, pageHeadlineColor } = projectReducer;
   const dispatch = useDispatch();
   return (
     <>
@@ -87,7 +87,7 @@ const Layout = () => {
                   }}
                 />
               }
-              label="Background of Work Experience Page"
+              label="Background of Project Page"
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />

@@ -45,7 +45,7 @@ const Complete = (props) => {
   }, []);
   return (
     <>
-      <div className={(classes.particleContainer, 'pseudoClass2')}>
+      <div className={`${classes.particleContainer} pseudoClass2`}>
         {getTheme(STATIC, '#000000', '#0E6666')}
       </div>
       <Container maxWidth="xl" className={classes.container}>

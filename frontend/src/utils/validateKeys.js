@@ -60,6 +60,22 @@ import {
   companyNameColor as defaultCompanyNameColor,
 } from '../constants/default_theme';
 
+import {
+  enable as ProjectEnable,
+  pageHeadline as ProjectPageHeadline,
+  pageHeadlineColor as ProjectPageHeadlineColor,
+  background as ProjectBackground,
+  projectCardColor,
+  projectDescriptionColor,
+  projectTitleColor,
+  projectViewBtnBorder,
+  projectViewBtnColor,
+  projectTableBg,
+  projectTableColor,
+  popularProject,
+  otherProject,
+} from '../constants/project_page';
+
 const isArray = (a) => {
   return !!a && a.constructor === Array;
 };
@@ -132,6 +148,22 @@ const defaultThemeKeySet = {
   [defaultSubTextColor]: 'string',
 };
 
+const projectKeySet = {
+  [ProjectEnable]: 'boolean',
+  [ProjectPageHeadline]: 'string',
+  [ProjectPageHeadlineColor]: 'string',
+  [ProjectBackground]: 'string',
+  [projectCardColor]: 'string',
+  [projectDescriptionColor]: 'string',
+  [projectTitleColor]: 'string',
+  [projectViewBtnBorder]: 'string',
+  [projectViewBtnColor]: 'string',
+  [projectTableColor]: 'string',
+  [projectTableBg]: 'string',
+  [popularProject]: isArray,
+  [otherProject]: isArray,
+};
+
 const validate = (data, parentObject, key) => {
   if (!Object.prototype.hasOwnProperty.call(data, key)) return false;
   const value = parentObject[key];
@@ -143,7 +175,7 @@ const validate = (data, parentObject, key) => {
 };
 
 const validateUploadedData = (data) => {
-  const { introduction, aboutMe, workExperience, defaultTheme } = data;
+  const { introduction, aboutMe, workExperience, defaultTheme, project } = data;
   if (!introduction || !aboutMe || !workExperience) return false;
   const introductionReturn = Object.keys(introductionKeySet).filter((key) => {
     return !validate(introduction, introductionKeySet, key);
@@ -164,6 +196,11 @@ const validateUploadedData = (data) => {
     return !validate(defaultTheme, defaultThemeKeySet, key);
   });
   if (defaultThemeReturn.length !== 0) return false;
+
+  const projectReturn = Object.keys(project).filter((key) => {
+    return !validate(project, projectKeySet, key);
+  });
+  if (projectReturn.length !== 0) return false;
 
   return true;
 };

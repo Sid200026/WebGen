@@ -90,7 +90,7 @@ const IntroductionLayout = () => {
       </Helmet>
 
       <Container disableGutters maxWidth="xl" className={classes.container}>
-        <div className={(classes.particleContainer, 'pseudoClass')}>
+        <div className={`${classes.particleContainer} pseudoClass`}>
           {particleTheme &&
             particleThemeBackgroundColor &&
             particleThemeEntityColor &&

@@ -34,7 +34,7 @@ const whiteTheme = {
       pageHeadline: 'About Me',
       pageHeadlineColor: '#000000',
       profile: {
-        url: 'https://picsum.photos/200',
+        url: 'https://picsum.photos/200.jpg',
         name: 'test.webp',
       },
       description:
@@ -127,6 +127,98 @@ const whiteTheme = {
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies blandit justo, in fermentum risus egestas vitae.',
           ],
           informationColor: '#000000',
+        },
+      ],
+    },
+    project: {
+      enable: true,
+      pageHeadline: 'Projects',
+      pageHeadlineColor: '#000000',
+      background: '#cacaca',
+      projectCardColor: '#c2c2c2',
+      projectTitleColor: '#000000',
+      projectDescriptionColor: '#141414',
+      projectViewBtnColor: '#000000',
+      projectViewBtnBorder: '#000000',
+      projectTableBg: '#cacaca',
+      projectTableColor: '#000000',
+      popularProject: [
+        {
+          projectTitle: 'Main Project1',
+          projectImage: {
+            projectImageURL: 'https://picsum.photos/200.jpg',
+            projectImageName: 'test.webp',
+          },
+          projectCaption: 'About Project Caption',
+          projectDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum mattis vulputate. Proin nec tellus ullamcorper, pellentesque dolor id, dapibus ex. Nullam ex sapien, auctor eget felis non, faucibus commodo dui. Integer vulputate dolor sit amet magna venenatis, bibendum pharetra nibh elementum. Phasellus auctor enim eget pellentesque ullamcorper.',
+          projectLink: 'https://github.com/Sid200026/WebGen',
+        },
+        {
+          projectTitle: 'Main Project2',
+          projectImage: {
+            projectImageURL: 'https://picsum.photos/200.jpg',
+            projectImageName: 'test.webp',
+          },
+          projectCaption: 'About Project Caption',
+          projectDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum mattis vulputate. Proin nec tellus ullamcorper, pellentesque dolor id, dapibus ex. Nullam ex sapien, auctor eget felis non, faucibus commodo dui. Integer vulputate dolor sit amet magna venenatis, bibendum pharetra nibh elementum. Phasellus auctor enim eget pellentesque ullamcorper.',
+          projectLink: 'https://github.com/Sid200026/WebGen',
+        },
+        {
+          projectTitle: 'Main Project3',
+          projectImage: {
+            projectImageURL: 'https://picsum.photos/200.jpg',
+            projectImageName: 'test.webp',
+          },
+          projectCaption: 'About Project Caption',
+          projectDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum mattis vulputate. Proin nec tellus ullamcorper, pellentesque dolor id, dapibus ex. Nullam ex sapien, auctor eget felis non, faucibus commodo dui. Integer vulputate dolor sit amet magna venenatis, bibendum pharetra nibh elementum. Phasellus auctor enim eget pellentesque ullamcorper.',
+          projectLink: 'https://github.com/Sid200026/WebGen',
+        },
+      ],
+      otherProject: [
+        {
+          projectTitle: 'Project 1',
+          projectDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed enim nisi, consequat a pretium id, auctor et purus. Phasellus ac mauris nibh. Etiam posuere iaculis lacinia. Aliquam viverra ipsum non gravida convallis.',
+          projectLink: 'https://github.com/Sid200026/WebGen',
+          projectCaption: 'About Project 1',
+        },
+        {
+          projectTitle: 'Project 2',
+          projectDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed enim nisi, consequat a pretium id, auctor et purus. Phasellus ac mauris nibh. Etiam posuere iaculis lacinia. Aliquam viverra ipsum non gravida convallis.',
+          projectLink: 'https://github.com/Sid200026/WebGen',
+          projectCaption: 'About Project 2',
+        },
+        {
+          projectTitle: 'Project 3',
+          projectDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed enim nisi, consequat a pretium id, auctor et purus. Phasellus ac mauris nibh. Etiam posuere iaculis lacinia. Aliquam viverra ipsum non gravida convallis.',
+          projectLink: 'https://github.com/Sid200026/WebGen',
+          projectCaption: 'About Project 3',
+        },
+        {
+          projectTitle: 'Project 4',
+          projectDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed enim nisi, consequat a pretium id, auctor et purus. Phasellus ac mauris nibh. Etiam posuere iaculis lacinia. Aliquam viverra ipsum non gravida convallis.',
+          projectLink: 'https://github.com/Sid200026/WebGen',
+          projectCaption: 'About Project 4',
+        },
+        {
+          projectTitle: 'Project 5',
+          projectDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed enim nisi, consequat a pretium id, auctor et purus. Phasellus ac mauris nibh. Etiam posuere iaculis lacinia. Aliquam viverra ipsum non gravida convallis.',
+          projectLink: 'https://github.com/Sid200026/WebGen',
+          projectCaption: 'About Project 5',
+        },
+        {
+          projectTitle: 'Project 6',
+          projectDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed enim nisi, consequat a pretium id, auctor et purus. Phasellus ac mauris nibh. Etiam posuere iaculis lacinia. Aliquam viverra ipsum non gravida convallis.',
+          projectLink: 'https://github.com/Sid200026/WebGen',
+          projectCaption: 'About Project 6',
         },
       ],
     },
