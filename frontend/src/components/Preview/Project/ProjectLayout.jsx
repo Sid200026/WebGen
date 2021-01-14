@@ -19,7 +19,6 @@ const otherProjectColumn = [
     id: 'projectDescription',
     label: 'Project Description',
     minWidth: 300,
-    align: 'right',
   },
   {
     id: 'projectLink',
@@ -55,6 +54,7 @@ const ProjectLayout = () => {
           autoPlay={false}
           timeout={300}
           className={classes.mobileCarouselContainer}
+          navButtonsAlwaysVisible
         >
           {popularProject.map((project, index) => (
             <CarouselCard

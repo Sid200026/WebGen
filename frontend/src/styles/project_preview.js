@@ -28,7 +28,7 @@ export const style = () => ({
   },
   mobileCarouselContainer: {
     width: '100%',
-    marginLeft: '5%',
+    paddingLeft: '5%',
   },
   otherProjectContainer: {
     marginTop: '2.4rem',
