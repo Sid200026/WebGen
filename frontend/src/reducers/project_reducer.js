@@ -111,7 +111,7 @@ export const projectReducer = (state = project, { type, payload }) => {
     case OTHER_PROJECT_ADD:
       return {
         ...state,
-        [otherProject]: state.popularProject.concat({
+        [otherProject]: state.otherProject.concat({
           projectTitle: payload.response.projectTitle,
           projectDescription: payload.response.projectDescription,
           projectLink: payload.response.projectLink,

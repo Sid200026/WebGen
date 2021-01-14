@@ -242,6 +242,7 @@ const Header = (props) => {
         dispatch(resetWorkExperience());
         dispatch(resetDefaultTheme());
         dispatch(resetProject());
+        navigateTo('/');
       }
     });
   };

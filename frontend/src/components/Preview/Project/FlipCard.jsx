@@ -24,7 +24,15 @@ const FlipCard = (props) => {
       <div className="flip-card">
         <div className="flip-card-inner">
           <div className="flip-card-front" style={{ backgroundColor: cardColor }}>
-            <img className="flip-card-front-image" src={image.link} alt={image.name} />
+            <img
+              className="flip-card-front-image"
+              src={
+                process.env.TYPE === 'app'
+                  ? image.link
+                  : `${process.env.PUBLIC_URL}/images/${image.name}`
+              }
+              alt={image.name}
+            />
             <div className="flip-card-front-content">
               <div className="flip-card-front-text">
                 <Typography align="center" variant="h6" style={{ color: titleColor }}>

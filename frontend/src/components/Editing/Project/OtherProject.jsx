@@ -99,14 +99,19 @@ const OtherProject = () => {
       <ListItem divider key={index}>
         <ListItemText primary={`${currentProject.projectTitle}`} />
         <ListItemSecondaryAction>
-          <IconButton edge="end" aria-label="delete">
-            <EditIcon color="primary" onClick={() => handleClickOpen(index)} />
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={() => handleClickOpen(index)}
+          >
+            <EditIcon color="primary" />
           </IconButton>
-          <IconButton edge="end" aria-label="delete">
-            <DeleteIcon
-              color="secondary"
-              onClick={() => dispatch(otherProjectDeleteFunc(index))}
-            />
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={() => dispatch(otherProjectDeleteFunc(index))}
+          >
+            <DeleteIcon color="secondary" />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
@@ -290,7 +295,7 @@ const OtherProject = () => {
                   variant="h6"
                   style={{ marginTop: '25px', textDecoration: 'underline' }}
                 >
-                  Popular Projects
+                  Other Projects
                 </Typography>
                 <List className={classes.list}>{getAllProjects()}</List>
               </>

@@ -170,4 +170,60 @@ const workExperience = {
 export default workExperience;
 `;
 
-module.exports = { introductionInitial, aboutMeInitial, workExperienceInitial };
+const projectInitial = ({
+  enable,
+  pageHeadline,
+  pageHeadlineColor,
+  background,
+  projectCardColor,
+  projectDescriptionColor,
+  projectTitleColor,
+  projectViewBtnBorder,
+  projectViewBtnColor,
+  projectTableColor,
+  projectTableBg,
+  popularProject,
+  otherProject,
+}) => `\
+import {
+  enable,
+  pageHeadline,
+  pageHeadlineColor,
+  background,
+  projectCardColor,
+  projectDescriptionColor,
+  projectTitleColor,
+  projectViewBtnBorder,
+  projectViewBtnColor,
+  projectTableColor,
+  projectTableBg,
+  popularProject,
+  otherProject,
+} from '../constants/project_page';
+
+const project = {
+  [enable]: \`${enable}\`,
+  [pageHeadline]: \`${pageHeadline}\`,
+  [pageHeadlineColor]: \`${pageHeadlineColor}\`,
+  [background]: \`${background}\`,
+  [projectCardColor]: \`${projectCardColor}\`,
+  [projectTitleColor]: \`${projectTitleColor}\`,
+  [projectDescriptionColor]: \`${projectDescriptionColor}\`,
+  [projectViewBtnColor]: \`${projectViewBtnColor}\`,
+  [projectViewBtnBorder]: \`${projectViewBtnBorder}\`,
+  [projectTableBg]: \`${projectTableBg}\`,
+  [projectTableColor]: \`${projectTableColor}\`,
+  [popularProject]: ${JSON.stringify(popularProject)},
+  [otherProject]: ${JSON.stringify(otherProject)},
+};
+
+export default project;
+
+`;
+
+module.exports = {
+  introductionInitial,
+  aboutMeInitial,
+  workExperienceInitial,
+  projectInitial,
+};

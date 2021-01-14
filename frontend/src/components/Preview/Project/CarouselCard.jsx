@@ -37,7 +37,15 @@ const CarouselCard = (props) => {
 
   return (
     <Card className={classes.root} style={{ backgroundColor: cardColor }}>
-      <CardMedia className={classes.media} image={image.link} title={image.name} />
+      <CardMedia
+        className={classes.media}
+        image={
+          process.env.TYPE === 'app'
+            ? image.link
+            : `${process.env.PUBLIC_URL}/images/${image.name}`
+        }
+        title={image.name}
+      />
       <CardContent>
         <Typography align="center" variant="h6" style={{ color: titleColor }}>
           {title}

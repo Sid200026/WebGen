@@ -35,7 +35,7 @@ import {
 } from '../../actions/default_theme_action';
 import {
   reset as resetProject,
-  // load as loadProject,
+  load as loadProject,
 } from '../../actions/project_action';
 
 const useStyles = makeStyles(style);
@@ -100,12 +100,19 @@ const Template = () => {
   const updateStore = (index) => {
     const template = templates[index];
     const { template_config: templateConfig } = template;
-    const { introduction, aboutMe, workExperience, defaultTheme } = templateConfig;
+    const {
+      introduction,
+      aboutMe,
+      workExperience,
+      defaultTheme,
+      project,
+    } = templateConfig;
     dispatch(loadIntroduction(introduction));
     dispatch(loadAboutMe(aboutMe));
     dispatch(loadWorkExperience(workExperience));
     dispatch(loadDefaultTheme(defaultTheme));
-    // TODO : Add projectTheme
+    dispatch(loadProject(project));
+    navigateTo('/introduction');
   };
 
   const renderFromTemplate = (index) => {

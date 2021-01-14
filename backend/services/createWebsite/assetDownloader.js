@@ -5,18 +5,21 @@ const { logger } = require('../../logger/logger');
 
 const rootDirectory = path.join(__dirname, '../../user/public/images/');
 
-const assetDownloader = ({ introduction, aboutMe, workExperience }, cb = null) => {
+const assetDownloader = (
+  { introduction, aboutMe, workExperience, project },
+  cb = null,
+) => {
   const promises = [];
   const INTRODUCTION_DOWNLOADABLE_CONTENT = DOWNLOADABLE_CONTENT.introduction;
   const ABOUT_ME_DOWNLOADABLE_CONTENT = DOWNLOADABLE_CONTENT.aboutMe;
   const WORK_EXPERIENCE_DOWNLOADABLE_CONTENT = DOWNLOADABLE_CONTENT.workExperience;
+  const PROJECT_DOWNLOADABLE_CONTENT = DOWNLOADABLE_CONTENT.project;
 
-  INTRODUCTION_DOWNLOADABLE_CONTENT.forEach((ele) => {
-    let { url, name } = introduction[`${ele}`];
+  const downloadContent = (url, name) => {
     if (!url || !name || url.length === 0 || name.length === 0) {
       return;
     }
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' && url[0] === '/') {
       const host = 'localhost';
       const port = process.env.PORT || 8000;
       const hostname = `http://${host}:${port}`;
@@ -24,36 +27,31 @@ const assetDownloader = ({ introduction, aboutMe, workExperience }, cb = null) =
     }
     const fileName = path.join(rootDirectory, name);
     promises.push(downloadFile(url, fileName));
+  };
+
+  INTRODUCTION_DOWNLOADABLE_CONTENT.forEach((ele) => {
+    let { url, name } = introduction[`${ele}`];
+    downloadContent(url, name);
   });
 
   ABOUT_ME_DOWNLOADABLE_CONTENT.forEach((ele) => {
     let { url, name } = aboutMe[`${ele}`];
-    if (!url || !name || url.length === 0 || name.length === 0) {
-      return;
-    }
-    if (process.env.NODE_ENV !== 'production') {
-      const host = 'localhost';
-      const port = process.env.PORT || 8000;
-      const hostname = `http://${host}:${port}`;
-      url = hostname + url;
-    }
-    const fileName = path.join(rootDirectory, name);
-    promises.push(downloadFile(url, fileName));
+    downloadContent(url, name);
   });
 
   WORK_EXPERIENCE_DOWNLOADABLE_CONTENT.forEach((ele) => {
     let { url, name } = workExperience[`${ele}`];
-    if (!url || !name || url.length === 0 || name.length === 0) {
-      return;
-    }
-    if (process.env.NODE_ENV !== 'production') {
-      const host = 'localhost';
-      const port = process.env.PORT || 8000;
-      const hostname = `http://${host}:${port}`;
-      url = hostname + url;
-    }
-    const fileName = path.join(rootDirectory, name);
-    promises.push(downloadFile(url, fileName));
+    downloadContent(url, name);
+  });
+
+  PROJECT_DOWNLOADABLE_CONTENT.forEach((ele) => {
+    const popularProjects = project[ele.key];
+    popularProjects.forEach((popularProject) => {
+      const imageDetails = popularProject[ele.child];
+      let url = imageDetails[ele.url];
+      const name = imageDetails[ele.filename];
+      downloadContent(url, name);
+    });
   });
 
   Promise.all(promises)

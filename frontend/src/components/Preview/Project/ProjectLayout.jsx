@@ -8,8 +8,27 @@ import Carousel from 'react-material-ui-carousel';
 import { style } from '../../../styles/project_preview';
 import { FlipCard } from './FlipCard.jsx';
 import { CarouselCard } from './CarouselCard.jsx';
+import { StickyTable } from './StickyTable.jsx';
 
 const useStyles = makeStyles(style);
+
+const otherProjectColumn = [
+  { id: 'projectTitle', label: 'Project Title', minWidth: 115, sticky: true },
+  { id: 'projectCaption', label: 'Project Caption', minWidth: 160 },
+  {
+    id: 'projectDescription',
+    label: 'Project Description',
+    minWidth: 300,
+    align: 'right',
+  },
+  {
+    id: 'projectLink',
+    label: 'View Project',
+    minWidth: 120,
+    align: 'center',
+    button: true,
+  },
+];
 
 const ProjectLayout = () => {
   const classes = useStyles();
@@ -25,6 +44,8 @@ const ProjectLayout = () => {
     projectViewBtnColor,
     projectViewBtnBorder,
     otherProject,
+    projectTableBg,
+    projectTableColor,
   } = projectReducer;
 
   const getPopularProjects = () => {
@@ -128,6 +149,16 @@ const ProjectLayout = () => {
         </Typography>
         {getPopularProjects()}
         <div className={classes.popularProjectContainerParent} />
+        <div className={classes.otherProjectContainer}>
+          {otherProject.length > 0 && (
+            <StickyTable
+              rows={otherProject}
+              columns={otherProjectColumn}
+              projectTableBg={projectTableBg}
+              projectTableColor={projectTableColor}
+            />
+          )}
+        </div>
       </div>
     </>
   );

@@ -30,4 +30,9 @@ export const style = () => ({
     width: '100%',
     marginLeft: '5%',
   },
+  otherProjectContainer: {
+    marginTop: '2.4rem',
+    marginBottom: '3.6rem',
+    width: '90%',
+  },
 });

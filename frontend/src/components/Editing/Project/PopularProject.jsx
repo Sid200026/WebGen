@@ -231,14 +231,19 @@ const PopularProject = () => {
         </ListItemAvatar>
         <ListItemText primary={`${currentProject.projectTitle}`} />
         <ListItemSecondaryAction>
-          <IconButton edge="end" aria-label="delete">
-            <EditIcon color="primary" onClick={() => handleClickOpen(index)} />
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={() => handleClickOpen(index)}
+          >
+            <EditIcon color="primary" />
           </IconButton>
-          <IconButton edge="end" aria-label="delete">
-            <DeleteIcon
-              color="secondary"
-              onClick={() => dispatch(popularProjectDeleteFunc(index))}
-            />
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={() => dispatch(popularProjectDeleteFunc(index))}
+          >
+            <DeleteIcon color="secondary" />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
