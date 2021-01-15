@@ -89,12 +89,13 @@ const PopularProject = () => {
         .then((res) => {
           const { data } = res;
           const { url, fileName } = data;
-          if (mode === DROP_MODE.ADD)
+          console.log(mode);
+          if (mode === DROP_MODE.ADD) {
             setProject({
               ...project,
               projectImage: { projectImageURL: url, projectImageName: fileName },
             });
-          else
+          } else
             setEditProject({
               ...editProject,
               projectImage: { projectImageURL: url, projectImageName: fileName },
@@ -457,7 +458,7 @@ const PopularProject = () => {
             />
             <p style={{ margin: '16px 0px' }}>Customize project picture</p>
             <Dropzone
-              onDrop={handleDrop}
+              onDrop={(acceptedFiles) => handleDrop(acceptedFiles, DROP_MODE.ADD)}
               accept="image/*"
               minSize={1}
               maxSize={1024 * 1024 * 10}
