@@ -51,7 +51,7 @@ const upload = multer({
 router.route('/single').post(upload.single('image'), (req, res) => {
   const { apiKey } = req.body;
   if (!apiKey || !protectAPI(apiKey, true)) {
-    res.status(403).send({ error: 'Task failed successfully' }).end();
+    res.status(403).send({ error: 'API Key not valid.' }).end();
   } else {
     if (!req.file) {
       res.status(400).send({
