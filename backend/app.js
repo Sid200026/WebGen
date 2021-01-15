@@ -43,12 +43,12 @@ if (process.env.NODE_ENV !== 'production') {
 app.use('/api', (req, res, next) => {
   const { apiKey } = req.body;
   if (!apiKey) {
-    res.status(403).json({ error: 'Task failed successfully' }).end();
+    res.status(403).json({ error: 'API Key not present.' }).end();
   } else {
     if (protectAPI(apiKey)) {
       next();
     } else {
-      res.status(403).json({ error: 'Task failed successfully' }).end();
+      res.status(403).json({ error: 'API Key not valid.' }).end();
     }
   }
 });
