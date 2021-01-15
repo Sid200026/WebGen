@@ -5,9 +5,11 @@ const { format } = winston;
 
 const logFormat = format.combine(
   format.colorize(),
-  format.timestamp(),
+  format.timestamp({
+    format: 'YYYY-MM-DD HH:mm:ss',
+  }),
   format.align(),
-  format.printf((info) => `${info.timestamp} : ${info.message}`),
+  format.printf((info) => `${info.timestamp} : ${info.level} : ${info.message}`),
 );
 
 const backend_base_dir = path.join(__dirname, '../', 'logs', 'backend');
