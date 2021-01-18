@@ -11,6 +11,8 @@ import {
   greetingText as greetingTextFunc,
   greetingColor as greetingColorFunc,
 } from '../../../actions/introduction_action';
+import { GreetingInfo } from '../../../constants/writeups/introduction';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -34,17 +36,17 @@ const Greeting = () => {
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Greeting Details
+              {GreetingInfo.title}
             </Typography>
             <TextField
               variant="outlined"
-              label="Greeting Text"
+              label={GreetingInfo.field.greetingText.label}
               value={greetingText}
               onChange={(event) => {
                 dispatch(greetingTextFunc(event.target.value));
               }}
               fullWidth
-              helperText="For Eg. Hello I'm"
+              helperText={GreetingInfo.field.greetingText.help}
               className={classes.input}
               required
             />
@@ -65,19 +67,18 @@ const Greeting = () => {
                   }}
                 />
               }
-              label="Color of the text"
+              label={GreetingInfo.field.greetingColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
-            {/* TODO: Add example of greeting here */}
           </Card>
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={GreetingInfo.image.src}
+            alt={GreetingInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>

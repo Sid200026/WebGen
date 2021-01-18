@@ -13,6 +13,8 @@ import {
   nameColor as nameColorFunc,
   nameShouldBold,
 } from '../../../actions/introduction_action';
+import { NameInfo } from '../../../constants/writeups/introduction';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -36,17 +38,17 @@ const Name = () => {
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Name Details
+              {NameInfo.title}
             </Typography>
             <TextField
               variant="outlined"
-              label="Name"
+              label={NameInfo.field.nameText.label}
               value={nameText}
               onChange={(event) => {
                 dispatch(nameTextFunc(event.target.value));
               }}
               fullWidth
-              helperText="For Eg. John Doe"
+              helperText={NameInfo.field.nameText.help}
               className={classes.input}
               required
             />
@@ -63,7 +65,7 @@ const Name = () => {
                   }}
                 />
               }
-              label="Should the text be in bold ?"
+              label={NameInfo.field.nameColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -84,7 +86,7 @@ const Name = () => {
                   }}
                 />
               }
-              label="Color of the text"
+              label={NameInfo.field.nameColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -93,10 +95,10 @@ const Name = () => {
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={NameInfo.image.src}
+            alt={NameInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>

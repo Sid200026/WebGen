@@ -15,6 +15,8 @@ import {
   particleJSBackground as particleJSBackgroundFunc,
   particleJSEntity as particleJSEntityFunc,
 } from '../../../actions/introduction_action';
+import { ThemeInfo } from '../../../constants/writeups/introduction';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -32,24 +34,24 @@ const Theme = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Theme
+              {ThemeInfo.title}
             </Typography>
-            <InputLabel id="intro-page-theme">Introduction Page Theme</InputLabel>
+            <InputLabel id="intro-page-theme">{ThemeInfo.field.theme.label}</InputLabel>
             <Select
               labelId="intro-page-theme"
               id="intro-page-theme-id"
               variant="outlined"
-              label="Introduction Page Theme"
+              label={ThemeInfo.field.theme.label}
               value={particleTheme}
               className={classes.select}
               onChange={(event) => {
@@ -77,7 +79,7 @@ const Theme = () => {
                       }}
                     />
                   }
-                  label="Color of the background"
+                  label={ThemeInfo.field.background.label}
                   labelPlacement="top"
                   classes={{ label: classes.formControl }}
                 />
@@ -98,7 +100,7 @@ const Theme = () => {
                       }}
                     />
                   }
-                  label="Color of the entities"
+                  label={ThemeInfo.field.entity.label}
                   labelPlacement="top"
                   classes={{ label: classes.formControl }}
                 />
@@ -111,7 +113,7 @@ const Theme = () => {
             className={clsx(
               classes.image,
               {
-                [classes.responsiveImage]: window.innerWidth < 750,
+                [classes.responsiveImage]: window.innerWidth < warningWidth,
               },
               classes.particle,
             )}
