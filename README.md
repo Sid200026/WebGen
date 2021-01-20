@@ -194,7 +194,7 @@ This is the list of softwares required to run WebGen and how to install them.
    REDIS_HOST=redis
    REDIS_PORT=6379
    ```
-   
+
 4. Create the user files
 
    ```sh
@@ -209,19 +209,25 @@ This is the list of softwares required to run WebGen and how to install them.
    npm install
    ```
 
-2. Run the backend server
+2. Copy assets folder
+
+   ```sh
+   bash scripts/asset_copy.sh
+   ```
+
+3. Run the backend server
 
    ```sh
    npm run dev
    ```
 
-3. Open another terminal and run the frontend server
+4. Open another terminal and run the frontend server
 
    ```sh
    npm run bundle
    ```
 
-4. If you want to run both of them in the same terminal, run
+5. If you want to run both of them in the same terminal, run
 
    ```sh
    npm run conc

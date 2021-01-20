@@ -16,6 +16,9 @@ hooks:
     - location: scripts/install_dependencies.sh
       timeout: 1200
       runas: root
+    - location: scripts/asset_copy.sh
+      timeout: 240
+      runas: root
     - location: scripts/user_files.sh
       timeout: 100
       runas: root
