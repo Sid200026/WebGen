@@ -206,7 +206,7 @@ This is the list of softwares required to run WebGen and how to install them.
 1. Install the dependencies
 
    ```sh
-   npm install
+   bash scripts/install_dependencies.sh
    ```
 
 2. Run the backend server
