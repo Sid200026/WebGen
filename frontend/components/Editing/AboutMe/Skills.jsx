@@ -126,19 +126,7 @@ const Skills = () => {
       setError('Skill score must be between 0 and 100');
       return;
     }
-    if (skills.length === 14) {
-      // TODO: Change it to a valid link
-      Swal.fire({
-        icon: 'error',
-        title: 'Looks like you are highly skillful',
-        text: "But I'm not. So you can only enter 14 skills at max",
-        footer:
-          // eslint-disable-next-line max-len
-          '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
-      });
-    } else {
-      dispatch(skillsAddFunc(element.value, numberValueElement, colorElement.value));
-    }
+    dispatch(skillsAddFunc(element.value, numberValueElement, colorElement.value));
     element.value = '';
     valueElement.value = '';
     setError('');

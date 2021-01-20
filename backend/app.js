@@ -16,7 +16,15 @@ const app = express();
 
 const { sanitiseInput } = require('./utils/sanitise');
 
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      'script-src': ["'unsafe-eval'"],
+    },
+  }),
+);
+
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

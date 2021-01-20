@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BASE_DIRECTORY='frontend/src/initialState/'
+BASE_DIRECTORY='frontend/initialState/'
 USER_INTRODUCTION='user.introduction_initial.js'
 USER_ABOUT_ME='user.about_me_initial.js'
 USER_WORK_EXPERIENCE='user.work_experience_initial.js'

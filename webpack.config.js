@@ -26,8 +26,8 @@ module.exports = (env) => {
       : path.resolve(__dirname, 'backend', 'public', 'build');
   const entryFile =
     env.type === 'user'
-      ? path.join(__dirname, 'frontend', 'src', 'userIndex.jsx')
-      : path.join(__dirname, 'frontend', 'src', 'index.jsx');
+      ? path.join(__dirname, 'frontend', 'userIndex.jsx')
+      : path.join(__dirname, 'frontend', 'index.jsx');
 
   const publicPath = env.type === 'user' ? 'public/' : '/';
 
@@ -40,7 +40,6 @@ module.exports = (env) => {
   return {
     entry: entryFile,
     output: {
-      // bundle.txt is used to ensure that gmail allows sending it
       filename: 'bundle.js',
       path: outputPath,
       publicPath,

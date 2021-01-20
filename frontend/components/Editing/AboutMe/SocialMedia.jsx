@@ -125,7 +125,7 @@ const SocialMedia = () => {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Modify Skills</DialogTitle>
+        <DialogTitle id="form-dialog-title">Modify Social Media</DialogTitle>
         <DialogContent>
           <TextField
             id="modifySpecial"

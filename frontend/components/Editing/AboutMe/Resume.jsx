@@ -84,7 +84,6 @@ const Resume = () => {
                 dispatch(resumeButtonTextFunc(event.target.value));
               }}
               fullWidth
-              helperText="Resume Button Texts"
               className={classes.input}
               required
             />

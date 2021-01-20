@@ -11,6 +11,8 @@ import {
   descriptionText as descriptionTextFunc,
   descriptionColor as descriptionColorFunc,
 } from '../../../actions/about_me_action';
+import { DescriptionInfo } from '../../../constants/writeups/aboutMe';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -24,21 +26,21 @@ const Description = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Description
+              {DescriptionInfo.title}
             </Typography>
             <TextField
               variant="outlined"
-              label="Description"
+              label={DescriptionInfo.field.description.label}
               value={description}
               onChange={(event) => {
                 dispatch(descriptionTextFunc(event.target.value));
@@ -46,7 +48,7 @@ const Description = () => {
               rows={5}
               multiline
               fullWidth
-              helperText="A few short lines about yourself"
+              helperText={DescriptionInfo.field.description.help}
               className={classes.input}
               required
             />
@@ -67,19 +69,18 @@ const Description = () => {
                   }}
                 />
               }
-              label="Color of the text"
+              label={DescriptionInfo.field.descriptionColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
-            {/* TODO: Add example of greeting here */}
           </Card>
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={DescriptionInfo.image.src}
+            alt={DescriptionInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>

@@ -89,7 +89,6 @@ const PopularProject = () => {
         .then((res) => {
           const { data } = res;
           const { url, fileName } = data;
-          console.log(mode);
           if (mode === DROP_MODE.ADD) {
             setProject({
               ...project,

@@ -53,7 +53,6 @@ const Layout = () => {
                 dispatch(pageHeadlineFunc(event.target.value));
               }}
               fullWidth
-              // eslint-disable-next-line max-len
               className={classes.input}
               required
             />

@@ -147,7 +147,7 @@ This is the list of softwares required to run WebGen and how to install them.
    ```sh
    cd WebGen
    ```
-3. Create a `.env` file
+3. Create a `.env` and `.env.production` file with the same content
 
    ```env
    PORT=<Port on which to run the application>
