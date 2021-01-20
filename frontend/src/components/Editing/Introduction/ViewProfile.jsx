@@ -17,6 +17,8 @@ import {
   buttonHoverColor as buttonHoverColorFunc,
   buttonHoverEffect,
 } from '../../../actions/introduction_action';
+import { ViewProfileInfo } from '../../../constants/writeups/introduction';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -37,27 +39,27 @@ const ViewProfile = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize View Profile Button
+              {ViewProfileInfo.title}
             </Typography>
             <TextField
               variant="outlined"
-              label="Button Text"
+              label={ViewProfileInfo.field.buttonText.label}
               value={buttonText}
               onChange={(event) => {
                 dispatch(buttonTextFunc(event.target.value));
               }}
               fullWidth
-              helperText="For Eg. Visit My Profile"
+              helperText={ViewProfileInfo.field.buttonText.help}
               className={classes.input}
               required
             />
@@ -78,7 +80,7 @@ const ViewProfile = () => {
                   }}
                 />
               }
-              label="Color of the border"
+              label={ViewProfileInfo.field.buttonBorder.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -99,7 +101,7 @@ const ViewProfile = () => {
                   }}
                 />
               }
-              label="Color of the text"
+              label={ViewProfileInfo.field.buttonColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -116,19 +118,19 @@ const ViewProfile = () => {
                   }}
                 />
               }
-              label="Enable hover effects?"
+              label={ViewProfileInfo.field.buttonHover.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
             <Link
               // eslint-disable-next-line max-len
-              href="https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_hover"
+              href={ViewProfileInfo.hoverEffect.link}
               style={{ marginBottom: '1.3rem' }}
               rel="noreferrer"
               target="_blank"
             >
-              View an Example
-            </Link>{' '}
+              {ViewProfileInfo.hoverEffect.text}
+            </Link>
             {hoverEffect && (
               <>
                 <FormControlLabel
@@ -148,7 +150,7 @@ const ViewProfile = () => {
                       }}
                     />
                   }
-                  label="Background of the button when hovered"
+                  label={ViewProfileInfo.field.buttonHoverBackground.label}
                   labelPlacement="top"
                   classes={{ label: classes.formControl }}
                 />
@@ -169,21 +171,20 @@ const ViewProfile = () => {
                       }}
                     />
                   }
-                  label="Color of the button text when hovered"
+                  label={ViewProfileInfo.field.buttonHoverColor.label}
                   labelPlacement="top"
                   classes={{ label: classes.formControl }}
                 />
               </>
             )}
-            {/* TODO: Add example of greeting here */}
           </Card>
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={ViewProfileInfo.image.src}
+            alt={ViewProfileInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>

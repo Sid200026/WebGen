@@ -9,7 +9,6 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Link from '@material-ui/core/Link';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Swal from 'sweetalert2';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Alert from '@material-ui/lab/Alert';
@@ -24,6 +23,8 @@ import {
   specialisationColor as specialisationColorFunc,
 } from '../../../actions/introduction_action';
 import '../../../styles/editForm.scss';
+import { SpecialisationInfo } from '../../../constants/writeups/introduction';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -43,19 +44,7 @@ const Specialisation = () => {
       }
       return;
     }
-    if (specialisationText.length === 6) {
-      // TODO: Change it to a valid link
-      Swal.fire({
-        icon: 'error',
-        title: 'Looks like you are highly specialised',
-        text: "But I'm not. So you can only enter 6 specialisations",
-        footer:
-          // eslint-disable-next-line max-len
-          '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
-      });
-    } else {
-      dispatch(specialisationTextAdd(element.value));
-    }
+    dispatch(specialisationTextAdd(element.value));
     element.value = '';
     setError('');
   };
@@ -94,25 +83,25 @@ const Specialisation = () => {
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Specialisation Details
+              {SpecialisationInfo.title}
             </Typography>
             <Typography align="center" variant="subtitle2" color="secondary">
-              Multiple Specialisations will be displayed using Typing Effect
+              {SpecialisationInfo.help}
             </Typography>
             <Link
-              href="https://typing-effect-sid200026.netlify.app/"
+              href={SpecialisationInfo.typingEffect.link}
               style={{ marginBottom: '1rem' }}
               rel="noreferrer"
               target="_blank"
             >
-              View an Example
+              {SpecialisationInfo.typingEffect.text}
             </Link>
             <TextField
               id="special"
               variant="outlined"
-              label="Specialisation Text"
+              label={SpecialisationInfo.field.specialisationText.label}
               fullWidth
-              helperText="For Eg. I'm a full-stack web developer"
+              helperText={SpecialisationInfo.field.specialisationText.help}
               className={classes.input}
               required
               onKeyPress={(event) => {
@@ -145,7 +134,7 @@ const Specialisation = () => {
                   }}
                 />
               }
-              label="Color of the text"
+              label={SpecialisationInfo.field.specialisationColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -161,10 +150,10 @@ const Specialisation = () => {
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={SpecialisationInfo.image.src}
+            alt={SpecialisationInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>
