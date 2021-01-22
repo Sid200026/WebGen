@@ -1,4 +1,4 @@
-import { secondaryColor } from '../constants/color';
+import { secondaryColor } from '../../constants/color';
 
 const drawerWidth = 290;
 
@@ -9,6 +9,7 @@ const style = (theme) => ({
   pageLayout: {
     minHeight: '100%',
     width: '100%',
+    position: 'relative',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -22,12 +23,12 @@ const style = (theme) => ({
     fontWeight: 400,
   },
   navBar: {
-    position: 'sticky',
-    zIndex: 98,
+    background: 'rgba(15, 14, 13, 1)',
   },
   navButtons: {
-    textAlign: 'left',
-    width: '100%',
+    textAlign: 'right',
+    width: '95%',
+    marginLeft: 40,
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -59,12 +60,15 @@ const style = (theme) => ({
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
+    padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
   content: {
     flexGrow: 1,
+    padding: theme.spacing(1),
+    paddingTop: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -91,6 +95,11 @@ const style = (theme) => ({
     fontSize: '1.1rem',
     fontWeight: 400,
     color: 'rgb(149, 245, 66)',
+  },
+  menuConfig: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

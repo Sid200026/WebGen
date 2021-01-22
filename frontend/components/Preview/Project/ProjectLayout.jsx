@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Carousel from 'react-material-ui-carousel';
-import { style } from '../../../styles/project_preview';
+import { style } from '../../../styles/Preview/project_preview';
 import { FlipCard } from './FlipCard.jsx';
 import { CarouselCard } from './CarouselCard.jsx';
 import { StickyTable } from './StickyTable.jsx';

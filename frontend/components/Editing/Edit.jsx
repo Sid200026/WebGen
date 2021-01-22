@@ -15,7 +15,7 @@ import { Submit } from '../Submit.jsx';
 import { Footer } from './Footer.jsx';
 import { Header } from './Header.jsx';
 import { Template } from './Template.jsx';
-import { style } from '../../styles/edit';
+import { style } from '../../styles/Editing/edit';
 
 const useStyles = makeStyles(style);
 

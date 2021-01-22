@@ -14,7 +14,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Grid from '@material-ui/core/Grid';
-import { style } from '../../styles/template';
+import { style } from '../../styles/Generic/template';
 import { getRequest } from '../../utils/serviceCalls';
 import { localStorageKey } from '../../stores/store';
 import {
@@ -37,6 +37,7 @@ import {
   reset as resetProject,
   load as loadProject,
 } from '../../actions/project_action';
+import { warningWidth } from '../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -201,7 +202,7 @@ const Template = () => {
           variant="h3"
           align="center"
           className={clsx(classes.heading, {
-            [classes.responsiveHeading]: window.innerWidth > 750,
+            [classes.responsiveHeading]: window.innerWidth > warningWidth,
           })}
         >
           Choose a starting point
@@ -236,7 +237,7 @@ const Template = () => {
         >
           <Grid
             className={clsx(classes.specialTemplate, {
-              [classes.responsiveSpecialTemplate]: window.innerWidth < 750,
+              [classes.responsiveSpecialTemplate]: window.innerWidth < warningWidth,
             })}
             item
             xs={4}

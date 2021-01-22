@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
-import { style } from '../../../styles/about_me_preview';
+import { style } from '../../../styles/Preview/about_me_preview';
 import { getMediaInfo } from '../../../utils/socialMediaDetector';
 import { Skillbars } from '../../Skillbar.jsx';
 

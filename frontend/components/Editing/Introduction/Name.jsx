@@ -7,7 +7,7 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import { style } from '../../../styles/form';
+import { style } from '../../../styles/Editing/form';
 import {
   nameText as nameTextFunc,
   nameColor as nameColorFunc,
@@ -28,13 +28,13 @@ const Name = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>

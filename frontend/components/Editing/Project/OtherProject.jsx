@@ -19,12 +19,14 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { style } from '../../../styles/form';
+import { style } from '../../../styles/Editing/form';
 import {
   otherProjectAdd as otherProjectAddFunc,
   otherProjectDelete as otherProjectDeleteFunc,
   otherProjectEdit as otherProjectEditFunc,
 } from '../../../actions/project_action';
+import { OtherProjectInfo } from '../../../constants/writeups/project';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -129,7 +131,7 @@ const OtherProject = () => {
       <DialogContent>
         <TextField
           variant="outlined"
-          label="Project Title"
+          label={OtherProjectInfo.field.projectTitle.label}
           fullWidth
           className={classes.input}
           required
@@ -140,9 +142,9 @@ const OtherProject = () => {
         />
         <TextField
           variant="outlined"
-          label="Project Caption"
+          label={OtherProjectInfo.field.projectCaption.label}
           fullWidth
-          helperText="Few words on the project"
+          helperText={OtherProjectInfo.field.projectCaption.help}
           className={classes.input}
           required
           value={editProject.projectCaption}
@@ -152,11 +154,11 @@ const OtherProject = () => {
         />
         <TextField
           variant="outlined"
-          label="Description"
+          label={OtherProjectInfo.field.description.label}
           rows={5}
           multiline
           fullWidth
-          helperText="Describe the project"
+          helperText={OtherProjectInfo.field.description.help}
           className={classes.input}
           required
           value={editProject.projectDescription}
@@ -170,12 +172,11 @@ const OtherProject = () => {
           color="primary"
           style={{ marginTop: '1.3rem' }}
         >
-          If you don&apos;t provide a project link, the view button won&apos;t be
-          displayed for that project
+          {OtherProjectInfo.field.link.help}
         </Typography>
         <TextField
           variant="outlined"
-          label="Project Link"
+          label={OtherProjectInfo.field.link.label}
           fullWidth
           className={classes.input}
           required
@@ -202,17 +203,17 @@ const OtherProject = () => {
       {getModifyDialog()}
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Other Project Content
+              {OtherProjectInfo.title}
             </Typography>
             <Typography
               align="center"
@@ -220,12 +221,11 @@ const OtherProject = () => {
               color="primary"
               style={{ marginBottom: '1rem' }}
             >
-              Apart from the popular projects, you can include other projects here. All
-              the projects here will be displayed in a tabular format.
+              {OtherProjectInfo.help}
             </Typography>
             <TextField
               variant="outlined"
-              label="Project Title"
+              label={OtherProjectInfo.field.projectTitle.label}
               fullWidth
               className={classes.input}
               required
@@ -236,9 +236,9 @@ const OtherProject = () => {
             />
             <TextField
               variant="outlined"
-              label="Project Caption"
+              label={OtherProjectInfo.field.projectCaption.label}
               fullWidth
-              helperText="Few words on the project"
+              helperText={OtherProjectInfo.field.projectCaption.help}
               className={classes.input}
               required
               value={project.projectCaption}
@@ -248,11 +248,11 @@ const OtherProject = () => {
             />
             <TextField
               variant="outlined"
-              label="Description"
+              label={OtherProjectInfo.field.description.label}
               rows={5}
               multiline
               fullWidth
-              helperText="Describe the project"
+              helperText={OtherProjectInfo.field.description.help}
               className={classes.input}
               required
               value={project.projectDescription}
@@ -266,12 +266,11 @@ const OtherProject = () => {
               color="primary"
               style={{ marginTop: '1.3rem' }}
             >
-              If you don&apos;t provide a project link, the view button won&apos;t be
-              displayed for that project
+              {OtherProjectInfo.field.link.help}
             </Typography>
             <TextField
               variant="outlined"
-              label="Project Link"
+              label={OtherProjectInfo.field.link.label}
               fullWidth
               className={classes.input}
               required
@@ -304,10 +303,10 @@ const OtherProject = () => {
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={OtherProjectInfo.image.src}
+            alt={OtherProjectInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>

@@ -20,13 +20,15 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import { style } from '../../../styles/form';
+import { style } from '../../../styles/Editing/form';
 import {
   workExperienceAdd as workExperienceAddFunc,
   workExperienceDelete as workExperienceDeleteFunc,
   workExperienceModify as workExperienceModifyFunc,
 } from '../../../actions/work_experience_action';
-import '../../../styles/editForm.scss';
+import '../../../styles/Editing/editForm.scss';
+import { CompanyInfo } from '../../../constants/writeups/workExperience';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const removeElementFromArray = (array, index) => {
   return array.slice(0, index).concat(array.slice(index + 1, array.length));
@@ -113,23 +115,23 @@ const Company = () => {
 
   const addWorkExperience = () => {
     if (createData.companyName.length === 0) {
-      setError('Company Name cannot be empty');
+      setError(CompanyInfo.error.emptyCompanyName);
       return;
     }
     if (createData.role.length === 0) {
-      setError('Role cannot be empty');
+      setError(CompanyInfo.error.emptyRole);
       return;
     }
     if (createData.information.length === 0) {
-      setError('Information cannot be empty');
+      setError(CompanyInfo.error.emptyInformation);
       return;
     }
     if (createData.startDate.length === 0) {
-      setError('Start Date cannot be empty');
+      setError(CompanyInfo.error.emptyStartDate);
       return;
     }
     if (createData.endDate.length === 0) {
-      setError('End Date cannot be empty');
+      setError(CompanyInfo.error.emptyEndDate);
       return;
     }
     dispatch(workExperienceAddFunc(createData));
@@ -148,23 +150,23 @@ const Company = () => {
 
   const editWorkExperience = () => {
     if (editData.companyName.length === 0) {
-      setError('Company Name cannot be empty');
+      setError(CompanyInfo.error.emptyCompanyName);
       return;
     }
     if (editData.role.length === 0) {
-      setError('Role cannot be empty');
+      setError(CompanyInfo.error.emptyRole);
       return;
     }
     if (editData.information.length === 0) {
-      setError('Information cannot be empty');
+      setError(CompanyInfo.error.emptyInformation);
       return;
     }
     if (editData.startDate.length === 0) {
-      setError('Start Date cannot be empty');
+      setError(CompanyInfo.error.emptyStartDate);
       return;
     }
     if (editData.endDate.length === 0) {
-      setError('End Date cannot be empty');
+      setError(CompanyInfo.error.emptyEndDate);
       return;
     }
     dispatch(workExperienceModifyFunc(editData, editOpen.index));
@@ -211,7 +213,7 @@ const Company = () => {
     const element = document.querySelector('#createInformation');
     const information = element.value;
     if (information.length === 0) {
-      setError('Information cannot be empty');
+      setError(CompanyInfo.error.emptyInformation);
     } else {
       const newInformation = createData.information;
       newInformation.push(information);
@@ -227,7 +229,7 @@ const Company = () => {
     const element = document.querySelector('#editInformation');
     const information = element.value;
     if (information.length === 0) {
-      setError('Information cannot be empty');
+      setError(CompanyInfo.error.emptyInformation);
     } else {
       const newInformation = editData.information;
       newInformation.push(information);
@@ -310,13 +312,13 @@ const Company = () => {
           <TextField
             id="createCompanyName"
             variant="outlined"
-            label="Company Name"
+            label={CompanyInfo.field.companyName.label}
             fullWidth
             value={createData.companyName}
             onChange={(event) => {
               setCreateData({ ...createData, companyName: event.target.value });
             }}
-            helperText="For Eg. Amazon"
+            helperText={CompanyInfo.field.companyName.help}
             className={classes.input}
             required
           />
@@ -342,7 +344,7 @@ const Company = () => {
                 }}
               />
             }
-            label="Color of company name text"
+            label={CompanyInfo.field.colorCompanyName.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
@@ -368,7 +370,7 @@ const Company = () => {
                 placeholder="mm-yyyy"
               />
             }
-            label="Start Date"
+            label={CompanyInfo.field.startDate.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
@@ -393,20 +395,20 @@ const Company = () => {
                 placeholder="mm-yyyy"
               />
             }
-            label="End Date"
+            label={CompanyInfo.field.endDate.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
           <TextField
             id="createRoleName"
             variant="outlined"
-            label="Position Held"
+            label={CompanyInfo.field.role.label}
             fullWidth
             value={createData.role}
             onChange={(event) => {
               setCreateData({ ...createData, role: event.target.value });
             }}
-            helperText="For Eg. Senior Manager"
+            helperText={CompanyInfo.field.role.help}
             className={classes.input}
             required
           />
@@ -432,7 +434,7 @@ const Company = () => {
                 }}
               />
             }
-            label="Sub-Text Color"
+            label={CompanyInfo.field.subTextColor.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
@@ -458,14 +460,14 @@ const Company = () => {
                 }}
               />
             }
-            label="Information Color"
+            label={CompanyInfo.field.informationColor.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
           <TextField
             id="createInformation"
             variant="outlined"
-            label="Information regarding work experience"
+            label={CompanyInfo.field.information.label}
             fullWidth
             className={classes.input}
             required
@@ -504,13 +506,13 @@ const Company = () => {
           <TextField
             id="editCompanyName"
             variant="outlined"
-            label="Company Name"
+            label={CompanyInfo.field.companyName.label}
             fullWidth
             value={editData.companyName}
             onChange={(event) => {
               setEditData({ ...editData, companyName: event.target.value });
             }}
-            helperText="For Eg. Amazon"
+            helperText={CompanyInfo.field.companyName.help}
             className={classes.input}
             required
           />
@@ -536,7 +538,7 @@ const Company = () => {
                 }}
               />
             }
-            label="Color of company name text"
+            label={CompanyInfo.field.colorCompanyName.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
@@ -562,7 +564,7 @@ const Company = () => {
                 placeholder="mm-yyyy"
               />
             }
-            label="Start Date"
+            label={CompanyInfo.field.startDate.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
@@ -587,20 +589,20 @@ const Company = () => {
                 placeholder="mm-yyyy"
               />
             }
-            label="End Date"
+            label={CompanyInfo.field.endDate.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
           <TextField
             id="createRoleName"
             variant="outlined"
-            label="Position Held"
+            label={CompanyInfo.field.role.label}
             fullWidth
             value={editData.role}
             onChange={(event) => {
               setEditData({ ...editData, role: event.target.value });
             }}
-            helperText="For Eg. Senior Manager"
+            helperText={CompanyInfo.field.role.help}
             className={classes.input}
             required
           />
@@ -626,7 +628,7 @@ const Company = () => {
                 }}
               />
             }
-            label="Sub-Text Color"
+            label={CompanyInfo.field.subTextColor.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
@@ -652,14 +654,14 @@ const Company = () => {
                 }}
               />
             }
-            label="Information Color"
+            label={CompanyInfo.field.informationColor.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
           <TextField
             id="editInformation"
             variant="outlined"
-            label="Information regarding work experience"
+            label={CompanyInfo.field.role.label}
             fullWidth
             className={classes.input}
             required
@@ -687,17 +689,17 @@ const Company = () => {
 
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Work Experience
+              {CompanyInfo.title}
             </Typography>
             <Typography
               align="center"
@@ -705,7 +707,7 @@ const Company = () => {
               color="primary"
               style={{ marginBottom: '1rem' }}
             >
-              Work experience will be ordered on the preview page based on the end-date
+              {CompanyInfo.help}
             </Typography>
             <Button
               variant="contained"
@@ -730,10 +732,10 @@ const Company = () => {
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={CompanyInfo.image.src}
+            alt={CompanyInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>

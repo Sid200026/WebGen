@@ -9,7 +9,7 @@ import { IntroductionLayout } from './Introduction/IntroductionLayout.jsx';
 import { AboutMeLayout } from './AboutMe/AboutMeLayout.jsx';
 import { WorkExperienceLayout } from './WorkExperience/WorkExperienceLayout.jsx';
 import { ProjectLayout } from './Project/ProjectLayout.jsx';
-import '../../styles/preview.scss';
+import '../../styles/Preview/preview.scss';
 
 const Preview = (props) => {
   const { location } = props;

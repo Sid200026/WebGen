@@ -10,7 +10,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { style } from '../../../styles/stickyTable';
+import { style } from '../../../styles/Preview/stickyTable';
 
 const useStyles = makeStyles(style);
 

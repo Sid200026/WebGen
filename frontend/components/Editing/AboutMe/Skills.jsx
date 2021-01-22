@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Swal from 'sweetalert2';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -20,14 +19,16 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import { style } from '../../../styles/form';
+import { style } from '../../../styles/Editing/form';
 import {
   skillsAdd as skillsAddFunc,
   skillsRemove as skillsRemoveFunc,
   skillsBackground as skillsBackgroundFunc,
   skillsModify as skillsModifyFunc,
 } from '../../../actions/about_me_action';
-import '../../../styles/editForm.scss';
+import '../../../styles/Editing/editForm.scss';
+import { SkillInfo } from '../../../constants/writeups/aboutMe';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -70,33 +71,21 @@ const Skills = () => {
       Number.isNaN(numberValueElement)
     ) {
       if (element.value.length === 0) {
-        setError('Skill text cannot be empty');
+        setError(SkillInfo.error.emptySkill);
       } else if (colorElement.value.length === 0) {
-        setError('Skill color cannot be empty');
+        setError(SkillInfo.error.emptySkill);
       } else {
-        setError('Skill score cannot be empty');
+        setError(SkillInfo.error.emptySkill);
       }
       return;
     }
     if (numberValueElement > 100 || numberValueElement < 0) {
-      setError('Skill score must be between 0 and 100');
+      setError(SkillInfo.error.invalidSkillScore);
       return;
     }
-    if (skills.length === 14) {
-      // TODO: Change it to a valid link
-      Swal.fire({
-        icon: 'error',
-        title: 'Looks like you are highly skillful',
-        text: "But I'm not. So you can only enter 14 skills at max",
-        footer:
-          // eslint-disable-next-line max-len
-          '<a href="https://github.com/Sid200026/WebGen/blob/master/README.md">Why do I have this issue?</a>',
-      });
-    } else {
-      dispatch(
-        skillsModifyFunc(element.value, numberValueElement, colorElement.value, id),
-      );
-    }
+    dispatch(
+      skillsModifyFunc(element.value, numberValueElement, colorElement.value, id),
+    );
     element.value = '';
     valueElement.value = '';
     setError('');
@@ -114,16 +103,16 @@ const Skills = () => {
       Number.isNaN(numberValueElement)
     ) {
       if (element.value.length === 0) {
-        setError('Skill text cannot be empty');
+        setError(SkillInfo.error.emptySkill);
       } else if (colorElement.value.length === 0) {
-        setError('Skill color cannot be empty');
+        setError(SkillInfo.error.emptySkill);
       } else {
-        setError('Skill score cannot be empty');
+        setError(SkillInfo.error.emptySkill);
       }
       return;
     }
     if (numberValueElement > 100 || numberValueElement < 0) {
-      setError('Skill score must be between 0 and 100');
+      setError(SkillInfo.error.invalidSkillScore);
       return;
     }
     dispatch(skillsAddFunc(element.value, numberValueElement, colorElement.value));
@@ -169,20 +158,20 @@ const Skills = () => {
           <TextField
             id="modifyskill"
             variant="outlined"
-            label="Skill Text"
+            label={SkillInfo.field.skillText.label}
             fullWidth
             defaultValue={skills[open.id] ? skills[open.id].text : ''}
-            helperText="For Eg. CSS"
+            helperText={SkillInfo.field.skillText.help}
             className={classes.input}
             required
           />
           <TextField
             id="modifyskillValue"
             variant="outlined"
-            label="Skill Score Out of 100"
+            label={SkillInfo.field.skillScore.label}
             fullWidth
             defaultValue={skills[open.id] ? skills[open.id].value : 0}
-            helperText="For Eg. 70"
+            helperText={SkillInfo.field.skillScore.help}
             className={classes.input}
             required
           />
@@ -202,7 +191,7 @@ const Skills = () => {
                 onChange={(event) => setSkillModifyColor(event.target.value)}
               />
             }
-            label="Color of skill bar"
+            label={SkillInfo.field.skillBarColor.label}
             labelPlacement="top"
             classes={{ label: classes.formControl }}
           />
@@ -219,17 +208,17 @@ const Skills = () => {
       {errorMessage.length !== 0 && <Alert severity="error">{errorMessage}</Alert>}
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Skills
+              {SkillInfo.title}
             </Typography>
             <FormControlLabel
               value="top"
@@ -248,7 +237,7 @@ const Skills = () => {
                   }}
                 />
               }
-              label="Background of each skill bar"
+              label={SkillInfo.field.background.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -263,9 +252,9 @@ const Skills = () => {
             <TextField
               id="skill"
               variant="outlined"
-              label="Skill Text"
+              label={SkillInfo.field.skillText.label}
               fullWidth
-              helperText="For Eg. CSS"
+              helperText={SkillInfo.field.skillText.help}
               className={classes.input}
               required
               onKeyPress={(event) => {
@@ -277,9 +266,9 @@ const Skills = () => {
             <TextField
               id="skillValue"
               variant="outlined"
-              label="Skill Score Out of 100"
+              label={SkillInfo.field.skillScore.label}
               fullWidth
-              helperText="For Eg. 70"
+              helperText={SkillInfo.field.skillScore.help}
               className={classes.input}
               required
               onKeyPress={(event) => {
@@ -306,7 +295,7 @@ const Skills = () => {
                   }}
                 />
               }
-              label="Color of skill bar"
+              label={SkillInfo.field.skillBarColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -331,10 +320,10 @@ const Skills = () => {
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={SkillInfo.image.src}
+            alt={SkillInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>

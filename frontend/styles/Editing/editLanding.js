@@ -3,7 +3,7 @@ import {
   thirdColor,
   fourthColor,
   fifthColor,
-} from '../constants/color';
+} from '../../constants/color';
 
 export const style = () => ({
   heading: {

@@ -4,7 +4,7 @@ import { Edit } from './Editing/Edit.jsx';
 import { ScrollToTop } from './ScrollToTop.jsx';
 import { Preview } from './Preview/Preview.jsx';
 import { Complete } from './Complete.jsx';
-import '../styles/CreateWebsite.scss';
+import '../styles/Generic/CreateWebsite.scss';
 
 const CreateWebsite = () => {
   return (

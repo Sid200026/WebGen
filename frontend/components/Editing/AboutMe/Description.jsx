@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import { style } from '../../../styles/form';
+import { style } from '../../../styles/Editing/form';
 import {
   descriptionText as descriptionTextFunc,
   descriptionColor as descriptionColorFunc,

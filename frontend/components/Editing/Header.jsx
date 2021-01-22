@@ -68,7 +68,7 @@ import {
 import { localStorageKey } from '../../stores/store';
 import { validateUploadedData } from '../../utils/validateKeys';
 
-import { style } from '../../styles/header';
+import { style } from '../../styles/Generic/header';
 
 const useStyles = makeStyles(style);
 const warningWidth = 1160;

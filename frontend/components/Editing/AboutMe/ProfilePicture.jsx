@@ -13,12 +13,12 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import { style } from '../../../styles/form';
+import { style } from '../../../styles/Editing/form';
 import {
   profilePic as profilePicFunc,
   profilePicRemove as profilePicRemoveFunc,
 } from '../../../actions/about_me_action';
-import '../../../styles/Dropzone.scss';
+import '../../../styles/Editing/Dropzone.scss';
 import { checkImage } from '../../../utils/imageExists';
 import { ProfilePictureInfo } from '../../../constants/writeups/aboutMe';
 import { warningWidth } from '../../../constants/writeups/index';
@@ -46,13 +46,13 @@ const ProfilePicture = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '0.6rem' }}>

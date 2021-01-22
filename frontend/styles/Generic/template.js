@@ -1,4 +1,4 @@
-import { primaryColor, secondaryColor, thirdColor } from '../constants/color';
+import { primaryColor, secondaryColor, thirdColor } from '../../constants/color';
 
 export const style = () => ({
   heading: {

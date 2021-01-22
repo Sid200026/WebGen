@@ -1,4 +1,4 @@
-import { secondaryColor, thirdColor, fifthColor } from '../constants/color';
+import { secondaryColor, thirdColor, fifthColor } from '../../constants/color';
 
 export const style = () => ({
   container: {

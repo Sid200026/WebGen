@@ -1,4 +1,4 @@
-import { secondaryColor, fifthColor } from '../constants/color';
+import { secondaryColor, fifthColor } from '../../constants/color';
 
 const styles = (theme) => ({
   root: {

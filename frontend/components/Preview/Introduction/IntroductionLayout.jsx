@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { Typing } from 'typing-effect-reactjs';
 import { getTheme } from '../../ParticleThemes/index';
-import { style } from '../../../styles/introduction_preview';
+import { style } from '../../../styles/Preview/introduction_preview';
 
 const useStyles = makeStyles(style);
 

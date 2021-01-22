@@ -20,7 +20,8 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-      'script-src': ["'unsafe-eval'"],
+      'script-src': ["'self'", "'unsafe-eval'"],
+      'img-src': ["'self'", 'https:', 'data:'],
     },
   }),
 );

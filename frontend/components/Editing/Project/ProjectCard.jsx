@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import { style } from '../../../styles/form';
+import { style } from '../../../styles/Editing/form';
 import {
   projectCardColor as projectCardColorFunc,
   projectDescriptionColor as projectDescriptionColorFunc,
@@ -13,6 +13,8 @@ import {
   projectViewBtnBorder as projectViewBtnBorderFunc,
   projectViewBtnColor as projectViewBtnColorFunc,
 } from '../../../actions/project_action';
+import { warningWidth } from '../../../constants/writeups/index';
+import { ProjectCardInfo } from '../../../constants/writeups/project';
 
 const useStyles = makeStyles(style);
 
@@ -32,17 +34,17 @@ const ProjectCard = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Project Cards
+              {ProjectCardInfo.title}
             </Typography>
             <FormControlLabel
               value="top"
@@ -61,7 +63,7 @@ const ProjectCard = () => {
                   }}
                 />
               }
-              label="Project Card Color"
+              label={ProjectCardInfo.field.projectCardColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -82,7 +84,7 @@ const ProjectCard = () => {
                   }}
                 />
               }
-              label="Project Title Color"
+              label={ProjectCardInfo.field.projectTitleColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -103,7 +105,7 @@ const ProjectCard = () => {
                   }}
                 />
               }
-              label="Project Description Color"
+              label={ProjectCardInfo.field.projectDescriptionColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -124,7 +126,7 @@ const ProjectCard = () => {
                   }}
                 />
               }
-              label="Project View Button Color"
+              label={ProjectCardInfo.field.projectViewBtnColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -145,19 +147,18 @@ const ProjectCard = () => {
                   }}
                 />
               }
-              label="Project View Button Border"
+              label={ProjectCardInfo.field.projectViewBtnBorder.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
-            {/* TODO: Add example of greeting here */}
           </Card>
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={ProjectCardInfo.image.src}
+            alt={ProjectCardInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>

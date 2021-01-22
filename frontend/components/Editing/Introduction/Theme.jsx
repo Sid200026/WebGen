@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import { generateMenuItems, getTheme } from '../../ParticleThemes/index';
-import { style } from '../../../styles/form';
+import { style } from '../../../styles/Editing/form';
 // eslint-disable-next-line max-len
 import {
   particleJSTheme as particleJSThemeFunc,

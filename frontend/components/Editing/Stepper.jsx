@@ -9,8 +9,9 @@ import MobileStepper from '@material-ui/core/MobileStepper';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Container from '@material-ui/core/Container';
-import { styles } from '../../styles/stepper';
-import '../../styles/Stepper.scss';
+import { styles } from '../../styles/Generic/stepper';
+import { warningWidth } from '../../constants/writeups/index';
+import '../../styles/Generic/Stepper.scss';
 
 const useStyles = makeStyles(styles);
 
@@ -33,7 +34,7 @@ const StepperComp = (props) => {
   };
 
   const getStepper = () => {
-    if (window.innerWidth > 750) {
+    if (window.innerWidth > warningWidth) {
       return (
         <div className={classes.root}>
           <Stepper

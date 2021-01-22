@@ -106,6 +106,9 @@ export const SkillInfo = {
     invalidSkillScore: 'Skill score must be between 0 and 100',
   },
   field: {
+    background: {
+      label: 'Background of each skill bar',
+    },
     skillText: {
       label: 'Skill Text',
       help: 'For Eg. CSS',

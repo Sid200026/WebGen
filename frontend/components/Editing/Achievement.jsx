@@ -5,8 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { style } from '../../styles/editLanding';
-import { achievementWriteup } from '../../constants/writeups/index';
+import { style } from '../../styles/Editing/editLanding';
+import { achievementWriteup, warningWidth } from '../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -20,23 +20,23 @@ const Achievement = () => {
           variant="h3"
           align="center"
           className={clsx(classes.heading, {
-            [classes.responsiveHeading]: window.innerWidth > 750,
+            [classes.responsiveHeading]: window.innerWidth > warningWidth,
           })}
         >
           Achievements Page
         </Typography>
         <div
           className={clsx(classes.exampleContainer, {
-            [classes.responsiveExampleContainer]: window.innerWidth < 750,
+            [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
           })}
         >
           <div className={classes.textContainer}>
             <Typography
               gutterBottom
               align="center"
-              variant={window.innerWidth < 750 ? 'subtitle1' : 'h6'}
+              variant={window.innerWidth < warningWidth ? 'subtitle1' : 'h6'}
               className={clsx(classes.writeUp, {
-                [classes.responsiveWriteUp]: window.innerWidth < 750,
+                [classes.responsiveWriteUp]: window.innerWidth < warningWidth,
               })}
             >
               {achievementWriteup}
@@ -49,7 +49,7 @@ const Achievement = () => {
               label="Enable Page"
               labelPlacement="top"
               className={clsx(classes.labelEnable, {
-                [classes.responsiveLabelEnable]: window.innerWidth < 750,
+                [classes.responsiveLabelEnable]: window.innerWidth < warningWidth,
               })}
               classes={{ label: classes.formControl }}
             />
@@ -60,7 +60,7 @@ const Achievement = () => {
               src="https://bit.ly/3cr31mU"
               alt="Test"
               className={clsx(classes.image, {
-                [classes.responsiveImage]: window.innerWidth < 750,
+                [classes.responsiveImage]: window.innerWidth < warningWidth,
               })}
             />
           </Typography>

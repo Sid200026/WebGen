@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import AdjustIcon from '@material-ui/icons/Adjust';
-import { style } from '../../../styles/work_experience_preview';
+import { style } from '../../../styles/Preview/work_experience_preview';
 
 const useStyles = makeStyles(style);
 

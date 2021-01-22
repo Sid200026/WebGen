@@ -8,7 +8,7 @@ import Link from '@material-ui/core/Link';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import { style } from '../../../styles/form';
+import { style } from '../../../styles/Editing/form';
 import {
   resumeURL as resumeURLFunc,
   resumeButtonText as resumeButtonTextFunc,
@@ -19,6 +19,8 @@ import {
   resumeButtonHoverBackgroundColor as resumeButtonHoverBackgroundColorFunc,
   resumeHoverEnable as resumeHoverEnableFunc,
 } from '../../../actions/about_me_action';
+import { ResumeInfo } from '../../../constants/writeups/aboutMe';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -41,17 +43,17 @@ const Resume = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize View Resume Button
+              {ResumeInfo.title}
             </Typography>
             <Typography
               align="center"
@@ -59,26 +61,24 @@ const Resume = () => {
               color="primary"
               style={{ marginBottom: '1rem' }}
             >
-              Since we frequenly update our resume, we require you to provide us a link
-              to access your resume instead of uploading it so you can update it easily
-              in the future
+              {ResumeInfo.help}
             </Typography>
             <TextField
               variant="outlined"
-              label="Resume URL"
+              label={ResumeInfo.field.resumeUrl.label}
               value={resumeURL}
               onChange={(event) => {
                 dispatch(resumeURLFunc(event.target.value));
               }}
               fullWidth
               // eslint-disable-next-line max-len
-              helperText="Upload your resume in Google Drive, Apple Cloud etc and add the link here"
+              helperText={ResumeInfo.field.resumeUrl.help}
               className={classes.input}
               required
             />
             <TextField
               variant="outlined"
-              label="Resume Button Text"
+              label={ResumeInfo.field.resumeButtonText.label}
               value={resumeButtonText}
               onChange={(event) => {
                 dispatch(resumeButtonTextFunc(event.target.value));
@@ -104,7 +104,7 @@ const Resume = () => {
                   }}
                 />
               }
-              label="Color of the border"
+              label={ResumeInfo.field.resumeButtonBorder.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -125,7 +125,7 @@ const Resume = () => {
                   }}
                 />
               }
-              label="Color of the text"
+              label={ResumeInfo.field.resumeButtonColor.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -146,7 +146,7 @@ const Resume = () => {
                   }}
                 />
               }
-              label="Background of the button"
+              label={ResumeInfo.field.resumeButtonBackground.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
@@ -163,18 +163,18 @@ const Resume = () => {
                   }}
                 />
               }
-              label="Enable hover effects?"
+              label={ResumeInfo.field.resumeButtonHover.label}
               labelPlacement="top"
               classes={{ label: classes.formControl }}
             />
             <Link
               // eslint-disable-next-line max-len
-              href="https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_hover"
+              href={ResumeInfo.hoverEffect.link}
               style={{ marginBottom: '1.3rem' }}
               rel="noreferrer"
               target="_blank"
             >
-              View an Example
+              {ResumeInfo.hoverEffect.text}
             </Link>{' '}
             {resumeHoverEnable && (
               <>
@@ -195,7 +195,7 @@ const Resume = () => {
                       }}
                     />
                   }
-                  label="Color of the button text on hover"
+                  label={ResumeInfo.field.resumeButtonHoverColor.label}
                   labelPlacement="top"
                   classes={{ label: classes.formControl }}
                 />
@@ -218,21 +218,20 @@ const Resume = () => {
                       }}
                     />
                   }
-                  label="Background of the button on hover"
+                  label={ResumeInfo.field.resumeButtonHoverBackground.label}
                   labelPlacement="top"
                   classes={{ label: classes.formControl }}
                 />
               </>
             )}
-            {/* TODO: Add example of greeting here */}
           </Card>
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={ResumeInfo.image.src}
+            alt={ResumeInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>

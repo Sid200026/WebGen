@@ -24,7 +24,7 @@ import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 // import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 // import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 
-import { style } from '../../../styles/previewHeader';
+import { style } from '../../../styles/Preview/previewHeader';
 
 const useStyles = makeStyles(style);
 const warningWidth = 860;

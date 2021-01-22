@@ -10,9 +10,9 @@ import Switch from '@material-ui/core/Switch';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Grid from '@material-ui/core/Grid';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { style } from '../../styles/editLanding';
+import { style } from '../../styles/Editing/editLanding';
 import { enablePage } from '../../actions/about_me_action';
-import { aboutMeWriteup } from '../../constants/writeups/index';
+import { aboutMeWriteup, warningWidth } from '../../constants/writeups/index';
 import { StepperComp as Stepper } from './Stepper.jsx';
 import { ProfilePicture } from './AboutMe/ProfilePicture.jsx';
 import { Description } from './AboutMe/Description.jsx';
@@ -56,7 +56,7 @@ const AboutMe = (props) => {
             variant="h3"
             align="center"
             className={clsx(classes.heading, {
-              [classes.responsiveHeading]: window.innerWidth > 750,
+              [classes.responsiveHeading]: window.innerWidth > warningWidth,
             })}
           >
             About Me Page
@@ -75,16 +75,16 @@ const AboutMe = (props) => {
           </Typography>
           <div
             className={clsx(classes.exampleContainer, {
-              [classes.responsiveExampleContainer]: window.innerWidth < 750,
+              [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
             })}
           >
             <div className={classes.textContainer}>
               <Typography
                 gutterBottom
                 align="center"
-                variant={window.innerWidth < 750 ? 'subtitle1' : 'h6'}
+                variant={window.innerWidth < warningWidth ? 'subtitle1' : 'h6'}
                 className={clsx(classes.writeUp, {
-                  [classes.responsiveWriteUp]: window.innerWidth < 750,
+                  [classes.responsiveWriteUp]: window.innerWidth < warningWidth,
                 })}
               >
                 {aboutMeWriteup}
@@ -97,7 +97,7 @@ const AboutMe = (props) => {
                 label="Enable Page"
                 labelPlacement="top"
                 className={clsx(classes.labelEnable, {
-                  [classes.responsiveLabelEnable]: window.innerWidth < 750,
+                  [classes.responsiveLabelEnable]: window.innerWidth < warningWidth,
                 })}
                 onChange={(event) => {
                   dispatch(enablePage(event.target.checked));
@@ -111,7 +111,7 @@ const AboutMe = (props) => {
                 src="https://bit.ly/3cr31mU"
                 alt="Test"
                 className={clsx(classes.image, {
-                  [classes.responsiveImage]: window.innerWidth < 750,
+                  [classes.responsiveImage]: window.innerWidth < warningWidth,
                 })}
               />
             </Typography>
@@ -127,7 +127,7 @@ const AboutMe = (props) => {
         variant="h3"
         align="center"
         className={clsx(classes.heading, {
-          [classes.responsiveHeading]: window.innerWidth > 750,
+          [classes.responsiveHeading]: window.innerWidth > warningWidth,
         })}
       >
         About Me Page
@@ -150,7 +150,7 @@ const AboutMe = (props) => {
             label="Enable Page"
             labelPlacement="top"
             className={clsx(classes.labelForm, {
-              [classes.responsiveLabelEnable]: window.innerWidth < 750,
+              [classes.responsiveLabelEnable]: window.innerWidth < warningWidth,
             })}
           />
         </Grid>

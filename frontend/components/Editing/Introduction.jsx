@@ -10,8 +10,8 @@ import Switch from '@material-ui/core/Switch';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Grid from '@material-ui/core/Grid';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { style } from '../../styles/editLanding';
-import { introductionWriteup } from '../../constants/writeups/index';
+import { style } from '../../styles/Editing/editLanding';
+import { introductionWriteup, warningWidth } from '../../constants/writeups/index';
 import { enablePage } from '../../actions/introduction_action';
 import { Greeting } from './Introduction/Greeting.jsx';
 import { Name } from './Introduction/Name.jsx';
@@ -49,7 +49,7 @@ const Introduction = (props) => {
             variant="h3"
             align="center"
             className={clsx(classes.heading, {
-              [classes.responsiveHeading]: window.innerWidth > 750,
+              [classes.responsiveHeading]: window.innerWidth > warningWidth,
             })}
           >
             Introduction Page
@@ -68,16 +68,16 @@ const Introduction = (props) => {
           </Typography>
           <div
             className={clsx(classes.exampleContainer, {
-              [classes.responsiveExampleContainer]: window.innerWidth < 750,
+              [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
             })}
           >
             <div className={classes.textContainer}>
               <Typography
                 gutterBottom
                 align="center"
-                variant={window.innerWidth < 750 ? 'subtitle1' : 'h6'}
+                variant={window.innerWidth < warningWidth ? 'subtitle1' : 'h6'}
                 className={clsx(classes.writeUp, {
-                  [classes.responsiveWriteUp]: window.innerWidth < 750,
+                  [classes.responsiveWriteUp]: window.innerWidth < warningWidth,
                 })}
               >
                 {introductionWriteup}
@@ -98,7 +98,7 @@ const Introduction = (props) => {
                 label="Enable Page"
                 labelPlacement="top"
                 className={clsx(classes.labelEnable, {
-                  [classes.responsiveLabelEnable]: window.innerWidth < 750,
+                  [classes.responsiveLabelEnable]: window.innerWidth < warningWidth,
                 })}
                 classes={{ label: classes.formControl }}
               />
@@ -109,7 +109,7 @@ const Introduction = (props) => {
                 src="https://bit.ly/3cr31mU"
                 alt="Test"
                 className={clsx(classes.image, {
-                  [classes.responsiveImage]: window.innerWidth < 750,
+                  [classes.responsiveImage]: window.innerWidth < warningWidth,
                 })}
               />
             </Typography>
@@ -124,7 +124,7 @@ const Introduction = (props) => {
         variant="h3"
         align="center"
         className={clsx(classes.heading, {
-          [classes.responsiveHeading]: window.innerWidth > 750,
+          [classes.responsiveHeading]: window.innerWidth > warningWidth,
         })}
       >
         Introduction Page
@@ -147,7 +147,7 @@ const Introduction = (props) => {
             label="Enable Page"
             labelPlacement="top"
             className={clsx(classes.labelForm, {
-              [classes.responsiveLabelEnable]: window.innerWidth < 750,
+              [classes.responsiveLabelEnable]: window.innerWidth < warningWidth,
             })}
           />
         </Grid>

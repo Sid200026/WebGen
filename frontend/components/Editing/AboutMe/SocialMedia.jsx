@@ -22,14 +22,16 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { style } from '../../../styles/form';
+import { style } from '../../../styles/Editing/form';
 import { getMediaName } from '../../../utils/socialMediaDetector';
 import {
   socialMediaAdd as socialMediaAddFunc,
   socialMediaRemove as socialMediaRemoveFunc,
   socialMediaModify as socialMediaModifyFunc,
 } from '../../../actions/about_me_action';
-import '../../../styles/editForm.scss';
+import '../../../styles/Editing/editForm.scss';
+import { SocialMediaInfo } from '../../../constants/writeups/aboutMe';
+import { warningWidth } from '../../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
 
@@ -51,9 +53,9 @@ const SocialMedia = () => {
     const element = document.getElementById('modifySpecial');
     if (element.value.length === 0 || modifyMediaType.length === 0) {
       if (element.value.length === 0) {
-        setError('Social Media URL cannot be empty');
+        setError(SocialMediaInfo.error.emptyURL);
       } else {
-        setError('Social Media Type cannot be empty');
+        setError(SocialMediaInfo.error.emptyType);
       }
       return;
     }
@@ -70,9 +72,9 @@ const SocialMedia = () => {
     const element = document.getElementById('special');
     if (element.value.length === 0 || mediaType.length === 0) {
       if (element.value.length === 0) {
-        setError('Social Media URL cannot be empty');
+        setError(SocialMediaInfo.error.emptyURL);
       } else {
-        setError('Social Media Type cannot be empty');
+        setError(SocialMediaInfo.error.emptyType);
       }
       return;
     }
@@ -130,9 +132,9 @@ const SocialMedia = () => {
           <TextField
             id="modifySpecial"
             variant="outlined"
-            label="Social Media URL"
+            label={SocialMediaInfo.field.socialMediaURL.help}
             fullWidth
-            helperText="For example https://github.com/Sid200026"
+            helperText={SocialMediaInfo.field.socialMediaURL.label}
             className={classes.input}
             onChange={(event) => {
               const getPossibleName = getMediaName(event.target.value);
@@ -144,9 +146,9 @@ const SocialMedia = () => {
           <TextField
             id="url"
             variant="outlined"
-            label="Social Media Type"
+            label={SocialMediaInfo.field.socialMediaType.label}
             fullWidth
-            helperText="For example GitHub"
+            helperText={SocialMediaInfo.field.socialMediaType.help}
             className={classes.input}
             required
             value={modifyMediaType}
@@ -161,7 +163,7 @@ const SocialMedia = () => {
                 color="primary"
               />
             }
-            label="Use Light Theme ?"
+            label={SocialMediaInfo.field.useLightTheme.label}
           />
         </DialogContent>
         <DialogActions>
@@ -176,17 +178,17 @@ const SocialMedia = () => {
       {errorMessage.length !== 0 && <Alert severity="error">{errorMessage}</Alert>}
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < 750,
+          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < 750,
+              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
-              Customize Social Media Handles
+              {SocialMediaInfo.title}
             </Typography>
             <Typography
               align="center"
@@ -194,15 +196,14 @@ const SocialMedia = () => {
               color="secondary"
               style={{ marginBottom: '1rem' }}
             >
-              Warning : Original theme cannot be used for every logo. In those cases
-              please check Use Light Theme
+              {SocialMediaInfo.help}
             </Typography>
             <TextField
               id="special"
               variant="outlined"
-              label="Social Media URL"
+              label={SocialMediaInfo.field.socialMediaURL.help}
               fullWidth
-              helperText="For example https://github.com/Sid200026"
+              helperText={SocialMediaInfo.field.socialMediaURL.help}
               className={classes.input}
               onChange={(event) => {
                 const getPossibleName = getMediaName(event.target.value);
@@ -213,9 +214,9 @@ const SocialMedia = () => {
             <TextField
               id="url"
               variant="outlined"
-              label="Social Media Type"
+              label={SocialMediaInfo.field.socialMediaType.label}
               fullWidth
-              helperText="For example GitHub"
+              helperText={SocialMediaInfo.field.socialMediaType.help}
               className={classes.input}
               required
               value={mediaType}
@@ -237,7 +238,7 @@ const SocialMedia = () => {
                   color="primary"
                 />
               }
-              label="Use Light Theme ?"
+              label={SocialMediaInfo.field.useLightTheme.label}
             />
             {mediaHandles.length !== 0 && (
               <Typography
@@ -253,10 +254,10 @@ const SocialMedia = () => {
         </div>
         <div className={classes.cardContainer}>
           <img
-            src="https://bit.ly/3cr31mU"
-            alt="Test"
+            src={SocialMediaInfo.image.src}
+            alt={SocialMediaInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < 750,
+              [classes.responsiveImage]: window.innerWidth < warningWidth,
             })}
           />
         </div>

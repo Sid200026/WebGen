@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import '../styles/skillbar.scss';
+import { warningWidth } from '../constants/writeups/index';
+import '../styles/Preview/skillbar.scss';
 
 const Skillbars = (props) => {
   const { skills, skillsBackground } = props;
@@ -13,7 +14,7 @@ const Skillbars = (props) => {
   ).text;
 
   const getSize = () => {
-    const multiplier = window.innerWidth < 750 ? 0.6 : 1;
+    const multiplier = window.innerWidth < warningWidth ? 0.6 : 1;
     if (findMaxSkillName.length < 5) {
       return `${13 * findMaxSkillName.length * multiplier}px`;
     }

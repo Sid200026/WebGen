@@ -1,4 +1,4 @@
-import { fourthColor, secondaryColor } from '../constants/color';
+import { fourthColor, secondaryColor } from '../../constants/color';
 
 export const style = () => ({
   formHolder: {
