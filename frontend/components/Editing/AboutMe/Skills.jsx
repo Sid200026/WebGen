@@ -74,8 +74,6 @@ const Skills = () => {
         setError(SkillInfo.error.emptySkill);
       } else if (colorElement.value.length === 0) {
         setError(SkillInfo.error.emptySkill);
-      } else {
-        setError(SkillInfo.error.emptySkill);
       }
       return;
     }
@@ -105,8 +103,6 @@ const Skills = () => {
       if (element.value.length === 0) {
         setError(SkillInfo.error.emptySkill);
       } else if (colorElement.value.length === 0) {
-        setError(SkillInfo.error.emptySkill);
-      } else {
         setError(SkillInfo.error.emptySkill);
       }
       return;
