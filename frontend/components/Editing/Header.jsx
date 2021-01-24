@@ -128,6 +128,7 @@ const Header = (props) => {
 
   const navigateTo = (link, state) => {
     navigate(link, { state });
+    if (open) handleDrawerClose();
   };
 
   const introductionReducer = useSelector((state) => state.introductionReducer);
