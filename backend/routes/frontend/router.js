@@ -1,10 +1,12 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const { frontendLimiter } = require('../../controller/rateLimitFrontend');
 const { logger } = require('../../logger/logger');
 
 /************************** Sending the React App ************************* */
 
+router.use('*', frontendLimiter);
 router.route('*').get((_req, res, next) => {
   const options = {
     root: path.join(__dirname, '../../views'),
