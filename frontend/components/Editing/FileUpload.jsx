@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 import PropTypes from 'prop-types';
 import Alert from '@material-ui/lab/Alert';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import {
   fileTooLarge,
   fileTooLargeKnowMore,
@@ -18,6 +19,8 @@ import { generateAPIKey } from '../../utils/generateAPIKey';
 
 // 1 B to 10MB limit
 const FileUpload = (props) => {
+  const [progress, updateProgress] = useState(0);
+  const [uploadStarted, setUploadStarted] = useState(false);
   const { callback } = props;
   const handleDrop = (acceptedFiles) => {
     if (acceptedFiles.length > 0) {
@@ -33,9 +36,21 @@ const FileUpload = (props) => {
       }
       formData.append('image', acceptedFiles[0]);
       formData.append('apiKey', generateAPIKey());
-      axios
-        .post('/upload/single', formData)
+      if (!uploadStarted) {
+        setUploadStarted(true);
+      }
+      axios({
+        method: 'post',
+        url: '/upload/single',
+        data: formData,
+        onUploadProgress(progressEvent) {
+          updateProgress(
+            Math.round((progressEvent.loaded * 100) / progressEvent.total),
+          );
+        },
+      })
         .then((res) => {
+          setUploadStarted(false);
           const { data } = res;
           const { url, fileName } = data;
           callback(url, fileName);
@@ -68,42 +83,55 @@ const FileUpload = (props) => {
   };
 
   return (
-    <Dropzone
-      onDrop={handleDrop}
-      accept={fileConfig.accept}
-      minSize={fileConfig.minSize}
-      maxSize={fileConfig.maxSize}
-      maxFiles={fileConfig.maxFiles}
-      multiple={false}
-      canCancel={false}
-      style={{ marginBottom: '4rem' }}
-    >
-      {({
-        getRootProps,
-        getInputProps,
-        isDragAccept,
-        isDragReject,
-        fileRejections,
-      }) => {
-        // additional CSS depends on dragging status
-        // eslint-disable-next-line no-nested-ternary
-        const additionalClass = isDragAccept ? 'accept' : isDragReject ? 'reject' : '';
+    <>
+      {uploadStarted && (
+        <LinearProgress
+          variant="determinate"
+          value={progress}
+          style={{ width: '100%', marginBottom: '1rem' }}
+        />
+      )}
+      <Dropzone
+        onDrop={handleDrop}
+        accept={fileConfig.accept}
+        minSize={fileConfig.minSize}
+        maxSize={fileConfig.maxSize}
+        maxFiles={fileConfig.maxFiles}
+        multiple={false}
+        canCancel={false}
+        style={{ marginBottom: '4rem' }}
+      >
+        {({
+          getRootProps,
+          getInputProps,
+          isDragAccept,
+          isDragReject,
+          fileRejections,
+        }) => {
+          // additional CSS depends on dragging status
+          // eslint-disable-next-line no-nested-ternary
+          const additionalClass = isDragAccept
+            ? 'accept'
+            : isDragReject
+            ? 'reject'
+            : '';
 
-        return (
-          <div
-            {...getRootProps({
-              className: `dropzone ${additionalClass}`,
-            })}
-          >
-            {fileRejections.length > 0 && (
-              <Alert severity="error">{fileTooLarge}</Alert>
-            )}
-            <input {...getInputProps()} />
-            <p>{dropzoneWriteup}</p>
-          </div>
-        );
-      }}
-    </Dropzone>
+          return (
+            <div
+              {...getRootProps({
+                className: `dropzone ${additionalClass}`,
+              })}
+            >
+              {fileRejections.length > 0 && (
+                <Alert severity="error">{fileTooLarge}</Alert>
+              )}
+              <input {...getInputProps()} />
+              <p>{dropzoneWriteup}</p>
+            </div>
+          );
+        }}
+      </Dropzone>
+    </>
   );
 };
 FileUpload.propTypes = {
