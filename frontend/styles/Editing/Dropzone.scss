@@ -1,0 +1,21 @@
+@import '../../constants/color';
+
+.dropzone {
+  text-align: center;
+  padding: 20px;
+  border: 3px dashed $fourthColor;
+  background-color: #fafafa;
+  color: $primary-color;
+  width: 95%;
+}
+.accept {
+  border-color: #107c10 !important;
+}
+
+.reject {
+  border-color: #d83b01 !important;
+}
+
+.dropzone:focus{
+  outline: none;
+}

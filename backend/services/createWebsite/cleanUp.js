@@ -9,11 +9,11 @@ const PUBLIC_IMAGE_DIRECTORY = path.join(__dirname, '../../user/public/images');
 const ZIP_FILE = path.join(__dirname, '../../website.zip');
 const USER_INTRODUCTION_FILE = path.join(
   __dirname,
-  '../../../frontend/src/initialState/user.introduction_initial.js',
+  '../../../frontend/initialState/user.introduction_initial.js',
 );
 const USER_ABOUT_ME_FILE = path.join(
   __dirname,
-  '../../../frontend/src/initialState/user.about_me_initial.js',
+  '../../../frontend/initialState/user.about_me_initial.js',
 );
 
 const cleanUp = () => {

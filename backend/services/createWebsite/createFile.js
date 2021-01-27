@@ -11,7 +11,7 @@ const introductionFileName = 'user.introduction_initial.js';
 const aboutMeFileName = 'user.about_me_initial.js';
 const workExperienceFileName = 'user.work_experience_initial.js';
 const projectFileName = 'user.project_initial.js';
-const rootDirectory = path.join(__dirname, '../../../frontend/src/initialState');
+const rootDirectory = path.join(__dirname, '../../../frontend/initialState');
 
 const createFiles = ({ introduction, aboutMe, workExperience, project }) => {
   const dataIntroduction = new Uint8Array(

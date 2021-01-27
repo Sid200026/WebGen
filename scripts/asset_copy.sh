@@ -6,6 +6,10 @@ if [ ! -z "${DEPLOYMENT_GROUP_ID}" ]; then
 fi
 INIT_DIR="${HOME_DIRECTORY}/backend/public/images/assets"
 FIN_DIR="${HOME_DIRECTORY}/backend/user/public"
+UPLOAD_DIR="${HOME_DIRECTORY}/backend/upload"
+if [ ! -d "$UPLOAD_DIR" ]; then
+    mkdir "$UPLOAD_DIR"
+fi
 if [ ! -d "$FIN_DIR" ]; then
     mkdir -p "$FIN_DIR" && cp -R "$INIT_DIR" "$FIN_DIR"
 fi
