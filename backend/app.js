@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const compression = require('compression');
@@ -16,7 +16,7 @@ const app = express();
 
 const { sanitiseInput } = require('./utils/sanitise');
 
-app.use(
+/*app.use(
   helmet.contentSecurityPolicy({
     directives: {
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
@@ -29,7 +29,7 @@ app.use(
       ],
     },
   }),
-);
+);*/
 
 app.use(compression());
 app.use(bodyParser.json());
