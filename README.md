@@ -1,8 +1,9 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![Language][language-url]][language-url]
 [![Build Status][travis-badge]][travis-badge]
+[![CodeQL][codeql-badge]][codeql-badge]
+[![Contributors][contributors-shield]][contributors-url]
+[![Issues][issues-shield]][issues-url]
 [![Dependencies][dependencies-badge]][dependencies-badge]
 
 <br />
@@ -306,3 +307,4 @@ Project Link: [https://github.com/Sid200026/WebGen](https://github.com/Sid200026
 [travis-badge]: https://img.shields.io/travis/com/Sid200026/WebGen?style=for-the-badge
 [dependencies-badge]: https://img.shields.io/david/Sid200026/WebGen?style=for-the-badge
 [language-url]: https://img.shields.io/github/languages/top/Sid200026/WebGen?style=for-the-badge
+[codeql-badge]: https://github.com/Sid200026/WebGen/workflows/CodeQL/badge.svg?branch=master
