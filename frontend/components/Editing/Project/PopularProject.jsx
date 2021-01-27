@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -27,9 +27,11 @@ import {
   popularProjectAdd as popularProjectAddFunc,
   popularProjectDelete as popularProjectDeleteFunc,
   popularProjectEdit as popularProjectEditFunc,
+  popularProjectBatchDelete as popularProjectBatchDeleteFunc,
 } from '../../../actions/project_action';
 import { warningWidth } from '../../../constants/writeups/index';
 import { PopularProjectInfo } from '../../../constants/writeups/project';
+import { checkImagePromises } from '../../../utils/imageExists';
 
 const useStyles = makeStyles(style);
 
@@ -143,8 +145,7 @@ const PopularProject = () => {
 
   const getAllProjects = () => {
     return popularProject.map((currentProject, index) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <ListItem divider key={index}>
+      <ListItem divider key={currentProject.projectTitle}>
         <ListItemAvatar>
           <Avatar
             alt={currentProject.projectImage.projectImageName}
@@ -259,6 +260,26 @@ const PopularProject = () => {
       </DialogActions>
     </Dialog>
   );
+
+  useEffect(() => {
+    const promises = [];
+    popularProject.forEach((currentProject) => {
+      promises.push(checkImagePromises(currentProject.projectImage.projectImageURL));
+    });
+    const indexOfProjectWithNoImage = [];
+    Promise.all(promises)
+      .then((responses) => {
+        responses.forEach((response, index) => {
+          if (!response.success) indexOfProjectWithNoImage.push(index);
+        });
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (indexOfProjectWithNoImage.length !== 0) {
+          dispatch(popularProjectBatchDeleteFunc(indexOfProjectWithNoImage));
+        }
+      });
+  }, []);
 
   return (
     <>

@@ -5,4 +5,12 @@ const checkImage = (imageSrc, callback) => {
   img.src = imageSrc;
 };
 
-export { checkImage };
+const checkImagePromises = (path) =>
+  new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve({ success: true });
+    img.onerror = () => resolve({ success: false });
+    img.src = path;
+  });
+
+export { checkImage, checkImagePromises };

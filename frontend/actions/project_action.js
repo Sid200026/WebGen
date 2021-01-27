@@ -14,6 +14,7 @@ import {
   PROJECT_TABLE_COLOR,
   POPULAR_PROJECT_ADD,
   POPULAR_PROJECT_EDIT,
+  POPULAR_PROJECT_BATCH_REMOVE,
   POPULAR_PROJECT_REMOVE,
   OTHER_PROJECT_ADD,
   OTHER_PROJECT_EDIT,
@@ -83,6 +84,11 @@ export const popularProjectAdd = (response) => ({
 export const popularProjectDelete = (index) => ({
   type: POPULAR_PROJECT_REMOVE,
   payload: { index },
+});
+
+export const popularProjectBatchDelete = (arr) => ({
+  type: POPULAR_PROJECT_BATCH_REMOVE,
+  payload: { arr },
 });
 
 export const popularProjectEdit = (response, index) => ({

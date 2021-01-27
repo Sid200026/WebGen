@@ -15,6 +15,7 @@ import {
   POPULAR_PROJECT_ADD,
   POPULAR_PROJECT_EDIT,
   POPULAR_PROJECT_REMOVE,
+  POPULAR_PROJECT_BATCH_REMOVE,
   OTHER_PROJECT_ADD,
   OTHER_PROJECT_EDIT,
   OTHER_PROJECT_REMOVE,
@@ -108,6 +109,24 @@ export const projectReducer = (state = project, { type, payload }) => {
         ...state,
         [popularProject]: removeElementFromArray(state.popularProject, payload.index),
       };
+
+    case POPULAR_PROJECT_BATCH_REMOVE: {
+      const arrayIndex = payload.arr;
+      let firstPointer = 0;
+      const popularProjects = [];
+      state.popularProject.forEach((Popularproject, statePointer) => {
+        if (statePointer === arrayIndex[firstPointer]) {
+          firstPointer += 1;
+        } else {
+          popularProjects.push(Popularproject);
+        }
+      });
+      return {
+        ...state,
+        [popularProject]: popularProjects,
+      };
+    }
+
     case OTHER_PROJECT_ADD:
       return {
         ...state,
