@@ -71,7 +71,7 @@ import { validateUploadedData } from '../../utils/validateKeys';
 import { style } from '../../styles/Generic/header';
 
 const useStyles = makeStyles(style);
-const warningWidth = 1160;
+const warningWidth = 1220;
 
 const Header = (props) => {
   const classes = useStyles();
@@ -256,19 +256,19 @@ const Header = (props) => {
     { name: 'Achievements', icon: ImportContactsIcon, link: '/achievement' },
     { name: 'Contact', icon: ContactPhoneIcon, link: '/contact' },
     {
+      name: 'Finish',
+      icon: DoneIcon,
+      fn: () => {
+        handleDrawerClose();
+        navigateTo('/submit');
+      },
+    },
+    {
       name: 'More',
       icon: MoreVertIcon,
       link: '/submit',
       hasSubMenu: true,
       subMenu: [
-        {
-          name: 'Finish',
-          icon: DoneIcon,
-          fn: () => {
-            handleDrawerClose();
-            navigateTo('/submit');
-          },
-        },
         { name: 'Save', icon: SaveIcon, fn: saveConfigFile },
         { name: 'Load', icon: PublishIcon, fn: handleDialogOpen },
         { name: 'Reset', icon: ClearIcon, fn: resetConfigFile },
@@ -445,6 +445,16 @@ const Header = (props) => {
                 <Button
                   color="inherit"
                   className={classes.labelButton}
+                  onClick={() => {
+                    handleDrawerClose();
+                    navigateTo('/submit');
+                  }}
+                >
+                  Finish
+                </Button>
+                <Button
+                  color="inherit"
+                  className={classes.labelButton}
                   endIcon={<ArrowDownwardIcon />}
                   onClick={handleClick}
                 >
@@ -467,18 +477,6 @@ const Header = (props) => {
                     horizontal: 'center',
                   }}
                 >
-                  <MenuItem
-                    onClick={() => {
-                      navigateTo('/submit');
-                      handleClose();
-                    }}
-                    className={classes.menuConfig}
-                  >
-                    <ListItemIcon>
-                      <DoneIcon fontSize="small" />
-                    </ListItemIcon>
-                    <Typography variant="inherit">Finish</Typography>
-                  </MenuItem>
                   <MenuItem onClick={saveConfigFile} className={classes.menuConfig}>
                     <ListItemIcon>
                       <SaveIcon fontSize="small" />
@@ -565,9 +563,13 @@ const Header = (props) => {
                 <ListItem
                   button
                   key={info.name}
-                  onClick={() => {
-                    navigateTo(info.link);
-                  }}
+                  onClick={
+                    info.fn
+                      ? info.fn
+                      : () => {
+                          navigateTo(info.link);
+                        }
+                  }
                 >
                   <ListItemIcon>
                     <info.icon />
