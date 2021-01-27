@@ -22,6 +22,11 @@ app.use(
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
       'script-src': ["'self'", "'unsafe-eval'"],
       'img-src': ["'self'", 'https:', 'data:'],
+      'connect-src': [
+        'https://meme-api.herokuapp.com',
+        `localhost:${process.env.PORT || 8000}`,
+        `127.0.0.1:${process.env.PORT || 8000}`,
+      ],
     },
   }),
 );
