@@ -11,12 +11,26 @@ const { router: submitRouter } = require('./routes/submit/router');
 const { router: templateRouter } = require('./routes/template/router');
 const { logger } = require('./logger/logger');
 const { protectAPI } = require('./services/protection/protection');
-// const { instantLimiter, overallLimiter } = require('./controller/rateLimitUpload');
+const { instantLimiter, overallLimiter } = require('./controller/rateLimitUpload');
 const app = express();
 
 const { sanitiseInput } = require('./utils/sanitise');
 
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      'script-src': ["'self'", "'unsafe-eval'"],
+      'img-src': ["'self'", 'https:', 'data:'],
+      'connect-src': [
+        'https://meme-api.herokuapp.com',
+        `localhost:${process.env.PORT || 8000}`,
+        `127.0.0.1:${process.env.PORT || 8000}`,
+      ],
+    },
+  }),
+);
+
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -53,7 +67,7 @@ app.use('/api', (req, res, next) => {
   }
 });
 
-// app.use('/upload', [instantLimiter, overallLimiter]);
+app.use('/upload', [instantLimiter, overallLimiter]);
 app.use('/upload', uploadRouter);
 
 app.use('/template', templateRouter);

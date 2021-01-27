@@ -1,8 +1,9 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![Language][language-url]][language-url]
 [![Build Status][travis-badge]][travis-badge]
+[![CodeQL][codeql-badge]][codeql-badge]
+[![Contributors][contributors-shield]][contributors-url]
+[![Issues][issues-shield]][issues-url]
 [![Dependencies][dependencies-badge]][dependencies-badge]
 
 <br />
@@ -147,7 +148,7 @@ This is the list of softwares required to run WebGen and how to install them.
    ```sh
    cd WebGen
    ```
-3. Create a `.env` file
+3. Create a `.env` and `.env.production` file with the same content
 
    ```env
    PORT=<Port on which to run the application>
@@ -194,7 +195,7 @@ This is the list of softwares required to run WebGen and how to install them.
    REDIS_HOST=redis
    REDIS_PORT=6379
    ```
-   
+
 4. Create the user files
 
    ```sh
@@ -209,19 +210,25 @@ This is the list of softwares required to run WebGen and how to install them.
    npm install
    ```
 
-2. Run the backend server
+2. Copy assets folder
+
+   ```sh
+   bash scripts/asset_copy.sh
+   ```
+
+3. Run the backend server
 
    ```sh
    npm run dev
    ```
 
-3. Open another terminal and run the frontend server
+4. Open another terminal and run the frontend server
 
    ```sh
    npm run bundle
    ```
 
-4. If you want to run both of them in the same terminal, run
+5. If you want to run both of them in the same terminal, run
 
    ```sh
    npm run conc
@@ -300,3 +307,4 @@ Project Link: [https://github.com/Sid200026/WebGen](https://github.com/Sid200026
 [travis-badge]: https://img.shields.io/travis/com/Sid200026/WebGen?style=for-the-badge
 [dependencies-badge]: https://img.shields.io/david/Sid200026/WebGen?style=for-the-badge
 [language-url]: https://img.shields.io/github/languages/top/Sid200026/WebGen?style=for-the-badge
+[codeql-badge]: https://github.com/Sid200026/WebGen/workflows/CodeQL/badge.svg?branch=master
