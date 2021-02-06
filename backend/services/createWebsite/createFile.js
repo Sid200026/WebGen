@@ -5,15 +5,23 @@ const {
   aboutMeInitial,
   workExperienceInitial,
   projectInitial,
+  achievementInitial,
 } = require('../../constants/JavaScriptFile');
 
 const introductionFileName = 'user.introduction_initial.js';
 const aboutMeFileName = 'user.about_me_initial.js';
 const workExperienceFileName = 'user.work_experience_initial.js';
 const projectFileName = 'user.project_initial.js';
+const achievementFileName = 'user.achievement_initial.js';
 const rootDirectory = path.join(__dirname, '../../../frontend/initialState');
 
-const createFiles = ({ introduction, aboutMe, workExperience, project }) => {
+const createFiles = ({
+  introduction,
+  aboutMe,
+  workExperience,
+  project,
+  achievement,
+}) => {
   const dataIntroduction = new Uint8Array(
     Buffer.from(introductionInitial(introduction)),
   );
@@ -23,16 +31,18 @@ const createFiles = ({ introduction, aboutMe, workExperience, project }) => {
   );
 
   const dataProject = new Uint8Array(Buffer.from(projectInitial(project)));
-
+  const dataAchievement = new Uint8Array(Buffer.from(achievementInitial(achievement)));
   const introductionPath = path.join(rootDirectory, introductionFileName);
   const aboutMePath = path.join(rootDirectory, aboutMeFileName);
   const workExperiencePath = path.join(rootDirectory, workExperienceFileName);
   const projectPath = path.join(rootDirectory, projectFileName);
+  const achievementPath = path.join(rootDirectory, achievementFileName);
 
   fs.writeFileSync(introductionPath, dataIntroduction);
   fs.writeFileSync(aboutMePath, dataAboutMe);
   fs.writeFileSync(workExperiencePath, dataWorkExperience);
   fs.writeFileSync(projectPath, dataProject);
+  fs.writeFileSync(achievementPath, dataAchievement);
 };
 
 module.exports = { createFiles };

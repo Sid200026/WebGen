@@ -12,7 +12,7 @@ export const LayoutInfo = {
       label: 'Page Title Color',
     },
     background: {
-      label: 'Background of About Me Page',
+      label: 'Background of Project Page',
     },
   },
 };
@@ -56,11 +56,11 @@ export const PopularProjectInfo = {
   title: 'Customize Popular Project Card Content',
   image: {
     src: 'https://bit.ly/3cr31mU',
-    alt: 'Other Project Image',
+    alt: 'Popular Project Image',
   },
   help:
     // eslint-disable-next-line max-len
-    'Apart from the popular projects, you can include other projects here. All the projects here will be displayed in a tabular format.',
+    'Popular project are those projects you want to showcase along with images.',
   field: {
     projectTitle: {
       label: 'Project Title',

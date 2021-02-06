@@ -1,7 +1,14 @@
 const { createWebsiteQueue } = require('../services/background/createBackground');
 
 const createWebsite = async (req, res) => {
-  const { introduction, email, aboutMe, workExperience, project } = req.body;
+  const {
+    introduction,
+    email,
+    aboutMe,
+    workExperience,
+    project,
+    achievement,
+  } = req.body;
   res.sendStatus(200);
   const data = {
     introduction,
@@ -9,6 +16,7 @@ const createWebsite = async (req, res) => {
     workExperience,
     email,
     project,
+    achievement,
   };
   createWebsiteQueue.add(data);
 };
