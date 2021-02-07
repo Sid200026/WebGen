@@ -12,9 +12,10 @@ createWebsiteQueue.process(async (job) => {
     aboutMe,
     project,
     achievement,
+    contact,
   } = job.data;
   await developSite(
-    { introduction, aboutMe, workExperience, project, achievement },
+    { introduction, aboutMe, workExperience, project, achievement, contact },
     email,
   );
 });

@@ -6,7 +6,7 @@ const { logger } = require('../../logger/logger');
 const rootDirectory = path.join(__dirname, '../../user/public/images/');
 
 const assetDownloader = (
-  { introduction, aboutMe, workExperience, project, achievement },
+  { introduction, aboutMe, workExperience, project, achievement, contact },
   cb = null,
 ) => {
   const promises = [];
