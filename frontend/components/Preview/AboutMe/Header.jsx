@@ -21,7 +21,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import WorkIcon from '@material-ui/icons/Work';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-// import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 
 import { style } from '../../../styles/Preview/previewHeader';
@@ -85,6 +85,8 @@ const Header = (props) => {
     enable: achievementEnable,
     pageHeadline: pageHeadlineAchievement,
   } = achievementReducer;
+  const contactReducer = useSelector((stateReact) => stateReact.contactReducer);
+  const { enable: contactEnable, pageHeadline: pageHeadlineContact } = contactReducer;
 
   // const navItems = [
   //   { name: 'Introduction', icon: FlagIcon, classname: 'static__container' },
@@ -133,6 +135,13 @@ const Header = (props) => {
       name: pageHeadlineAchievement,
       icon: ImportContactsIcon,
       classname: 'achievement__container',
+    });
+  }
+  if (contactEnable) {
+    navItems.push({
+      name: pageHeadlineContact,
+      icon: ContactPhoneIcon,
+      classname: 'contact__container',
     });
   }
 

@@ -41,6 +41,10 @@ import {
   reset as resetAchievement,
   load as loadAchievement,
 } from '../../actions/achievement_action';
+import {
+  reset as resetContact,
+  load as loadContact,
+} from '../../actions/contact_action';
 import { warningWidth } from '../../constants/writeups/index';
 
 const useStyles = makeStyles(style);
@@ -53,11 +57,13 @@ const Template = () => {
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
   const projectReducer = useSelector((state) => state.projectReducer);
   const achievementReducer = useSelector((state) => state.achievementReducer);
+  const contactReducer = useSelector((state) => state.contactReducer);
   const { enable: introductionEnable } = introductionReducer;
   const { enable: aboutMeEnable } = aboutMeReducer;
   const { enable: workExperienceEnable } = workExperienceReducer;
   const { enable: projectEnable } = projectReducer;
   const { enable: achievementEnable } = achievementReducer;
+  const { enable: contactEnable } = contactReducer;
 
   const [templates, setTemplates] = useState([]);
 
@@ -83,6 +89,7 @@ const Template = () => {
     dispatch(resetDefaultTheme());
     dispatch(resetProject());
     dispatch(resetAchievement());
+    dispatch(resetContact());
     localStorage.removeItem(localStorageKey);
   };
 
@@ -115,6 +122,7 @@ const Template = () => {
       defaultTheme,
       achievement,
       project,
+      contact,
     } = templateConfig;
     dispatch(loadIntroduction(introduction));
     dispatch(loadAboutMe(aboutMe));
@@ -122,6 +130,7 @@ const Template = () => {
     dispatch(loadDefaultTheme(defaultTheme));
     dispatch(loadProject(project));
     dispatch(loadAchievement(achievement));
+    dispatch(loadContact(contact));
     navigateTo('/introduction');
   };
 
@@ -131,7 +140,8 @@ const Template = () => {
       aboutMeEnable ||
       workExperienceEnable ||
       projectEnable ||
-      achievementEnable
+      achievementEnable ||
+      contactEnable
     ) {
       warnUnsavedChanges(() => {
         updateStore(index);
@@ -147,7 +157,8 @@ const Template = () => {
       aboutMeEnable ||
       workExperienceEnable ||
       projectEnable ||
-      achievementEnable
+      achievementEnable ||
+      contactEnable
     ) {
       warnUnsavedChanges(() => {
         discardChanges();
@@ -217,7 +228,8 @@ const Template = () => {
     aboutMeEnable ||
     workExperienceEnable ||
     projectEnable ||
-    achievementEnable;
+    achievementEnable ||
+    contactEnable;
 
   return (
     <>

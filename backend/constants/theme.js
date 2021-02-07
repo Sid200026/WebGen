@@ -296,6 +296,19 @@ const whiteTheme = {
         },
       ],
     },
+    contact: {
+      enable: true,
+      pageHeadline: 'Contact Me',
+      pageHeadlineColor: '#ffffff',
+      background: '#000000',
+      footerText: 'Made by INSERT_YOUR_NAME',
+      footerColor: '#00ffff',
+      footerBackground: '#000000',
+      footerBorder: '#ffffff',
+      formBackground: '#e6e6e6',
+      formColor: '#000000',
+      formSpreeLink: '',
+    },
   },
 };
 
