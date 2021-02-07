@@ -262,10 +262,55 @@ const achievement = {
 export default achievement;
 `;
 
+const contactInitial = ({
+  enable,
+  pageHeadline,
+  pageHeadlineColor,
+  background,
+  footerColor,
+  footerText,
+  footerBorder,
+  footerBackground,
+  formBackground,
+  formColor,
+  formSpreeLink,
+}) => `\
+import {
+  enable,
+  pageHeadline,
+  pageHeadlineColor,
+  background,
+  footerColor,
+  footerText,
+  footerBorder,
+  footerBackground,
+  formBackground,
+  formColor,
+  formSpreeLink,
+} from '../constants/contact_page';
+
+const contact = {
+  [enable]: \`${enable}\`,
+  [pageHeadline]: \`${pageHeadline}\`,
+  [pageHeadlineColor]: \`${pageHeadlineColor}\`,
+  [background]: \`${background}\`,
+  [footerText]: \`${footerText}\`,
+  [footerColor]: \`${footerColor}\`,
+  [footerBorder]: \`${footerBorder}\`,
+  [footerBackground]: \`${footerBackground}\`,
+  [formBackground]: \`${formBackground}\`,
+  [formColor]: \`${formColor}\`,
+  [formSpreeLink]: \`${formSpreeLink}\`,
+};
+
+export default contact;
+`;
+
 module.exports = {
   introductionInitial,
   aboutMeInitial,
   workExperienceInitial,
   projectInitial,
   achievementInitial,
+  contactInitial,
 };

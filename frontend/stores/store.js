@@ -9,6 +9,7 @@ import { workExperienceReducer } from '../reducers/work_experience_reducer';
 import { projectReducer } from '../reducers/project_reducer';
 import { defaultThemeReducer } from '../reducers/default_theme_reducer';
 import { achievementReducer } from '../reducers/achievement_reducer';
+import { contactReducer } from '../reducers/contact_reducer';
 
 const localStorageKey = 'WebGenStore';
 
@@ -53,6 +54,7 @@ const rootReducer = combineReducers({
   workExperienceReducer,
   projectReducer,
   achievementReducer,
+  contactReducer,
   defaultThemeReducer,
 });
 

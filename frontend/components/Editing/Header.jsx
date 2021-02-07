@@ -69,6 +69,10 @@ import {
   reset as resetAchievement,
   load as loadAchievement,
 } from '../../actions/achievement_action';
+import {
+  reset as resetContact,
+  load as loadContact,
+} from '../../actions/contact_action';
 
 import { localStorageKey } from '../../stores/store';
 import { validateUploadedData } from '../../utils/validateKeys';
@@ -142,6 +146,7 @@ const Header = (props) => {
   const projectReducer = useSelector((state) => state.projectReducer);
   const defaultThemeReducer = useSelector((state) => state.defaultThemeReducer);
   const achievementReducer = useSelector((state) => state.achievementReducer);
+  const contactReducer = useSelector((state) => state.contactReducer);
 
   const updateState = (data) => {
     const {
@@ -151,6 +156,7 @@ const Header = (props) => {
       defaultTheme,
       project,
       achievement,
+      contact,
     } = data;
     dispatch(loadIntroduction(introduction));
     dispatch(loadAboutMe(aboutMe));
@@ -158,6 +164,7 @@ const Header = (props) => {
     dispatch(loadDefaultTheme(defaultTheme));
     dispatch(loadProject(project));
     dispatch(loadAchievement(achievement));
+    dispatch(loadContact(contact));
     Swal.fire({
       icon: 'success',
       title: 'Configuration loaded successfully',
@@ -225,6 +232,7 @@ const Header = (props) => {
           project: projectReducer,
           defaultTheme: defaultThemeReducer,
           achievement: achievementReducer,
+          contact: contactReducer,
         };
         const json = JSON.stringify(apiData);
         const blob = new Blob([json], { type: 'application/json' });
@@ -259,6 +267,7 @@ const Header = (props) => {
         dispatch(resetDefaultTheme());
         dispatch(resetProject());
         dispatch(resetAchievement());
+        dispatch(resetContact());
         navigateTo('/');
       }
     });

@@ -1,0 +1,71 @@
+export const style = () => ({
+  contactLayout: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  pageHeadline: {
+    fontSize: '3rem',
+    fontWeight: 200,
+    textDecoration: 'underline',
+    marginBottom: '2rem',
+    fontFamily: "'Ubuntu', sans-serif",
+    marginTop: '3.2rem',
+  },
+  responsivePageHeadline: {
+    marginBottom: '1.8rem',
+    fontSize: '2rem',
+  },
+  contactContainer: {
+    marginTop: '0.2rem',
+    width: '100%',
+  },
+  contactContainerParent: {
+    marginBottom: '5rem',
+  },
+  contactForm: {
+    width: '42%',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  responsiveContactForm: {
+    width: '95%',
+  },
+  footerContainer: {
+    marginTop: '1rem',
+    width: '100%',
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  footerText: {
+    textDecoration: 'none',
+    fontSize: '1rem',
+  },
+  inputLabel: {
+    padding: '5px',
+    paddingLeft: '10px',
+    height: '40px',
+    width: '93%',
+    borderRadius: '10px',
+    margin: '0.4rem',
+    fontSize: '1rem',
+    fontFamily: 'inherit',
+  },
+  textAreaLabel: {
+    padding: '5px',
+    fontSize: '1rem',
+    paddingLeft: '10px',
+    paddingTop: '8px',
+    width: '93%',
+    borderRadius: '10px',
+    margin: '0.4rem',
+    fontFamily: 'inherit',
+  },
+});

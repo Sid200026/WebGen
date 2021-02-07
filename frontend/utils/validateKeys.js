@@ -89,6 +89,20 @@ import {
   achievements,
 } from '../constants/achievements_page';
 
+import {
+  enable as ContactEnable,
+  pageHeadline as ContactPageHeadline,
+  pageHeadlineColor as ContactPageHeadlineColor,
+  background as ContactBackground,
+  footerColor,
+  footerText,
+  footerBorder,
+  footerBackground,
+  formBackground,
+  formColor,
+  formSpreeLink,
+} from '../constants/contact_page';
+
 const isArray = (a) => {
   return !!a && a.constructor === Array;
 };
@@ -190,6 +204,20 @@ const achievementKeySet = {
   [achievements]: isArray,
 };
 
+const contactKeySet = {
+  [ContactEnable]: 'boolean',
+  [ContactPageHeadline]: 'string',
+  [ContactPageHeadlineColor]: 'string',
+  [ContactBackground]: 'string',
+  [footerColor]: 'string',
+  [footerText]: 'string',
+  [footerBorder]: 'string',
+  [footerBackground]: 'string',
+  [formBackground]: 'string',
+  [formColor]: 'string',
+  [formSpreeLink]: 'string',
+};
+
 const validate = (data, parentObject, key) => {
   if (!Object.prototype.hasOwnProperty.call(data, key)) return false;
   const value = parentObject[key];
@@ -208,8 +236,16 @@ const validateUploadedData = (data) => {
     defaultTheme,
     project,
     achievement,
+    contact,
   } = data;
-  if (!introduction || !aboutMe || !workExperience || !project || !achievement)
+  if (
+    !introduction ||
+    !aboutMe ||
+    !workExperience ||
+    !project ||
+    !achievement ||
+    !contact
+  )
     return false;
   const introductionReturn = Object.keys(introductionKeySet).filter((key) => {
     return !validate(introduction, introductionKeySet, key);
@@ -240,6 +276,11 @@ const validateUploadedData = (data) => {
     return !validate(achievement, achievementKeySet, key);
   });
   if (achievementReturn.length !== 0) return false;
+
+  const contactReturn = Object.keys(contact).filter((key) => {
+    return !validate(contact, contactKeySet, key);
+  });
+  if (contactReturn.length !== 0) return false;
 
   return true;
 };

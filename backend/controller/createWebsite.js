@@ -8,6 +8,7 @@ const createWebsite = async (req, res) => {
     workExperience,
     project,
     achievement,
+    contact,
   } = req.body;
   res.sendStatus(200);
   const data = {
@@ -17,6 +18,7 @@ const createWebsite = async (req, res) => {
     email,
     project,
     achievement,
+    contact,
   };
   createWebsiteQueue.add(data);
 };
