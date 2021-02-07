@@ -12,10 +12,10 @@ const { zipDirectory } = require('./zipDirectory');
 const PUBLIC_DIRECTORY = path.join(__dirname, '../../user/public/images/');
 
 const developSite = async (
-  { introduction, aboutMe, workExperience, project },
+  { introduction, aboutMe, workExperience, project, achievement },
   email,
 ) => {
-  createFiles({ introduction, aboutMe, workExperience, project });
+  createFiles({ introduction, aboutMe, workExperience, project, achievement });
   exec('npm run build:user', async (err, _stdout, stderr) => {
     if (err) {
       logger.error(stderr);
@@ -34,20 +34,23 @@ const developSite = async (
           logger.error(err);
           return;
         }
-        assetDownloader({ introduction, aboutMe, workExperience, project }, () => {
-          zipDirectory(async () => {
-            const url = await uploadZip(path.join(__dirname, '../../website.zip'));
-            const options = {
-              attempts: 2,
-            };
-            const data = {
-              email,
-              url,
-              type: EMAIL_QUEUE_TYPES.SUCCESS_EMAIL,
-            };
-            sendMailQueue.add(data, options);
-          });
-        });
+        assetDownloader(
+          { introduction, aboutMe, workExperience, project, achievement },
+          () => {
+            zipDirectory(async () => {
+              const url = await uploadZip(path.join(__dirname, '../../website.zip'));
+              const options = {
+                attempts: 2,
+              };
+              const data = {
+                email,
+                url,
+                type: EMAIL_QUEUE_TYPES.SUCCESS_EMAIL,
+              };
+              sendMailQueue.add(data, options);
+            });
+          },
+        );
       });
     }
   });

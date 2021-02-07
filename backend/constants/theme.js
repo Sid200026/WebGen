@@ -35,7 +35,7 @@ const whiteTheme = {
       pageHeadlineColor: '#000000',
       profile: {
         url: 'https://picsum.photos/200.jpg',
-        name: 'test.webp',
+        name: 'test.jpg',
       },
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies blandit justo, in fermentum risus egestas vitae. Quisque quis risus quis nibh lobortis facilisis. Sed porta tempor ante sit amet facilisis. Praesent ac mi sit amet velit tempor fermentum. Maecenas ornare in justo id pretium. Quisque eu tortor cursus, dapibus neque vitae, vulputate purus. Nunc rhoncus mi nec augue suscipit tristique.',
@@ -147,7 +147,7 @@ const whiteTheme = {
           projectTitle: 'Main Project1',
           projectImage: {
             projectImageURL: 'https://picsum.photos/200.jpg',
-            projectImageName: 'test.webp',
+            projectImageName: 'test.jpg',
           },
           projectCaption: 'About Project Caption',
           projectDescription:
@@ -158,7 +158,7 @@ const whiteTheme = {
           projectTitle: 'Main Project2',
           projectImage: {
             projectImageURL: 'https://picsum.photos/200.jpg',
-            projectImageName: 'test.webp',
+            projectImageName: 'test.jpg',
           },
           projectCaption: 'About Project Caption',
           projectDescription:
@@ -169,7 +169,7 @@ const whiteTheme = {
           projectTitle: 'Main Project3',
           projectImage: {
             projectImageURL: 'https://picsum.photos/200.jpg',
-            projectImageName: 'test.webp',
+            projectImageName: 'test.jpg',
           },
           projectCaption: 'About Project Caption',
           projectDescription:
@@ -227,6 +227,74 @@ const whiteTheme = {
       subTextColor: '#4d4d4d',
       informationColor: '#000000',
       companyNameColor: '#000000',
+    },
+    achievement: {
+      enable: true,
+      pageHeadline: 'Achievements',
+      pageHeadlineColor: '#000000',
+      background: '#c0c0c0',
+      achievementCardColor: '#b8b8b8',
+      achievementTitleColor: '#000000',
+      achievementDescriptionColor: '#000000',
+      achievementViewBtnColor: '#000000',
+      achievementViewBtnBorder: '#000000',
+      achievements: [
+        {
+          achievementTitle: 'Achievement 1',
+          achievementImage: {
+            achievementImageURL: 'https://picsum.photos/200.jpg',
+            achievementImageName: 'test.jpg',
+          },
+          achievementCaption: 'About Achievement 1',
+          achievementDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum mattis vulputate. Proin nec tellus ullamcorper, pellentesque dolor id, dapibus ex. Nullam ex sapien, auctor eget felis non, faucibus commodo dui. Integer vulputate dolor sit amet magna venenatis, bibendum pharetra nibh elementum. Phasellus auctor enim eget pellentesque ullamcorper.',
+          achievementLink: 'https://github.com/Sid200026/WebGen',
+        },
+        {
+          achievementTitle: 'Achievement 2',
+          achievementImage: {
+            achievementImageURL: 'https://picsum.photos/200.jpg',
+            achievementImageName: 'test.jpg',
+          },
+          achievementCaption: 'About Achievement 2',
+          achievementDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum mattis vulputate. Proin nec tellus ullamcorper, pellentesque dolor id, dapibus ex. Nullam ex sapien, auctor eget felis non, faucibus commodo dui. Integer vulputate dolor sit amet magna venenatis, bibendum pharetra nibh elementum. Phasellus auctor enim eget pellentesque ullamcorper.',
+          achievementLink: 'test.jpg',
+        },
+        {
+          achievementTitle: 'Achievement 3',
+          achievementImage: {
+            achievementImageURL: 'https://picsum.photos/200.jpg',
+            achievementImageName: 'test.jpg',
+          },
+          achievementCaption: 'About Achievement 3',
+          achievementDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum mattis vulputate. Proin nec tellus ullamcorper, pellentesque dolor id, dapibus ex. Nullam ex sapien, auctor eget felis non, faucibus commodo dui. Integer vulputate dolor sit amet magna venenatis, bibendum pharetra nibh elementum. Phasellus auctor enim eget pellentesque ullamcorper.',
+          achievementLink: 'https://github.com/Sid200026/WebGen',
+        },
+        {
+          achievementTitle: 'Achievement 4',
+          achievementImage: {
+            achievementImageURL: 'https://picsum.photos/200.jpg',
+            achievementImageName: '103c4ba9-f8cf-4ac9-803f-6c48f45405f6me.jpg',
+          },
+          achievementCaption: 'About Achievement 4',
+          achievementDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum mattis vulputate. Proin nec tellus ullamcorper, pellentesque dolor id, dapibus ex. Nullam ex sapien, auctor eget felis non, faucibus commodo dui. Integer vulputate dolor sit amet magna venenatis, bibendum pharetra nibh elementum. Phasellus auctor enim eget pellentesque ullamcorper.',
+          achievementLink: 'https://github.com/Sid200026/WebGen',
+        },
+        {
+          achievementTitle: 'Achievement 5',
+          achievementImage: {
+            achievementImageURL: 'https://picsum.photos/200.jpg',
+            achievementImageName: '103c4ba9-f8cf-4ac9-803f-6c48f45405f6me.jpg',
+          },
+          achievementCaption: 'About Achievement 5',
+          achievementDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum mattis vulputate. Proin nec tellus ullamcorper, pellentesque dolor id, dapibus ex. Nullam ex sapien, auctor eget felis non, faucibus commodo dui. Integer vulputate dolor sit amet magna venenatis, bibendum pharetra nibh elementum. Phasellus auctor enim eget pellentesque ullamcorper.',
+          achievementLink: 'https://github.com/Sid200026/WebGen',
+        },
+      ],
     },
   },
 };

@@ -18,6 +18,7 @@ const WEBSITE_EMAIL_MESSAGE = (url) =>
 <h4>Greetings from Team Webgen,</h4>
 <p>Please click on the button below to download your website.</p>
 <a href=${url}><button style="padding: 15px 32px;text-align: center;background-color: #008CBA;color: white;border-radius: 12px;">Download Website</button></a>
+<p>The above button will only be valid for 24hrs</p>
 <br>
 <p>Thank you for using our services and we hope you are satisfied with it. For any suggestions, feedback or queries, feel free to send an email to <b>siddharthsingharoy@gmail.com</b>.</p>
 `;

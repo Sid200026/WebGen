@@ -9,6 +9,7 @@ import { IntroductionLayout } from './Introduction/IntroductionLayout.jsx';
 import { AboutMeLayout } from './AboutMe/AboutMeLayout.jsx';
 import { WorkExperienceLayout } from './WorkExperience/WorkExperienceLayout.jsx';
 import { ProjectLayout } from './Project/ProjectLayout.jsx';
+import { AchievementLayout } from './Achievements/AchievementsLayout.jsx';
 import '../../styles/Preview/preview.scss';
 
 const Preview = (props) => {
@@ -32,6 +33,8 @@ const Preview = (props) => {
 
   const projectReducer = useSelector((stateReact) => stateReact.projectReducer);
 
+  const achievementReducer = useSelector((stateReact) => stateReact.achievementReducer);
+
   const goBackToPrevious = () => {
     if (previousSiteAvailable) {
       navigate(-1);
@@ -44,6 +47,7 @@ const Preview = (props) => {
   const { enable: aboutMeEnable, menuBackground, menuColor } = aboutMeReducer;
   const { enable: workExperienceEnable } = workExperienceReducer;
   const { enable: projectEnable } = projectReducer;
+  const { enable: achievementEnable } = achievementReducer;
   return (
     <>
       <Button
@@ -69,6 +73,7 @@ const Preview = (props) => {
         {aboutMeEnable && <AboutMeLayout />}
         {workExperienceEnable && <WorkExperienceLayout />}
         {projectEnable && <ProjectLayout />}
+        {achievementEnable && <AchievementLayout />}
       </div>
     </>
   );

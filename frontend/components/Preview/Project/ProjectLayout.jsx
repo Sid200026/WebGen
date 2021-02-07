@@ -55,6 +55,7 @@ const ProjectLayout = () => {
           timeout={300}
           className={classes.mobileCarouselContainer}
           navButtonsAlwaysVisible
+          fullHeightHover={false}
         >
           {popularProject.map((project, index) => (
             <CarouselCard

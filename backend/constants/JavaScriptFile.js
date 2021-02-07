@@ -221,9 +221,51 @@ export default project;
 
 `;
 
+const achievementInitial = ({
+  enable,
+  pageHeadline,
+  pageHeadlineColor,
+  background,
+  achievementCardColor,
+  achievementDescriptionColor,
+  achievementTitleColor,
+  achievementViewBtnBorder,
+  achievementViewBtnColor,
+  achievements,
+}) => `\
+import {
+  enable,
+  pageHeadline,
+  pageHeadlineColor,
+  background,
+  achievementCardColor,
+  achievementDescriptionColor,
+  achievementTitleColor,
+  achievementViewBtnBorder,
+  achievementViewBtnColor,
+  achievements,
+} from '../constants/achievements_page';
+
+const achievement = {
+  [enable]: \`${enable}\`,
+  [pageHeadline]: \`${pageHeadline}\`,
+  [pageHeadlineColor]: \`${pageHeadlineColor}\`,
+  [background]: \`${background}\`,
+  [achievementCardColor]: \`${achievementCardColor}\`,
+  [achievementTitleColor]: \`${achievementTitleColor}\`,
+  [achievementDescriptionColor]: \`${achievementDescriptionColor}\`,
+  [achievementViewBtnColor]: \`${achievementViewBtnColor}\`,
+  [achievementViewBtnBorder]: \`${achievementViewBtnBorder}\`,
+  [achievements]: ${JSON.stringify(achievements)},
+};
+
+export default achievement;
+`;
+
 module.exports = {
   introductionInitial,
   aboutMeInitial,
   workExperienceInitial,
   projectInitial,
+  achievementInitial,
 };
