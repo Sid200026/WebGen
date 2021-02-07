@@ -58,7 +58,7 @@ const CarouselCard = (props) => {
           {caption}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions disableSpacing style={{ marginTop: expanded ? '40px' : 0 }}>
         {link.length >= 0 && (
           <a
             href={link}
@@ -83,7 +83,6 @@ const CarouselCard = (props) => {
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
-          style={{ zIndex: 50 }}
         >
           <ExpandMoreIcon />
         </IconButton>

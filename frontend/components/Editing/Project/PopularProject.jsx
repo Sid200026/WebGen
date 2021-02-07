@@ -346,11 +346,11 @@ const PopularProject = () => {
             </Typography>
             <TextField
               variant="outlined"
-              label="Project Link"
+              label={PopularProjectInfo.field.link.label}
               fullWidth
               className={classes.input}
               required
-              value={PopularProjectInfo.field.link.label}
+              value={project.projectLink}
               onChange={(event) =>
                 setProject({ ...project, projectLink: event.target.value })
               }

@@ -10,6 +10,14 @@ const DOWNLOADABLE_CONTENT = {
       filename: 'projectImageName',
     },
   ],
+  achievement: [
+    {
+      key: 'achievements',
+      child: 'achievementImage',
+      url: 'achievementImageURL',
+      filename: 'achievementImageName',
+    },
+  ],
 };
 
 module.exports = { DOWNLOADABLE_CONTENT };

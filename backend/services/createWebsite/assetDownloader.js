@@ -6,7 +6,7 @@ const { logger } = require('../../logger/logger');
 const rootDirectory = path.join(__dirname, '../../user/public/images/');
 
 const assetDownloader = (
-  { introduction, aboutMe, workExperience, project },
+  { introduction, aboutMe, workExperience, project, achievement },
   cb = null,
 ) => {
   const promises = [];
@@ -14,6 +14,7 @@ const assetDownloader = (
   const ABOUT_ME_DOWNLOADABLE_CONTENT = DOWNLOADABLE_CONTENT.aboutMe;
   const WORK_EXPERIENCE_DOWNLOADABLE_CONTENT = DOWNLOADABLE_CONTENT.workExperience;
   const PROJECT_DOWNLOADABLE_CONTENT = DOWNLOADABLE_CONTENT.project;
+  const ACHIEVEMENT_DOWNLOADABLE_CONTENT = DOWNLOADABLE_CONTENT.achievement;
 
   const downloadContent = (url, name) => {
     if (!url || !name || url.length === 0 || name.length === 0) {
@@ -48,6 +49,16 @@ const assetDownloader = (
     const popularProjects = project[ele.key];
     popularProjects.forEach((popularProject) => {
       const imageDetails = popularProject[ele.child];
+      let url = imageDetails[ele.url];
+      const name = imageDetails[ele.filename];
+      downloadContent(url, name);
+    });
+  });
+
+  ACHIEVEMENT_DOWNLOADABLE_CONTENT.forEach((ele) => {
+    const achievements = achievement[ele.key];
+    achievements.forEach((achievementEle) => {
+      const imageDetails = achievementEle[ele.child];
       let url = imageDetails[ele.url];
       const name = imageDetails[ele.filename];
       downloadContent(url, name);
