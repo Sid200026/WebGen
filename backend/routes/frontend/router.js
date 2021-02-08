@@ -3,6 +3,7 @@ const path = require('path');
 const router = express.Router();
 const { frontendLimiter } = require('../../controller/rateLimitFrontend');
 const { logger } = require('../../logger/logger');
+const { addVisitor } = require('../../models/queries');
 
 /************************** Sending the React App ************************* */
 
@@ -24,6 +25,9 @@ router.route('*').get((_req, res, next) => {
       next(err);
     }
   });
+  addVisitor()
+    .then(() => {})
+    .catch(() => {});
 });
 
 module.exports = { router };

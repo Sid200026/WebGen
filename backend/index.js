@@ -1,6 +1,7 @@
 const { app } = require('./app');
 const { logger } = require('./logger/logger');
 require('./models/index');
+require('./models/queries').addWebsiteInfo();
 const { createTheme } = require('./scripts/createTheme');
 createTheme();
 

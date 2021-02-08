@@ -274,30 +274,37 @@ const Header = (props) => {
   };
 
   const navItems = [
-    { name: 'Introduction', icon: FlagIcon, link: '/introduction' },
-    { name: 'About Me', icon: EmojiPeopleIcon, link: '/about' },
-    { name: 'Work Experience', icon: WorkIcon, link: '/work' },
-    { name: 'Projects', icon: ColorLensIcon, link: '/project' },
-    { name: 'Achievements', icon: ImportContactsIcon, link: '/achievement' },
-    { name: 'Contact', icon: ContactPhoneIcon, link: '/contact' },
+    { name: 'Introduction', icon: FlagIcon, link: '/edit/introduction' },
+    { name: 'About Me', icon: EmojiPeopleIcon, link: '/edit/about' },
+    { name: 'Work Experience', icon: WorkIcon, link: '/edit/work' },
+    { name: 'Projects', icon: ColorLensIcon, link: '/edit/project' },
+    { name: 'Achievements', icon: ImportContactsIcon, link: '/edit/achievement' },
+    { name: 'Contact', icon: ContactPhoneIcon, link: '/edit/contact' },
     {
       name: 'Finish',
       icon: DoneIcon,
       fn: () => {
         handleDrawerClose();
-        navigateTo('/submit');
+        navigateTo('/edit/submit');
       },
     },
     {
       name: 'More',
       icon: MoreVertIcon,
-      link: '/submit',
+      link: '/edit/submit',
       hasSubMenu: true,
       subMenu: [
         { name: 'Save', icon: SaveIcon, fn: saveConfigFile },
         { name: 'Load', icon: PublishIcon, fn: handleDialogOpen },
         { name: 'Reset', icon: ClearIcon, fn: resetConfigFile },
-        { name: 'Help', icon: HelpIcon },
+        {
+          name: 'Help',
+          icon: HelpIcon,
+          fn: () => {
+            window.open('https://github.com/Sid200026/WebGen/wiki', '_blank').focus();
+            handleDrawerClose();
+          },
+        },
       ],
     },
   ];
@@ -391,7 +398,7 @@ const Header = (props) => {
             <Typography variant="h6" noWrap>
               <img
                 id="webgenlogo"
-                src="public/logo_transparent.png"
+                src="/public/logo_transparent.png"
                 className={clsx(classes.logo, 'pagelayout-container', {
                   [classes.logoResponsive]: width < warningWidth,
                 })}
@@ -417,7 +424,7 @@ const Header = (props) => {
                   color="inherit"
                   className={classes.labelButton}
                   onClick={() => {
-                    navigateTo('/introduction');
+                    navigateTo('/edit/introduction');
                   }}
                 >
                   Introduction
@@ -426,7 +433,7 @@ const Header = (props) => {
                   color="inherit"
                   className={classes.labelButton}
                   onClick={() => {
-                    navigateTo('/about');
+                    navigateTo('/edit/about');
                   }}
                 >
                   About Me
@@ -435,7 +442,7 @@ const Header = (props) => {
                   color="inherit"
                   className={classes.labelButton}
                   onClick={() => {
-                    navigateTo('/work');
+                    navigateTo('/edit/work');
                   }}
                 >
                   Work Experience
@@ -444,7 +451,7 @@ const Header = (props) => {
                   color="inherit"
                   className={classes.labelButton}
                   onClick={() => {
-                    navigateTo('/project');
+                    navigateTo('/edit/project');
                   }}
                 >
                   Projects
@@ -453,7 +460,7 @@ const Header = (props) => {
                   color="inherit"
                   className={classes.labelButton}
                   onClick={() => {
-                    navigateTo('/achievement');
+                    navigateTo('/edit/achievement');
                   }}
                 >
                   Achievements
@@ -462,7 +469,7 @@ const Header = (props) => {
                   color="inherit"
                   className={classes.labelButton}
                   onClick={() => {
-                    navigateTo('/contact');
+                    navigateTo('/edit/contact');
                   }}
                 >
                   Contact
@@ -472,7 +479,7 @@ const Header = (props) => {
                   className={classes.labelButton}
                   onClick={() => {
                     handleDrawerClose();
-                    navigateTo('/submit');
+                    navigateTo('/edit/submit');
                   }}
                 >
                   Finish
@@ -522,7 +529,15 @@ const Header = (props) => {
                       Reset
                     </Typography>
                   </MenuItem>
-                  <MenuItem onClick={handleClose} className={classes.menuConfig}>
+                  <MenuItem
+                    onClick={() => {
+                      handleClose();
+                      window
+                        .open('https://github.com/Sid200026/WebGen/wiki', '_blank')
+                        .focus();
+                    }}
+                    className={classes.menuConfig}
+                  >
                     <Typography variant="inherit">
                       <ListItemIcon>
                         <HelpIcon fontSize="small" />

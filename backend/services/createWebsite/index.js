@@ -8,6 +8,7 @@ const { uploadZip } = require('../zip/upload');
 const { EMAIL_QUEUE_TYPES } = require('../../constants/REDIS_Service');
 const { assetDownloader } = require('./assetDownloader');
 const { zipDirectory } = require('./zipDirectory');
+const { addBuilt } = require('../../models/queries');
 
 const PUBLIC_DIRECTORY = path.join(__dirname, '../../user/public/images/');
 
@@ -48,6 +49,9 @@ const developSite = async (
                 type: EMAIL_QUEUE_TYPES.SUCCESS_EMAIL,
               };
               sendMailQueue.add(data, options);
+              addBuilt()
+                .then(() => {})
+                .catch(() => {});
             });
           },
         );

@@ -201,7 +201,7 @@ const Submit = () => {
           })}
         >
           <img
-            src="public/images/endgame.jpg"
+            src="/public/images/endgame.jpg"
             alt="Endgame"
             className={clsx(classes.memeImage, {
               [classes.responsiveMemeImage]: window.innerWidth < warningWidth,
