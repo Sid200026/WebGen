@@ -1,27 +1,17 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Container from '@material-ui/core/Container';
-import { Router } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
-import { Introduction } from './Introduction.jsx';
-import { AboutMe } from './AboutMe.jsx';
-import { WorkExperience } from './WorkExperience.jsx';
-import { Project } from './Project.jsx';
-import { Achievement } from './Achievement.jsx';
-import { Contact } from './Contact.jsx';
-import { ScrollToTop } from '../ScrollToTop.jsx';
-import { Submit } from '../Submit.jsx';
 import { Footer } from './Footer.jsx';
 import { Header } from './Header.jsx';
-import { Template } from './Template.jsx';
 import { style } from '../../styles/Editing/edit';
 
 const useStyles = makeStyles(style);
 
 const Edit = (props) => {
   const classes = useStyles();
-  const { updateDisplayMode } = props;
+  const { children } = props;
   return (
     <>
       <Helmet>
@@ -31,37 +21,18 @@ const Edit = (props) => {
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="public/favicon-16x16.png"
+          href="/public/favicon-16x16.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="public/favicon-32x32.png"
+          href="/public/favicon-32x32.png"
         />
       </Helmet>
       <Container maxWidth="xl" disableGutters className={classes.container}>
         <div className={classes.componentContainer}>
-          <Header>
-            <Router primary={false}>
-              <ScrollToTop path="/">
-                <AboutMe path="/about" updateDisplayMode={updateDisplayMode} />
-                <WorkExperience path="/work" updateDisplayMode={updateDisplayMode} />
-                <Project path="/project" updateDisplayMode={updateDisplayMode} />
-                <Achievement
-                  path="/achievement"
-                  updateDisplayMode={updateDisplayMode}
-                />
-                <Contact path="/contact" updateDisplayMode={updateDisplayMode} />
-                <Submit path="/submit" />
-                <Introduction
-                  path="/introduction"
-                  updateDisplayMode={updateDisplayMode}
-                />
-                <Template path="/" />
-              </ScrollToTop>
-            </Router>
-          </Header>
+          <Header>{children}</Header>
         </div>
         <Footer />
       </Container>
@@ -70,7 +41,7 @@ const Edit = (props) => {
 };
 
 Edit.propTypes = {
-  updateDisplayMode: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export { Edit };

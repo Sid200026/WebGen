@@ -131,7 +131,7 @@ const Template = () => {
     dispatch(loadProject(project));
     dispatch(loadAchievement(achievement));
     dispatch(loadContact(contact));
-    navigateTo('/introduction');
+    navigateTo('/edit/introduction');
   };
 
   const renderFromTemplate = (index) => {
@@ -162,9 +162,9 @@ const Template = () => {
     ) {
       warnUnsavedChanges(() => {
         discardChanges();
-        navigateTo('/introduction');
+        navigateTo('/edit/introduction');
       });
-    } else navigateTo('/introduction');
+    } else navigateTo('/edit/introduction');
   };
 
   const renderTemplates = () => {
@@ -283,7 +283,7 @@ const Template = () => {
               <CardActionArea onClick={startFromScratch}>
                 <CardContent className={classes.scratchContent}>
                   <img
-                    src="public/images/create_from_scratch.png"
+                    src="/public/images/create_from_scratch.png"
                     alt="Scratch"
                     className={classes.createOwnMedia}
                   />

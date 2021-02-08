@@ -41,7 +41,7 @@ const Preview = (props) => {
     if (previousSiteAvailable) {
       navigate(-1);
     } else {
-      navigate('/introduction');
+      navigate('/edit/introduction');
     }
   };
 
