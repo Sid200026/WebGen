@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
+import clsx from 'clsx';
 import { navigate } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,6 +8,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import Drawer from '@material-ui/core/Drawer';
+
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import IconButton from '@material-ui/core/IconButton';
 import BuildIcon from '@material-ui/icons/Build';
@@ -16,10 +19,17 @@ import MailIcon from '@material-ui/icons/Mail';
 import PhoneIcon from '@material-ui/icons/Phone';
 import DevicesIcon from '@material-ui/icons/Devices';
 import Button from '@material-ui/core/Button';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import Snackbar from '@material-ui/core/Snackbar';
+import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
 import MuiAlert from '@material-ui/lab/Alert';
+import MenuIcon from '@material-ui/icons/Menu';
 import { getRequest } from '../utils/serviceCalls';
-
+import { warningWidth } from '../constants/writeups/index';
 import { style } from '../styles/Generic/homepage';
 
 const Alert = (props) => {
@@ -43,6 +53,15 @@ const HomePage = () => {
     visitor: 0,
     id: 0,
   });
+  const [open, setOpen] = useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    if (open) setOpen(false);
+  };
 
   useEffect(() => {
     getRequest('/statistics').then((response) => {
@@ -66,6 +85,7 @@ const HomePage = () => {
     document
       .getElementsByClassName(className)[0]
       .scrollIntoView({ behavior: 'smooth', block: 'start' });
+    handleDrawerClose();
   };
 
   return (
@@ -74,95 +94,220 @@ const HomePage = () => {
         open={snackbar.open}
         autoHideDuration={4000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         <Alert onClose={handleClose} severity={snackbar.status}>
           {snackbar.message}
         </Alert>
       </Snackbar>
       <div className={classes.root}>
-        <AppBar position="fixed" className={classes.header}>
-          <Toolbar>
-            <div className={classes.headerIntial}>
-              <IconButton
-                color="inherit"
-                onClick={() => gotoNextSection(classes.homePage)}
-              >
-                <Typography variant="h6" className={classes.headerTextMain}>
-                  WebGen
-                </Typography>
-              </IconButton>
-              <IconButton
-                color="inherit"
-                onClick={() => gotoNextSection(classes.homePage)}
-              >
-                <Typography variant="subtitle1" className={classes.headerText}>
-                  Home
-                </Typography>
-              </IconButton>
-              <IconButton
-                color="inherit"
-                onClick={() => gotoNextSection(classes.about)}
-              >
-                <Typography variant="subtitle1" className={classes.headerText}>
-                  About
-                </Typography>
-              </IconButton>
-              <IconButton
-                color="inherit"
-                onClick={() => gotoNextSection(classes.empty)}
-              >
-                <Typography variant="subtitle1" className={classes.headerText}>
-                  Features
-                </Typography>
-              </IconButton>
-            </div>
-            <div className={classes.headerLogo}>
-              <a
-                href="https://www.linkedin.com/in/sid200026/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <IconButton color="inherit">
-                  <LinkedInIcon className={classes.headerLogoBtn} />
+        {window.innerWidth > 1000 && (
+          <AppBar position="fixed" className={classes.header}>
+            <Toolbar>
+              <div className={classes.headerIntial}>
+                <IconButton
+                  color="inherit"
+                  onClick={() => gotoNextSection(classes.homePage)}
+                >
+                  <Typography variant="h6" className={classes.headerTextMain}>
+                    WebGen
+                  </Typography>
                 </IconButton>
-              </a>
-              <a
-                href="https://www.github.com/Sid200026/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <IconButton color="inherit">
-                  <GitHubIcon className={classes.headerLogoBtn} />
+                <IconButton
+                  color="inherit"
+                  onClick={() => gotoNextSection(classes.homePage)}
+                >
+                  <Typography variant="subtitle1" className={classes.headerText}>
+                    Home
+                  </Typography>
                 </IconButton>
-              </a>
-              <IconButton
-                color="inherit"
-                onClick={() => {
-                  navigator.clipboard.writeText('siddharthsingharoy@gmail.com');
-                  handleOpen('Email address has been copied', 'info');
-                }}
-              >
-                <MailIcon className={classes.headerLogoBtn} />
-              </IconButton>
-              <IconButton
-                color="inherit"
-                onClick={() => {
-                  navigator.clipboard.writeText('+91-9051633165');
-                  handleOpen('Phone number has been copied', 'info');
-                }}
-              >
-                <PhoneIcon className={classes.headerLogoBtn} />
-              </IconButton>
-            </div>
-          </Toolbar>
-        </AppBar>
-        <div className={classes.homePage}>
-          <div className={classes.left}>
-            <Typography variant="h2" className={classes.productName}>
+                <IconButton
+                  color="inherit"
+                  onClick={() => gotoNextSection(classes.about)}
+                >
+                  <Typography variant="subtitle1" className={classes.headerText}>
+                    About
+                  </Typography>
+                </IconButton>
+                <IconButton
+                  color="inherit"
+                  onClick={() => gotoNextSection(classes.empty)}
+                >
+                  <Typography variant="subtitle1" className={classes.headerText}>
+                    Features
+                  </Typography>
+                </IconButton>
+              </div>
+              <div className={classes.headerLogo}>
+                <a
+                  href="https://www.linkedin.com/in/sid200026/"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <IconButton color="inherit">
+                    <LinkedInIcon className={classes.headerLogoBtn} />
+                  </IconButton>
+                </a>
+                <a
+                  href="https://www.github.com/Sid200026/"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <IconButton color="inherit">
+                    <GitHubIcon className={classes.headerLogoBtn} />
+                  </IconButton>
+                </a>
+                <IconButton
+                  color="inherit"
+                  onClick={() => {
+                    navigator.clipboard.writeText('siddharthsingharoy@gmail.com');
+                    handleOpen('Email address has been copied', 'info');
+                  }}
+                >
+                  <MailIcon className={classes.headerLogoBtn} />
+                </IconButton>
+                <IconButton
+                  color="inherit"
+                  onClick={() => {
+                    navigator.clipboard.writeText('+91-9051633165');
+                    handleOpen('Phone number has been copied', 'info');
+                  }}
+                >
+                  <PhoneIcon className={classes.headerLogoBtn} />
+                </IconButton>
+              </div>
+            </Toolbar>
+          </AppBar>
+        )}
+        {window.innerWidth <= 1000 && (
+          <>
+            <AppBar position="fixed" className={classes.header}>
+              <Toolbar>
+                <IconButton
+                  edge="start"
+                  style={{ color: 'black' }}
+                  aria-label="menu"
+                  onClick={handleDrawerOpen}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <IconButton onClick={() => gotoNextSection(classes.homePage)}>
+                  <Typography
+                    variant="h6"
+                    className={classes.headerTextMain}
+                    style={{ marginLeft: '1rem' }}
+                  >
+                    WebGen
+                  </Typography>
+                </IconButton>
+              </Toolbar>
+            </AppBar>
+            <Drawer
+              className={classes.drawer}
+              variant="persistent"
+              anchor="top"
+              open={open}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+            >
+              <div className={classes.drawerHeader}>
+                <IconButton onClick={handleDrawerClose}>
+                  <KeyboardArrowUpIcon />
+                </IconButton>
+              </div>
+              <Divider />
+              <List>
+                <ListItem button onClick={() => gotoNextSection(classes.homePage)}>
+                  <ListItemText primary="Home" />
+                </ListItem>
+                <ListItem button onClick={() => gotoNextSection(classes.about)}>
+                  <ListItemText primary="About" />
+                </ListItem>
+                <ListItem button onClick={() => gotoNextSection(classes.empty)}>
+                  <ListItemText primary="Features" />
+                </ListItem>
+              </List>
+              <Divider />
+              <List>
+                <ListItem>
+                  <ListItemIcon
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <a
+                      href="https://www.linkedin.com/in/sid200026/"
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <IconButton color="inherit">
+                        <LinkedInIcon className={classes.responsiveHeaderLogoBtn} />
+                      </IconButton>
+                    </a>
+                    <a
+                      href="https://www.github.com/Sid200026/"
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <IconButton color="inherit">
+                        <GitHubIcon className={classes.responsiveHeaderLogoBtn} />
+                      </IconButton>
+                    </a>
+                    <IconButton
+                      color="inherit"
+                      onClick={() => {
+                        navigator.clipboard.writeText('siddharthsingharoy@gmail.com');
+                        handleOpen('Email address has been copied', 'info');
+                      }}
+                    >
+                      <MailIcon className={classes.responsiveHeaderLogoBtn} />
+                    </IconButton>
+                    <IconButton
+                      color="inherit"
+                      onClick={() => {
+                        navigator.clipboard.writeText('+91-9051633165');
+                        handleOpen('Phone number has been copied', 'info');
+                      }}
+                    >
+                      <PhoneIcon className={classes.responsiveHeaderLogoBtn} />
+                    </IconButton>
+                  </ListItemIcon>
+                </ListItem>
+              </List>
+            </Drawer>
+          </>
+        )}
+        <div
+          className={clsx(classes.homePage, {
+            [classes.responsiveHomePage]: window.innerWidth < warningWidth,
+          })}
+        >
+          <div
+            className={clsx(classes.left, {
+              [classes.responsiveLeft]: window.innerWidth < warningWidth,
+            })}
+          >
+            <Typography
+              variant="h2"
+              className={clsx(classes.productName, {
+                [classes.responsiveProductName]: window.innerWidth < warningWidth,
+              })}
+            >
               WebGen
             </Typography>
-            <Typography variant="h6" className={classes.subProductName}>
+            <Typography
+              variant="h6"
+              className={clsx(classes.subProductName, {
+                [classes.responsiveSubProductName]: window.innerWidth < warningWidth,
+              })}
+            >
               WebGen is an open source personal website / portfolio generator which
               provides you with the HTML, CSS and JS files
             </Typography>
@@ -174,11 +319,17 @@ const HomePage = () => {
               Get Started
             </Button>
           </div>
-          <div className={classes.right}>
+          <div
+            className={clsx(classes.right, {
+              [classes.responsiveRight]: window.innerWidth < warningWidth,
+            })}
+          >
             <img
               src="/public/logo_inverted.png"
               alt="WebGen"
-              className={classes.image}
+              className={clsx(classes.image, {
+                [classes.responsiveImage]: window.innerWidth < warningWidth,
+              })}
             />
           </div>
         </div>
@@ -214,26 +365,59 @@ const HomePage = () => {
           />
         </svg>
       </div>
-      <div className={classes.about}>
-        <div className={classes.aboutMeSplit}>
-          <div className={classes.aboutLeft}>
+      <div
+        className={clsx(classes.about, {
+          [classes.responsiveAbout]: window.innerWidth < warningWidth,
+        })}
+      >
+        <div
+          className={clsx(classes.aboutMeSplit, {
+            [classes.responsiveAboutMeSplit]: window.innerWidth < warningWidth,
+          })}
+        >
+          <div
+            className={clsx(classes.aboutLeft, {
+              [classes.responsiveAboutLeft]: window.innerWidth < warningWidth,
+            })}
+          >
             <img
               src="https://raw.githubusercontent.com/Sid200026/WebGen/master/docs/WebGen.png"
               alt="WebGen"
-              className={classes.aboutImage}
+              className={clsx(classes.aboutImage, {
+                [classes.responsiveAboutImage]: window.innerWidth < warningWidth,
+              })}
             />
           </div>
-          <div className={classes.aboutRight}>
-            <Typography variant="h4" className={classes.aboutTextMain}>
+          <div
+            className={clsx(classes.aboutRight, {
+              [classes.responsiveAboutRight]: window.innerWidth < warningWidth,
+            })}
+          >
+            <Typography
+              variant="h4"
+              className={clsx(classes.aboutTextMain, {
+                [classes.responsiveAboutTextMain]: window.innerWidth < warningWidth,
+              })}
+            >
               What is WebGen
             </Typography>
-            <Typography variant="subtitle1" className={classes.aboutText}>
+            <Typography
+              variant="subtitle1"
+              className={clsx(classes.aboutText, {
+                [classes.responsiveAboutText]: window.innerWidth < warningWidth,
+              })}
+            >
               WebGen is an open source personal website / portfolio generator.
               Portfolios or personal websites are a great way to demonstrate the
               competencies you would list on a resume or talk about in an interview —
               they allow you to show and not just tell.
             </Typography>
-            <Typography variant="subtitle1" className={classes.aboutText}>
+            <Typography
+              variant="subtitle1"
+              className={clsx(classes.aboutText, {
+                [classes.responsiveAboutText]: window.innerWidth < warningWidth,
+              })}
+            >
               We provide you with the source code of the website you developed so that
               you&apos;re at liberty to decide what you want to do with it. Mostly you
               would want to host your website somewhere GitHub, Netlify, Render, Vercel
@@ -241,17 +425,37 @@ const HomePage = () => {
             </Typography>
           </div>
         </div>
-        <div className={classes.empty} />
+        <div
+          className={clsx(classes.empty, {
+            [classes.responsiveEmpty]: window.innerWidth < warningWidth,
+          })}
+        />
       </div>
       <div className={classes.features}>
         <Typography align="center" variant="h4" className={classes.featureHead}>
           Features
         </Typography>
-        <div className={classes.featureSplit}>
-          <div className={classes.featureLeft}>
-            <div className={classes.featLogo}>
+        <div
+          className={clsx(classes.featureSplit, {
+            [classes.responsiveFeatureSplit]: window.innerWidth < warningWidth,
+          })}
+        >
+          <div
+            className={clsx(classes.featureLeft, {
+              [classes.responsiveFeatureLeft]: window.innerWidth < warningWidth,
+            })}
+          >
+            <div
+              className={clsx(classes.featLogo, {
+                [classes.responsiveFeatLogo]: window.innerWidth < warningWidth,
+              })}
+            >
               <BuildIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
-              <div className={classes.featText}>
+              <div
+                className={clsx(classes.featText, {
+                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                })}
+              >
                 <h2 className={classes.featTextHead}>Easily Customizable</h2>
                 <p className={classes.featTextContent}>
                   WebGen allows you to fully customise the website according to your own
@@ -259,9 +463,17 @@ const HomePage = () => {
                 </p>
               </div>
             </div>
-            <div className={classes.featLogo}>
+            <div
+              className={clsx(classes.featLogo, {
+                [classes.responsiveFeatLogo]: window.innerWidth < warningWidth,
+              })}
+            >
               <DevicesIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
-              <div className={classes.featText}>
+              <div
+                className={clsx(classes.featText, {
+                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                })}
+              >
                 <h2 className={classes.featTextHead}>Responsive Design</h2>
                 <p className={classes.featTextContent}>
                   Websites built using WebGen are optimized for all devices starting
@@ -269,9 +481,17 @@ const HomePage = () => {
                 </p>
               </div>
             </div>
-            <div className={classes.featLogo}>
+            <div
+              className={clsx(classes.featLogo, {
+                [classes.responsiveFeatLogo]: window.innerWidth < warningWidth,
+              })}
+            >
               <BuildIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
-              <div className={classes.featText}>
+              <div
+                className={clsx(classes.featText, {
+                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                })}
+              >
                 <h2 className={classes.featTextHead}>Easily Customizable</h2>
                 <p className={classes.featTextContent}>
                   WebGen allows you to fully customise the website according to your own
@@ -280,17 +500,31 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div className={classes.featureMiddle}>
-            <img
-              src="/public/mobile_homepage.png"
-              alt="WebGen"
-              className={classes.mobileImage}
-            />
-          </div>
-          <div className={classes.featureRight}>
-            <div className={classes.featLogoRight}>
+          {window.innerWidth >= warningWidth && (
+            <div className={classes.featureMiddle}>
+              <img
+                src="/public/mobile_homepage.png"
+                alt="WebGen"
+                className={classes.mobileImage}
+              />
+            </div>
+          )}
+          <div
+            className={clsx(classes.featureRight, {
+              [classes.responsiveFeatureRight]: window.innerWidth < warningWidth,
+            })}
+          >
+            <div
+              className={clsx(classes.featLogoRight, {
+                [classes.responsiveFeatLogoRight]: window.innerWidth < warningWidth,
+              })}
+            >
               <PollIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
-              <div className={classes.featText}>
+              <div
+                className={clsx(classes.featText, {
+                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                })}
+              >
                 <h2 className={classes.featTextHead}>Optimized SEO</h2>
                 <p className={classes.featTextContent}>
                   WebGen is optimised to allow search engines to show it as a top result
@@ -298,9 +532,17 @@ const HomePage = () => {
                 </p>
               </div>
             </div>
-            <div className={classes.featLogoRight}>
+            <div
+              className={clsx(classes.featLogoRight, {
+                [classes.responsiveFeatLogoRight]: window.innerWidth < warningWidth,
+              })}
+            >
               <HighQualityIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
-              <div className={classes.featText}>
+              <div
+                className={clsx(classes.featText, {
+                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                })}
+              >
                 <h2 className={classes.featTextHead}>High Quality</h2>
                 <p className={classes.featTextContent}>
                   WebGen allows you to design high quality websites which are modern and
@@ -308,9 +550,17 @@ const HomePage = () => {
                 </p>
               </div>
             </div>
-            <div className={classes.featLogoRight}>
+            <div
+              className={clsx(classes.featLogoRight, {
+                [classes.responsiveFeatLogoRight]: window.innerWidth < warningWidth,
+              })}
+            >
               <WhatshotIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
-              <div className={classes.featText}>
+              <div
+                className={clsx(classes.featText, {
+                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                })}
+              >
                 <h2 className={classes.featTextHead}>Blazingly Fast</h2>
                 <p className={classes.featTextContent}>
                   Websites made with WebGen are powered by React and is blazingly fast
@@ -320,23 +570,61 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className={classes.facts}>
-        <h1 className={classes.factHead}>Some facts about us</h1>
-        <div className={classes.factInfo}>
+      <div
+        className={clsx(classes.facts, {
+          [classes.responsiveFacts]: window.innerWidth < warningWidth,
+        })}
+      >
+        <h1
+          className={clsx(classes.factHead, {
+            [classes.responsiveFactHead]: window.innerWidth < warningWidth,
+          })}
+        >
+          Some facts about us
+        </h1>
+        <div
+          className={clsx(classes.factInfo, {
+            [classes.responsiveFactInfo]: window.innerWidth < warningWidth,
+          })}
+        >
           <div className={classes.factText}>
-            <h1 className={classes.factTextCount}>{data.visitor}</h1>
+            <h1
+              className={clsx(classes.factTextCount, {
+                [classes.responsiveFactTextCount]: window.innerWidth < warningWidth,
+              })}
+            >
+              {data.visitor}
+            </h1>
             <p className={classes.factTextLabel}>Visitors</p>
           </div>
           <div className={classes.factText}>
-            <h1 className={classes.factTextCount}>{data.built}</h1>
+            <h1
+              className={clsx(classes.factTextCount, {
+                [classes.responsiveFactTextCount]: window.innerWidth < warningWidth,
+              })}
+            >
+              {data.built}
+            </h1>
             <p className={classes.factTextLabel}>Websites developed</p>
           </div>
           <div className={classes.factText}>
-            <h1 className={classes.factTextCount}>{data.line} +</h1>
+            <h1
+              className={clsx(classes.factTextCount, {
+                [classes.responsiveFactTextCount]: window.innerWidth < warningWidth,
+              })}
+            >
+              {data.line} +
+            </h1>
             <p className={classes.factTextLabel}>Lines of Code</p>
           </div>
           <div className={classes.factText}>
-            <h1 className={classes.factTextCount}>{data.coffee} +</h1>
+            <h1
+              className={clsx(classes.factTextCount, {
+                [classes.responsiveFactTextCount]: window.innerWidth < warningWidth,
+              })}
+            >
+              {data.coffee} +
+            </h1>
             <p className={classes.factTextLabel}>Cups of coffee</p>
           </div>
         </div>
