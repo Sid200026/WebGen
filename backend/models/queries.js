@@ -64,10 +64,50 @@ const getTemplates = async () => {
   return rows;
 };
 
+const addBuilt = async () => {
+  const updateQuery = `
+  UPDATE website_info
+  SET built = built + 1
+  WHERE id = 1
+  `;
+  await db.query(updateQuery);
+};
+
+const addVisitor = async () => {
+  const updateQuery = `
+  UPDATE website_info
+  SET visitor = visitor + 1
+  WHERE id = 1
+  `;
+  await db.query(updateQuery);
+};
+
+const addWebsiteInfo = async () => {
+  const insertQuery = `
+  INSERT INTO website_info (coffee, line, built, visitor, id)
+  VALUES($1, $2, $3, $4, $5)
+  ON CONFLICT(id)
+  DO NOTHING;
+  `;
+  await db.query(insertQuery, [100, 20000, 0, 0, 1]);
+};
+
+const getWebsiteInfo = async () => {
+  const selectQuery = `
+    SELECT * from website_info LIMIT 1;
+    `;
+  const { rows } = await db.query(selectQuery);
+  return rows;
+};
+
 module.exports = {
   getVerificationKey,
   createVerificationKey,
   deleteVerificationKey,
   createTemplate,
   getTemplates,
+  addBuilt,
+  addVisitor,
+  addWebsiteInfo,
+  getWebsiteInfo,
 };

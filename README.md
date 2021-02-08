@@ -20,7 +20,7 @@
     <a href="https://sid200026.github.io/WebGen"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="http://ec2-3-15-186-149.us-east-2.compute.amazonaws.com/">View Demo</a>
+    <a href="http://3.135.215.65/">View Demo</a>
     ·
     <a href="https://github.com/Sid200026/WebGen/issues/new?assignees=Sid200026&labels%5B%5D=type%3A+bug&template=bug_report.md&title=">Report Bug</a>
     ·

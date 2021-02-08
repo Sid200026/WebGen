@@ -38,3 +38,7 @@ backend/log
 *.zip
 user.*.js
 backend/user/public/
+
+# Editor Specific
+
+.vscode/
