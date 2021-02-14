@@ -88,7 +88,7 @@ const style = (theme) => ({
   right: {
     width: '50%',
     display: 'flex',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     zIndex: 10,
   },
@@ -103,7 +103,7 @@ const style = (theme) => ({
     marginTop: '2rem',
   },
   responsiveImage: {
-    width: '100%',
+    width: '80%',
     marginTop: '0px',
   },
   getStartedBtn: {

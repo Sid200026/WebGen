@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { style } from '../../../styles/Preview/contact_preview';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const Alert = (props) => {
   // eslint-disable-next-line react/jsx-props-no-spreading
@@ -29,6 +30,7 @@ const ContactLayout = () => {
     message: '',
     status: 'info',
   });
+  const [windowWidth] = useWindowSize();
 
   const aboutMeReducer = useSelector((stateReact) => stateReact.aboutMeReducer);
   const workExperienceReducer = useSelector(
@@ -134,14 +136,14 @@ const ContactLayout = () => {
         <Typography
           style={{ color: pageHeadlineColor }}
           className={clsx(classes.pageHeadline, {
-            [classes.responsivePageHeadline]: window.innerWidth < 750,
+            [classes.responsivePageHeadline]: windowWidth < 750,
           })}
         >
           {pageHeadline}
         </Typography>
         <div
           className={clsx(classes.contactForm, {
-            [classes.responsiveContactForm]: window.innerWidth < 750,
+            [classes.responsiveContactForm]: windowWidth < 750,
           })}
         >
           <input

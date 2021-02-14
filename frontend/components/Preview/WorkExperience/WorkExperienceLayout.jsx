@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import AdjustIcon from '@material-ui/icons/Adjust';
 import { style } from '../../../styles/Preview/work_experience_preview';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
@@ -26,6 +27,8 @@ const monthMapping = [
 
 const WorkExperienceLayout = () => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
+
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
   const { background, pageHeadline, pageHeadlineColor } = workExperienceReducer;
 
@@ -65,7 +68,7 @@ const WorkExperienceLayout = () => {
             // eslint-disable-next-line react/no-array-index-key
             key={childIndex}
             className={clsx(classes.workInfo, {
-              [classes.responsiveWorkInfo]: window.innerWidth < 750,
+              [classes.responsiveWorkInfo]: windowWidth < 750,
             })}
             style={{ color: workExperience.informationColor }}
           >
@@ -83,14 +86,14 @@ const WorkExperienceLayout = () => {
         <Typography
           style={{ color: pageHeadlineColor }}
           className={clsx(classes.pageHeadline, {
-            [classes.responsivePageHeadline]: window.innerWidth < 750,
+            [classes.responsivePageHeadline]: windowWidth < 750,
           })}
         >
           {pageHeadline}
         </Typography>
         <div
           className={clsx(classes.workExperienceContainer, {
-            [classes.responsiveWorkExperienceContainer]: window.innerWidth < 750,
+            [classes.responsiveWorkExperienceContainer]: windowWidth < 750,
           })}
         >
           {getWorkExperience()}

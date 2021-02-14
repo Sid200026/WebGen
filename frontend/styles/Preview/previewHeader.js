@@ -47,12 +47,12 @@ const style = (theme) => ({
     display: 'none',
   },
   drawer: {
-    width: drawerWidth,
+    width: '100%',
     flexShrink: 0,
     zIndex: 2,
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: '100%',
     background: secondaryColor,
     color: 'rgba(24, 25, 26, 1)',
   },
@@ -61,7 +61,7 @@ const style = (theme) => ({
     alignItems: 'center',
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
   },
   content: {
     flexGrow: 1,

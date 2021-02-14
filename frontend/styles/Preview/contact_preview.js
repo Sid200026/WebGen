@@ -54,7 +54,7 @@ export const style = () => ({
     height: '40px',
     width: '93%',
     borderRadius: '10px',
-    margin: '0.4rem',
+    margin: '0.6rem',
     fontSize: '1rem',
     fontFamily: 'inherit',
   },

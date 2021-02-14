@@ -15,11 +15,13 @@ import {
 } from '../../../actions/project_action';
 import { warningWidth } from '../../../constants/writeups/index';
 import { ProjectCardInfo } from '../../../constants/writeups/project';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const ProjectCard = () => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
 
   const projectReducer = useSelector((state) => state.projectReducer);
   const {
@@ -34,13 +36,13 @@ const ProjectCard = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
+          [classes.responsiveExampleContainer]: windowWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
+              [classes.responsiveCardClass]: windowWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
@@ -158,7 +160,7 @@ const ProjectCard = () => {
             src={ProjectCardInfo.image.src}
             alt={ProjectCardInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < warningWidth,
+              [classes.responsiveImage]: windowWidth < warningWidth,
             })}
           />
         </div>

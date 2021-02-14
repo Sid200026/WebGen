@@ -13,7 +13,7 @@ export const style = () => ({
     fontSize: '3rem',
   },
   root: {
-    minWidth: '20rem',
+    minWidth: '26.5rem',
     background: secondaryColor,
   },
   rootOwn: {
@@ -25,6 +25,7 @@ export const style = () => ({
   },
   media: {
     height: 250,
+    border: '1px solid black',
   },
   scratchContent: {
     display: 'flex',

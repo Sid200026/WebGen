@@ -3,7 +3,7 @@
 export const LayoutInfo = {
   title: 'Customize Page Layout',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Contact/Page Layout.png',
     alt: 'Page Layout Image',
   },
   field: {
@@ -22,7 +22,7 @@ export const LayoutInfo = {
 export const FooterInfo = {
   title: 'Customize Page Footer',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Contact/Page Footer.png',
     alt: 'Page Footer Image',
   },
   field: {
@@ -50,7 +50,7 @@ export const FormInfo = {
     text: 'How to get formspree endpoint ?',
   },
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Contact/Contact Me Form.png',
     alt: 'Contact Me Form Image',
   },
   field: {

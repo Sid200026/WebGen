@@ -13,11 +13,13 @@ import {
 } from '../../../actions/introduction_action';
 import { GreetingInfo } from '../../../constants/writeups/introduction';
 import { warningWidth } from '../../../constants/writeups/index';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const Greeting = () => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
 
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const { greetingText, greetingColor } = introductionReducer;
@@ -26,13 +28,13 @@ const Greeting = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
+          [classes.responsiveExampleContainer]: windowWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
+              [classes.responsiveCardClass]: windowWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
@@ -78,7 +80,7 @@ const Greeting = () => {
             src={GreetingInfo.image.src}
             alt={GreetingInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < warningWidth,
+              [classes.responsiveImage]: windowWidth < warningWidth,
             })}
           />
         </div>

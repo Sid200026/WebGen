@@ -1,7 +1,7 @@
 export const LayoutInfo = {
   title: 'Customize Page Layout',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Achievement/Page Layout.png',
     alt: 'Page Layout Image',
   },
   field: {
@@ -20,7 +20,7 @@ export const LayoutInfo = {
 export const AchievementCardInfo = {
   title: 'Customize Achievement Cards',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Achievement/Achievement Card.png',
     alt: 'Achievement Image',
   },
   field: {
@@ -45,7 +45,7 @@ export const AchievementCardInfo = {
 export const AchievementInfo = {
   title: 'Customize Achievement Card Content',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Achievement/Achievements.png',
     alt: 'Achievement Image',
   },
   help:

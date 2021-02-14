@@ -9,6 +9,7 @@ import { style } from '../../../styles/Preview/project_preview';
 import { FlipCard } from './FlipCard.jsx';
 import { CarouselCard } from './CarouselCard.jsx';
 import { StickyTable } from './StickyTable.jsx';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
@@ -31,6 +32,7 @@ const otherProjectColumn = [
 
 const ProjectLayout = () => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
   const projectReducer = useSelector((state) => state.projectReducer);
   const {
     background,
@@ -48,7 +50,7 @@ const ProjectLayout = () => {
   } = projectReducer;
 
   const getPopularProjects = () => {
-    if (window.innerWidth < 750) {
+    if (windowWidth < 750) {
       return (
         <Carousel
           autoPlay={false}
@@ -143,7 +145,7 @@ const ProjectLayout = () => {
         <Typography
           style={{ color: pageHeadlineColor }}
           className={clsx(classes.pageHeadline, {
-            [classes.responsivePageHeadline]: window.innerWidth < 750,
+            [classes.responsivePageHeadline]: windowWidth < 750,
           })}
         >
           {pageHeadline}

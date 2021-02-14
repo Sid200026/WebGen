@@ -1,7 +1,7 @@
 const whiteTheme = {
   template_name: 'White Theme 1',
-  template_image: 'https://bit.ly/3cr31mU',
-  template_link: 'https://sid200026.github.io/typing-effect/',
+  template_image: '/public/images/themes/White Theme 1.png',
+  template_link: 'https://sid200026.github.io/',
   template_config: {
     introduction: {
       enable: true,
