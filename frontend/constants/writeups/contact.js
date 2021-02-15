@@ -46,7 +46,7 @@ export const FormInfo = {
   help:
     'The contact form is powered by FormSpree. FormSpree is the simplest way to embed custom contact us forms in a website. You would need to provide us with the formspree endpoint to enable the contact me form',
   formSpree: {
-    link: 'https://formspree.io/',
+    link: 'https://www.youtube.com/watch?v=DznnoT66cI0',
     text: 'How to get formspree endpoint ?',
   },
   image: {
