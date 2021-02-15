@@ -20,6 +20,7 @@ import { Skills } from './AboutMe/Skills.jsx';
 import { Layout } from './AboutMe/Layout.jsx';
 import { Resume } from './AboutMe/Resume.jsx';
 import { SocialMedia } from './AboutMe/SocialMedia.jsx';
+import { useWindowSize } from '../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
@@ -43,6 +44,7 @@ const getContent = () => [
 
 const AboutMe = (props) => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
   const { enable } = aboutMeReducer;
   const dispatch = useDispatch();
@@ -56,7 +58,7 @@ const AboutMe = (props) => {
             variant="h3"
             align="center"
             className={clsx(classes.heading, {
-              [classes.responsiveHeading]: window.innerWidth > warningWidth,
+              [classes.responsiveHeading]: windowWidth > warningWidth,
             })}
           >
             About Me Page
@@ -75,16 +77,16 @@ const AboutMe = (props) => {
           </Typography>
           <div
             className={clsx(classes.exampleContainer, {
-              [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
+              [classes.responsiveExampleContainer]: windowWidth < warningWidth,
             })}
           >
             <div className={classes.textContainer}>
               <Typography
                 gutterBottom
                 align="center"
-                variant={window.innerWidth < warningWidth ? 'subtitle1' : 'h6'}
+                variant={windowWidth < warningWidth ? 'subtitle1' : 'h6'}
                 className={clsx(classes.writeUp, {
-                  [classes.responsiveWriteUp]: window.innerWidth < warningWidth,
+                  [classes.responsiveWriteUp]: windowWidth < warningWidth,
                 })}
               >
                 {aboutMeWriteup}
@@ -97,7 +99,7 @@ const AboutMe = (props) => {
                 label="Enable Page"
                 labelPlacement="top"
                 className={clsx(classes.labelEnable, {
-                  [classes.responsiveLabelEnable]: window.innerWidth < warningWidth,
+                  [classes.responsiveLabelEnable]: windowWidth < warningWidth,
                 })}
                 onChange={(event) => {
                   dispatch(enablePage(event.target.checked));
@@ -108,10 +110,10 @@ const AboutMe = (props) => {
             <Typography gutterBottom align="center">
               {/* TODO: Add example of about me page here */}
               <img
-                src="https://bit.ly/3cr31mU"
+                src="/public/images/AboutMe/About Me Page.png"
                 alt="Test"
                 className={clsx(classes.image, {
-                  [classes.responsiveImage]: window.innerWidth < warningWidth,
+                  [classes.responsiveImage]: windowWidth < warningWidth,
                 })}
               />
             </Typography>
@@ -127,7 +129,7 @@ const AboutMe = (props) => {
         variant="h3"
         align="center"
         className={clsx(classes.heading, {
-          [classes.responsiveHeading]: window.innerWidth > warningWidth,
+          [classes.responsiveHeading]: windowWidth > warningWidth,
         })}
       >
         About Me Page
@@ -150,7 +152,7 @@ const AboutMe = (props) => {
             label="Enable Page"
             labelPlacement="top"
             className={clsx(classes.labelForm, {
-              [classes.responsiveLabelEnable]: window.innerWidth < warningWidth,
+              [classes.responsiveLabelEnable]: windowWidth < warningWidth,
             })}
           />
         </Grid>

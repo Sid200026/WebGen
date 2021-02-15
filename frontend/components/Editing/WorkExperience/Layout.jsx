@@ -14,12 +14,13 @@ import {
 } from '../../../actions/work_experience_action';
 import { LayoutInfo } from '../../../constants/writeups/workExperience';
 import { warningWidth } from '../../../constants/writeups/index';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const Layout = () => {
   const classes = useStyles();
-
+  const [windowWidth] = useWindowSize();
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
   const { background, pageHeadline, pageHeadlineColor } = workExperienceReducer;
   const dispatch = useDispatch();
@@ -27,13 +28,13 @@ const Layout = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
+          [classes.responsiveExampleContainer]: windowWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
+              [classes.responsiveCardClass]: windowWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
@@ -101,7 +102,7 @@ const Layout = () => {
             src={LayoutInfo.image.src}
             alt={LayoutInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < warningWidth,
+              [classes.responsiveImage]: windowWidth < warningWidth,
             })}
           />
         </div>

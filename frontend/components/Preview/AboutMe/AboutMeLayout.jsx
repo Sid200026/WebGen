@@ -7,11 +7,13 @@ import { useSelector } from 'react-redux';
 import { style } from '../../../styles/Preview/about_me_preview';
 import { getMediaInfo } from '../../../utils/socialMediaDetector';
 import { Skillbars } from '../../Skillbar.jsx';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const AboutMeLayout = () => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
   const {
     profile,
@@ -210,7 +212,7 @@ const AboutMeLayout = () => {
     });
 
   const getMedia = () => {
-    if (window.innerWidth >= 750) {
+    if (windowWidth >= 750) {
       return getMediaHandles();
     }
     return getResponsiveMediaHandles();
@@ -221,19 +223,19 @@ const AboutMeLayout = () => {
       <Typography
         style={{ color: pageHeadlineColor }}
         className={clsx(classes.pageHeadline, {
-          [classes.responsivePageHeadline]: window.innerWidth < 750,
+          [classes.responsivePageHeadline]: windowWidth < 750,
         })}
       >
         {pageHeadline}
       </Typography>
       <div
         className={clsx(classes.aboutMeContainer, {
-          [classes.responsiveAboutMeContainer]: window.innerWidth < 750,
+          [classes.responsiveAboutMeContainer]: windowWidth < 750,
         })}
       >
         <div
           className={clsx(classes.innerContainer, {
-            [classes.responsiveInnerContainer]: window.innerWidth < 750,
+            [classes.responsiveInnerContainer]: windowWidth < 750,
           })}
         >
           {Object.keys(profile).length !== 0 && (
@@ -272,7 +274,7 @@ const AboutMeLayout = () => {
             align="center"
             variant="subtitle1"
             className={clsx(classes.descriptionText, {
-              [classes.responsiveDescriptionText]: window.innerWidth < 750,
+              [classes.responsiveDescriptionText]: windowWidth < 750,
             })}
             style={{ color: descriptionColor }}
           >
@@ -284,7 +286,7 @@ const AboutMeLayout = () => {
         </div>
         <div
           className={clsx(classes.innerContainer, {
-            [classes.responsiveInnerContainer]: window.innerWidth < 750,
+            [classes.responsiveInnerContainer]: windowWidth < 750,
           })}
         >
           <>

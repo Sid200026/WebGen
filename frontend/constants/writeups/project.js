@@ -1,7 +1,7 @@
 export const LayoutInfo = {
   title: 'Customize Page Layout',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Project/Page Layout.png',
     alt: 'Page Layout Image',
   },
   field: {
@@ -20,7 +20,7 @@ export const LayoutInfo = {
 export const OtherProjectInfo = {
   title: 'Customize Other Project Content',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Project/Other Projects.png',
     alt: 'Other Project Image',
   },
   help:
@@ -55,7 +55,7 @@ export const OtherProjectInfo = {
 export const PopularProjectInfo = {
   title: 'Customize Popular Project Card Content',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Project/Popular Projects.png',
     alt: 'Popular Project Image',
   },
   help:
@@ -96,7 +96,7 @@ export const PopularProjectInfo = {
 export const ProjectCardInfo = {
   title: 'Customize Project Cards',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Project/Project Card.png',
     alt: 'Popular Project Image',
   },
   field: {
@@ -121,7 +121,7 @@ export const ProjectCardInfo = {
 export const ProjectTableInfo = {
   title: 'Customize Project Table',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Project/Project Table.png',
     alt: 'Popular Project Image',
   },
   field: {

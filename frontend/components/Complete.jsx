@@ -12,11 +12,13 @@ import { style } from '../styles/Generic/complete';
 import { Footer } from './Editing/Footer.jsx';
 import { getTheme, STATIC } from './ParticleThemes/index';
 import { warningWidth } from '../constants/writeups/index';
+import { useWindowSize } from './Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const Complete = (props) => {
   const { location } = props;
+  const [windowWidth] = useWindowSize();
   const { state: stateLocation } = location;
   let email = '';
   let isProcessComplete = false;
@@ -67,7 +69,7 @@ const Complete = (props) => {
           variant="h3"
           align="center"
           className={clsx(classes.heading, {
-            [classes.responsiveHeading]: window.innerWidth > warningWidth,
+            [classes.responsiveHeading]: windowWidth > warningWidth,
           })}
         >
           Thank you for using WebGen
@@ -77,7 +79,7 @@ const Complete = (props) => {
           variant="h6"
           align="center"
           className={clsx(classes.secondaryMsg, {
-            [classes.responsiveSecondaryMsg]: window.innerWidth < warningWidth,
+            [classes.responsiveSecondaryMsg]: windowWidth < warningWidth,
           })}
         >
           Your website will be sent to <em className={classes.email}>{email}</em>.
@@ -87,14 +89,14 @@ const Complete = (props) => {
           variant="h6"
           align="center"
           className={clsx(classes.secondaryMsg, {
-            [classes.responsiveSecondaryMsg]: window.innerWidth < warningWidth,
+            [classes.responsiveSecondaryMsg]: windowWidth < warningWidth,
           })}
         >
           It may take about 2-10 minutes to send the file depending on the traffic.
         </Typography>
         <div
           className={clsx(classes.logoContainer, {
-            [classes.responsiveLogoContainer]: window.innerWidth < warningWidth,
+            [classes.responsiveLogoContainer]: windowWidth < warningWidth,
           })}
         >
           <a href="https://github.com/Sid200026" target="_blank" rel="noreferrer">
@@ -102,7 +104,7 @@ const Complete = (props) => {
               src="/public/images/assets/GitHub-Mark-Light-120px-plus.png"
               alt="github"
               className={clsx(classes.socialLogo, {
-                [classes.responsiveSocialLogo]: window.innerWidth < warningWidth,
+                [classes.responsiveSocialLogo]: windowWidth < warningWidth,
               })}
             />
           </a>
@@ -115,7 +117,7 @@ const Complete = (props) => {
               src="/public/images/assets/LI-In-Bug.png"
               alt="linkedin"
               className={clsx(classes.socialLogo, {
-                [classes.responsiveSocialLogo]: window.innerWidth < warningWidth,
+                [classes.responsiveSocialLogo]: windowWidth < warningWidth,
               })}
             />
           </a>
@@ -128,7 +130,7 @@ const Complete = (props) => {
               src="/public/images/assets/Instagram_AppIcon_Aug2017.png"
               alt="instagram"
               className={clsx(classes.socialLogo, {
-                [classes.responsiveSocialLogo]: window.innerWidth < warningWidth,
+                [classes.responsiveSocialLogo]: windowWidth < warningWidth,
               })}
             />
           </a>
@@ -139,7 +141,7 @@ const Complete = (props) => {
           id="completeWebsiteBtn"
           size="large"
           className={clsx(classes.btn, {
-            [classes.responsiveBtn]: window.innerWidth < warningWidth,
+            [classes.responsiveBtn]: windowWidth < warningWidth,
           })}
           onClick={updateMemeUrl}
         >
@@ -149,7 +151,7 @@ const Complete = (props) => {
           src={memeUrl}
           alt="Random meme"
           className={clsx(classes.meme, {
-            [classes.responsiveMeme]: window.innerWidth < warningWidth,
+            [classes.responsiveMeme]: windowWidth < warningWidth,
           })}
         />
         <Footer />

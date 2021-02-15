@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Drawer from '@material-ui/core/Drawer';
@@ -33,7 +32,6 @@ const Header = (props) => {
   const { menuColor, menuBackground } = props;
   const classes = useStyles();
   const [width, updateWidth] = useState(window.innerWidth);
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -185,7 +183,7 @@ const Header = (props) => {
       <Drawer
         className={classes.drawer}
         variant="persistent"
-        anchor="left"
+        anchor="top"
         open={open}
         classes={{
           paper: classes.drawerPaper,
@@ -193,7 +191,7 @@ const Header = (props) => {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            <KeyboardArrowUpIcon />
           </IconButton>
         </div>
         <Divider />

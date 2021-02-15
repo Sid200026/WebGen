@@ -8,11 +8,13 @@ import Carousel from 'react-material-ui-carousel';
 import { style } from '../../../styles/Preview/achievement_preview';
 import { OverlayCard } from './OverlayCard.jsx';
 import { CarouselCard } from '../Project/CarouselCard.jsx';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const AchievementLayout = () => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
   const achievementReducer = useSelector((state) => state.achievementReducer);
   const {
     pageHeadline,
@@ -27,7 +29,7 @@ const AchievementLayout = () => {
   } = achievementReducer;
 
   const getAchievements = () => {
-    if (window.innerWidth < 750) {
+    if (windowWidth < 750) {
       return (
         <Carousel
           autoPlay={false}
@@ -118,7 +120,7 @@ const AchievementLayout = () => {
         <Typography
           style={{ color: pageHeadlineColor }}
           className={clsx(classes.pageHeadline, {
-            [classes.responsivePageHeadline]: window.innerWidth < 750,
+            [classes.responsivePageHeadline]: windowWidth < 750,
           })}
         >
           {pageHeadline}

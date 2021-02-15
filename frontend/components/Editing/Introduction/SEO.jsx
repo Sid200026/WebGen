@@ -26,11 +26,13 @@ import '../../../styles/Editing/Dropzone.scss';
 import { checkImage } from '../../../utils/imageExists';
 import { SEOInfo } from '../../../constants/writeups/introduction';
 import { warningWidth } from '../../../constants/writeups/index';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const SEO = () => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
 
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const { metadesc, title, favicon } = introductionReducer;
@@ -49,13 +51,13 @@ const SEO = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
+          [classes.responsiveExampleContainer]: windowWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
+              [classes.responsiveCardClass]: windowWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '0.6rem' }}>
@@ -123,7 +125,7 @@ const SEO = () => {
             src={SEOInfo.image.src}
             alt={SEOInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < warningWidth,
+              [classes.responsiveImage]: windowWidth < warningWidth,
             })}
           />
         </div>
