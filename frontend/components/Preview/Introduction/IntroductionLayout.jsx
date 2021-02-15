@@ -9,12 +9,14 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { Typing } from 'typing-effect-reactjs';
 import { getTheme } from '../../ParticleThemes/index';
 import { style } from '../../../styles/Preview/introduction_preview';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const IntroductionLayout = () => {
   const [hover, setHover] = useState(false);
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const {
     greetingText,
@@ -102,7 +104,7 @@ const IntroductionLayout = () => {
         </div>
         <h1
           className={clsx(classes.mainHeading, {
-            [classes.responsiveMainHeading]: window.innerWidth < 750,
+            [classes.responsiveMainHeading]: windowWidth < 750,
           })}
         >
           {greetingText && (
@@ -122,7 +124,7 @@ const IntroductionLayout = () => {
         <span
           style={{ color: specialisationColor }}
           className={clsx(classes.specialisationText, {
-            [classes.responsiveSpecialisationText]: window.innerWidth < 750,
+            [classes.responsiveSpecialisationText]: windowWidth < 750,
           })}
         >
           {specialisationText.length !== 0 && (
@@ -134,7 +136,7 @@ const IntroductionLayout = () => {
               deleteSpeed={50}
               cursorColor={specialisationColor}
               styleClass={clsx(classes.specialisationText, {
-                [classes.responsiveSpecialisationText]: window.innerWidth < 750,
+                [classes.responsiveSpecialisationText]: windowWidth < 750,
               })}
             />
           )}

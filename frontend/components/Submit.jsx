@@ -22,11 +22,13 @@ import { reset as resetProject } from '../actions/project_action';
 import { reset as resetAchievement } from '../actions/achievement_action';
 import { reset as resetContact } from '../actions/contact_action';
 import { warningWidth } from '../constants/writeups/index';
+import { useWindowSize } from './Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const Submit = () => {
   const [rating, setRating] = useState(0);
+  const [windowWidth] = useWindowSize();
   const [comment, setComment] = useState('');
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -184,7 +186,7 @@ const Submit = () => {
         variant="h3"
         align="center"
         className={clsx(classes.heading, {
-          [classes.responsiveHeading]: window.innerWidth > warningWidth,
+          [classes.responsiveHeading]: windowWidth > warningWidth,
         })}
       >
         We&apos;re in the endgame now
@@ -192,30 +194,30 @@ const Submit = () => {
       <Container
         maxWidth="xl"
         className={clsx(classes.innerContainer, {
-          [classes.responsiveInnerContainer]: window.innerWidth < warningWidth,
+          [classes.responsiveInnerContainer]: windowWidth < warningWidth,
         })}
       >
         <div
           className={clsx(classes.memeContainer, {
-            [classes.responsiveMemeContainer]: window.innerWidth < warningWidth,
+            [classes.responsiveMemeContainer]: windowWidth < warningWidth,
           })}
         >
           <img
             src="/public/images/endgame.jpg"
             alt="Endgame"
             className={clsx(classes.memeImage, {
-              [classes.responsiveMemeImage]: window.innerWidth < warningWidth,
+              [classes.responsiveMemeImage]: windowWidth < warningWidth,
             })}
           />
         </div>
         <div
           className={clsx(classes.rightInnerContainer, {
-            [classes.responsiveRightInnerContainer]: window.innerWidth < warningWidth,
+            [classes.responsiveRightInnerContainer]: windowWidth < warningWidth,
           })}
         >
           <div
             className={clsx(classes.btnContainer, {
-              [classes.responsiveBtnContainer]: window.innerWidth < warningWidth,
+              [classes.responsiveBtnContainer]: windowWidth < warningWidth,
             })}
           >
             <Button
@@ -225,7 +227,7 @@ const Submit = () => {
               startIcon={<CheckCircleOutlineIcon />}
               size="large"
               className={clsx(classes.btn, {
-                [classes.responsiveBtn]: window.innerWidth < warningWidth,
+                [classes.responsiveBtn]: windowWidth < warningWidth,
               })}
               onClick={confirmOnClick}
             >
@@ -238,7 +240,7 @@ const Submit = () => {
               startIcon={<VisibilityIcon />}
               size="large"
               className={clsx(classes.btn, {
-                [classes.responsiveBtn]: window.innerWidth < warningWidth,
+                [classes.responsiveBtn]: windowWidth < warningWidth,
               })}
               onClick={() =>
                 navigate('/preview', {
@@ -254,7 +256,7 @@ const Submit = () => {
             variant="h5"
             align="center"
             className={clsx(classes.rateHeading, {
-              [classes.responsiveRateHeading]: window.innerWidth < warningWidth,
+              [classes.responsiveRateHeading]: windowWidth < warningWidth,
             })}
           >
             Rate your experience
@@ -270,7 +272,7 @@ const Submit = () => {
           />
           <Card
             className={clsx(classes.card, {
-              [classes.responsiveCard]: window.innerWidth < warningWidth,
+              [classes.responsiveCard]: windowWidth < warningWidth,
             })}
           >
             <TextField

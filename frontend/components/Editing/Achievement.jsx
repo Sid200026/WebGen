@@ -17,6 +17,7 @@ import { Layout } from './Achievements/Layout.jsx';
 import { AchievementCard } from './Achievements/AchievementCard.jsx';
 import { Achievement as AchievementSub } from './Achievements/Achievement.jsx';
 import { StepperComp as Stepper } from './Stepper.jsx';
+import { useWindowSize } from '../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
@@ -26,6 +27,7 @@ const getContent = () => [Layout, AchievementCard, AchievementSub];
 
 const Achievement = (props) => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
   const achievementReducer = useSelector((state) => state.achievementReducer);
   const { enable } = achievementReducer;
   const dispatch = useDispatch();
@@ -39,7 +41,7 @@ const Achievement = (props) => {
             variant="h3"
             align="center"
             className={clsx(classes.heading, {
-              [classes.responsiveHeading]: window.innerWidth > warningWidth,
+              [classes.responsiveHeading]: windowWidth > warningWidth,
             })}
           >
             Achievement Page
@@ -58,16 +60,16 @@ const Achievement = (props) => {
           </Typography>
           <div
             className={clsx(classes.exampleContainer, {
-              [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
+              [classes.responsiveExampleContainer]: windowWidth < warningWidth,
             })}
           >
             <div className={classes.textContainer}>
               <Typography
                 gutterBottom
                 align="center"
-                variant={window.innerWidth < warningWidth ? 'subtitle1' : 'h6'}
+                variant={windowWidth < warningWidth ? 'subtitle1' : 'h6'}
                 className={clsx(classes.writeUp, {
-                  [classes.responsiveWriteUp]: window.innerWidth < warningWidth,
+                  [classes.responsiveWriteUp]: windowWidth < warningWidth,
                 })}
               >
                 {achievementWriteup}
@@ -88,7 +90,7 @@ const Achievement = (props) => {
                 label="Enable Page"
                 labelPlacement="top"
                 className={clsx(classes.labelEnable, {
-                  [classes.responsiveLabelEnable]: window.innerWidth < warningWidth,
+                  [classes.responsiveLabelEnable]: windowWidth < warningWidth,
                 })}
                 classes={{ label: classes.formControl }}
               />
@@ -96,10 +98,10 @@ const Achievement = (props) => {
             <Typography gutterBottom align="center">
               {/* TODO: Add example of landing page here */}
               <img
-                src="https://bit.ly/3cr31mU"
+                src="/public/images/Achievement/Achievement Page.png"
                 alt="Test"
                 className={clsx(classes.image, {
-                  [classes.responsiveImage]: window.innerWidth < warningWidth,
+                  [classes.responsiveImage]: windowWidth < warningWidth,
                 })}
               />
             </Typography>
@@ -114,7 +116,7 @@ const Achievement = (props) => {
         variant="h3"
         align="center"
         className={clsx(classes.heading, {
-          [classes.responsiveHeading]: window.innerWidth > warningWidth,
+          [classes.responsiveHeading]: windowWidth > warningWidth,
         })}
       >
         Achievement Page
@@ -137,7 +139,7 @@ const Achievement = (props) => {
             label="Enable Page"
             labelPlacement="top"
             className={clsx(classes.labelForm, {
-              [classes.responsiveLabelEnable]: window.innerWidth < warningWidth,
+              [classes.responsiveLabelEnable]: windowWidth < warningWidth,
             })}
           />
         </Grid>

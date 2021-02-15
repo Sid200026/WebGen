@@ -46,11 +46,13 @@ import {
   load as loadContact,
 } from '../../actions/contact_action';
 import { warningWidth } from '../../constants/writeups/index';
+import { useWindowSize } from '../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const Template = () => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
   const dispatch = useDispatch();
   const introductionReducer = useSelector((state) => state.introductionReducer);
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
@@ -239,7 +241,7 @@ const Template = () => {
           variant="h3"
           align="center"
           className={clsx(classes.heading, {
-            [classes.responsiveHeading]: window.innerWidth > warningWidth,
+            [classes.responsiveHeading]: windowWidth > warningWidth,
           })}
         >
           Choose a starting point
@@ -247,7 +249,10 @@ const Template = () => {
         {hasUnsavedChanges && (
           <>
             <Typography align="center" style={{ margin: '2rem 0rem 1rem 0rem' }}>
-              <Button variant="contained" onClick={() => navigateTo('/introduction')}>
+              <Button
+                variant="contained"
+                onClick={() => navigateTo('/edit/introduction')}
+              >
                 Continue
               </Button>
             </Typography>
@@ -274,7 +279,7 @@ const Template = () => {
         >
           <Grid
             className={clsx(classes.specialTemplate, {
-              [classes.responsiveSpecialTemplate]: window.innerWidth < warningWidth,
+              [classes.responsiveSpecialTemplate]: windowWidth < warningWidth,
             })}
             item
             xs={4}

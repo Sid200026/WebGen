@@ -1,7 +1,7 @@
 export const DescriptionInfo = {
   title: 'Customize Description',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/AboutMe/Description.png',
     alt: 'Description Image',
   },
   field: {
@@ -18,7 +18,7 @@ export const DescriptionInfo = {
 export const LayoutInfo = {
   title: 'Customize Page Layout',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/AboutMe/Page Layout.png',
     alt: 'Page Layout Image',
   },
   field: {
@@ -46,7 +46,7 @@ export const ResumeInfo = {
     // eslint-disable-next-line max-len
     'Since we frequenly update our resume, we require you to provide us a link to access your resume instead of uploading it so you can update it easily in the future',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/AboutMe/Resume.png',
     alt: 'Resume Image',
   },
   hoverEffect: {
@@ -85,7 +85,7 @@ export const ResumeInfo = {
 export const ProfilePictureInfo = {
   title: 'Customize Profile Picture',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/AboutMe/Profile Picture.png',
     alt: 'Profile Picture Image',
   },
   field: {
@@ -96,9 +96,9 @@ export const ProfilePictureInfo = {
 };
 
 export const SkillInfo = {
-  title: 'Customize Profile Picture',
+  title: 'Customize Skills',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/AboutMe/Skills.png',
     alt: 'Skill Image',
   },
   error: {
@@ -126,7 +126,7 @@ export const SkillInfo = {
 export const SocialMediaInfo = {
   title: 'Customize Social Media Handles',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/AboutMe/Media Handles.png',
     alt: 'Social Media Image',
   },
   help:

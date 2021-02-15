@@ -29,6 +29,7 @@ import {
 import '../../../styles/Editing/editForm.scss';
 import { CompanyInfo } from '../../../constants/writeups/workExperience';
 import { warningWidth } from '../../../constants/writeups/index';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const removeElementFromArray = (array, index) => {
   return array.slice(0, index).concat(array.slice(index + 1, array.length));
@@ -39,6 +40,7 @@ const useStyles = makeStyles(style);
 const Company = () => {
   const classes = useStyles();
   const workExperienceReducer = useSelector((state) => state.workExperienceReducer);
+  const [windowWidth] = useWindowSize();
 
   const defaultThemeReducer = useSelector((state) => state.defaultThemeReducer);
 
@@ -689,13 +691,13 @@ const Company = () => {
 
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
+          [classes.responsiveExampleContainer]: windowWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
+              [classes.responsiveCardClass]: windowWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
@@ -735,7 +737,7 @@ const Company = () => {
             src={CompanyInfo.image.src}
             alt={CompanyInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < warningWidth,
+              [classes.responsiveImage]: windowWidth < warningWidth,
             })}
           />
         </div>

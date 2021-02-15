@@ -45,7 +45,7 @@ export const style = () => ({
     height: '2rem',
   },
   image: {
-    width: '70%',
+    width: '80%',
     height: 'auto',
     borderRadius: '30px',
     border: '2px solid white',
@@ -63,7 +63,7 @@ export const style = () => ({
     marginTop: '2rem',
     display: 'flex',
     justifyContent: 'space-evenly',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginBottom: '15px',
   },
   responsiveExampleContainer: {

@@ -3,7 +3,7 @@
 export const LayoutInfo = {
   title: 'Customize Page Layout',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/WorkExperience/Page Layout.png',
     alt: 'Page Layout Image',
   },
   field: {
@@ -30,7 +30,7 @@ export const CompanyInfo = {
     emptyEndDate: 'End Date cannot be empty',
   },
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/WorkExperience/Work Experience.png',
     alt: 'Company Image',
   },
   field: {

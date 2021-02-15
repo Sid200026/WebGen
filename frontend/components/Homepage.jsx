@@ -31,6 +31,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { getRequest } from '../utils/serviceCalls';
 import { warningWidth } from '../constants/writeups/index';
 import { style } from '../styles/Generic/homepage';
+import { useWindowSize } from './Hooks/windowHook.jsx';
 
 const Alert = (props) => {
   // eslint-disable-next-line react/jsx-props-no-spreading
@@ -41,6 +42,7 @@ const useStyles = makeStyles(style);
 
 const HomePage = () => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
@@ -101,7 +103,7 @@ const HomePage = () => {
         </Alert>
       </Snackbar>
       <div className={classes.root}>
-        {window.innerWidth > 1000 && (
+        {windowWidth > 1000 && (
           <AppBar position="fixed" className={classes.header}>
             <Toolbar>
               <div className={classes.headerIntial}>
@@ -181,7 +183,7 @@ const HomePage = () => {
             </Toolbar>
           </AppBar>
         )}
-        {window.innerWidth <= 1000 && (
+        {windowWidth <= 1000 && (
           <>
             <AppBar position="fixed" className={classes.header}>
               <Toolbar>
@@ -286,18 +288,18 @@ const HomePage = () => {
         )}
         <div
           className={clsx(classes.homePage, {
-            [classes.responsiveHomePage]: window.innerWidth < warningWidth,
+            [classes.responsiveHomePage]: windowWidth < 1000,
           })}
         >
           <div
             className={clsx(classes.left, {
-              [classes.responsiveLeft]: window.innerWidth < warningWidth,
+              [classes.responsiveLeft]: windowWidth < 1000,
             })}
           >
             <Typography
               variant="h2"
               className={clsx(classes.productName, {
-                [classes.responsiveProductName]: window.innerWidth < warningWidth,
+                [classes.responsiveProductName]: windowWidth < 1000,
               })}
             >
               WebGen
@@ -305,7 +307,7 @@ const HomePage = () => {
             <Typography
               variant="h6"
               className={clsx(classes.subProductName, {
-                [classes.responsiveSubProductName]: window.innerWidth < warningWidth,
+                [classes.responsiveSubProductName]: windowWidth < 1000,
               })}
             >
               WebGen is an open source personal website / portfolio generator which
@@ -321,14 +323,14 @@ const HomePage = () => {
           </div>
           <div
             className={clsx(classes.right, {
-              [classes.responsiveRight]: window.innerWidth < warningWidth,
+              [classes.responsiveRight]: windowWidth < 1000,
             })}
           >
             <img
               src="/public/logo_inverted.png"
               alt="WebGen"
               className={clsx(classes.image, {
-                [classes.responsiveImage]: window.innerWidth < warningWidth,
+                [classes.responsiveImage]: windowWidth < 1000,
               })}
             />
           </div>
@@ -367,36 +369,36 @@ const HomePage = () => {
       </div>
       <div
         className={clsx(classes.about, {
-          [classes.responsiveAbout]: window.innerWidth < warningWidth,
+          [classes.responsiveAbout]: windowWidth < warningWidth,
         })}
       >
         <div
           className={clsx(classes.aboutMeSplit, {
-            [classes.responsiveAboutMeSplit]: window.innerWidth < warningWidth,
+            [classes.responsiveAboutMeSplit]: windowWidth < warningWidth,
           })}
         >
           <div
             className={clsx(classes.aboutLeft, {
-              [classes.responsiveAboutLeft]: window.innerWidth < warningWidth,
+              [classes.responsiveAboutLeft]: windowWidth < warningWidth,
             })}
           >
             <img
               src="https://raw.githubusercontent.com/Sid200026/WebGen/master/docs/WebGen.png"
               alt="WebGen"
               className={clsx(classes.aboutImage, {
-                [classes.responsiveAboutImage]: window.innerWidth < warningWidth,
+                [classes.responsiveAboutImage]: windowWidth < warningWidth,
               })}
             />
           </div>
           <div
             className={clsx(classes.aboutRight, {
-              [classes.responsiveAboutRight]: window.innerWidth < warningWidth,
+              [classes.responsiveAboutRight]: windowWidth < warningWidth,
             })}
           >
             <Typography
               variant="h4"
               className={clsx(classes.aboutTextMain, {
-                [classes.responsiveAboutTextMain]: window.innerWidth < warningWidth,
+                [classes.responsiveAboutTextMain]: windowWidth < warningWidth,
               })}
             >
               What is WebGen
@@ -404,7 +406,7 @@ const HomePage = () => {
             <Typography
               variant="subtitle1"
               className={clsx(classes.aboutText, {
-                [classes.responsiveAboutText]: window.innerWidth < warningWidth,
+                [classes.responsiveAboutText]: windowWidth < warningWidth,
               })}
             >
               WebGen is an open source personal website / portfolio generator.
@@ -415,7 +417,7 @@ const HomePage = () => {
             <Typography
               variant="subtitle1"
               className={clsx(classes.aboutText, {
-                [classes.responsiveAboutText]: window.innerWidth < warningWidth,
+                [classes.responsiveAboutText]: windowWidth < warningWidth,
               })}
             >
               We provide you with the source code of the website you developed so that
@@ -427,7 +429,7 @@ const HomePage = () => {
         </div>
         <div
           className={clsx(classes.empty, {
-            [classes.responsiveEmpty]: window.innerWidth < warningWidth,
+            [classes.responsiveEmpty]: windowWidth < warningWidth,
           })}
         />
       </div>
@@ -437,23 +439,23 @@ const HomePage = () => {
         </Typography>
         <div
           className={clsx(classes.featureSplit, {
-            [classes.responsiveFeatureSplit]: window.innerWidth < warningWidth,
+            [classes.responsiveFeatureSplit]: windowWidth < warningWidth,
           })}
         >
           <div
             className={clsx(classes.featureLeft, {
-              [classes.responsiveFeatureLeft]: window.innerWidth < warningWidth,
+              [classes.responsiveFeatureLeft]: windowWidth < warningWidth,
             })}
           >
             <div
               className={clsx(classes.featLogo, {
-                [classes.responsiveFeatLogo]: window.innerWidth < warningWidth,
+                [classes.responsiveFeatLogo]: windowWidth < warningWidth,
               })}
             >
               <BuildIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
               <div
                 className={clsx(classes.featText, {
-                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                  [classes.responsiveFeatText]: windowWidth < warningWidth,
                 })}
               >
                 <h2 className={classes.featTextHead}>Easily Customizable</h2>
@@ -465,13 +467,13 @@ const HomePage = () => {
             </div>
             <div
               className={clsx(classes.featLogo, {
-                [classes.responsiveFeatLogo]: window.innerWidth < warningWidth,
+                [classes.responsiveFeatLogo]: windowWidth < warningWidth,
               })}
             >
               <DevicesIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
               <div
                 className={clsx(classes.featText, {
-                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                  [classes.responsiveFeatText]: windowWidth < warningWidth,
                 })}
               >
                 <h2 className={classes.featTextHead}>Responsive Design</h2>
@@ -483,13 +485,13 @@ const HomePage = () => {
             </div>
             <div
               className={clsx(classes.featLogo, {
-                [classes.responsiveFeatLogo]: window.innerWidth < warningWidth,
+                [classes.responsiveFeatLogo]: windowWidth < warningWidth,
               })}
             >
               <BuildIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
               <div
                 className={clsx(classes.featText, {
-                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                  [classes.responsiveFeatText]: windowWidth < warningWidth,
                 })}
               >
                 <h2 className={classes.featTextHead}>Easily Customizable</h2>
@@ -500,7 +502,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          {window.innerWidth >= warningWidth && (
+          {windowWidth >= warningWidth && (
             <div className={classes.featureMiddle}>
               <img
                 src="/public/mobile_homepage.png"
@@ -511,18 +513,18 @@ const HomePage = () => {
           )}
           <div
             className={clsx(classes.featureRight, {
-              [classes.responsiveFeatureRight]: window.innerWidth < warningWidth,
+              [classes.responsiveFeatureRight]: windowWidth < warningWidth,
             })}
           >
             <div
               className={clsx(classes.featLogoRight, {
-                [classes.responsiveFeatLogoRight]: window.innerWidth < warningWidth,
+                [classes.responsiveFeatLogoRight]: windowWidth < warningWidth,
               })}
             >
               <PollIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
               <div
                 className={clsx(classes.featText, {
-                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                  [classes.responsiveFeatText]: windowWidth < warningWidth,
                 })}
               >
                 <h2 className={classes.featTextHead}>Optimized SEO</h2>
@@ -534,13 +536,13 @@ const HomePage = () => {
             </div>
             <div
               className={clsx(classes.featLogoRight, {
-                [classes.responsiveFeatLogoRight]: window.innerWidth < warningWidth,
+                [classes.responsiveFeatLogoRight]: windowWidth < warningWidth,
               })}
             >
               <HighQualityIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
               <div
                 className={clsx(classes.featText, {
-                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                  [classes.responsiveFeatText]: windowWidth < warningWidth,
                 })}
               >
                 <h2 className={classes.featTextHead}>High Quality</h2>
@@ -552,13 +554,13 @@ const HomePage = () => {
             </div>
             <div
               className={clsx(classes.featLogoRight, {
-                [classes.responsiveFeatLogoRight]: window.innerWidth < warningWidth,
+                [classes.responsiveFeatLogoRight]: windowWidth < warningWidth,
               })}
             >
               <WhatshotIcon style={{ color: '#5BAFE0', fontSize: '30px' }} />
               <div
                 className={clsx(classes.featText, {
-                  [classes.responsiveFeatText]: window.innerWidth < warningWidth,
+                  [classes.responsiveFeatText]: windowWidth < warningWidth,
                 })}
               >
                 <h2 className={classes.featTextHead}>Blazingly Fast</h2>
@@ -572,25 +574,25 @@ const HomePage = () => {
       </div>
       <div
         className={clsx(classes.facts, {
-          [classes.responsiveFacts]: window.innerWidth < warningWidth,
+          [classes.responsiveFacts]: windowWidth < warningWidth,
         })}
       >
         <h1
           className={clsx(classes.factHead, {
-            [classes.responsiveFactHead]: window.innerWidth < warningWidth,
+            [classes.responsiveFactHead]: windowWidth < warningWidth,
           })}
         >
           Some facts about us
         </h1>
         <div
           className={clsx(classes.factInfo, {
-            [classes.responsiveFactInfo]: window.innerWidth < warningWidth,
+            [classes.responsiveFactInfo]: windowWidth < warningWidth,
           })}
         >
           <div className={classes.factText}>
             <h1
               className={clsx(classes.factTextCount, {
-                [classes.responsiveFactTextCount]: window.innerWidth < warningWidth,
+                [classes.responsiveFactTextCount]: windowWidth < warningWidth,
               })}
             >
               {data.visitor}
@@ -600,7 +602,7 @@ const HomePage = () => {
           <div className={classes.factText}>
             <h1
               className={clsx(classes.factTextCount, {
-                [classes.responsiveFactTextCount]: window.innerWidth < warningWidth,
+                [classes.responsiveFactTextCount]: windowWidth < warningWidth,
               })}
             >
               {data.built}
@@ -610,7 +612,7 @@ const HomePage = () => {
           <div className={classes.factText}>
             <h1
               className={clsx(classes.factTextCount, {
-                [classes.responsiveFactTextCount]: window.innerWidth < warningWidth,
+                [classes.responsiveFactTextCount]: windowWidth < warningWidth,
               })}
             >
               {data.line} +
@@ -620,7 +622,7 @@ const HomePage = () => {
           <div className={classes.factText}>
             <h1
               className={clsx(classes.factTextCount, {
-                [classes.responsiveFactTextCount]: window.innerWidth < warningWidth,
+                [classes.responsiveFactTextCount]: windowWidth < warningWidth,
               })}
             >
               {data.coffee} +

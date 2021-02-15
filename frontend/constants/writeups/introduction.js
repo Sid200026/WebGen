@@ -2,7 +2,7 @@
 export const GreetingInfo = {
   title: 'Customize Greeting Details',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Introduction/Greeting.png',
     alt: 'Greeting Image',
   },
   field: {
@@ -19,7 +19,7 @@ export const GreetingInfo = {
 export const NameInfo = {
   title: 'Customize Name Details',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Introduction/Your Name.png',
     alt: 'SEO Image',
   },
   field: {
@@ -44,7 +44,7 @@ export const SpecialisationInfo = {
     text: 'View an Example',
   },
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Introduction/Specialisation.png',
     alt: 'SEO Image',
   },
   field: {
@@ -80,7 +80,7 @@ export const ViewProfileInfo = {
     text: 'View an Example',
   },
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Introduction/View Profile Button.png',
     alt: 'SEO Image',
   },
   field: {
@@ -109,7 +109,7 @@ export const ViewProfileInfo = {
 export const SEOInfo = {
   title: 'Customize Website Meta Description',
   image: {
-    src: 'https://bit.ly/3cr31mU',
+    src: '/public/images/Introduction/SEO Tags.png',
     alt: 'SEO Image',
   },
   help:

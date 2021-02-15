@@ -15,11 +15,13 @@ import {
 } from '../../../actions/contact_action';
 import { FormInfo } from '../../../constants/writeups/contact';
 import { warningWidth } from '../../../constants/writeups/index';
+import { useWindowSize } from '../../Hooks/windowHook.jsx';
 
 const useStyles = makeStyles(style);
 
 const ContactForm = () => {
   const classes = useStyles();
+  const [windowWidth] = useWindowSize();
 
   const contactReducer = useSelector((state) => state.contactReducer);
   const { formBackground, formColor, formSpreeLink } = contactReducer;
@@ -28,13 +30,13 @@ const ContactForm = () => {
     <>
       <div
         className={clsx(classes.exampleContainer, {
-          [classes.responsiveExampleContainer]: window.innerWidth < warningWidth,
+          [classes.responsiveExampleContainer]: windowWidth < warningWidth,
         })}
       >
         <div className={classes.cardContainer}>
           <Card
             className={clsx(classes.cardClass, {
-              [classes.responsiveCardClass]: window.innerWidth < warningWidth,
+              [classes.responsiveCardClass]: windowWidth < warningWidth,
             })}
           >
             <Typography align="center" variant="h6" style={{ marginBottom: '1rem' }}>
@@ -118,7 +120,7 @@ const ContactForm = () => {
             src={FormInfo.image.src}
             alt={FormInfo.image.alt}
             className={clsx(classes.image, {
-              [classes.responsiveImage]: window.innerWidth < warningWidth,
+              [classes.responsiveImage]: windowWidth < warningWidth,
             })}
           />
         </div>
