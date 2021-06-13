@@ -45,7 +45,7 @@
   "homepage": "https://github.com/Sid200026/WebGen#readme",
   "dependencies": {
     "@babel/runtime": "^7.9.6",
-    "@material-ui/core": "^4.9.13",
+    "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@reach/router": "^1.3.3",
