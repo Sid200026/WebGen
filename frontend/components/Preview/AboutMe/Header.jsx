@@ -73,16 +73,12 @@ const Header = (props) => {
 
   const { enable: introductionEnable } = introductionReducer;
   const { enable: aboutMeEnable, pageHeadline: pageHeadlineAboutMe } = aboutMeReducer;
-  const {
-    enable: workExperienceEnable,
-    pageHeadline: pageHeadlineWorkExperience,
-  } = workExperienceReducer;
+  const { enable: workExperienceEnable, pageHeadline: pageHeadlineWorkExperience } =
+    workExperienceReducer;
   const { enable: projectEnable, pageHeadline: pageHeadlineProject } = projectReducer;
   const achievementReducer = useSelector((stateReact) => stateReact.achievementReducer);
-  const {
-    enable: achievementEnable,
-    pageHeadline: pageHeadlineAchievement,
-  } = achievementReducer;
+  const { enable: achievementEnable, pageHeadline: pageHeadlineAchievement } =
+    achievementReducer;
   const contactReducer = useSelector((stateReact) => stateReact.contactReducer);
   const { enable: contactEnable, pageHeadline: pageHeadlineContact } = contactReducer;
 

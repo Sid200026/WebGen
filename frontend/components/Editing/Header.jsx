@@ -168,8 +168,7 @@ const Header = (props) => {
     Swal.fire({
       icon: 'success',
       title: 'Configuration loaded successfully',
-      html:
-        'There may be some cases wherein the configuration file was tampered with and may cause errors. In the case of such an event, please reset the configuration.',
+      html: 'There may be some cases wherein the configuration file was tampered with and may cause errors. In the case of such an event, please reset the configuration.',
     });
   };
 
@@ -177,8 +176,7 @@ const Header = (props) => {
     Swal.fire({
       icon: 'error',
       title: 'Configuration cannot be loaded',
-      html:
-        'It appears that the configuration file was tampered with and cannot be parsed by the system.',
+      html: 'It appears that the configuration file was tampered with and cannot be parsed by the system.',
     });
   };
 

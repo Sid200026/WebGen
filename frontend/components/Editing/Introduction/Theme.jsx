@@ -26,11 +26,8 @@ const Theme = () => {
   const [windowWidth] = useWindowSize();
 
   const introductionReducer = useSelector((state) => state.introductionReducer);
-  const {
-    particleTheme,
-    particleThemeBackgroundColor,
-    particleThemeEntityColor,
-  } = introductionReducer;
+  const { particleTheme, particleThemeBackgroundColor, particleThemeEntityColor } =
+    introductionReducer;
   const dispatch = useDispatch();
   return (
     <>
