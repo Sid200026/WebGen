@@ -25,13 +25,8 @@ const Layout = () => {
   const [windowWidth] = useWindowSize();
 
   const aboutMeReducer = useSelector((state) => state.aboutMeReducer);
-  const {
-    background,
-    menuBackground,
-    menuColor,
-    pageHeadline,
-    pageHeadlineColor,
-  } = aboutMeReducer;
+  const { background, menuBackground, menuColor, pageHeadline, pageHeadlineColor } =
+    aboutMeReducer;
   const dispatch = useDispatch();
   return (
     <>

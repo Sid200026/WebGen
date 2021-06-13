@@ -112,8 +112,7 @@ export const SEOInfo = {
     src: '/public/images/Introduction/SEO Tags.png',
     alt: 'SEO Image',
   },
-  help:
-    "Customizing these attributes will improve SEO of your website ie. if you ever host it, then the chances that Google's algorithm shows your page at the top increases.",
+  help: "Customizing these attributes will improve SEO of your website ie. if you ever host it, then the chances that Google's algorithm shows your page at the top increases.",
   field: {
     title: {
       label: 'Title of your website',
