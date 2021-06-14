@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:16-alpine
 WORKDIR /app
 ADD package*.json ./
 RUN yarn config set network-timeout 600000 -g
