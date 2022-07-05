@@ -84,7 +84,7 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "sweetalert2": "^9.10.13",
+    "sweetalert2": "^11.4.20",
     "typing-effect-reactjs": "^1.2.0",
     "validator": "^13.1.17"
   },
